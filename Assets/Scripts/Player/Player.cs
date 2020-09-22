@@ -32,14 +32,13 @@ public class Player : MonoBehaviour
     }
 
     public void MoveToLeft() {
-        if (_isGrounded) {
-            if (_lane == Lane.RIGHT) {
-                _lane = Lane.CENTER;
-                transform.DOMove(_centerPos.position, _moveTime).SetEase(Ease.Linear);
-            } else if (_lane == Lane.CENTER) {
-                _lane = Lane.LEFT;
-                transform.DOMove(_leftPos.position, _moveTime).SetEase(Ease.Linear);
-            }
+        if (_lane == Lane.RIGHT) {
+            _lane = Lane.CENTER;
+            transform.DOMoveX(_centerPos.position.x, _moveTime).SetEase(Ease.Linear);
+        }
+        else if (_lane == Lane.CENTER) {
+            _lane = Lane.LEFT;
+            transform.DOMoveX(_leftPos.position.x, _moveTime).SetEase(Ease.Linear);
         }
     }
 
@@ -51,33 +50,27 @@ public class Player : MonoBehaviour
     //}
 
     public void MoveToRight() {
-        if (_isGrounded) {
-            if (_lane == Lane.LEFT) {
-                _lane = Lane.CENTER;
-                transform.DOMove(_centerPos.position, _moveTime).SetEase(Ease.Linear);
-            } else if (_lane == Lane.CENTER) {
-                _lane = Lane.RIGHT;
-                transform.DOMove(_rightPos.position, _moveTime).SetEase(Ease.Linear);
-            }
+        if (_lane == Lane.LEFT) {
+            _lane = Lane.CENTER;
+            transform.DOMoveX(_centerPos.position.x, _moveTime).SetEase(Ease.Linear);
+        }
+        else if (_lane == Lane.CENTER) {
+            _lane = Lane.RIGHT;
+            transform.DOMoveX(_rightPos.position.x, _moveTime).SetEase(Ease.Linear);
         }
     }
 
     public void Jump() {
-        if ( _isGrounded ) {
-            switch (_lane) {
-                case Lane.LEFT:
-                    transform.DOJump(_leftPos.position, _jumpValue, 1, _jumpTime).SetEase(Ease.Linear).OnComplete(() => _isGrounded = true);
-                    break;
-                case Lane.CENTER:
-                    transform.DOJump(_centerPos.position, _jumpValue, 1, _jumpTime).SetEase(Ease.Linear).OnComplete(() => _isGrounded = true);
-                    break;
-                case Lane.RIGHT:
-                    transform.DOJump(_rightPos.position, _jumpValue, 1, _jumpTime).SetEase(Ease.Linear).OnComplete(() => _isGrounded = true);
-                    break;
-                default:
-                    break;
-            }
+        if (_isGrounded) {
             _isGrounded = false;
+
+            Sequence sequence = DOTween.Sequence();
+
+            sequence.Append(transform.DOMoveY(transform.position.y + 3, _jumpTime/2).SetEase(Ease.OutSine));
+            sequence.Append(transform.DOMoveY(transform.position.y, _jumpTime/2).SetEase(Ease.InSine));
+            sequence.OnComplete(() => _isGrounded = true);
+
+            sequence.Play();
         }
     }
 
