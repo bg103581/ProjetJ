@@ -9,7 +9,12 @@ ModelImporter:
   - first:
       74: 8095035636565036450
     second: root|h_Surprised
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flic
+    second: {fileID: 2100000, guid: 1f8b22d6c7bd7d1488798a8129edbfd5, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -74,8 +79,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 1d102f8e918f5d04ab19df5ed7181cfb
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
