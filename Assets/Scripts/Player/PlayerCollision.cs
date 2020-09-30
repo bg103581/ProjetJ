@@ -6,14 +6,21 @@ public class PlayerCollision : MonoBehaviour
 {
 
     [SerializeField]
-    private Player _player;
+    private Player player;
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.layer == 8) {
-            _player.HitByObstacle();
+            player.HitByObstacle();
         }
         else if (other.gameObject.layer == 9) {
-            _player.HitByBonus();
+            player.HitByBonus();
+        }
+        else if (other.gameObject.layer == 10) {
+            player.HitByDisc(other.tag == "Gold");
+            Destroy(other.gameObject);
+        }
+        else if (other.gameObject.layer == 11) {
+            player.DodgeObstacle();
         }
     }
 

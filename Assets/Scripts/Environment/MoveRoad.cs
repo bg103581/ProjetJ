@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MoveRoad : MonoBehaviour
 {
-    private GenerateRoads _generateRoads;
-    private float _speed;
-    private Camera _mainCamera;
+    private GenerateRoads generateRoads;
+    private float speed;
+    private Camera mainCamera;
 
     public Transform startPos;
     public Transform endPos;
@@ -14,20 +14,20 @@ public class MoveRoad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _generateRoads = GetComponentInParent<GenerateRoads>();
-        _speed = _generateRoads.roadSpeed;
-        _mainCamera = FindObjectOfType<Camera>();
+        generateRoads = GetComponentInParent<GenerateRoads>();
+        speed = generateRoads.roadSpeed;
+        mainCamera = FindObjectOfType<Camera>();
 
-        transform.position += Vector3.back * _speed * Time.deltaTime;
+        transform.position += Vector3.back * speed * Time.deltaTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.back * _speed * Time.deltaTime;
+        transform.position += Vector3.back * speed * Time.deltaTime;
 
-        if ( _mainCamera.WorldToViewportPoint(endPos.position).z < 0 ) {
-            _generateRoads.CreateRoad();
+        if ( mainCamera.WorldToViewportPoint(endPos.position).z < 0 ) {
+            generateRoads.CreateRoad();
             Destroy(gameObject);
         }
     }

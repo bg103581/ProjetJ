@@ -71,13 +71,15 @@
     <Compile Include="Assets\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Scripts\Environment\BendingManager.cs" />
     <Compile Include="Assets\Scripts\Environment\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Environment\GenerateDiscs.cs" />
     <Compile Include="Assets\Scripts\Environment\GenerateObstacles.cs" />
     <Compile Include="Assets\Scripts\Environment\GeneratePrefabs.cs" />
     <Compile Include="Assets\Scripts\Environment\GenerateRoads.cs" />
     <Compile Include="Assets\Scripts\Environment\GenericSingleton.cs" />
     <Compile Include="Assets\Scripts\Environment\InputManager.cs" />
+    <Compile Include="Assets\Scripts\Environment\ItemManager.cs" />
+    <Compile Include="Assets\Scripts\Environment\MoveItems.cs" />
     <Compile Include="Assets\Scripts\Environment\MoveRoad.cs" />
-    <Compile Include="Assets\Scripts\Environment\Obstacle.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuManager.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCollision.cs" />

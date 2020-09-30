@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class MoveItems : MonoBehaviour
 {
 
     private Camera _mainCamera;
@@ -24,9 +24,4 @@ public class Obstacle : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private int GetRandomSpeed(int min, int max) {
-        return Random.Range(min, max + 1);
-    }
-
 }

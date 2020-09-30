@@ -4,36 +4,36 @@ using UnityEngine;
 
 public class GenerateObstacles : GeneratePrefabs
 {
-
+    [SerializeField]
+    private ItemManager itemManager;
     //scriptable object pour les obstacles ? ils ont chacun leur vitesse
-
-    [SerializeField]
-    private Transform _leftLane;
-    [SerializeField]
-    private Transform _centerLane;
-    [SerializeField]
-    private Transform _rightLane;
-    [SerializeField]
-    private float _timePeriod;
 
     //every timePeriod seconds spawn a random obstacle on a random lane
 
     private void Start() {
-        InvokeRepeating("SpawnObstacle", 0f, _timePeriod);  //peut etre a modifier pour que ça soit pas tout le temps
-                                                            //toutes les x secondes
+        //InvokeRepeating("SpawnObstacle", 0f, _timePeriod);  //peut etre a modifier pour que ça soit pas tout le temps
+        //toutes les x secondes
+        
     }
 
-    private void SpawnObstacle() {
+    public void SpawnObstacle(Lane lane) {
         GameObject obstacle = GetRandomPrefab();
-        Transform pos = GetRandomLane();
-        Instantiate(obstacle, pos.position, pos.rotation, transform);
-    }
 
-    private Transform GetRandomLane() {
-        int rand = Random.Range(0, 3);
-
-        if (rand == 0) return _leftLane;
-        else if (rand == 1) return _centerLane;
-        else return _rightLane;
+        Transform tr;
+        switch (lane) {
+            case Lane.LEFT:
+                tr = itemManager.leftLane;
+                break;
+            case Lane.CENTER:
+                tr = itemManager.centerLane;
+                break;
+            case Lane.RIGHT:
+                tr = itemManager.rightLane;
+                break;
+            default:
+                tr = itemManager.leftLane;
+                break;
+        }
+        Instantiate(obstacle, tr.position, tr.rotation, transform);
     }
 }
