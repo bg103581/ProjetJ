@@ -24,4 +24,21 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.transform.tag == "Ground") {
+            player.isGrounded = true;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision) {
+        if (collision.transform.tag == "Ground") {
+            player.isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision) {
+        if (collision.transform.tag == "Ground") {
+            player.isGrounded = false;
+        }
+    }
 }

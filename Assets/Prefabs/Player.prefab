@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!95 &4304479178983634549
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3998630015620741984}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4403b33bbc12e184abf762ab728efe86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4304479179434992441
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +29,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4304479179434992440}
   - component: {fileID: 4304479179434992447}
+  - component: {fileID: 545195829}
+  - component: {fileID: 545195831}
+  - component: {fileID: 545195830}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -47,10 +69,56 @@ MonoBehaviour:
   centerPos: {fileID: 0}
   leftPos: {fileID: 0}
   rightPos: {fileID: 0}
-  moveTime: 0
-  jumpValue: 0
-  jumpTime: 0
-  dodgeStreakTime: 0
+  moveTime: 0.15
+  jumpVelocity: 15
+  jumpMultiplier: 3
+  dodgeStreakTime: 1
+  fallMultiplier: 4
+  isGrounded: 1
+  isOvni: 0
+--- !u!54 &545195829
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304479179434992441}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 122
+  m_CollisionDetection: 0
+--- !u!136 &545195831
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304479179434992441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3.3
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.68, z: 0}
+--- !u!114 &545195830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304479179434992441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e536e8c91ccc2a44ab214b8da76e1e5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4304479179434992447}
 --- !u!1001 &4304479178092496433
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,6 +188,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9ee8ed80ca2f8c4f9a1c01ee861a477, type: 3}
+--- !u!1 &3998630015620741984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a9ee8ed80ca2f8c4f9a1c01ee861a477,
+    type: 3}
+  m_PrefabInstance: {fileID: 4304479178092496433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4338704205863297498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a9ee8ed80ca2f8c4f9a1c01ee861a477,

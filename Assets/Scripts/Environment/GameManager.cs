@@ -9,8 +9,10 @@ public class GameManager : GenericSingleton<GameManager>
     private const float COEF_UNIT_METER = 0.583f;
     
     private GenerateRoads generateRoads;
+    private Player player;
 
     private int dodgeMultiplier = 1;
+    private int ovniMultiplier = 2;
 
     [SerializeField]
     private float score = 0;
@@ -20,10 +22,16 @@ public class GameManager : GenericSingleton<GameManager>
     #region MonoBehaviour
     private void Start() {
         generateRoads = FindObjectOfType<GenerateRoads>();
+        player = FindObjectOfType<Player>();
     }
 
     private void Update() {
-        score += Time.timeScale * generateRoads.roadSpeed * COEF_UNIT_METER * Time.deltaTime;
+        if (player.isOvni) {
+            score += Time.timeScale * generateRoads.roadSpeed * COEF_UNIT_METER * ovniMultiplier * Time.deltaTime;
+        }
+        else {
+            score += Time.timeScale * generateRoads.roadSpeed * COEF_UNIT_METER * Time.deltaTime;
+        }
     }
     #endregion
 
