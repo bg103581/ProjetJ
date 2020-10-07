@@ -7,7 +7,8 @@ public enum Lane { LEFT, CENTER, RIGHT }
 
 public class ItemManager : MonoBehaviour
 {
-    private GenerateObstacles generateObstacles;
+    private GenerateItems generateObstacles;
+    private GenerateItems generateBonuses;
     private GenerateDiscs generateDiscs;
 
     [SerializeField]
@@ -26,16 +27,17 @@ public class ItemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        generateObstacles = FindObjectOfType<GenerateObstacles>();
+        GenerateItems[] arr = FindObjectsOfType<GenerateItems>();
+        foreach (GenerateItems generateItem in arr) {
+            if (generateItem.itemType == ItemType.BONUS)
+                generateBonuses = generateItem;
+            else
+                generateObstacles = generateItem;
+        }
+        //generateObstacles = FindObjectOfType<GenerateItems>();
         generateDiscs = FindObjectOfType<GenerateDiscs>();
 
         InvokeRepeating("SpawnItem", 0f, timePeriod);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void SpawnItem() {
@@ -44,16 +46,17 @@ public class ItemManager : MonoBehaviour
 
         switch (itemType) {
             case ItemType.OBSTACLE_DISCS:
-                generateObstacles.SpawnObstacle(lane);
+                generateObstacles.SpawnItem(lane);
                 generateDiscs.SpawnDiscs(lane, itemType);
                 break;
             case ItemType.DISCS_ONLY:
                 generateDiscs.SpawnDiscs(lane, itemType);
                 break;
             case ItemType.OBSTACLE_ONLY:
-                generateObstacles.SpawnObstacle(lane);
+                generateObstacles.SpawnItem(lane);
                 break;
             case ItemType.BONUS:
+                generateBonuses.SpawnItem(lane);
                 break;
             default:
                 break;

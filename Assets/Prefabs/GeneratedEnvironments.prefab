@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6991278363130167885}
   - component: {fileID: 6991278363130167887}
   - component: {fileID: 6991278363130167880}
+  - component: {fileID: 166061674}
   m_Layer: 0
   m_Name: ItemManager
   m_TagString: Untagged
@@ -70,6 +71,7 @@ MonoBehaviour:
   - {fileID: 2868475533083227003, guid: 70fd3c3577f4d1f41b89ef9f0720a2c1, type: 3}
   - {fileID: 4102734338707102546, guid: 250a115cd29fbc04692b8b54c207cf95, type: 3}
   itemManager: {fileID: 6991278363130167885}
+  itemType: 2
 --- !u!114 &6991278363130167880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +98,22 @@ MonoBehaviour:
   platinumDiscPrefab: {fileID: 6140824867307050900, guid: e228ddf35935eaf48b25900b9c6e107d,
     type: 3}
   platinumPatternChance: 10
+--- !u!114 &166061674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991278363130167884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e0940d9efe2b254bba200a7c5072f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabs:
+  - {fileID: 8498191410095236307, guid: 11436f1a7cf61ac4c843862014843e21, type: 3}
+  itemManager: {fileID: 6991278363130167885}
+  itemType: 3
 --- !u!1 &6991278363218564865
 GameObject:
   m_ObjectHideFlags: 0

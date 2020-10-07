@@ -763,6 +763,26 @@ PrefabInstance:
       propertyPath: fallMultiplier
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
+        type: 3}
+      propertyPath: jumpVelocity
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
+        type: 3}
+      propertyPath: claquettesJumpVelocity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
+        type: 3}
+      propertyPath: claquettesDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
+        type: 3}
+      propertyPath: dodgeStreakTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de7855a76117fc24cb854c1b7cfea791, type: 3}
 --- !u!1001 &6991278363847527860
@@ -772,6 +792,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: bonusRate
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6991278363218564865, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: m_Name

@@ -34,10 +34,19 @@ public class Player : MonoBehaviour
     private bool startDodgeStreakTimer = false;
     [HideInInspector]
     public bool isOvni = false;
+    private bool isClaquettes = false;
+    private bool startClaquettesTimer = false;
 
     private float dodgeStreakTimer;
+    private float claquettesTimer;
 
     private Rigidbody rb;
+
+    [Header("Bonus variables")]
+    [SerializeField]
+    private float claquettesJumpVelocity;
+    [SerializeField]
+    private float claquettesDuration;
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
@@ -46,31 +55,14 @@ public class Player : MonoBehaviour
     }
 
     private void Update() {
-        if (startDodgeStreakTimer) {
-            isDodgeStreak = true;
-            dodgeStreakTimer = dodgeStreakTime;
-
-            startDodgeStreakTimer = false;
-        }
-
-        if (isDodgeStreak) {
-            if (dodgeStreakTimer <= 0f) {
-                isDodgeStreak = false;
-            }
-            else {
-                dodgeStreakTimer -= Time.deltaTime;
-            }
-        }
+        DodgeStreakTimerUpdate();  //dodge streak timer
+        ClaquettesTimerUpdate();   //claquettes timer
 
         if (rb.velocity.y < 0) {
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
         else if (rb.velocity.y > 0) {
             rb.velocity += Vector3.up * Physics.gravity.y * (jumpMultiplier - 1) * Time.deltaTime;
-        }
-
-        if (isGrounded) {
-            //rb.velocity = Vector3.zero;
         }
     }
 
@@ -111,7 +103,10 @@ public class Player : MonoBehaviour
             //sequence.OnComplete(() => isGrounded = true);
 
             //sequence.Play();
-            rb.velocity = Vector3.up * jumpVelocity;
+            if (isClaquettes)
+                rb.velocity = Vector3.up * claquettesJumpVelocity;
+            else
+                rb.velocity = Vector3.up * jumpVelocity;
         }
     }
 
@@ -120,8 +115,23 @@ public class Player : MonoBehaviour
         gameManager.Lose();
     }
 
-    public void HitByBonus() {
+    public void HitByBonus(string tag) {
         Debug.Log("hit by bonus");
+        switch (tag) {
+            case "Claquettes":
+                startClaquettesTimer = true;
+                break;
+            case "Pochon":
+                break;
+            case "Twingo":
+                break;
+            case "Tmax":
+                break;
+            case "Ovni":
+                break;
+            default:
+                break;
+        }
     }
 
     public void HitByDisc(bool isGold) {
@@ -132,5 +142,41 @@ public class Player : MonoBehaviour
         startDodgeStreakTimer = true;
 
         gameManager.AddDodgeScore(isDodgeStreak);
+    }
+
+    private void DodgeStreakTimerUpdate() {
+        if (startDodgeStreakTimer) {
+            isDodgeStreak = true;
+            dodgeStreakTimer = dodgeStreakTime;
+
+            startDodgeStreakTimer = false;
+        }
+
+        if (isDodgeStreak) {
+            if (dodgeStreakTimer <= 0f) {
+                isDodgeStreak = false;
+            }
+            else {
+                dodgeStreakTimer -= Time.deltaTime;
+            }
+        }
+    }
+
+    private void ClaquettesTimerUpdate() {
+        if (startClaquettesTimer) {
+            isClaquettes = true;
+            claquettesTimer = claquettesDuration;
+
+            startClaquettesTimer = false;
+        }
+
+        if (isClaquettes) {
+            if (claquettesTimer <= 0f) {
+                isClaquettes = false;
+            }
+            else {
+                claquettesTimer -= Time.deltaTime;
+            }
+        }
     }
 }

@@ -13,7 +13,8 @@ public class PlayerCollision : MonoBehaviour
             player.HitByObstacle();
         }
         else if (other.gameObject.layer == 9) {
-            player.HitByBonus();
+            player.HitByBonus(other.tag);
+            Destroy(other.gameObject);
         }
         else if (other.gameObject.layer == 10) {
             player.HitByDisc(other.tag == "Gold");
