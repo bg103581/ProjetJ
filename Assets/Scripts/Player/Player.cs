@@ -32,13 +32,20 @@ public class Player : MonoBehaviour
     public bool isGrounded = true;
     private bool isDodgeStreak = false;
     private bool startDodgeStreakTimer = false;
-    [HideInInspector]
-    public bool isOvni = false;
     private bool isClaquettes = false;
     private bool startClaquettesTimer = false;
+    [HideInInspector]
+    public bool isPochon = false;
+    private bool startPochonTimer = false;
+    private bool isTwingo = false;
+    private bool startTwingoTimer = false;
+    [HideInInspector]
+    public bool isOvni = false;
 
     private float dodgeStreakTimer;
     private float claquettesTimer;
+    private float pochonTimer;
+    private float twingoTimer;
 
     private Rigidbody rb;
 
@@ -47,6 +54,14 @@ public class Player : MonoBehaviour
     private float claquettesJumpVelocity;
     [SerializeField]
     private float claquettesDuration;
+    //[SerializeField]
+    //private float pochonSpeed;
+    [SerializeField]
+    private float pochonDuration;
+    [SerializeField]
+    private float twingoSpeed;
+    [SerializeField]
+    private float twingoDuration;
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
@@ -57,6 +72,8 @@ public class Player : MonoBehaviour
     private void Update() {
         DodgeStreakTimerUpdate();  //dodge streak timer
         ClaquettesTimerUpdate();   //claquettes timer
+        PochonTimerUpdate();        //pochon timer
+        TwingoTimerUpdate();        //twingo timer
 
         if (rb.velocity.y < 0) {
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -112,6 +129,7 @@ public class Player : MonoBehaviour
 
     public void HitByObstacle() {
         Debug.Log("hit by obstacle");
+        Time.timeScale = 1;
         gameManager.Lose();
     }
 
@@ -122,8 +140,14 @@ public class Player : MonoBehaviour
                 startClaquettesTimer = true;
                 break;
             case "Pochon":
+                startPochonTimer = true;
+                //if (!isPochon)
+                //    Time.timeScale += pochonSpeed;
                 break;
             case "Twingo":
+                startTwingoTimer = true;
+                if (!isTwingo)
+                    Time.timeScale += twingoSpeed;
                 break;
             case "Tmax":
                 break;
@@ -157,7 +181,7 @@ public class Player : MonoBehaviour
                 isDodgeStreak = false;
             }
             else {
-                dodgeStreakTimer -= Time.deltaTime;
+                dodgeStreakTimer -= Time.unscaledDeltaTime;
             }
         }
     }
@@ -175,7 +199,45 @@ public class Player : MonoBehaviour
                 isClaquettes = false;
             }
             else {
-                claquettesTimer -= Time.deltaTime;
+                claquettesTimer -= Time.unscaledDeltaTime;
+            }
+        }
+    }
+
+    private void PochonTimerUpdate() {
+        if (startPochonTimer) {
+            isPochon = true;
+            pochonTimer = pochonDuration;
+
+            startPochonTimer = false;
+        }
+
+        if (isPochon) {
+            if (pochonTimer <= 0f) {
+                isPochon = false;
+                //Time.timeScale -= pochonSpeed;
+            }
+            else {
+                pochonTimer -= Time.unscaledDeltaTime;
+            }
+        }
+    }
+
+    private void TwingoTimerUpdate() {
+        if (startTwingoTimer) {
+            isTwingo = true;
+            twingoTimer = twingoDuration;
+
+            startTwingoTimer = false;
+        }
+
+        if (isTwingo) {
+            if (twingoTimer <= 0f) {
+                isTwingo = false;
+                Time.timeScale -= twingoSpeed;
+            }
+            else {
+                twingoTimer -= Time.unscaledDeltaTime;
             }
         }
     }

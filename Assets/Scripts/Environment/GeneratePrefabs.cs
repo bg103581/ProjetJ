@@ -16,4 +16,18 @@ public class GeneratePrefabs : MonoBehaviour
         return _prefabs[rand];
     }
 
+    protected GameObject GetRandomPrefab(int[] spawnRates) {    //spawnRates must be the same length as _prefabs and the summ should be 100
+        if (_prefabs.Length == 0) {
+            return null;
+        }
+
+        int rand = Random.Range(1, 101);
+        int rateCount = 0;
+        for (int i = 0; i < spawnRates.Length; i++) {
+            rateCount += spawnRates[i];
+            if (rand <= rateCount)
+                return _prefabs[i];
+        }
+        return null;
+    }
 }
