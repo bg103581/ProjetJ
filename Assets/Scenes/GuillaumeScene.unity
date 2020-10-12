@@ -121,51 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &195015943
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 195015944}
-  - component: {fileID: 195015946}
-  m_Layer: 0
-  m_Name: DiscMagnet
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &195015944
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195015943}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.55, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 825051650}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &195015946
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 195015943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f83e6fa3bd4867749976e489a5e5c75b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveDuration: 0.75
-  magnetRadius: 4
 --- !u!1 &365013250
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,12 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4027fd2cc9125440ac4bc76c383e617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &825051650 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4304479179434992440, guid: de7855a76117fc24cb854c1b7cfea791,
-    type: 3}
-  m_PrefabInstance: {fileID: 4304479178983634547}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &991858741
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,56 +758,6 @@ PrefabInstance:
       propertyPath: rightPos
       value: 
       objectReference: {fileID: 1104890016}
-    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
-        type: 3}
-      propertyPath: fallMultiplier
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
-        type: 3}
-      propertyPath: jumpVelocity
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
-        type: 3}
-      propertyPath: claquettesJumpVelocity
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
-        type: 3}
-      propertyPath: claquettesDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
-        type: 3}
-      propertyPath: dodgeStreakTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
-        type: 3}
-      propertyPath: pochonSpeedMultiplier
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
-        type: 3}
-      propertyPath: pochonDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
-        type: 3}
-      propertyPath: pochonSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
-        type: 3}
-      propertyPath: twingoDuration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
-        type: 3}
-      propertyPath: twingoSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de7855a76117fc24cb854c1b7cfea791, type: 3}
 --- !u!1001 &6991278363847527860
@@ -870,7 +769,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 166061674, guid: cd70b5910cc6a184490035499ef6ca1e, type: 3}
       propertyPath: _prefabs.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 166061674, guid: cd70b5910cc6a184490035499ef6ca1e, type: 3}
       propertyPath: _prefabs.Array.data[1]
@@ -882,10 +781,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8498191410095236307, guid: 1969362b7d319104ba386ccea7d371d2,
         type: 3}
+    - target: {fileID: 166061674, guid: cd70b5910cc6a184490035499ef6ca1e, type: 3}
+      propertyPath: _prefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 8498191410095236307, guid: b49a85970d568834eb00942550619014,
+        type: 3}
     - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: bonusRate
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
@@ -972,7 +876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5463fe1cc49728a419f27953f203f4f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRates: 000000000000000064000000
+  spawnRates: 00000000000000000000000064000000
 --- !u!1001 &8417856379692733914
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3,7 +3,12 @@ guid: c218c65dea5f72e4d80d439bdb5a3c93
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tmax_1
+    second: {fileID: 2100000, guid: cfceb6a4d3245c241822926971836834, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

@@ -10,7 +10,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.layer == 8) {
-            player.HitByObstacle();
+            player.HitByObstacle(other);
         }
         else if (other.gameObject.layer == 9) {
             player.HitByBonus(other.tag);

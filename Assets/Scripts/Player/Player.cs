@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
 {
     private GameManager gameManager;
     private CameraMovement cameraMovement;
+    private Rigidbody rb;
+    private Cop cop;
+
+    private Lane lane = Lane.CENTER;
 
     [SerializeField]
     private Transform centerPos;
@@ -14,6 +18,13 @@ public class Player : MonoBehaviour
     private Transform leftPos;
     [SerializeField]
     private Transform rightPos;
+
+    [SerializeField]
+    private GameObject jul;
+    [SerializeField]
+    private GameObject twingo;
+    [SerializeField]
+    private GameObject tmax;
 
     [SerializeField]
     private float moveTime;
@@ -25,13 +36,16 @@ public class Player : MonoBehaviour
     private float dodgeStreakTime;
     [SerializeField]
     private float fallMultiplier;
-    
-    private Lane lane = Lane.CENTER;
+
+    [SerializeField]
+    private Animator julAnimator;
 
     [HideInInspector]
     public bool isGrounded = true;
     private bool isDodgeStreak = false;
     private bool startDodgeStreakTimer = false;
+    private bool isCopFollowed = false;
+    private bool startCopFollowTimer = false;
     private bool isClaquettes = false;
     private bool startClaquettesTimer = false;
     [HideInInspector]
@@ -39,15 +53,22 @@ public class Player : MonoBehaviour
     private bool startPochonTimer = false;
     private bool isTwingo = false;
     private bool startTwingoTimer = false;
+    private bool isTmax = false;
+    private bool startTmaxTimer = false;
+    private bool isY = false;
+    private bool startYTimer = false;
     [HideInInspector]
     public bool isOvni = false;
 
     private float dodgeStreakTimer;
+    private float copFollowTimer;
     private float claquettesTimer;
     private float pochonTimer;
     private float twingoTimer;
+    private float tmaxTimer;
+    private float yTimer;
 
-    private Rigidbody rb;
+    private const float COP_FOLLOW_DURATION = 5f;
 
     [Header("Bonus variables")]
     [SerializeField]
@@ -62,11 +83,20 @@ public class Player : MonoBehaviour
     private float twingoSpeed;
     [SerializeField]
     private float twingoDuration;
+    [SerializeField]
+    private float tmaxSpeed;
+    [SerializeField]
+    private float tmaxDuration;
+    [SerializeField]
+    private float ySpeed;
+    [SerializeField]
+    private float yDuration;
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
         cameraMovement = FindObjectOfType<CameraMovement>();
+        cop = FindObjectOfType<Cop>();
     }
 
     private void Update() {
@@ -74,6 +104,9 @@ public class Player : MonoBehaviour
         ClaquettesTimerUpdate();   //claquettes timer
         PochonTimerUpdate();        //pochon timer
         TwingoTimerUpdate();        //twingo timer
+        CopFollowTimerUpdate();     //cop timer
+        TmaxTimerUpdate();          //tmax timer
+        YTimerUpdate();             //mise en y timer
 
         if (rb.velocity.y < 0) {
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -88,11 +121,21 @@ public class Player : MonoBehaviour
             lane = Lane.CENTER;
             transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => rb.velocity = new Vector3(0, rb.velocity.y));
             cameraMovement.MoveToCenterPos(moveTime);
+
+            if (isGrounded) {
+                julAnimator.SetTrigger("strafeTrigger");
+                cop.Strafe();
+            }
         }
         else if (lane == Lane.CENTER) {
             lane = Lane.LEFT;
             transform.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => rb.velocity = new Vector3(0, rb.velocity.y));
             cameraMovement.MoveToLeftPos(moveTime);
+
+            if (isGrounded) {
+                julAnimator.SetTrigger("strafeTrigger");
+                cop.Strafe();
+            }
         }
     }
 
@@ -101,36 +144,107 @@ public class Player : MonoBehaviour
             lane = Lane.CENTER;
             transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => rb.velocity = new Vector3(0, rb.velocity.y));
             cameraMovement.MoveToCenterPos(moveTime);
+
+            if (isGrounded) {
+                julAnimator.SetTrigger("strafeTrigger");
+                cop.Strafe();
+            }
         }
         else if (lane == Lane.CENTER) {
             lane = Lane.RIGHT;
             transform.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => rb.velocity = new Vector3(0, rb.velocity.y));
             cameraMovement.MoveToRightPos(moveTime);
+
+            if (isGrounded) {
+                julAnimator.SetTrigger("strafeTrigger");
+                cop.Strafe();
+            }
         }
     }
 
     public void Jump() {
         if (isGrounded) {
-            isGrounded = false;
+            if (isTmax) {
+                startYTimer = true;
+                if (!isY) {
+                    Time.timeScale += ySpeed;
+                    tmax.transform.DOLocalRotate(new Vector3(-55f, 0f, 0f), 0.2f);
+                }
+            }
+            else if (isTwingo) return;
+            else {
+                isGrounded = false;
+                julAnimator.SetTrigger("jumpTrigger");
+                cop.Jump();
 
-            //Sequence sequence = DOTween.Sequence();
+                //Sequence sequence = DOTween.Sequence();
 
-            //sequence.Append(rb.DOMoveY(transform.position.y + 3, jumpTime/2).SetEase(Ease.OutSine));
-            ////sequence.Append(transform.DOMoveY(transform.position.y, jumpTime/2).SetEase(Ease.InSine));
-            //sequence.OnComplete(() => isGrounded = true);
+                //sequence.Append(rb.DOMoveY(transform.position.y + 3, jumpTime/2).SetEase(Ease.OutSine));
+                ////sequence.Append(transform.DOMoveY(transform.position.y, jumpTime/2).SetEase(Ease.InSine));
+                //sequence.OnComplete(() => isGrounded = true);
 
-            //sequence.Play();
-            if (isClaquettes)
-                rb.velocity = Vector3.up * claquettesJumpVelocity;
-            else
-                rb.velocity = Vector3.up * jumpVelocity;
+                //sequence.Play();
+
+                if (isClaquettes)
+                    rb.velocity = Vector3.up * claquettesJumpVelocity;
+                else
+                    rb.velocity = Vector3.up * jumpVelocity;
+            }
         }
     }
 
-    public void HitByObstacle() {
+    public void HitByObstacle(Collider col) {
         Debug.Log("hit by obstacle");
-        Time.timeScale = 1;
-        gameManager.Lose();
+        
+        if (isTwingo) {
+            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
+                // break them
+            }
+            else if (col.tag == "Voiture") {
+                Time.timeScale = 1;
+                gameManager.Lose();
+            }
+        }
+        else if (isTmax) {
+            if (isY) {
+                if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat" || col.tag == "Voiture") {
+                    // break them
+                }
+                else {
+                    //camionette
+                }
+            }
+            else {
+                if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
+                    // break them
+                }
+                else if (col.tag == "Voiture") {
+                    Time.timeScale = 1;
+                    gameManager.Lose();
+                }
+                else {
+                    //camionette
+                }
+            }
+        }
+        else {
+            Time.timeScale = 1;
+            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
+                if (isCopFollowed) {
+                    gameManager.Lose();
+                }
+                else {
+                    startCopFollowTimer = true;
+                    // move the cops in fov
+                    cop.CatchUpToPlayer();
+                }
+            }
+            else if (col.tag == "Voiture") {
+                gameManager.Lose();
+            }
+        }
+
+        Destroy(col.gameObject);    //to change in the future because of breaking animation
     }
 
     public void HitByBonus(string tag) {
@@ -146,10 +260,17 @@ public class Player : MonoBehaviour
                 break;
             case "Twingo":
                 startTwingoTimer = true;
+                ActivateLook(twingo);
+
                 if (!isTwingo)
                     Time.timeScale += twingoSpeed;
                 break;
             case "Tmax":
+                startTmaxTimer = true;
+                ActivateLook(tmax);
+
+                if (!isTmax)
+                    Time.timeScale += tmaxSpeed;
                 break;
             case "Ovni":
                 break;
@@ -168,6 +289,14 @@ public class Player : MonoBehaviour
         gameManager.AddDodgeScore(isDodgeStreak);
     }
 
+    private void ActivateLook(GameObject go) {
+        jul.SetActive(false);
+        twingo.SetActive(false);
+        tmax.SetActive(false);
+
+        go.SetActive(true);
+    }
+
     private void DodgeStreakTimerUpdate() {
         if (startDodgeStreakTimer) {
             isDodgeStreak = true;
@@ -182,6 +311,25 @@ public class Player : MonoBehaviour
             }
             else {
                 dodgeStreakTimer -= Time.unscaledDeltaTime;
+            }
+        }
+    }
+
+    private void CopFollowTimerUpdate() {
+        if (startCopFollowTimer) {
+            isCopFollowed = true;
+            copFollowTimer = COP_FOLLOW_DURATION;
+
+            startCopFollowTimer = false;
+        }
+
+        if (isCopFollowed) {
+            if (copFollowTimer <= 0f) {
+                isCopFollowed = false;
+                cop.GoBackToInitialPos();
+            }
+            else {
+                copFollowTimer -= Time.unscaledDeltaTime;
             }
         }
     }
@@ -234,10 +382,53 @@ public class Player : MonoBehaviour
         if (isTwingo) {
             if (twingoTimer <= 0f) {
                 isTwingo = false;
+                ActivateLook(jul);
+
                 Time.timeScale -= twingoSpeed;
             }
             else {
                 twingoTimer -= Time.unscaledDeltaTime;
+            }
+        }
+    }
+
+    private void TmaxTimerUpdate() {
+        if (startTmaxTimer) {
+            isTmax = true;
+            tmaxTimer = tmaxDuration;
+
+            startTmaxTimer = false;
+        }
+
+        if (isTmax) {
+            if (tmaxTimer <= 0f) {
+                isTmax = false;
+                ActivateLook(jul);
+
+                Time.timeScale -= tmaxSpeed;
+            }
+            else {
+                tmaxTimer -= Time.unscaledDeltaTime;
+            }
+        }
+    }
+
+    private void YTimerUpdate() {
+        if (startYTimer) {
+            isY = true;
+            yTimer = yDuration;
+
+            startYTimer = false;
+        }
+
+        if (isY) {
+            if (yTimer <= 0f) {
+                isY = false;
+                tmax.transform.DOLocalRotate(new Vector3(0f, 0f, 0f), 0.2f);
+                Time.timeScale -= ySpeed;
+            }
+            else {
+                yTimer -= Time.unscaledDeltaTime;
             }
         }
     }
