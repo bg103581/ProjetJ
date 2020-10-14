@@ -9,8 +9,10 @@ public class Player : MonoBehaviour
     private CameraMovement cameraMovement;
     private Rigidbody rb;
     private Cop cop;
+    private SpawnAlien spawnAlien;
 
-    private Lane lane = Lane.CENTER;
+    [HideInInspector]
+    public Lane lane = Lane.CENTER;
 
     [SerializeField]
     private Transform centerPos;
@@ -18,6 +20,8 @@ public class Player : MonoBehaviour
     private Transform leftPos;
     [SerializeField]
     private Transform rightPos;
+    [SerializeField]
+    private Transform topPos;
 
     [SerializeField]
     private GameObject jul;
@@ -59,6 +63,8 @@ public class Player : MonoBehaviour
     private bool startYTimer = false;
     [HideInInspector]
     public bool isOvni = false;
+    [HideInInspector]
+    public bool isTmaxFlying = false;
 
     private float dodgeStreakTimer;
     private float copFollowTimer;
@@ -85,8 +91,9 @@ public class Player : MonoBehaviour
     private float twingoDuration;
     [SerializeField]
     private float tmaxSpeed;
+    public float tmaxDuration;
     [SerializeField]
-    private float tmaxDuration;
+    private float alienSpawnRate;
     [SerializeField]
     private float ySpeed;
     [SerializeField]
@@ -97,6 +104,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cameraMovement = FindObjectOfType<CameraMovement>();
         cop = FindObjectOfType<Cop>();
+        spawnAlien = FindObjectOfType<SpawnAlien>();
     }
 
     private void Update() {
@@ -162,6 +170,21 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Fly() {
+        if (!isTmaxFlying) {
+            transform.DOMoveY(topPos.position.y, moveTime * 2f);
+            cameraMovement.MoveToTopPos(moveTime * 2f);
+
+            isTmaxFlying = true;
+            rb.useGravity = false;
+        }
+
+        startTmaxTimer = true;
+
+        float spawnTime = Random.Range(0, tmaxDuration - 4f);
+        Invoke("SpawnFlyingAlien", spawnTime);
+    }
+
     public void Jump() {
         if (isGrounded) {
             if (isTmax) {
@@ -195,7 +218,7 @@ public class Player : MonoBehaviour
 
     public void HitByObstacle(Collider col) {
         Debug.Log("hit by obstacle");
-        
+
         if (isTwingo) {
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
                 // break them
@@ -269,8 +292,11 @@ public class Player : MonoBehaviour
                 startTmaxTimer = true;
                 ActivateLook(tmax);
 
-                if (!isTmax)
+                if (!isTmax) {
                     Time.timeScale += tmaxSpeed;
+                    AlienEvent();
+                }
+
                 break;
             case "Ovni":
                 break;
@@ -287,6 +313,18 @@ public class Player : MonoBehaviour
         startDodgeStreakTimer = true;
 
         gameManager.AddDodgeScore(isDodgeStreak);
+    }
+
+    private void AlienEvent() {
+        int rand = Random.Range(1, 101);
+
+        if (rand <= alienSpawnRate) {
+            spawnAlien.StartAlienSpawn();
+        }
+    }
+
+    private void SpawnFlyingAlien() {
+        spawnAlien.SpawnNextAlien();
     }
 
     private void ActivateLook(GameObject go) {

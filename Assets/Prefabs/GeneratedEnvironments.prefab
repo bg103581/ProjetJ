@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6991278363130167887}
   - component: {fileID: 6991278363130167880}
   - component: {fileID: 166061674}
+  - component: {fileID: 6991278363847527862}
   m_Layer: 0
   m_Name: ItemManager
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   rightLane: {fileID: 331615978553096866}
   discsOnlyRate: 25
   obstacleOnlyRate: 15
-  bonusRate: 0
+  bonusRate: 20
 --- !u!114 &6991278363130167887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,8 +113,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabs:
   - {fileID: 8498191410095236307, guid: 11436f1a7cf61ac4c843862014843e21, type: 3}
+  - {fileID: 8498191410095236307, guid: 60ee514a48c6b85468290a786bd00829, type: 3}
+  - {fileID: 8498191410095236307, guid: 1969362b7d319104ba386ccea7d371d2, type: 3}
+  - {fileID: 8498191410095236307, guid: b49a85970d568834eb00942550619014, type: 3}
   itemManager: {fileID: 6991278363130167885}
   itemType: 3
+--- !u!114 &6991278363847527862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991278363130167884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5463fe1cc49728a419f27953f203f4f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRates: 00000000000000000000000064000000
 --- !u!1 &6991278363218564865
 GameObject:
   m_ObjectHideFlags: 0
