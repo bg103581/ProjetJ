@@ -29,4 +29,8 @@ public class CameraMovement : MonoBehaviour
     public void MoveToTopPos(float moveTime) {
         transform.DOMoveY(topPos.position.y, moveTime).SetEase(Ease.OutSine);
     }
+
+    public void MoveToGroundPos(float moveTime) {
+        transform.DOMoveY(centerPos.position.y, moveTime).SetEase(Ease.OutSine);
+    }
 }

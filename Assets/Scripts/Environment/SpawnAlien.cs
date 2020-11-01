@@ -78,8 +78,13 @@ public class SpawnAlien : MonoBehaviour
             alienSpawned.transform.SetParent(tmaxFirstPos);
             alienSpawned.transform.DOLocalMove(Vector3.zero, moveToTmaxTimer);
             alienSpawned.transform.DOLocalRotate(Vector3.zero, moveToTmaxTimer);
-            //jul fly
-            player.Fly();
+            if (aliensCurrentIndex == 3) {
+                player.StartOvni();
+            }
+            else {
+                //jul fly
+                player.Fly();
+            }
         }
     }
 }

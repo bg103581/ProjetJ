@@ -7,6 +7,7 @@ public class MoveItems : MonoBehaviour
 {
     private Camera _mainCamera;
     private DiscMagnet discMagnet;
+    private Player player;
 
     [HideInInspector]
     public bool isMovingToPlayer = false;
@@ -17,6 +18,7 @@ public class MoveItems : MonoBehaviour
     private void Start() {
         _mainCamera = FindObjectOfType<Camera>();
         discMagnet = FindObjectOfType<DiscMagnet>();
+        player = FindObjectOfType<Player>();
 
         transform.position += Vector3.back * _moveSpeed * Time.deltaTime;
     }
@@ -30,6 +32,7 @@ public class MoveItems : MonoBehaviour
             transform.position += Vector3.back * _moveSpeed * Time.deltaTime;
 
         if (_mainCamera.WorldToViewportPoint(transform.position).z < 0) {
+            if (tag == "Alien") player.EndFly();
             Destroy(gameObject);
         }
     }

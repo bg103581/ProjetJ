@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     private GameObject twingo;
     [SerializeField]
     private GameObject tmax;
+    [SerializeField]
+    private GameObject ovni;
 
     [SerializeField]
     private float moveTime;
@@ -62,9 +64,10 @@ public class Player : MonoBehaviour
     private bool isY = false;
     private bool startYTimer = false;
     [HideInInspector]
-    public bool isOvni = false;
-    [HideInInspector]
     public bool isTmaxFlying = false;
+    [HideInInspector]
+    public bool isOvni = false;
+    private bool startOvniTimer = false;
 
     private float dodgeStreakTimer;
     private float copFollowTimer;
@@ -73,6 +76,7 @@ public class Player : MonoBehaviour
     private float twingoTimer;
     private float tmaxTimer;
     private float yTimer;
+    private float ovniTimer;
 
     private const float COP_FOLLOW_DURATION = 5f;
 
@@ -81,8 +85,6 @@ public class Player : MonoBehaviour
     private float claquettesJumpVelocity;
     [SerializeField]
     private float claquettesDuration;
-    //[SerializeField]
-    //private float pochonSpeed;
     [SerializeField]
     private float pochonDuration;
     [SerializeField]
@@ -98,6 +100,10 @@ public class Player : MonoBehaviour
     private float ySpeed;
     [SerializeField]
     private float yDuration;
+    //[SerializeField]
+    //private float ovniSpeed;
+    [SerializeField]
+    private float ovniDuration;
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
@@ -115,6 +121,7 @@ public class Player : MonoBehaviour
         CopFollowTimerUpdate();     //cop timer
         TmaxTimerUpdate();          //tmax timer
         YTimerUpdate();             //mise en y timer
+        OvniTimerUpdate();          //ovni timer
 
         if (rb.velocity.y < 0) {
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -183,6 +190,17 @@ public class Player : MonoBehaviour
 
         float spawnTime = Random.Range(0, tmaxDuration - 4f);
         Invoke("SpawnFlyingAlien", spawnTime);
+    }
+
+    public void EndFly() {
+        if (isTmaxFlying) {
+            tmaxTimer = 0f;
+            isTmaxFlying = false;
+            rb.useGravity = true;
+
+            //transform.DOMoveY(centerPos.position.y, moveTime * 2f);
+            cameraMovement.MoveToGroundPos(moveTime * 4f);
+        }
     }
 
     public void Jump() {
@@ -305,6 +323,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void StartOvni() {
+        startOvniTimer = true;
+        ActivateLook(ovni);
+    }
+
     public void HitByDisc(bool isGold) {
         gameManager.AddDiscScore(isGold);
     }
@@ -331,6 +354,7 @@ public class Player : MonoBehaviour
         jul.SetActive(false);
         twingo.SetActive(false);
         tmax.SetActive(false);
+        ovni.SetActive(false);
 
         go.SetActive(true);
     }
@@ -467,6 +491,25 @@ public class Player : MonoBehaviour
             }
             else {
                 yTimer -= Time.unscaledDeltaTime;
+            }
+        }
+    }
+
+    private void OvniTimerUpdate() {
+        if (startOvniTimer) {
+            isOvni = true;
+            ovniTimer = ovniDuration;
+
+            startOvniTimer = false;
+        }
+
+        if (isOvni) {
+            if (ovniTimer <= 0f) {
+                isOvni = false;
+                ActivateLook(jul);
+            }
+            else {
+                ovniTimer -= Time.unscaledDeltaTime;
             }
         }
     }
