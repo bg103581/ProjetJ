@@ -104,6 +104,8 @@ public class Player : MonoBehaviour
     //private float ovniSpeed;
     [SerializeField]
     private float ovniDuration;
+    [SerializeField]
+    private float ovniSpeed;
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
@@ -193,14 +195,15 @@ public class Player : MonoBehaviour
     }
 
     public void EndFly() {
-        if (isTmaxFlying) {
+        if (isTmaxFlying)
             tmaxTimer = 0f;
-            isTmaxFlying = false;
-            rb.useGravity = true;
 
-            //transform.DOMoveY(centerPos.position.y, moveTime * 2f);
-            cameraMovement.MoveToGroundPos(moveTime * 4f);
-        }
+        rb.useGravity = true;
+
+        //transform.DOMoveY(centerPos.position.y, moveTime * 2f);
+        cameraMovement.MoveToGroundPos(moveTime * 4f);
+        cameraMovement.MoveToNormalPosZ(moveTime * 4f);
+        Debug.Log("end fly");
     }
 
     public void Jump() {
@@ -464,10 +467,12 @@ public class Player : MonoBehaviour
 
         if (isTmax) {
             if (tmaxTimer <= 0f) {
-                isTmax = false;
-                ActivateLook(jul);
+                if (!isOvni) {
+                    isTmax = false;
+                    ActivateLook(jul);
 
-                Time.timeScale -= tmaxSpeed;
+                    Time.timeScale -= tmaxSpeed;
+                }
             }
             else {
                 tmaxTimer -= Time.unscaledDeltaTime;
@@ -498,7 +503,14 @@ public class Player : MonoBehaviour
     private void OvniTimerUpdate() {
         if (startOvniTimer) {
             isOvni = true;
+            isTmax = false;
             ovniTimer = ovniDuration;
+
+            Time.timeScale -= tmaxSpeed;
+            Time.timeScale += ovniSpeed;
+
+            cameraMovement.MoveToOvniPosY(moveTime * 2f);
+            cameraMovement.MoveToOvniPosZ(moveTime * 2f);
 
             startOvniTimer = false;
         }
@@ -507,6 +519,10 @@ public class Player : MonoBehaviour
             if (ovniTimer <= 0f) {
                 isOvni = false;
                 ActivateLook(jul);
+
+                Time.timeScale -= ovniSpeed;
+
+                EndFly();
             }
             else {
                 ovniTimer -= Time.unscaledDeltaTime;

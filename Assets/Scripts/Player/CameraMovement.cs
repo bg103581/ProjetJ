@@ -13,6 +13,14 @@ public class CameraMovement : MonoBehaviour
     private Transform rightPos;
     [SerializeField]
     private Transform topPos;
+    [SerializeField]
+    private Transform ovniPos;
+
+    private Vector3 startPos;
+
+    private void Awake() {
+        startPos = transform.position;
+    }
 
     public void MoveToLeftPos(float moveTime) {
         transform.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.OutSine);
@@ -32,5 +40,17 @@ public class CameraMovement : MonoBehaviour
 
     public void MoveToGroundPos(float moveTime) {
         transform.DOMoveY(centerPos.position.y, moveTime).SetEase(Ease.OutSine);
+    }
+
+    public void MoveToOvniPosY(float moveTime) {
+        transform.DOMoveY(ovniPos.position.y, moveTime).SetEase(Ease.OutSine);
+    }
+
+    public void MoveToOvniPosZ(float moveTime) {
+        transform.DOMoveZ(ovniPos.position.z, moveTime).SetEase(Ease.OutSine);
+    }
+
+    public void MoveToNormalPosZ(float moveTime) {
+        transform.DOMoveZ(startPos.z, moveTime).SetEase(Ease.OutSine);
     }
 }
