@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private Cop cop;
     private SpawnAlien spawnAlien;
+    private ItemManager itemManager;
 
     [HideInInspector]
     public Lane lane = Lane.CENTER;
@@ -104,6 +105,8 @@ public class Player : MonoBehaviour
     //private float ovniSpeed;
     [SerializeField]
     private float ovniDuration;
+    [SerializeField]
+    private float ovniSpeed;
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
@@ -111,6 +114,7 @@ public class Player : MonoBehaviour
         cameraMovement = FindObjectOfType<CameraMovement>();
         cop = FindObjectOfType<Cop>();
         spawnAlien = FindObjectOfType<SpawnAlien>();
+        itemManager = FindObjectOfType<ItemManager>();
     }
 
     private void Update() {
@@ -179,11 +183,13 @@ public class Player : MonoBehaviour
 
     public void Fly() {
         if (!isTmaxFlying) {
-            transform.DOMoveY(topPos.position.y, moveTime * 2f);
-            cameraMovement.MoveToTopPos(moveTime * 2f);
+            transform.DOMoveY(topPos.position.y, cameraMovement.flyMoveTime);
+            cameraMovement.MoveToTopPos(); //moveTime * 2f
 
             isTmaxFlying = true;
             rb.useGravity = false;
+
+            itemManager.StartSpawnOvniDiscs();
         }
 
         startTmaxTimer = true;
@@ -193,14 +199,15 @@ public class Player : MonoBehaviour
     }
 
     public void EndFly() {
-        if (isTmaxFlying) {
+        if (isTmaxFlying)
             tmaxTimer = 0f;
-            isTmaxFlying = false;
-            rb.useGravity = true;
 
-            //transform.DOMoveY(centerPos.position.y, moveTime * 2f);
-            cameraMovement.MoveToGroundPos(moveTime * 4f);
-        }
+        rb.useGravity = true;
+
+        //transform.DOMoveY(centerPos.position.y, moveTime * 2f);
+        cameraMovement.MoveToGroundPos();  //moveTime * 4f
+        cameraMovement.MoveToNormalPosZ(); //moveTime * 4f
+        Debug.Log("end fly");
     }
 
     public void Jump() {
@@ -464,10 +471,12 @@ public class Player : MonoBehaviour
 
         if (isTmax) {
             if (tmaxTimer <= 0f) {
-                isTmax = false;
-                ActivateLook(jul);
+                if (!isOvni) {
+                    isTmax = false;
+                    ActivateLook(jul);
 
-                Time.timeScale -= tmaxSpeed;
+                    Time.timeScale -= tmaxSpeed;
+                }
             }
             else {
                 tmaxTimer -= Time.unscaledDeltaTime;
@@ -498,7 +507,14 @@ public class Player : MonoBehaviour
     private void OvniTimerUpdate() {
         if (startOvniTimer) {
             isOvni = true;
+            isTmax = false;
             ovniTimer = ovniDuration;
+
+            Time.timeScale -= tmaxSpeed;
+            Time.timeScale += ovniSpeed;
+
+            cameraMovement.MoveToOvniPosY();   //moveTime * 2f
+            cameraMovement.MoveToOvniPosZ();   //moveTime * 2f
 
             startOvniTimer = false;
         }
@@ -507,6 +523,10 @@ public class Player : MonoBehaviour
             if (ovniTimer <= 0f) {
                 isOvni = false;
                 ActivateLook(jul);
+
+                Time.timeScale -= ovniSpeed;
+
+                EndFly();
             }
             else {
                 ovniTimer -= Time.unscaledDeltaTime;
