@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private Cop cop;
     private SpawnAlien spawnAlien;
+    private ItemManager itemManager;
 
     [HideInInspector]
     public Lane lane = Lane.CENTER;
@@ -113,6 +114,7 @@ public class Player : MonoBehaviour
         cameraMovement = FindObjectOfType<CameraMovement>();
         cop = FindObjectOfType<Cop>();
         spawnAlien = FindObjectOfType<SpawnAlien>();
+        itemManager = FindObjectOfType<ItemManager>();
     }
 
     private void Update() {
@@ -181,11 +183,13 @@ public class Player : MonoBehaviour
 
     public void Fly() {
         if (!isTmaxFlying) {
-            transform.DOMoveY(topPos.position.y, moveTime * 2f);
-            cameraMovement.MoveToTopPos(moveTime * 2f);
+            transform.DOMoveY(topPos.position.y, cameraMovement.flyMoveTime);
+            cameraMovement.MoveToTopPos(); //moveTime * 2f
 
             isTmaxFlying = true;
             rb.useGravity = false;
+
+            itemManager.StartSpawnOvniDiscs();
         }
 
         startTmaxTimer = true;
@@ -201,8 +205,8 @@ public class Player : MonoBehaviour
         rb.useGravity = true;
 
         //transform.DOMoveY(centerPos.position.y, moveTime * 2f);
-        cameraMovement.MoveToGroundPos(moveTime * 4f);
-        cameraMovement.MoveToNormalPosZ(moveTime * 4f);
+        cameraMovement.MoveToGroundPos();  //moveTime * 4f
+        cameraMovement.MoveToNormalPosZ(); //moveTime * 4f
         Debug.Log("end fly");
     }
 
@@ -509,8 +513,8 @@ public class Player : MonoBehaviour
             Time.timeScale -= tmaxSpeed;
             Time.timeScale += ovniSpeed;
 
-            cameraMovement.MoveToOvniPosY(moveTime * 2f);
-            cameraMovement.MoveToOvniPosZ(moveTime * 2f);
+            cameraMovement.MoveToOvniPosY();   //moveTime * 2f
+            cameraMovement.MoveToOvniPosZ();   //moveTime * 2f
 
             startOvniTimer = false;
         }
