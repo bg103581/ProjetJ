@@ -16,6 +16,7 @@ public class ItemManager : MonoBehaviour
     public Transform leftLane;
     public Transform centerLane;
     public Transform rightLane;
+    public Transform topPos;
     [Header("Chances in percentage")]
     [SerializeField]
     private int discsOnlyRate;
@@ -86,5 +87,9 @@ public class ItemManager : MonoBehaviour
         else {
             return ItemType.OBSTACLE_DISCS;
         }
+    }
+
+    public void StartSpawnOvniDiscs() {
+        generateDiscs.SpawnOvniDiscs();
     }
 }
