@@ -244,6 +244,11 @@ public class Player : MonoBehaviour
     public void HitByObstacle(Collider col) {
         Debug.Log("hit by obstacle");
 
+        if (col.tag == "Camionette") {
+            Time.timeScale = 1;
+            gameManager.Lose();
+        }
+
         if (isTwingo) {
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
                 // break them
@@ -258,9 +263,6 @@ public class Player : MonoBehaviour
                 if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat" || col.tag == "Voiture") {
                     // break them
                 }
-                else {
-                    //camionette
-                }
             }
             else {
                 if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
@@ -269,9 +271,6 @@ public class Player : MonoBehaviour
                 else if (col.tag == "Voiture") {
                     Time.timeScale = 1;
                     gameManager.Lose();
-                }
-                else {
-                    //camionette
                 }
             }
         }
