@@ -69,6 +69,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public bool isOvni = false;
     private bool startOvniTimer = false;
+    private bool isStrafing = false;
 
     private float dodgeStreakTimer;
     private float copFollowTimer;
@@ -138,7 +139,8 @@ public class Player : MonoBehaviour
     public void MoveToLeft() {
         if (lane == Lane.RIGHT) {
             lane = Lane.CENTER;
-            transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => rb.velocity = new Vector3(0, rb.velocity.y));
+            isStrafing = true;
+            transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
@@ -148,7 +150,8 @@ public class Player : MonoBehaviour
         }
         else if (lane == Lane.CENTER) {
             lane = Lane.LEFT;
-            transform.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => rb.velocity = new Vector3(0, rb.velocity.y));
+            isStrafing = true;
+            transform.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             cameraMovement.MoveToLeftPos(moveTime);
 
             if (isGrounded) {
@@ -161,7 +164,8 @@ public class Player : MonoBehaviour
     public void MoveToRight() {
         if (lane == Lane.LEFT) {
             lane = Lane.CENTER;
-            transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => rb.velocity = new Vector3(0, rb.velocity.y));
+            isStrafing = true;
+            transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
@@ -171,7 +175,8 @@ public class Player : MonoBehaviour
         }
         else if (lane == Lane.CENTER) {
             lane = Lane.RIGHT;
-            transform.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => rb.velocity = new Vector3(0, rb.velocity.y));
+            isStrafing = true;
+            transform.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             cameraMovement.MoveToRightPos(moveTime);
 
             if (isGrounded) {
@@ -179,6 +184,11 @@ public class Player : MonoBehaviour
                 cop.Strafe();
             }
         }
+    }
+
+    private void StrafeComplete() {
+        rb.velocity = new Vector3(0, rb.velocity.y);
+        isStrafing = false;
     }
 
     public void Fly() {
@@ -246,7 +256,19 @@ public class Player : MonoBehaviour
 
         if (col.tag == "Camionette") {
             Time.timeScale = 1;
-            gameManager.Lose();
+            if (isStrafing) {
+                if (isCopFollowed) {
+                    gameManager.Lose();
+                }
+                else {
+                    startCopFollowTimer = true;
+                    // move the cops in fov
+                    cop.CatchUpToPlayer();
+                }
+            }
+            else {
+                gameManager.Lose();
+            }
         }
 
         if (isTwingo) {
@@ -276,18 +298,28 @@ public class Player : MonoBehaviour
         }
         else {
             Time.timeScale = 1;
-            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
+            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {   //obstacles légers a pied
                 if (isCopFollowed) {
                     gameManager.Lose();
                 }
                 else {
                     startCopFollowTimer = true;
-                    // move the cops in fov
                     cop.CatchUpToPlayer();
                 }
             }
             else if (col.tag == "Voiture") {
-                gameManager.Lose();
+                if (isStrafing) {
+                    if (isCopFollowed) {
+                        gameManager.Lose();
+                    }
+                    else {
+                        startCopFollowTimer = true;
+                        cop.CatchUpToPlayer();
+                    }
+                }
+                else {
+                    gameManager.Lose();
+                }
             }
         }
 
