@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : GenericSingleton<GameManager>
+public class GameManager : MonoBehaviour
 {
     #region Variables
     private const float COEF_UNIT_METER = 0.583f;
