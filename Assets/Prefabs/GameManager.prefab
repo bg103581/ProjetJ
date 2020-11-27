@@ -43,3 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8d63fef0d5bd84680b49d3f4cf412f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
+  traveledDistance: 0
+  distanceUpgradeDifficulty: 500
+  timescaleDifficulty: 0.1
+  distanceStartSpawningPochonClaquette: 300
+  pochonSpawnRate_1: 50
+  claquetteSpawnRate_1: 50
+  distanceStartSpawningTwingo: 1000
+  pochonSpawnRate_2: 30
+  claquetteSpawnRate_2: 30
+  TwingoSpawnRate_2: 40
+  distanceStartSpawningTmax: 1500
+  pochonSpawnRate_3: 25
+  claquetteSpawnRate_3: 25
+  TwingoSpawnRate_3: 25
+  TmaxSpawnRate_3: 25

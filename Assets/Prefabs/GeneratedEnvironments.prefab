@@ -272,6 +272,36 @@ Transform:
   m_Father: {fileID: 6608697619636451143}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &925294811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 925294812}
+  m_Layer: 0
+  m_Name: VehiclePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &925294812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925294811}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 100}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6608697619636451143}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &950454189
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,6 +570,7 @@ MonoBehaviour:
   centerLane: {fileID: 6918862728852089020}
   rightLane: {fileID: 331615978553096866}
   topPos: {fileID: 59524464}
+  vehiclePos: {fileID: 925294812}
   discsOnlyRate: 25
   obstacleOnlyRate: 15
   bonusRate: 20
@@ -786,12 +817,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 167eb2329c974804ea4ec093e8687e83, type: 3}
---- !u!4 &7508984696989618832 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4262236228420139673, guid: 167eb2329c974804ea4ec093e8687e83,
-    type: 3}
-  m_PrefabInstance: {fileID: 5986344419578701833}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5610249934021925082 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2218119708436623571, guid: 167eb2329c974804ea4ec093e8687e83,
@@ -819,6 +844,12 @@ Transform:
 --- !u!4 &331615978553096866 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6307826129933783723, guid: 167eb2329c974804ea4ec093e8687e83,
+    type: 3}
+  m_PrefabInstance: {fileID: 5986344419578701833}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7508984696989618832 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4262236228420139673, guid: 167eb2329c974804ea4ec093e8687e83,
     type: 3}
   m_PrefabInstance: {fileID: 5986344419578701833}
   m_PrefabAsset: {fileID: 0}

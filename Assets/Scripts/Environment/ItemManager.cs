@@ -17,6 +17,7 @@ public class ItemManager : MonoBehaviour
     public Transform centerLane;
     public Transform rightLane;
     public Transform topPos;
+    public Transform vehiclePos;
     [Header("Chances in percentage")]
     [SerializeField]
     private int discsOnlyRate;

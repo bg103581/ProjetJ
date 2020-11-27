@@ -614,18 +614,6 @@ Transform:
   m_Father: {fileID: 2084420263}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1807355693 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6991278363787117734, guid: cd70b5910cc6a184490035499ef6ca1e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6991278363847527860}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d77beaace01b7514ca3ee1445895ad31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2084420262
 GameObject:
   m_ObjectHideFlags: 0
@@ -797,24 +785,6 @@ MonoBehaviour:
   flyMoveTime: 0.5
   ovniMoveTime: 0.3
   goDownMoveTime: 0.6
---- !u!4 &3609008556661073342 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 331615978553096866, guid: cd70b5910cc6a184490035499ef6ca1e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6991278363847527860}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3609008556661073343 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6918862728852089020, guid: cd70b5910cc6a184490035499ef6ca1e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6991278363847527860}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3609008556661073344 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7508984696989618832, guid: cd70b5910cc6a184490035499ef6ca1e,
-    type: 3}
-  m_PrefabInstance: {fileID: 6991278363847527860}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4304479178983634547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -905,7 +875,7 @@ PrefabInstance:
     - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
         type: 3}
       propertyPath: alienSpawnRate
-      value: 50
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de7855a76117fc24cb854c1b7cfea791, type: 3}
@@ -916,6 +886,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 925294812, guid: cd70b5910cc6a184490035499ef6ca1e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 125
+      objectReference: {fileID: 0}
     - target: {fileID: 6991278363218564865, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: m_Name
@@ -990,82 +964,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: generateRoads
-      value: 
-      objectReference: {fileID: 1807355693}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: timePeriod
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: leftLane
-      value: 
-      objectReference: {fileID: 3609008556661073344}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: centerLane
-      value: 
-      objectReference: {fileID: 3609008556661073343}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: rightLane
-      value: 
-      objectReference: {fileID: 3609008556661073342}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: distanceUpgradeDifficulty
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: timescaleDifficulty
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: distanceStartSpawningPochonClaquette
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: pochonSpawnRate_1
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: claquetteSpawnRate_1
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: distanceStartSpawningTwingo
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: distanceStartSpawningTmax
-      value: 1500
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: pochonSpawnRate_2
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: claquetteSpawnRate_2
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: TwingoSpawnRate_2
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: pochonSpawnRate_3
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: claquetteSpawnRate_3
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: TwingoSpawnRate_3
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
-      propertyPath: TmaxSpawnRate_3
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 8417856381477053945, guid: 3b1b56d10f52acf4094e140617d0ad74,
         type: 3}
       propertyPath: m_Name
