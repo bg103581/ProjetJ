@@ -13,7 +13,7 @@ public class SpawnObjRandPos : GeneratePrefabs
     
     void Start()
     {
-        InvokeRepeating("SpawnObj", 10f, spawnFreq);
+        InvokeRepeating("SpawnObj", spawnFreq, spawnFreq);
     }
 
     private void SpawnObj() {
@@ -30,7 +30,15 @@ public class SpawnObjRandPos : GeneratePrefabs
             isRight = false;
         }
 
-        GameObject lateralObj = Instantiate(GetRandomPrefab(), spawnPos.position, spawnPos.rotation, transform);
+        Quaternion rot;
+        if (isRight) {
+            rot = Quaternion.Euler(new Vector3(spawnPos.rotation.x, spawnPos.rotation.y + 180, spawnPos.rotation.z));
+        }
+        else {
+            rot = spawnPos.rotation;
+        }
+
+        GameObject lateralObj = Instantiate(GetRandomPrefab(), spawnPos.position, rot, transform);
         lateralObj.GetComponent<LateralMovement>().isStartingRight = isRight;
     }
 

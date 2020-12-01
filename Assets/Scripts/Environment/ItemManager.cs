@@ -17,6 +17,7 @@ public class ItemManager : MonoBehaviour
     public Transform centerLane;
     public Transform rightLane;
     public Transform topPos;
+    public Transform vehiclePos;
     [Header("Chances in percentage")]
     [SerializeField]
     private int discsOnlyRate;
@@ -24,6 +25,8 @@ public class ItemManager : MonoBehaviour
     private int obstacleOnlyRate;
     [SerializeField]
     private int bonusRate;
+
+    private int currentBonusRate = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -81,7 +84,7 @@ public class ItemManager : MonoBehaviour
         else if (rand < obstacleOnlyRate + discsOnlyRate) {
             return ItemType.DISCS_ONLY;
         }
-        else if (rand < obstacleOnlyRate + discsOnlyRate + bonusRate) {
+        else if (rand < obstacleOnlyRate + discsOnlyRate + currentBonusRate) {
             return ItemType.BONUS;
         }
         else {
@@ -91,5 +94,9 @@ public class ItemManager : MonoBehaviour
 
     public void StartSpawnOvniDiscs() {
         generateDiscs.SpawnOvniDiscs();
+    }
+
+    public void EnableBonus() {
+        currentBonusRate = bonusRate;
     }
 }
