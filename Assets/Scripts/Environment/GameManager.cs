@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Reflection;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float score = 0;
+    [SerializeField]
+    private int nbGoldDiscs = 0;
+    [SerializeField]
+    private int nbPlatDiscs = 0;
     [SerializeField]
     private float traveledDistance = 0;
     [SerializeField]
@@ -63,6 +68,9 @@ public class GameManager : MonoBehaviour
         bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
 
         upgradeDifficultyHolder = distanceUpgradeDifficulty;
+
+        //if save file doesn't exist : create one with values = 0
+        SaveSystem.InitiateDataFile();
     }
 
     private void Update() {
@@ -73,6 +81,7 @@ public class GameManager : MonoBehaviour
 
     #region Methods
     public void Lose() {
+        UpdatePlayerStats();
         SceneManager.LoadScene(0);
     }
 
@@ -134,11 +143,39 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddDiscScore(bool isGold) {
-        if (isGold)
+        if (isGold) {
             score += 1f;
-        else
+            nbGoldDiscs++;
+        }
+        else {
             score += 50f;
+            nbPlatDiscs++;
+        }
     }
-    
+
+    private void UpdatePlayerStats() {
+        PlayerData currentData = SaveSystem.LoadData();
+        Debug.Log(string.Format("current gold : {0}, current plat : {1}, current best score : {2}",
+            currentData.nbGoldDiscs, currentData.nbPlatDiscs, currentData.bestScore));
+        int totalGoldDiscs = currentData.nbGoldDiscs + nbGoldDiscs;
+        int platFromGoldDisc = totalGoldDiscs / 1000;
+
+        totalGoldDiscs = totalGoldDiscs % 1000;
+        int totalPlatDiscs = currentData.nbPlatDiscs + nbPlatDiscs + platFromGoldDisc;
+        int bestScore = Mathf.Max(currentData.bestScore, Mathf.FloorToInt(score));
+
+        PlayerData playerData = new PlayerData(totalGoldDiscs, totalPlatDiscs, bestScore);
+        Debug.Log(string.Format("new gold : {0}, new plat : {1}, new best score : {2}", playerData.nbGoldDiscs, playerData.nbPlatDiscs, playerData.bestScore));
+
+        SaveSystem.SavePlayer(playerData);
+    }
+
+    [Button("ResetDataFile", "Reset data file", BindingFlags.NonPublic | BindingFlags.Instance)] public int test1;
+    private void ResetDataFile() {
+        Debug.Log("Data file reset");
+
+        SaveSystem.SavePlayer(new PlayerData(0, 0, 0));
+    }
+
     #endregion
 }
