@@ -43,4 +43,8 @@ public class Cop : MonoBehaviour
     public void Strafe() {
         anim.SetTrigger("strafeTrigger");
     }
+
+    public void StartAnimation() {
+        anim.SetTrigger("startAnimationTrigger");
+    }
 }

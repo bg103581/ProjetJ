@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     
     private GenerateRoads generateRoads;
     private Player player;
+    private Cop cop;
     private ItemManager itemManager;
     private BonusSpawnRates bonusSpawnRates;
     private SpawnObjRandPos spawnObjRandPos;
@@ -70,6 +71,7 @@ public class GameManager : MonoBehaviour
     private void Start() {
         generateRoads = FindObjectOfType<GenerateRoads>();
         player = FindObjectOfType<Player>();
+        cop = FindObjectOfType<Cop>();
         itemManager = FindObjectOfType<ItemManager>();
         bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
         spawnObjRandPos = FindObjectOfType<SpawnObjRandPos>();
@@ -89,17 +91,18 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Methods
+    public void StartAnimation() {
+        gameState = GameState.ANIMATION_START;
+        player.StartAnimation();
+        cop.StartAnimation();
+    }
+
     public void StartPlaying() {
+        Debug.Log("gamemanager start playing");
         gameState = GameState.PLAYING;
 
         itemManager.StartSpawnItems();
         spawnObjRandPos.StartSpawnLateralObjects();
-
-        player.StartRunning();
-    }
-
-    public void StartAnimation() {
-        gameState = GameState.ANIMATION_START;
     }
 
     public void Lose() {
