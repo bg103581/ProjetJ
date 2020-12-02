@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Reflection;
 
+public enum GameState { WAITING, ANIMATION_START, PLAYING, FINISHED }
+
 public class GameManager : MonoBehaviour
 {
     #region Variables
@@ -13,6 +15,7 @@ public class GameManager : MonoBehaviour
     private Player player;
     private ItemManager itemManager;
     private BonusSpawnRates bonusSpawnRates;
+    private SpawnObjRandPos spawnObjRandPos;
 
     private int dodgeMultiplier = 1;
     private int ovniMultiplier = 2;
@@ -57,6 +60,9 @@ public class GameManager : MonoBehaviour
     private int TmaxSpawnRate_3;
 
     private float upgradeDifficultyHolder;
+
+    [HideInInspector]
+    public GameState gameState = GameState.WAITING;
     
     #endregion
 
@@ -66,6 +72,7 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<Player>();
         itemManager = FindObjectOfType<ItemManager>();
         bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
+        spawnObjRandPos = FindObjectOfType<SpawnObjRandPos>();
 
         upgradeDifficultyHolder = distanceUpgradeDifficulty;
 
@@ -74,15 +81,31 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update() {
-        AddScore();
-        DistanceUpdate();
+        if (gameState == GameState.PLAYING) {
+            AddScore();
+            DistanceUpdate();
+        }
     }
     #endregion
 
     #region Methods
+    public void StartPlaying() {
+        gameState = GameState.PLAYING;
+
+        itemManager.StartSpawnItems();
+        spawnObjRandPos.StartSpawnLateralObjects();
+
+        player.StartRunning();
+    }
+
+    public void StartAnimation() {
+        gameState = GameState.ANIMATION_START;
+    }
+
     public void Lose() {
         UpdatePlayerStats();
-        SceneManager.LoadScene(0);
+        gameState = GameState.FINISHED;
+        //SceneManager.LoadScene(0);
     }
 
     private void AddScore() {

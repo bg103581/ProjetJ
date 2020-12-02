@@ -11,8 +11,7 @@ public class SpawnObjRandPos : GeneratePrefabs
     [SerializeField]
     private float spawnFreq;
     
-    void Start()
-    {
+    public void StartSpawnLateralObjects() {
         InvokeRepeating("SpawnObj", spawnFreq, spawnFreq);
     }
 

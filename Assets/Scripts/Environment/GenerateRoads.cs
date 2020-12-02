@@ -19,7 +19,7 @@ public class GenerateRoads : GeneratePrefabs
 
     public float roadSpeed;
 
-    private void Awake() {
+    private void Start() {
         _roadsInGame = new GameObject[_nbRoadToInit];
         for (int i = 0; i < _nbRoadToInit; i++) {
             _roadsInGame[i] = GetRandomPrefab();

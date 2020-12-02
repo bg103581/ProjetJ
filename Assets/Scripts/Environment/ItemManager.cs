@@ -40,7 +40,9 @@ public class ItemManager : MonoBehaviour
         }
         //generateObstacles = FindObjectOfType<GenerateItems>();
         generateDiscs = FindObjectOfType<GenerateDiscs>();
+    }
 
+    public void StartSpawnItems() {
         InvokeRepeating("SpawnItem", 0f, timePeriod);
     }
 

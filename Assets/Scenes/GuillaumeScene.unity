@@ -381,6 +381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartRoad
       objectReference: {fileID: 0}
+    - target: {fileID: 8238193633948040202, guid: 5883d85fc28a20c439c2678b1532e04d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5883d85fc28a20c439c2678b1532e04d, type: 3}
 --- !u!1001 &1095714415
@@ -1125,7 +1130,7 @@ PrefabInstance:
     - target: {fileID: 9037666665638058192, guid: 9b82803d1bd9cd84192a1d0691b73960,
         type: 3}
       propertyPath: keyboardControl
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037666665638058193, guid: 9b82803d1bd9cd84192a1d0691b73960,
         type: 3}

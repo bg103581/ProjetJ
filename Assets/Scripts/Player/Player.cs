@@ -564,4 +564,8 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void StartRunning() {
+        julAnimator.SetTrigger("startRunTrigger");
+    }
 }
