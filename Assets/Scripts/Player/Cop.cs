@@ -5,20 +5,22 @@ using DG.Tweening;
 
 public class Cop : MonoBehaviour
 {
-    private Vector3 initialPos;
+    
     private bool isFollowingPlayer;
+    private CopStartAnimMovement copStartAnimMovement;
 
     [SerializeField]
     private Animator anim;
     [SerializeField]
-    private Transform copCatchUpPos;
+    private Transform initialPos;
+    public Transform copCatchUpPos;
     [SerializeField]
     private float catchUpMoveTime;
     [SerializeField]
     private float backToInitMoveTime;
 
     private void Awake() {
-        initialPos = transform.position;
+        copStartAnimMovement = GetComponent<CopStartAnimMovement>();
     }
 
     private void Update() {
@@ -33,7 +35,7 @@ public class Cop : MonoBehaviour
 
     public void GoBackToInitialPos() {
         isFollowingPlayer = false;
-        transform.DOMoveZ(initialPos.z, backToInitMoveTime);
+        transform.DOMoveZ(initialPos.position.z, backToInitMoveTime);
     }
 
     public void Jump() {
@@ -46,5 +48,11 @@ public class Cop : MonoBehaviour
 
     public void StartAnimation() {
         anim.SetTrigger("startAnimationTrigger");
+
+        copStartAnimMovement.PlayStartMovement();
+    }
+
+    public void TriggerSuprisedAnimation() {
+        anim.SetTrigger("surprisedTrigger");
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class InputManager : MonoBehaviour {
     private bool _swipeAvailable = true;
     [HideInInspector]
+    public bool isRegisteringInputs = false;
+    [HideInInspector]
     public bool isAlienClickable = false;
 
     private Vector2 _startTouchPos;
@@ -39,7 +41,7 @@ public class InputManager : MonoBehaviour {
     }
 
     private void Update() {
-        if (gameManager.gameState == GameState.PLAYING) {
+        if (gameManager.gameState == GameState.PLAYING && isRegisteringInputs) {
             if (keyboardControl) {
                 if (Input.GetKeyDown(KeyCode.LeftArrow)) _player.MoveToLeft();
                 if (Input.GetKeyDown(KeyCode.RightArrow)) _player.MoveToRight();

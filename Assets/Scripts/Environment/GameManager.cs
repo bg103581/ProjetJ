@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private ItemManager itemManager;
     private BonusSpawnRates bonusSpawnRates;
     private SpawnObjRandPos spawnObjRandPos;
+    private InputManager inputManager;
 
     private int dodgeMultiplier = 1;
     private int ovniMultiplier = 2;
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
         itemManager = FindObjectOfType<ItemManager>();
         bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
         spawnObjRandPos = FindObjectOfType<SpawnObjRandPos>();
+        inputManager = FindObjectOfType<InputManager>();
 
         upgradeDifficultyHolder = distanceUpgradeDifficulty;
 
@@ -97,12 +99,18 @@ public class GameManager : MonoBehaviour
         cop.StartAnimation();
     }
 
-    public void StartPlaying() {
-        Debug.Log("gamemanager start playing");
+    public void StartPlaying() {    //start the game (spawns, road and items movements)
         gameState = GameState.PLAYING;
 
         itemManager.StartSpawnItems();
         spawnObjRandPos.StartSpawnLateralObjects();
+    }
+
+    public void StartPlayingInputs() {  //the player start playing
+        inputManager.isRegisteringInputs = true;
+
+        player.startCopFollowTimer = true;
+        cop.CatchUpToPlayer();
     }
 
     public void Lose() {

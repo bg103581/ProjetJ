@@ -52,7 +52,8 @@ public class Player : MonoBehaviour
     private bool isDodgeStreak = false;
     private bool startDodgeStreakTimer = false;
     private bool isCopFollowed = false;
-    private bool startCopFollowTimer = false;
+    [HideInInspector]
+    public bool startCopFollowTimer = false;
     private bool isClaquettes = false;
     private bool startClaquettesTimer = false;
     [HideInInspector]

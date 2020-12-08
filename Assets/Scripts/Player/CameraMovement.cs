@@ -15,16 +15,21 @@ public class CameraMovement : MonoBehaviour
     private Transform topPos;
     [SerializeField]
     private Transform ovniPos;
+    [SerializeField]
+    private Transform playPos;
 
     [Header("Camera Move Time")]
     public float flyMoveTime;
     public float ovniMoveTime;
     public float goDownMoveTime;
+    public float playMoveTime;
 
     private Vector3 startPos;
+    private GameManager gameManager;
 
     private void Awake() {
         startPos = transform.position;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void MoveToLeftPos(float moveTime) {
@@ -57,5 +62,18 @@ public class CameraMovement : MonoBehaviour
 
     public void MoveToNormalPosZ() {
         transform.DOMoveZ(startPos.z, goDownMoveTime).SetEase(Ease.OutSine);
+    }
+
+    public void MoveToPlayPos() {
+        Sequence camSequence = DOTween.Sequence();
+
+        camSequence.Append(transform.DOMove(playPos.position, playMoveTime).SetEase(Ease.OutSine));
+        camSequence.Join(transform.DORotate(playPos.rotation.eulerAngles, playMoveTime).SetEase(Ease.OutSine));
+        camSequence.AppendCallback(() => gameManager.StartPlayingInputs());
+
+        camSequence.Play();
+
+        //transform.DOMove(playPos.position, playMoveTime).SetEase(Ease.OutSine);
+        //transform.DORotate(playPos.rotation.eulerAngles, playMoveTime).SetEase(Ease.OutSine);
     }
 }

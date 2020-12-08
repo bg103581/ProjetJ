@@ -59,8 +59,24 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0.2983193
+        functionName: MoveJul
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 8021860c1ce9674448fd1e18cce57026,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.59243697
         functionName: StartPlaying
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 8021860c1ce9674448fd1e18cce57026,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5931834
+        functionName: RotateStartPos
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 8021860c1ce9674448fd1e18cce57026,
           type: 3}
