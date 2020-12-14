@@ -9,9 +9,13 @@ public class LateralMovement : MonoBehaviour
     [SerializeField]
     private float lateralMoveSpeed;
 
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+
         Move();
     }
 
@@ -22,11 +26,13 @@ public class LateralMovement : MonoBehaviour
     }
 
     private void Move() {
-        if (isStartingRight) {
-            transform.position += Vector3.left * lateralMoveSpeed * Time.deltaTime;
-        }
-        else {
-            transform.position += Vector3.right * lateralMoveSpeed * Time.deltaTime;
+        if (gameManager.gameState == GameState.PLAYING) {
+            if (isStartingRight) {
+                transform.position += Vector3.left * lateralMoveSpeed * Time.deltaTime;
+            }
+            else {
+                transform.position += Vector3.right * lateralMoveSpeed * Time.deltaTime;
+            }
         }
     }
 }

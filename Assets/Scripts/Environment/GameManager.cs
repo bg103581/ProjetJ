@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Reflection;
+using DG.Tweening;
 
 public enum GameState { WAITING, ANIMATION_START, PLAYING, FINISHED }
 
@@ -18,9 +19,15 @@ public class GameManager : MonoBehaviour
     private BonusSpawnRates bonusSpawnRates;
     private SpawnObjRandPos spawnObjRandPos;
     private InputManager inputManager;
+    private MenuManager menuManager;
 
     private int dodgeMultiplier = 1;
     private int ovniMultiplier = 2;
+
+    private float upgradeDifficultyHolder;
+
+    [HideInInspector]
+    public GameState gameState = GameState.WAITING;
 
     [SerializeField]
     private float score = 0;
@@ -61,15 +68,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int TmaxSpawnRate_3;
 
-    private float upgradeDifficultyHolder;
-
-    [HideInInspector]
-    public GameState gameState = GameState.WAITING;
-    
     #endregion
 
     #region MonoBehaviour
+    private void Awake() {
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+    }
+
     private void Start() {
+        //DontDestroyOnLoad(gameObject);
+
         generateRoads = FindObjectOfType<GenerateRoads>();
         player = FindObjectOfType<Player>();
         cop = FindObjectOfType<Cop>();
@@ -77,6 +85,7 @@ public class GameManager : MonoBehaviour
         bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
         spawnObjRandPos = FindObjectOfType<SpawnObjRandPos>();
         inputManager = FindObjectOfType<InputManager>();
+        menuManager = FindObjectOfType<MenuManager>();
 
         upgradeDifficultyHolder = distanceUpgradeDifficulty;
 
@@ -90,6 +99,10 @@ public class GameManager : MonoBehaviour
             DistanceUpdate();
         }
     }
+
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+    }
     #endregion
 
     #region Methods
@@ -97,6 +110,9 @@ public class GameManager : MonoBehaviour
         gameState = GameState.ANIMATION_START;
         player.StartAnimation();
         cop.StartAnimation();
+
+        //changer main menu ui en in game ui
+        menuManager.MainMenuToInGame();
     }
 
     public void StartPlaying() {    //start the game (spawns, road and items movements)
@@ -116,7 +132,32 @@ public class GameManager : MonoBehaviour
     public void Lose() {
         UpdatePlayerStats();
         gameState = GameState.FINISHED;
-        //SceneManager.LoadScene(0);
+
+        menuManager.InGameToLose();
+    }
+
+    private void OnReplay() {
+        StartCoroutine("ReplayCorout");
+    }
+
+    private IEnumerator ReplayCorout() {
+        //reset game
+        DOTween.Clear();
+        //change lose ui to in game ui
+        //Time.timeScale = 0;
+        //destroy items and roads
+
+        //reset all values to init (score, collectibles, timers etc)
+        gameState = GameState.WAITING;
+        score = 0;
+        nbGoldDiscs = 0;
+        nbPlatDiscs = 0;
+        traveledDistance = 0;
+        itemManager.DisableBonus();
+        Time.timeScale = 1;
+        yield return new WaitForEndOfFrame();
+        //place player, cop and cam to start animation pause position
+        StartAnimation();
     }
 
     private void AddScore() {

@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using DG.Tweening;
 using UnityEngine;
-using DG.Tweening;
 
 public class Cop : MonoBehaviour
 {
@@ -21,6 +19,7 @@ public class Cop : MonoBehaviour
 
     private void Awake() {
         copStartAnimMovement = GetComponent<CopStartAnimMovement>();
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
     }
 
     private void Update() {
@@ -29,13 +28,24 @@ public class Cop : MonoBehaviour
         }
     }
 
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+    }
+
+    private void OnReplay() {
+        transform.position = initialPos.position;
+        isFollowingPlayer = false;
+        //settrigger anim to go back to init state
+        anim.Play("Idle");
+    }
+
     public void CatchUpToPlayer() {
         isFollowingPlayer = true;
     }
 
     public void GoBackToInitialPos() {
         isFollowingPlayer = false;
-        transform.DOMoveZ(initialPos.position.z, backToInitMoveTime);
+        transform.DOMove(initialPos.position, backToInitMoveTime);
     }
 
     public void Jump() {

@@ -12,8 +12,6 @@ public static class SaveSystem
 
         formatter.Serialize(stream, playerData);
         stream.Close();
-
-        Debug.Log("Data file saved in " + path);
     }
 
     public static PlayerData LoadData() {

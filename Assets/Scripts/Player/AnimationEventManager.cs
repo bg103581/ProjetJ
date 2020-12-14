@@ -5,12 +5,12 @@ using UnityEngine;
 public class AnimationEventManager : MonoBehaviour
 {
     private GameManager gameManager;
-    private JulStartAnimMovement julStartAnimMovement;
+    private JulAnim julStartAnimMovement;
     private CameraMovement cameraMovement;
 
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
-        julStartAnimMovement = GetComponent<JulStartAnimMovement>();
+        julStartAnimMovement = GetComponent<JulAnim>();
         cameraMovement = FindObjectOfType<CameraMovement>();
     }
 

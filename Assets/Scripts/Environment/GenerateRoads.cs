@@ -19,7 +19,23 @@ public class GenerateRoads : GeneratePrefabs
 
     public float roadSpeed;
 
+    private void Awake() {
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+    }
+
     private void Start() {
+        InitRoad();
+    }
+
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+    }
+
+    private void OnReplay() {
+        InitRoad();
+    }
+
+    private void InitRoad() {
         _roadsInGame = new GameObject[_nbRoadToInit];
         for (int i = 0; i < _nbRoadToInit; i++) {
             _roadsInGame[i] = GetRandomPrefab();

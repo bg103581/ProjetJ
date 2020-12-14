@@ -20,6 +20,8 @@ public class MoveRoad : MonoBehaviour
         mainCamera = FindObjectOfType<Camera>();
         gameManager = FindObjectOfType<GameManager>();
 
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+
         if (gameManager.gameState == GameState.PLAYING)
             transform.position += Vector3.back * speed * Time.deltaTime;
     }
@@ -34,5 +36,13 @@ public class MoveRoad : MonoBehaviour
             generateRoads.CreateRoad();
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+    }
+
+    private void OnReplay() {
+        Destroy(gameObject);
     }
 }

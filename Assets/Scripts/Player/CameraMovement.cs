@@ -25,11 +25,25 @@ public class CameraMovement : MonoBehaviour
     public float playMoveTime;
 
     private Vector3 startPos;
+    private Quaternion startRot;
     private GameManager gameManager;
 
     private void Awake() {
         startPos = transform.position;
+        startRot = transform.rotation;
+
         gameManager = FindObjectOfType<GameManager>();
+
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+    }
+
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+    }
+
+    private void OnReplay() {
+        transform.position = startPos;
+        transform.rotation = startRot;
     }
 
     public void MoveToLeftPos(float moveTime) {
@@ -61,7 +75,7 @@ public class CameraMovement : MonoBehaviour
     }
 
     public void MoveToNormalPosZ() {
-        transform.DOMoveZ(startPos.z, goDownMoveTime).SetEase(Ease.OutSine);
+        transform.DOMoveZ(playPos.position.z, goDownMoveTime).SetEase(Ease.OutSine);
     }
 
     public void MoveToPlayPos() {
