@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private Cop cop;
     private SpawnAlien spawnAlien;
     private ItemManager itemManager;
+    private JulAnim julAnim;
 
     [HideInInspector]
     public Lane lane = Lane.CENTER;
@@ -44,15 +45,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float fallMultiplier;
 
-    [SerializeField]
-    private Animator julAnimator;
-
     [HideInInspector]
     public bool isGrounded = true;
     private bool isDodgeStreak = false;
     private bool startDodgeStreakTimer = false;
     private bool isCopFollowed = false;
-    private bool startCopFollowTimer = false;
+    [HideInInspector]
+    public bool startCopFollowTimer = false;
     private bool isClaquettes = false;
     private bool startClaquettesTimer = false;
     [HideInInspector]
@@ -116,6 +115,10 @@ public class Player : MonoBehaviour
         cop = FindObjectOfType<Cop>();
         spawnAlien = FindObjectOfType<SpawnAlien>();
         itemManager = FindObjectOfType<ItemManager>();
+        julAnim = FindObjectOfType<JulAnim>();
+
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
     }
 
     private void Update() {
@@ -136,6 +139,39 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+    }
+
+    private void OnReplay() {
+        transform.position = centerPos.position;
+        //julanimator settrigger pour renvoyer au state init
+        lane = Lane.CENTER;
+
+        isGrounded = true;
+        isDodgeStreak = false;
+        startDodgeStreakTimer = false;
+        isCopFollowed = false;
+        startCopFollowTimer = false;
+        isClaquettes = false;
+        startClaquettesTimer = false;
+        isPochon = false;
+        startPochonTimer = false;
+        isTwingo = false;
+        startTwingoTimer = false;
+        isTmax = false;
+        startTmaxTimer = false;
+        isY = false;
+        startYTimer = false;
+        isTmaxFlying = false;
+        isOvni = false;
+        startOvniTimer = false;
+        isStrafing = false;
+
+        ActivateLook(jul);
+    }
+
     public void MoveToLeft() {
         if (lane == Lane.RIGHT) {
             lane = Lane.CENTER;
@@ -144,7 +180,7 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
-                julAnimator.SetTrigger("strafeTrigger");
+                julAnim.Strafe();
                 cop.Strafe();
             }
         }
@@ -155,7 +191,7 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToLeftPos(moveTime);
 
             if (isGrounded) {
-                julAnimator.SetTrigger("strafeTrigger");
+                julAnim.Strafe();
                 cop.Strafe();
             }
         }
@@ -169,7 +205,7 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
-                julAnimator.SetTrigger("strafeTrigger");
+                julAnim.Strafe();
                 cop.Strafe();
             }
         }
@@ -180,7 +216,7 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToRightPos(moveTime);
 
             if (isGrounded) {
-                julAnimator.SetTrigger("strafeTrigger");
+                julAnim.Strafe();
                 cop.Strafe();
             }
         }
@@ -232,7 +268,7 @@ public class Player : MonoBehaviour
             else if (isTwingo) return;
             else {
                 isGrounded = false;
-                julAnimator.SetTrigger("jumpTrigger");
+                julAnim.Jump();
                 cop.Jump();
 
                 //Sequence sequence = DOTween.Sequence();
@@ -563,5 +599,9 @@ public class Player : MonoBehaviour
                 ovniTimer -= Time.unscaledDeltaTime;
             }
         }
+    }
+
+    public void StartAnimation() {
+        julAnim.StartAnimation();
     }
 }

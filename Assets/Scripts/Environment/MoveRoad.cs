@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveRoad : MonoBehaviour
 {
+    private GameManager gameManager;
     private GenerateRoads generateRoads;
     private float speed;
     private Camera mainCamera;
@@ -17,18 +18,33 @@ public class MoveRoad : MonoBehaviour
         generateRoads = GetComponentInParent<GenerateRoads>();
         speed = generateRoads.roadSpeed;
         mainCamera = FindObjectOfType<Camera>();
+        gameManager = FindObjectOfType<GameManager>();
 
-        transform.position += Vector3.back * speed * Time.deltaTime;
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+
+        if (gameManager.gameState == GameState.PLAYING)
+            transform.position += Vector3.back * speed * Time.deltaTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.back * speed * Time.deltaTime;
+        if (gameManager.gameState == GameState.PLAYING)
+            transform.position += Vector3.back * speed * Time.deltaTime;
 
         if ( mainCamera.WorldToViewportPoint(endPos.position).z < 0 ) {
             generateRoads.CreateRoad();
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+    }
+
+    private void OnReplay() {
+        Destroy(gameObject);
     }
 }

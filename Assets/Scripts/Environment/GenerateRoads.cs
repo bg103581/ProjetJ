@@ -6,6 +6,8 @@ public class GenerateRoads : GeneratePrefabs
 {
 
     [SerializeField]
+    private GameObject startingRoad;
+    [SerializeField]
     [Range(3, 10)]
     private int _nbRoadToInit;
     [SerializeField]
@@ -18,13 +20,31 @@ public class GenerateRoads : GeneratePrefabs
     public float roadSpeed;
 
     private void Awake() {
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+    }
+
+    private void Start() {
+        InitRoad();
+    }
+
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+    }
+
+    private void OnReplay() {
+        InitRoad();
+    }
+
+    private void InitRoad() {
         _roadsInGame = new GameObject[_nbRoadToInit];
         for (int i = 0; i < _nbRoadToInit; i++) {
             _roadsInGame[i] = GetRandomPrefab();
         }
 
-        //instantiate le premier
-        _roadsInGame[0] = Instantiate(_roadsInGame[0], _initPosInstantiate.position, _initPosInstantiate.rotation, transform);
+        //instantiate la starting road
+        _roadsInGame[0] = Instantiate(startingRoad, _initPosInstantiate.position, _initPosInstantiate.rotation, transform);
 
         //instantiate le reste en fonction du précedent
         for (int i = 1; i < _roadsInGame.Length; i++) {

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Reflection;
+using DG.Tweening;
+
+public enum GameState { WAITING, ANIMATION_START, PLAYING, FINISHED }
 
 public class GameManager : MonoBehaviour
 {
@@ -11,11 +14,20 @@ public class GameManager : MonoBehaviour
     
     private GenerateRoads generateRoads;
     private Player player;
+    private Cop cop;
     private ItemManager itemManager;
     private BonusSpawnRates bonusSpawnRates;
+    private SpawnObjRandPos spawnObjRandPos;
+    private InputManager inputManager;
+    private MenuManager menuManager;
 
     private int dodgeMultiplier = 1;
     private int ovniMultiplier = 2;
+
+    private float upgradeDifficultyHolder;
+
+    [HideInInspector]
+    public GameState gameState = GameState.WAITING;
 
     [SerializeField]
     private float score = 0;
@@ -56,16 +68,25 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private int TmaxSpawnRate_3;
 
-    private float upgradeDifficultyHolder;
-    
     #endregion
 
     #region MonoBehaviour
+    private void Awake() {
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += ResetValues;
+    }
+
     private void Start() {
+        //DontDestroyOnLoad(gameObject);
+
         generateRoads = FindObjectOfType<GenerateRoads>();
         player = FindObjectOfType<Player>();
+        cop = FindObjectOfType<Cop>();
         itemManager = FindObjectOfType<ItemManager>();
         bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
+        spawnObjRandPos = FindObjectOfType<SpawnObjRandPos>();
+        inputManager = FindObjectOfType<InputManager>();
+        menuManager = FindObjectOfType<MenuManager>();
 
         upgradeDifficultyHolder = distanceUpgradeDifficulty;
 
@@ -74,15 +95,68 @@ public class GameManager : MonoBehaviour
     }
 
     private void Update() {
-        AddScore();
-        DistanceUpdate();
+        if (gameState == GameState.PLAYING) {
+            AddScore();
+            DistanceUpdate();
+        }
+    }
+
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= ResetValues;
     }
     #endregion
 
     #region Methods
+    public void StartAnimation() {
+        gameState = GameState.ANIMATION_START;
+        player.StartAnimation();
+        cop.StartAnimation();
+
+        //changer main menu ui en in game ui
+        menuManager.MainMenuToInGame();
+    }
+
+    public void StartPlaying() {    //start the game (spawns, road and items movements)
+        gameState = GameState.PLAYING;
+
+        itemManager.StartSpawnItems();
+        spawnObjRandPos.StartSpawnLateralObjects();
+    }
+
+    public void StartPlayingInputs() {  //the player start playing
+        inputManager.isRegisteringInputs = true;
+
+        player.startCopFollowTimer = true;
+        cop.CatchUpToPlayer();
+    }
+
     public void Lose() {
         UpdatePlayerStats();
-        SceneManager.LoadScene(0);
+        gameState = GameState.FINISHED;
+
+        menuManager.InGameToLose();
+    }
+
+    private void OnReplay() {   //reset game values then launch start animation
+        ResetValues();
+        StartCoroutine("ReplayCorout");
+    }
+
+    private void ResetValues() {
+        DOTween.Clear();
+
+        gameState = GameState.WAITING;
+        score = 0;
+        nbGoldDiscs = 0;
+        nbPlatDiscs = 0;
+        traveledDistance = 0;
+        Time.timeScale = 1;
+    }
+
+    private IEnumerator ReplayCorout() {
+        yield return new WaitForEndOfFrame();
+        StartAnimation();
     }
 
     private void AddScore() {

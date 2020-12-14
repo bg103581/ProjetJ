@@ -10,6 +10,7 @@ public class ItemManager : MonoBehaviour
     private GenerateItems generateObstacles;
     private GenerateItems generateBonuses;
     private GenerateDiscs generateDiscs;
+    private GameManager gameManager;
 
     [SerializeField]
     private float timePeriod;
@@ -28,9 +29,15 @@ public class ItemManager : MonoBehaviour
 
     private int currentBonusRate = 0;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake() {
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+    }
+
+    private void Start()
     {
+        gameManager = FindObjectOfType<GameManager>();
+
         GenerateItems[] arr = FindObjectsOfType<GenerateItems>();
         foreach (GenerateItems generateItem in arr) {
             if (generateItem.itemType == ItemType.BONUS)
@@ -40,30 +47,44 @@ public class ItemManager : MonoBehaviour
         }
         //generateObstacles = FindObjectOfType<GenerateItems>();
         generateDiscs = FindObjectOfType<GenerateDiscs>();
+    }
 
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+    }
+
+    private void OnReplay() {
+        CancelInvoke();
+        currentBonusRate = 0;
+    }
+
+    public void StartSpawnItems() {
         InvokeRepeating("SpawnItem", 0f, timePeriod);
     }
 
     private void SpawnItem() {
-        ItemType itemType = ChoseItem();
-        Lane lane = GetRandomLane();
+        if (gameManager.gameState == GameState.PLAYING) {
+            ItemType itemType = ChoseItem();
+            Lane lane = GetRandomLane();
 
-        switch (itemType) {
-            case ItemType.OBSTACLE_DISCS:
-                generateObstacles.SpawnItem(lane);
-                generateDiscs.SpawnDiscs(lane, itemType);
-                break;
-            case ItemType.DISCS_ONLY:
-                generateDiscs.SpawnDiscs(lane, itemType);
-                break;
-            case ItemType.OBSTACLE_ONLY:
-                generateObstacles.SpawnItem(lane);
-                break;
-            case ItemType.BONUS:
-                generateBonuses.SpawnItem(lane);
-                break;
-            default:
-                break;
+            switch (itemType) {
+                case ItemType.OBSTACLE_DISCS:
+                    generateObstacles.SpawnItem(lane);
+                    generateDiscs.SpawnDiscs(lane, itemType);
+                    break;
+                case ItemType.DISCS_ONLY:
+                    generateDiscs.SpawnDiscs(lane, itemType);
+                    break;
+                case ItemType.OBSTACLE_ONLY:
+                    generateObstacles.SpawnItem(lane);
+                    break;
+                case ItemType.BONUS:
+                    generateBonuses.SpawnItem(lane);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
