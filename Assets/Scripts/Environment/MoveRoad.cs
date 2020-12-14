@@ -21,6 +21,7 @@ public class MoveRoad : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
 
         if (gameManager.gameState == GameState.PLAYING)
             transform.position += Vector3.back * speed * Time.deltaTime;
@@ -40,6 +41,7 @@ public class MoveRoad : MonoBehaviour
 
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
     }
 
     private void OnReplay() {

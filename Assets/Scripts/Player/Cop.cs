@@ -20,6 +20,7 @@ public class Cop : MonoBehaviour
     private void Awake() {
         copStartAnimMovement = GetComponent<CopStartAnimMovement>();
         GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
     }
 
     private void Update() {
@@ -30,6 +31,7 @@ public class Cop : MonoBehaviour
 
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
     }
 
     private void OnReplay() {

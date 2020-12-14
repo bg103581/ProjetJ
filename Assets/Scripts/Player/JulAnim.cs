@@ -20,17 +20,18 @@ public class JulAnim : MonoBehaviour
     private GameManager gameManager;
 
     private void Awake() {
-        Debug.Log("jul awake");
         startPos = transform.localPosition;
         startRot = transform.localRotation;
         anim = GetComponent<Animator>();
         gameManager = FindObjectOfType<GameManager>();
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
     }
     
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
     }
 
     private void OnEnable() {

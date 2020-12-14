@@ -21,6 +21,7 @@ public class GenerateRoads : GeneratePrefabs
 
     private void Awake() {
         GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
     }
 
     private void Start() {
@@ -29,6 +30,7 @@ public class GenerateRoads : GeneratePrefabs
 
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
     }
 
     private void OnReplay() {

@@ -118,6 +118,7 @@ public class Player : MonoBehaviour
         julAnim = FindObjectOfType<JulAnim>();
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
     }
 
     private void Update() {
@@ -140,6 +141,7 @@ public class Player : MonoBehaviour
 
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
     }
 
     private void OnReplay() {

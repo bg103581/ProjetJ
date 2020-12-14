@@ -23,6 +23,7 @@ public class MoveItems : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
 
         if (gameManager.gameState == GameState.PLAYING)
             transform.position += Vector3.back * _moveSpeed * Time.deltaTime;
@@ -46,6 +47,7 @@ public class MoveItems : MonoBehaviour
 
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
     }
 
     private void OnReplay() {

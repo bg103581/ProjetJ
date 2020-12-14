@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
     #region MonoBehaviour
     private void Awake() {
         GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += ResetValues;
     }
 
     private void Start() {
@@ -102,6 +103,7 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= ResetValues;
     }
     #endregion
 
@@ -136,27 +138,24 @@ public class GameManager : MonoBehaviour
         menuManager.InGameToLose();
     }
 
-    private void OnReplay() {
+    private void OnReplay() {   //reset game values then launch start animation
+        ResetValues();
         StartCoroutine("ReplayCorout");
     }
 
-    private IEnumerator ReplayCorout() {
-        //reset game
+    private void ResetValues() {
         DOTween.Clear();
-        //change lose ui to in game ui
-        //Time.timeScale = 0;
-        //destroy items and roads
 
-        //reset all values to init (score, collectibles, timers etc)
         gameState = GameState.WAITING;
         score = 0;
         nbGoldDiscs = 0;
         nbPlatDiscs = 0;
         traveledDistance = 0;
-        itemManager.DisableBonus();
         Time.timeScale = 1;
+    }
+
+    private IEnumerator ReplayCorout() {
         yield return new WaitForEndOfFrame();
-        //place player, cop and cam to start animation pause position
         StartAnimation();
     }
 

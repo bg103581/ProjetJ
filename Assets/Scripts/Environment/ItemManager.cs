@@ -31,6 +31,7 @@ public class ItemManager : MonoBehaviour
 
     private void Awake() {
         GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
     }
 
     private void Start()
@@ -50,10 +51,12 @@ public class ItemManager : MonoBehaviour
 
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
     }
 
     private void OnReplay() {
         CancelInvoke();
+        currentBonusRate = 0;
     }
 
     public void StartSpawnItems() {
@@ -116,9 +119,5 @@ public class ItemManager : MonoBehaviour
 
     public void EnableBonus() {
         currentBonusRate = bonusRate;
-    }
-
-    public void DisableBonus() {
-        currentBonusRate = 0;
     }
 }

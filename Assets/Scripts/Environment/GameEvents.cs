@@ -17,4 +17,11 @@ public class GameEvents : MonoBehaviour
             onReplayButtonTrigger();
         }
     }
+
+    public event Action onMainMenuButtonTrigger;
+    public void GoToMainMenu() {
+        if (onMainMenuButtonTrigger != null) {
+            onMainMenuButtonTrigger();
+        }
+    }
 }

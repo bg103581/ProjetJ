@@ -21,10 +21,12 @@ public class MenuManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnMainMenu;
     }
 
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnMainMenu;
     }
 
 
@@ -32,8 +34,16 @@ public class MenuManager : MonoBehaviour
         GameEvents.current.Replay();
     }
 
+    public void MainMenu() {
+        GameEvents.current.GoToMainMenu();
+    }
+
     private void OnReplay() {
         LoseToInGame();
+    }
+
+    private void OnMainMenu() {
+        LoseToMainMenu();
     }
 
     public void MainMenuToInGame() {
@@ -46,6 +56,10 @@ public class MenuManager : MonoBehaviour
 
     public void LoseToInGame() {
         ChangeUI(loseUI, inGameUI);
+    }
+
+    public void LoseToMainMenu() {
+        ChangeUI(loseUI, mainMenuUI);
     }
 
     private void ChangeUI(GameObject uiToDisable, GameObject uiToEnable) {
