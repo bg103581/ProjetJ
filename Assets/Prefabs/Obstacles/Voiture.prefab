@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 1304595352973672837}
   - component: {fileID: 1304595352973672842}
   - component: {fileID: 4485575999940270870}
+  - component: {fileID: 3424309502038800511}
   m_Layer: 8
   m_Name: Voiture
   m_TagString: Voiture
@@ -106,6 +107,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovingToPlayer: 0
   _moveSpeed: 25
+--- !u!114 &3424309502038800511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304595352973672841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9bcdbdd0d170f34eb064be3600114e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLane: 0
 --- !u!1 &1689140900606555248
 GameObject:
   m_ObjectHideFlags: 0

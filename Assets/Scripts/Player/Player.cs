@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
+    #region Variables
     private GameManager gameManager;
     private CameraMovement cameraMovement;
     private Rigidbody rb;
@@ -107,7 +108,9 @@ public class Player : MonoBehaviour
     private float ovniDuration;
     [SerializeField]
     private float ovniSpeed;
+    #endregion
 
+    #region MonoBehaviour
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
@@ -143,7 +146,9 @@ public class Player : MonoBehaviour
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
     }
+    #endregion
 
+    #region Methods
     private void OnReplay() {
         transform.position = centerPos.position;
         //julanimator settrigger pour renvoyer au state init
@@ -288,11 +293,11 @@ public class Player : MonoBehaviour
     }
 
     public void HitByObstacle(Collider col) {
-        Debug.Log("hit by obstacle");
+        Obstacles obstacle = col.gameObject.GetComponent<Obstacles>();
 
         if (col.tag == "Camionette") {
             Time.timeScale = 1;
-            if (isStrafing) {
+            if (isStrafing && lane != obstacle.currentLane) {
                 if (isCopFollowed) {
                     gameManager.Lose();
                 }
@@ -344,7 +349,7 @@ public class Player : MonoBehaviour
                 }
             }
             else if (col.tag == "Voiture") {
-                if (isStrafing) {
+                if (isStrafing && lane != obstacle.currentLane) {
                     if (isCopFollowed) {
                         gameManager.Lose();
                     }
@@ -359,7 +364,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        Destroy(col.gameObject);    //to change in the future because of breaking animation
+        Destroy(col.gameObject);
     }
 
     public void HitByBonus(string tag) {
@@ -604,4 +609,5 @@ public class Player : MonoBehaviour
     public void StartAnimation() {
         julAnim.StartAnimation();
     }
+    #endregion
 }
