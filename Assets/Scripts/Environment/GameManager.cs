@@ -23,8 +23,9 @@ public class GameManager : MonoBehaviour
 
     private int dodgeMultiplier = 1;
     private int ovniMultiplier = 2;
-
+    
     private float upgradeDifficultyHolder;
+    private float currentTimeScale = 1;
 
     [HideInInspector]
     public GameState gameState = GameState.WAITING;
@@ -74,6 +75,8 @@ public class GameManager : MonoBehaviour
     private void Awake() {
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += ResetValues;
+        GameEvents.current.onPauseButtonTrigger += OnPause;
+        GameEvents.current.onResumeTrigger += OnResume;
     }
 
     private void Start() {
@@ -104,6 +107,8 @@ public class GameManager : MonoBehaviour
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= ResetValues;
+        GameEvents.current.onPauseButtonTrigger -= OnPause;
+        GameEvents.current.onResumeTrigger -= OnResume;
     }
     #endregion
 
@@ -136,6 +141,15 @@ public class GameManager : MonoBehaviour
         gameState = GameState.FINISHED;
 
         menuManager.InGameToLose();
+    }
+
+    private void OnPause() {
+        currentTimeScale = Time.timeScale;
+        Time.timeScale = 0;
+    }
+
+    private void OnResume() {
+        Time.timeScale = currentTimeScale;
     }
 
     private void OnReplay() {   //reset game values then launch start animation
