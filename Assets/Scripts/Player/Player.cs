@@ -53,14 +53,17 @@ public class Player : MonoBehaviour
     private bool isCopFollowed = false;
     [HideInInspector]
     public bool startCopFollowTimer = false;
-    private bool isClaquettes = false;
+    [HideInInspector]
+    public bool isClaquettes = false;
     private bool startClaquettesTimer = false;
     [HideInInspector]
     public bool isPochon = false;
     private bool startPochonTimer = false;
-    private bool isTwingo = false;
+    [HideInInspector]
+    public bool isTwingo = false;
     private bool startTwingoTimer = false;
-    private bool isTmax = false;
+    [HideInInspector]
+    public bool isTmax = false;
     private bool startTmaxTimer = false;
     private bool isY = false;
     private bool startYTimer = false;

@@ -28,6 +28,15 @@ public class GameManager : MonoBehaviour
     private float currentTimeScale = 1;
 
     [HideInInspector]
+    public bool isPochonInGame;
+    [HideInInspector]
+    public bool isClaquetteInGame;
+    [HideInInspector]
+    public bool isTwingoInGame;
+    [HideInInspector]
+    public bool isTmaxInGame;
+
+    [HideInInspector]
     public GameState gameState = GameState.WAITING;
 
     [SerializeField]
@@ -80,8 +89,6 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() {
-        //DontDestroyOnLoad(gameObject);
-
         generateRoads = FindObjectOfType<GenerateRoads>();
         player = FindObjectOfType<Player>();
         cop = FindObjectOfType<Cop>();
@@ -101,6 +108,7 @@ public class GameManager : MonoBehaviour
         if (gameState == GameState.PLAYING) {
             AddScore();
             DistanceUpdate();
+            BonusUpdate();
         }
     }
 
@@ -211,6 +219,23 @@ public class GameManager : MonoBehaviour
             itemManager.EnableBonus();
             bonusSpawnRates.ChangePochonSpawnRate(pochonSpawnRate_1);
             bonusSpawnRates.ChangeClaquetteSpawnRate(claquetteSpawnRate_1);
+        }
+    }
+
+    private void BonusUpdate() {
+        //if player.isPochon || pochon is in the game
+        //  bonusSpawnRates.ChangePochonSpawnRate(0);
+        if (player.isPochon || isPochonInGame) {
+            bonusSpawnRates.ChangePochonSpawnRate(0);
+        }
+        if (player.isClaquettes || isClaquetteInGame) {
+            bonusSpawnRates.ChangeClaquetteSpawnRate(0);
+        }
+        if (player.isTwingo || isTwingoInGame) {
+            bonusSpawnRates.ChangeTwingoSpawnRate(0);
+        }
+        if (player.isTmax || isTmaxInGame) {
+            bonusSpawnRates.ChangeTmaxSpawnRate(0);
         }
     }
 

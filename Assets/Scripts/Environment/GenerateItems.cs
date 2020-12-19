@@ -9,11 +9,13 @@ public class GenerateItems : GeneratePrefabs
     //scriptable object pour les obstacles ? ils ont chacun leur vitesse
     
     public ItemType itemType;
-    
+
     private BonusSpawnRates bonusSpawnRates;
+    private GameManager gameManager;
 
     private void Awake() {
         bonusSpawnRates = GetComponent<BonusSpawnRates>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void SpawnItem(Lane lane) {
@@ -23,6 +25,10 @@ public class GenerateItems : GeneratePrefabs
             item = GetRandomPrefab(bonusSpawnRates.spawnRates);
         else
             item = GetRandomPrefab();
+
+        if (item == null) {
+            return;
+        }
 
         Transform tr;
         switch (lane) {
