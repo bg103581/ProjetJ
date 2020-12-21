@@ -18,7 +18,7 @@ public class GenerateItems : GeneratePrefabs
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    public void SpawnItem(Lane lane) {
+    public GameObject SpawnItem(Lane lane) {
         GameObject item;
 
         if (itemType == ItemType.BONUS)
@@ -27,7 +27,7 @@ public class GenerateItems : GeneratePrefabs
             item = GetRandomPrefab();
 
         if (item == null) {
-            return;
+            return null;
         }
 
         Transform tr;
@@ -46,8 +46,8 @@ public class GenerateItems : GeneratePrefabs
                 break;
         }
 
+        GameObject go;
         if (itemType == ItemType.OBSTACLE_ONLY) {
-            GameObject go;
             if (item.tag == "Voiture" || item.tag == "Camionette") {
                 Vector3 pos = new Vector3(tr.position.x, tr.position.y, itemManager.vehiclePos.position.z);
                 go = Instantiate(item, pos, tr.rotation, transform);
@@ -57,9 +57,11 @@ public class GenerateItems : GeneratePrefabs
             }
 
             go.GetComponent<Obstacles>().currentLane = lane;
+            return go;
         }
         else {
-            Instantiate(item, tr.position, tr.rotation, transform);
+            go = Instantiate(item, tr.position, tr.rotation, transform);
+            return go;
         }
     }
 }
