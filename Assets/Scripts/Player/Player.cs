@@ -267,8 +267,8 @@ public class Player : MonoBehaviour
     public void Jump() {
         if (isGrounded) {
             if (isTmax) {
-                startYTimer = true;
                 if (!isY) {
+                    startYTimer = true;
                     Time.timeScale += ySpeed;
                     tmax.transform.DOLocalRotate(new Vector3(-55f, 0f, 0f), 0.2f);
                 }
@@ -548,6 +548,7 @@ public class Player : MonoBehaviour
             if (tmaxTimer <= 0f) {
                 if (!isOvni) {
                     isTmax = false;
+                    yTimer = 0f;
                     ActivateLook(jul);
 
                     Time.timeScale -= tmaxSpeed;
