@@ -24,4 +24,18 @@ public class GameEvents : MonoBehaviour
             onMainMenuButtonTrigger();
         }
     }
+
+    public event Action onPauseButtonTrigger;
+    public void PauseGame() {
+        if (onMainMenuButtonTrigger != null) {
+            onPauseButtonTrigger();
+        }
+    }
+
+    public event Action onResumeTrigger;
+    public void ResumeGame() {
+        if (onResumeTrigger != null) {
+            onResumeTrigger();
+        }
+    }
 }

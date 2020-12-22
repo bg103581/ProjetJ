@@ -7,13 +7,13 @@ public class PlayerData
 {
 
     public int nbGoldDiscs;
-    public int nbPlatDiscs;
+    public int nbDiamDiscs;
 
     public int bestScore;
 
-    public PlayerData (int gold, int plat, int score) {
+    public PlayerData (int gold, int diam, int score) {
         nbGoldDiscs = gold;
-        nbPlatDiscs = plat;
+        nbDiamDiscs = diam;
         bestScore = score;
     }
 

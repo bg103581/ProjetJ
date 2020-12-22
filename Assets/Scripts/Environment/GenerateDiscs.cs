@@ -30,13 +30,16 @@ public class GenerateDiscs : MonoBehaviour
     [SerializeField]
     [Min(2)]
     private int nbLines;
-    
+
+    private Player player;
+
 
     private void Awake() {
         //SetUpPatternTransforms();
+        player = FindObjectOfType<Player>();
     }
 
-    public void SpawnDiscs(Lane lane, ItemType itemType) {
+    public void SpawnDiscs(Lane lane, GameObject obstacle = null) {
         GameObject patternPrefab;
         Transform tr;
 
@@ -55,7 +58,10 @@ public class GenerateDiscs : MonoBehaviour
                 break;
         }
 
-        patternPrefab = Instantiate(ChosePattern(lane, itemType), tr.position, tr.rotation, transform);
+        if (obstacle != null)
+            patternPrefab = Instantiate(ChosePattern(lane, obstacle), tr.position, tr.rotation, transform);
+        else
+            patternPrefab = Instantiate(ChosePattern(), tr.position, tr.rotation, transform);
 
         RandPlatinumDiscPattern(patternPrefab);
     }
@@ -70,29 +76,49 @@ public class GenerateDiscs : MonoBehaviour
         }
     }
 
-    private GameObject ChosePattern(Lane lane, ItemType itemType) {
+    private GameObject ChosePattern(Lane lane, GameObject obstacle) {   //patern for obstacles
         int rand;
 
-        if (itemType == ItemType.DISCS_ONLY) {
+        if (lane == Lane.LEFT) {
             rand = Random.Range(0, 2);
-
-            if (rand == 0)
-                return jumpPatternPrefab;
-            else
-                return linePatternPrefab;
-        }
-        else { //OBSTACLE_DISCS
-            if (lane == Lane.LEFT) {
-                rand = Random.Range(0, 2);
-
+            if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
+                if (player.isClaquettes) {  //can spawn jump pattern if player isclaquettes and it's a vehicle
+                    if (rand == 0)
+                        return jumpPatternPrefab;
+                    else
+                        return rightPatternPrefab;
+                }
+                else {
+                    return rightPatternPrefab;
+                }
+            }
+            else {
                 if (rand == 0)
                     return jumpPatternPrefab;
                 else
                     return rightPatternPrefab;
             }
-            else if (lane == Lane.CENTER) {
-                rand = Random.Range(0, 3);
-
+        }
+        else if (lane == Lane.CENTER) {
+            rand = Random.Range(0, 3);
+            if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
+                if (player.isClaquettes) {
+                    if (rand == 0)
+                        return leftPatternPrefab;
+                    else if (rand == 1)
+                        return jumpPatternPrefab;
+                    else
+                        return rightPatternPrefab;
+                }
+                else {
+                    rand = Random.Range(0, 2);
+                    if (rand == 0)
+                        return leftPatternPrefab;
+                    else
+                        return rightPatternPrefab;
+                }
+            }
+            else {
                 if (rand == 0)
                     return leftPatternPrefab;
                 else if (rand == 1)
@@ -100,15 +126,36 @@ public class GenerateDiscs : MonoBehaviour
                 else
                     return rightPatternPrefab;
             }
+        }
+        else {
+            rand = Random.Range(0, 2);
+            if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
+                if (player.isClaquettes) {  //can spawn jump pattern if player isclaquettes and it's a vehicle
+                    if (rand == 0)
+                        return jumpPatternPrefab;
+                    else
+                        return leftPatternPrefab;
+                }
+                else {
+                    return leftPatternPrefab;
+                }
+            }
             else {
-                rand = Random.Range(0, 2);
-
                 if (rand == 0)
                     return jumpPatternPrefab;
                 else
                     return leftPatternPrefab;
             }
         }
+    }
+
+    private GameObject ChosePattern() { //pattern for only discs
+        int rand= Random.Range(0, 2);
+
+        if (rand == 0)
+            return jumpPatternPrefab;
+        else
+            return linePatternPrefab;
     }
 
     private void CreateDiscPattern(GameObject patternPrefab, bool isPlatinum) { //apply discs on pattern
@@ -144,7 +191,7 @@ public class GenerateDiscs : MonoBehaviour
 
         laneArray[0] = GetRandomLane(Lane.CENTER);
         for (int i = 1; i < laneArray.Length; i++) {
-            laneArray[i] = GetRandomLane(laneArray[i-1]);
+            laneArray[i] = GetRandomLane(laneArray[i - 1]);
         }
         //create array patterns
         List<GameObject> igPatterns = new List<GameObject>();
@@ -166,11 +213,11 @@ public class GenerateDiscs : MonoBehaviour
         #endregion
 
         #region LoopTheRest
-        for (int i = 1; i < laneArray.Length-1; i++) {
-            GameObject igLinePattern = 
+        for (int i = 1; i < laneArray.Length - 1; i++) {
+            GameObject igLinePattern =
                 Instantiate(ovniLinePattern,
-                GetLastOvniDiscPos(igPatterns[igPatterns.Count-1], offSet), 
-                tr.rotation, 
+                GetLastOvniDiscPos(igPatterns[igPatterns.Count - 1], offSet),
+                tr.rotation,
                 transform);
             igPatterns.Add(igLinePattern);
             // add turn pattern at the end of linepattern

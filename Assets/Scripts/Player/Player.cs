@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
+    #region Variables
     private GameManager gameManager;
     private CameraMovement cameraMovement;
     private Rigidbody rb;
@@ -52,14 +53,17 @@ public class Player : MonoBehaviour
     private bool isCopFollowed = false;
     [HideInInspector]
     public bool startCopFollowTimer = false;
-    private bool isClaquettes = false;
+    [HideInInspector]
+    public bool isClaquettes = false;
     private bool startClaquettesTimer = false;
     [HideInInspector]
     public bool isPochon = false;
     private bool startPochonTimer = false;
-    private bool isTwingo = false;
+    [HideInInspector]
+    public bool isTwingo = false;
     private bool startTwingoTimer = false;
-    private bool isTmax = false;
+    [HideInInspector]
+    public bool isTmax = false;
     private bool startTmaxTimer = false;
     private bool isY = false;
     private bool startYTimer = false;
@@ -107,7 +111,9 @@ public class Player : MonoBehaviour
     private float ovniDuration;
     [SerializeField]
     private float ovniSpeed;
+    #endregion
 
+    #region MonoBehaviour
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
@@ -143,7 +149,9 @@ public class Player : MonoBehaviour
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
     }
+    #endregion
 
+    #region Methods
     private void OnReplay() {
         transform.position = centerPos.position;
         //julanimator settrigger pour renvoyer au state init
@@ -259,8 +267,8 @@ public class Player : MonoBehaviour
     public void Jump() {
         if (isGrounded) {
             if (isTmax) {
-                startYTimer = true;
                 if (!isY) {
+                    startYTimer = true;
                     Time.timeScale += ySpeed;
                     tmax.transform.DOLocalRotate(new Vector3(-55f, 0f, 0f), 0.2f);
                 }
@@ -288,11 +296,11 @@ public class Player : MonoBehaviour
     }
 
     public void HitByObstacle(Collider col) {
-        Debug.Log("hit by obstacle");
+        Obstacles obstacle = col.gameObject.GetComponent<Obstacles>();
 
         if (col.tag == "Camionette") {
             Time.timeScale = 1;
-            if (isStrafing) {
+            if (isStrafing && lane != obstacle.currentLane) {
                 if (isCopFollowed) {
                     gameManager.Lose();
                 }
@@ -344,7 +352,7 @@ public class Player : MonoBehaviour
                 }
             }
             else if (col.tag == "Voiture") {
-                if (isStrafing) {
+                if (isStrafing && lane != obstacle.currentLane) {
                     if (isCopFollowed) {
                         gameManager.Lose();
                     }
@@ -359,7 +367,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        Destroy(col.gameObject);    //to change in the future because of breaking animation
+        Destroy(col.gameObject);
     }
 
     public void HitByBonus(string tag) {
@@ -540,6 +548,7 @@ public class Player : MonoBehaviour
             if (tmaxTimer <= 0f) {
                 if (!isOvni) {
                     isTmax = false;
+                    yTimer = 0f;
                     ActivateLook(jul);
 
                     Time.timeScale -= tmaxSpeed;
@@ -604,4 +613,5 @@ public class Player : MonoBehaviour
     public void StartAnimation() {
         julAnim.StartAnimation();
     }
+    #endregion
 }

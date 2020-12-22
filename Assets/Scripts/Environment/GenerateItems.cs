@@ -9,20 +9,26 @@ public class GenerateItems : GeneratePrefabs
     //scriptable object pour les obstacles ? ils ont chacun leur vitesse
     
     public ItemType itemType;
-    
+
     private BonusSpawnRates bonusSpawnRates;
+    private GameManager gameManager;
 
     private void Awake() {
         bonusSpawnRates = GetComponent<BonusSpawnRates>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
-    public void SpawnItem(Lane lane) {
+    public GameObject SpawnItem(Lane lane) {
         GameObject item;
 
         if (itemType == ItemType.BONUS)
             item = GetRandomPrefab(bonusSpawnRates.spawnRates);
         else
             item = GetRandomPrefab();
+
+        if (item == null) {
+            return null;
+        }
 
         Transform tr;
         switch (lane) {
@@ -40,12 +46,22 @@ public class GenerateItems : GeneratePrefabs
                 break;
         }
 
-        if (item.tag == "Voiture" || item.tag == "Camionette") {
-            Vector3 pos = new Vector3(tr.position.x, tr.position.y, itemManager.vehiclePos.position.z);
-            Instantiate(item, pos, tr.rotation, transform);
+        GameObject go;
+        if (itemType == ItemType.OBSTACLE_ONLY) {
+            if (item.tag == "Voiture" || item.tag == "Camionette") {
+                Vector3 pos = new Vector3(tr.position.x, tr.position.y, itemManager.vehiclePos.position.z);
+                go = Instantiate(item, pos, tr.rotation, transform);
+            }
+            else {
+                go = Instantiate(item, tr.position, tr.rotation, transform);
+            }
+
+            go.GetComponent<Obstacles>().currentLane = lane;
+            return go;
         }
         else {
-            Instantiate(item, tr.position, tr.rotation, transform);
+            go = Instantiate(item, tr.position, tr.rotation, transform);
+            return go;
         }
     }
 }

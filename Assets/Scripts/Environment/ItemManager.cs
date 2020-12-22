@@ -70,11 +70,11 @@ public class ItemManager : MonoBehaviour
 
             switch (itemType) {
                 case ItemType.OBSTACLE_DISCS:
-                    generateObstacles.SpawnItem(lane);
-                    generateDiscs.SpawnDiscs(lane, itemType);
+                    GameObject obstacle = generateObstacles.SpawnItem(lane);
+                    generateDiscs.SpawnDiscs(lane, obstacle);
                     break;
                 case ItemType.DISCS_ONLY:
-                    generateDiscs.SpawnDiscs(lane, itemType);
+                    generateDiscs.SpawnDiscs(lane);
                     break;
                 case ItemType.OBSTACLE_ONLY:
                     generateObstacles.SpawnItem(lane);

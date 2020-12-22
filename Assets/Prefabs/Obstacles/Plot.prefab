@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 2614562417095145773}
   - component: {fileID: 5161722296004662516}
   - component: {fileID: 2766174290613033505}
+  - component: {fileID: 14923659828283692}
   m_Layer: 8
   m_Name: Plot
   m_TagString: Plot
@@ -278,6 +279,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovingToPlayer: 0
   _moveSpeed: 15
+--- !u!114 &14923659828283692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8618412363117892099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9bcdbdd0d170f34eb064be3600114e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLane: 0
 --- !u!1001 &1223795345751695824
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 2687625080508439613}
   - component: {fileID: 2094269178200796338}
   - component: {fileID: 3587205057453730300}
+  - component: {fileID: -3049779628158092632}
   m_Layer: 9
   m_Name: Claquettes
   m_TagString: Claquettes
@@ -219,3 +220,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovingToPlayer: 0
   _moveSpeed: 15
+--- !u!114 &-3049779628158092632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498191410095236307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 077fb7772575be74d94ae372eb35e06d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
