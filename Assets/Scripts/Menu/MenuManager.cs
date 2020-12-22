@@ -17,6 +17,10 @@ public class MenuManager : MonoBehaviour
     private GameObject loseUI;
     [SerializeField]
     private TMP_Text resumeCountdownText;
+    [SerializeField]
+    private TMP_Text scoreText;
+    [SerializeField]
+    private TMP_Text diamondText;
 
     private GameManager gameManager;
 
@@ -26,6 +30,10 @@ public class MenuManager : MonoBehaviour
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnMainMenu;
         GameEvents.current.onPauseButtonTrigger += OnPause;
+    }
+
+    private void Start() {
+        DisplayScore();
     }
 
     private void OnDestroy() {
@@ -76,6 +84,13 @@ public class MenuManager : MonoBehaviour
         GameEvents.current.ResumeGame();
     }
 
+    private void DisplayScore() {
+        PlayerData currentData = SaveSystem.LoadData();
+
+        scoreText.text = "BestScore : " + currentData.bestScore.ToString();
+        diamondText.text = "Disques diamants : " + currentData.nbDiamDiscs.ToString();
+    }
+
     public void MainMenuToInGame() {
         ChangeUI(mainMenuUI, inGameUI);
     }
@@ -90,6 +105,7 @@ public class MenuManager : MonoBehaviour
 
     public void LoseToMainMenu() {
         ChangeUI(loseUI, mainMenuUI);
+        DisplayScore();
     }
 
     public void InGameToPause() {
