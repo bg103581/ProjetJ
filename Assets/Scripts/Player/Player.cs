@@ -5,12 +5,14 @@ using DG.Tweening;
 
 public class Player : MonoBehaviour
 {
+    #region Variables
     private GameManager gameManager;
     private CameraMovement cameraMovement;
     private Rigidbody rb;
     private Cop cop;
     private SpawnAlien spawnAlien;
     private ItemManager itemManager;
+    private JulAnim julAnim;
 
     [HideInInspector]
     public Lane lane = Lane.CENTER;
@@ -44,23 +46,24 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float fallMultiplier;
 
-    [SerializeField]
-    private Animator julAnimator;
-
     [HideInInspector]
     public bool isGrounded = true;
     private bool isDodgeStreak = false;
     private bool startDodgeStreakTimer = false;
     private bool isCopFollowed = false;
-    private bool startCopFollowTimer = false;
-    private bool isClaquettes = false;
+    [HideInInspector]
+    public bool startCopFollowTimer = false;
+    [HideInInspector]
+    public bool isClaquettes = false;
     private bool startClaquettesTimer = false;
     [HideInInspector]
     public bool isPochon = false;
     private bool startPochonTimer = false;
-    private bool isTwingo = false;
+    [HideInInspector]
+    public bool isTwingo = false;
     private bool startTwingoTimer = false;
-    private bool isTmax = false;
+    [HideInInspector]
+    public bool isTmax = false;
     private bool startTmaxTimer = false;
     private bool isY = false;
     private bool startYTimer = false;
@@ -108,7 +111,9 @@ public class Player : MonoBehaviour
     private float ovniDuration;
     [SerializeField]
     private float ovniSpeed;
+    #endregion
 
+    #region MonoBehaviour
     private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
         rb = GetComponent<Rigidbody>();
@@ -116,6 +121,10 @@ public class Player : MonoBehaviour
         cop = FindObjectOfType<Cop>();
         spawnAlien = FindObjectOfType<SpawnAlien>();
         itemManager = FindObjectOfType<ItemManager>();
+        julAnim = FindObjectOfType<JulAnim>();
+
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
     }
 
     private void Update() {
@@ -136,6 +145,41 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+    }
+    #endregion
+
+    #region Methods
+    private void OnReplay() {
+        transform.position = centerPos.position;
+        //julanimator settrigger pour renvoyer au state init
+        lane = Lane.CENTER;
+
+        isGrounded = true;
+        isDodgeStreak = false;
+        startDodgeStreakTimer = false;
+        isCopFollowed = false;
+        startCopFollowTimer = false;
+        isClaquettes = false;
+        startClaquettesTimer = false;
+        isPochon = false;
+        startPochonTimer = false;
+        isTwingo = false;
+        startTwingoTimer = false;
+        isTmax = false;
+        startTmaxTimer = false;
+        isY = false;
+        startYTimer = false;
+        isTmaxFlying = false;
+        isOvni = false;
+        startOvniTimer = false;
+        isStrafing = false;
+
+        ActivateLook(jul);
+    }
+
     public void MoveToLeft() {
         if (lane == Lane.RIGHT) {
             lane = Lane.CENTER;
@@ -144,7 +188,7 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
-                julAnimator.SetTrigger("strafeTrigger");
+                julAnim.Strafe();
                 cop.Strafe();
             }
         }
@@ -155,7 +199,7 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToLeftPos(moveTime);
 
             if (isGrounded) {
-                julAnimator.SetTrigger("strafeTrigger");
+                julAnim.Strafe();
                 cop.Strafe();
             }
         }
@@ -169,7 +213,7 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
-                julAnimator.SetTrigger("strafeTrigger");
+                julAnim.Strafe();
                 cop.Strafe();
             }
         }
@@ -180,7 +224,7 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToRightPos(moveTime);
 
             if (isGrounded) {
-                julAnimator.SetTrigger("strafeTrigger");
+                julAnim.Strafe();
                 cop.Strafe();
             }
         }
@@ -223,8 +267,8 @@ public class Player : MonoBehaviour
     public void Jump() {
         if (isGrounded) {
             if (isTmax) {
-                startYTimer = true;
                 if (!isY) {
+                    startYTimer = true;
                     Time.timeScale += ySpeed;
                     tmax.transform.DOLocalRotate(new Vector3(-55f, 0f, 0f), 0.2f);
                 }
@@ -232,7 +276,7 @@ public class Player : MonoBehaviour
             else if (isTwingo) return;
             else {
                 isGrounded = false;
-                julAnimator.SetTrigger("jumpTrigger");
+                julAnim.Jump();
                 cop.Jump();
 
                 //Sequence sequence = DOTween.Sequence();
@@ -252,11 +296,11 @@ public class Player : MonoBehaviour
     }
 
     public void HitByObstacle(Collider col) {
-        Debug.Log("hit by obstacle");
+        Obstacles obstacle = col.gameObject.GetComponent<Obstacles>();
 
         if (col.tag == "Camionette") {
             Time.timeScale = 1;
-            if (isStrafing) {
+            if (isStrafing && lane != obstacle.currentLane) {
                 if (isCopFollowed) {
                     gameManager.Lose();
                 }
@@ -308,7 +352,7 @@ public class Player : MonoBehaviour
                 }
             }
             else if (col.tag == "Voiture") {
-                if (isStrafing) {
+                if (isStrafing && lane != obstacle.currentLane) {
                     if (isCopFollowed) {
                         gameManager.Lose();
                     }
@@ -323,7 +367,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        Destroy(col.gameObject);    //to change in the future because of breaking animation
+        Destroy(col.gameObject);
     }
 
     public void HitByBonus(string tag) {
@@ -504,6 +548,7 @@ public class Player : MonoBehaviour
             if (tmaxTimer <= 0f) {
                 if (!isOvni) {
                     isTmax = false;
+                    yTimer = 0f;
                     ActivateLook(jul);
 
                     Time.timeScale -= tmaxSpeed;
@@ -564,4 +609,9 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void StartAnimation() {
+        julAnim.StartAnimation();
+    }
+    #endregion
 }

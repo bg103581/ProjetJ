@@ -10,36 +10,55 @@ public class SpawnObjRandPos : GeneratePrefabs
     private Transform leftSpawnPosition;
     [SerializeField]
     private float spawnFreq;
-    
-    void Start()
-    {
+
+    private GameManager gameManager;
+
+    private void Awake() {
+        gameManager = FindObjectOfType<GameManager>();
+
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+    }
+
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+    }
+
+    private void OnReplay() {
+        CancelInvoke();
+    }
+
+    public void StartSpawnLateralObjects() {
         InvokeRepeating("SpawnObj", spawnFreq, spawnFreq);
     }
 
     private void SpawnObj() {
-        Transform spawnPos;
-        bool isRight;
-        int rand = Random.Range(0, 2);
+        if (gameManager.gameState == GameState.PLAYING) {
+            Transform spawnPos;
+            bool isRight;
+            int rand = Random.Range(0, 2);
 
-        if (rand == 0) {
-            spawnPos = rightSpawnPosition;
-            isRight = true;
-        }
-        else {
-            spawnPos = leftSpawnPosition;
-            isRight = false;
-        }
+            if (rand == 0) {
+                spawnPos = rightSpawnPosition;
+                isRight = true;
+            }
+            else {
+                spawnPos = leftSpawnPosition;
+                isRight = false;
+            }
 
-        Quaternion rot;
-        if (isRight) {
-            rot = Quaternion.Euler(new Vector3(spawnPos.rotation.x, spawnPos.rotation.y + 180, spawnPos.rotation.z));
-        }
-        else {
-            rot = spawnPos.rotation;
-        }
+            Quaternion rot;
+            if (isRight) {
+                rot = Quaternion.Euler(new Vector3(spawnPos.rotation.x, spawnPos.rotation.y + 180, spawnPos.rotation.z));
+            }
+            else {
+                rot = spawnPos.rotation;
+            }
 
-        GameObject lateralObj = Instantiate(GetRandomPrefab(), spawnPos.position, rot, transform);
-        lateralObj.GetComponent<LateralMovement>().isStartingRight = isRight;
+            GameObject lateralObj = Instantiate(GetRandomPrefab(), spawnPos.position, rot, transform);
+            lateralObj.GetComponent<LateralMovement>().isStartingRight = isRight;
+        }
     }
 
     //private Transform GetRandomSpawnPos() {

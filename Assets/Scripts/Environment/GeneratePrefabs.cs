@@ -21,13 +21,26 @@ public class GeneratePrefabs : MonoBehaviour
             return null;
         }
 
-        int rand = Random.Range(1, 101);
+        //sum of spawnrates = max range random
+        int maxRange = Sum(spawnRates) + 1;
+        int rand = Random.Range(1, maxRange);
         int rateCount = 0;
         for (int i = 0; i < spawnRates.Length; i++) {
             rateCount += spawnRates[i];
             if (rand <= rateCount)
                 return _prefabs[i];
         }
+
+        Debug.Log("rand maxRange : " + maxRange);
         return null;
+    }
+
+    private int Sum(int[] spawnRates) {
+        int sum = 0;
+        for (int i = 0; i < spawnRates.Length; i++) {
+            sum += spawnRates[i];
+        }
+
+        return sum;
     }
 }

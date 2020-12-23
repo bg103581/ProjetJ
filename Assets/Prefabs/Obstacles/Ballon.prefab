@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4626361100938010070}
   - component: {fileID: 184880163042237134}
   - component: {fileID: 5364531360684396806}
+  - component: {fileID: 5348266852417146070}
   m_Layer: 8
   m_Name: Ballon
   m_TagString: Rat
@@ -124,6 +125,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.57
   m_Center: {x: 0.000000059604645, y: -0.46, z: -0.00000008940697}
+--- !u!114 &5348266852417146070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4102734338707102546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9bcdbdd0d170f34eb064be3600114e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLane: 0
 --- !u!1001 &6173748592811501415
 PrefabInstance:
   m_ObjectHideFlags: 0
