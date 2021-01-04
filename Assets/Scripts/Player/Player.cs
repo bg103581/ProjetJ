@@ -384,6 +384,7 @@ public class Player : MonoBehaviour
             case "Twingo":
                 if (isClaquettes) claquettesTimer = 0f;
 
+                copFollowTimer = 0f;
                 startTwingoTimer = true;
                 ActivateLook(twingo);
 
@@ -393,6 +394,7 @@ public class Player : MonoBehaviour
             case "Tmax":
                 if (isClaquettes) claquettesTimer = 0f;
 
+                copFollowTimer = 0f;
                 startTmaxTimer = true;
                 ActivateLook(tmax);
 
@@ -410,6 +412,7 @@ public class Player : MonoBehaviour
     }
 
     public void StartOvni() {
+        copFollowTimer = 0f;
         startOvniTimer = true;
         ActivateLook(ovni);
     }
