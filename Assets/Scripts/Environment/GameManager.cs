@@ -223,7 +223,7 @@ public class GameManager : MonoBehaviour
         if (player.isPochon || isPochonInGame) {
             bonusSpawnRates.ChangePochonSpawnRate(0);
         }
-        if (player.isClaquettes || isClaquetteInGame) {
+        if (player.isClaquettes || isClaquetteInGame || player.isTwingo || isTwingoInGame || player.isTmax || isTmaxInGame) {
             bonusSpawnRates.ChangeClaquetteSpawnRate(0);
         }
         if (player.isTwingo || isTwingoInGame || player.isTmax || isTmaxInGame) {   

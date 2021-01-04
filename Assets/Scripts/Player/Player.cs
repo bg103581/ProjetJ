@@ -382,6 +382,8 @@ public class Player : MonoBehaviour
                 //    Time.timeScale += pochonSpeed;
                 break;
             case "Twingo":
+                if (isClaquettes) claquettesTimer = 0f;
+
                 startTwingoTimer = true;
                 ActivateLook(twingo);
 
@@ -389,6 +391,8 @@ public class Player : MonoBehaviour
                     Time.timeScale += twingoSpeed;
                 break;
             case "Tmax":
+                if (isClaquettes) claquettesTimer = 0f;
+
                 startTmaxTimer = true;
                 ActivateLook(tmax);
 

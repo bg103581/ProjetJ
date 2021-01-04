@@ -152,10 +152,15 @@ public class GenerateDiscs : MonoBehaviour
     private GameObject ChosePattern() { //pattern for only discs
         int rand= Random.Range(0, 2);
 
-        if (rand == 0)
-            return jumpPatternPrefab;
-        else
+        if (player.isTmax || player.isTwingo) {
             return linePatternPrefab;
+        }
+        else {
+            if (rand == 0)
+                return jumpPatternPrefab;
+            else
+                return linePatternPrefab;
+        }
     }
 
     private void CreateDiscPattern(GameObject patternPrefab, bool isPlatinum) { //apply discs on pattern
