@@ -219,19 +219,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void BonusUpdate() {
-        //if player.isPochon || pochon is in the game
-        //  bonusSpawnRates.ChangePochonSpawnRate(0);
+    private void BonusUpdate() {    //can't spawn same bonuses
         if (player.isPochon || isPochonInGame) {
             bonusSpawnRates.ChangePochonSpawnRate(0);
         }
         if (player.isClaquettes || isClaquetteInGame) {
             bonusSpawnRates.ChangeClaquetteSpawnRate(0);
         }
-        if (player.isTwingo || isTwingoInGame) {
+        if (player.isTwingo || isTwingoInGame || player.isTmax || isTmaxInGame) {   
             bonusSpawnRates.ChangeTwingoSpawnRate(0);
-        }
-        if (player.isTmax || isTmaxInGame) {
             bonusSpawnRates.ChangeTmaxSpawnRate(0);
         }
     }
