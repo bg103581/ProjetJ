@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using System.Reflection;
 using DG.Tweening;
 
-public enum GameState { WAITING, ANIMATION_START, PLAYING, FINISHED }
+public enum GameState { WAITING, ANIMATION_START, PLAYING, FINISHED, PAUSE }
 
 public class GameManager : MonoBehaviour
 {
@@ -150,11 +150,13 @@ public class GameManager : MonoBehaviour
     }
 
     private void OnPause() {
+        gameState = GameState.PAUSE;
         currentTimeScale = Time.timeScale;
         Time.timeScale = 0;
     }
 
     private void OnResume() {
+        gameState = GameState.PLAYING;
         Time.timeScale = currentTimeScale;
     }
 
@@ -219,19 +221,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void BonusUpdate() {
-        //if player.isPochon || pochon is in the game
-        //  bonusSpawnRates.ChangePochonSpawnRate(0);
+    private void BonusUpdate() {    //can't spawn same bonuses
         if (player.isPochon || isPochonInGame) {
             bonusSpawnRates.ChangePochonSpawnRate(0);
         }
-        if (player.isClaquettes || isClaquetteInGame) {
+        if (player.isClaquettes || isClaquetteInGame || player.isTwingo || isTwingoInGame || player.isTmax || isTmaxInGame) {
             bonusSpawnRates.ChangeClaquetteSpawnRate(0);
         }
-        if (player.isTwingo || isTwingoInGame) {
+        if (player.isTwingo || isTwingoInGame || player.isTmax || isTmaxInGame) {   
             bonusSpawnRates.ChangeTwingoSpawnRate(0);
-        }
-        if (player.isTmax || isTmaxInGame) {
             bonusSpawnRates.ChangeTmaxSpawnRate(0);
         }
     }
