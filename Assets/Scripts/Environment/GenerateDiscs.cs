@@ -32,11 +32,12 @@ public class GenerateDiscs : MonoBehaviour
     private int nbLines;
 
     private Player player;
-
+    private GameManager gameManager;
 
     private void Awake() {
         //SetUpPatternTransforms();
         player = FindObjectOfType<Player>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void SpawnDiscs(Lane lane, GameObject obstacle = null) {
@@ -93,10 +94,15 @@ public class GenerateDiscs : MonoBehaviour
                 }
             }
             else {
-                if (rand == 0)
-                    return jumpPatternPrefab;
-                else
+                if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) {
                     return rightPatternPrefab;
+                }
+                else {
+                    if (rand == 0)
+                        return jumpPatternPrefab;
+                    else
+                        return rightPatternPrefab;
+                }
             }
         }
         else if (lane == Lane.CENTER) {
@@ -119,12 +125,21 @@ public class GenerateDiscs : MonoBehaviour
                 }
             }
             else {
-                if (rand == 0)
-                    return leftPatternPrefab;
-                else if (rand == 1)
-                    return jumpPatternPrefab;
-                else
-                    return rightPatternPrefab;
+                if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) {
+                    rand = Random.Range(0, 2);
+                    if (rand == 0)
+                        return leftPatternPrefab;
+                    else
+                        return rightPatternPrefab;
+                }
+                else {
+                    if (rand == 0)
+                        return leftPatternPrefab;
+                    else if (rand == 1)
+                        return jumpPatternPrefab;
+                    else
+                        return rightPatternPrefab;
+                }
             }
         }
         else {
@@ -141,10 +156,15 @@ public class GenerateDiscs : MonoBehaviour
                 }
             }
             else {
-                if (rand == 0)
-                    return jumpPatternPrefab;
-                else
+                if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) {
                     return leftPatternPrefab;
+                }
+                else {
+                    if (rand == 0)
+                        return jumpPatternPrefab;
+                    else
+                        return leftPatternPrefab;
+                }
             }
         }
     }
@@ -152,7 +172,7 @@ public class GenerateDiscs : MonoBehaviour
     private GameObject ChosePattern() { //pattern for only discs
         int rand= Random.Range(0, 2);
 
-        if (player.isTmax || player.isTwingo) {
+        if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) {
             return linePatternPrefab;
         }
         else {

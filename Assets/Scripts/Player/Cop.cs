@@ -6,6 +6,7 @@ public class Cop : MonoBehaviour
     
     private bool isFollowingPlayer;
     private CopStartAnimMovement copStartAnimMovement;
+    private GameManager gameManager;
 
     [SerializeField]
     private Animator anim;
@@ -19,12 +20,14 @@ public class Cop : MonoBehaviour
 
     private void Awake() {
         copStartAnimMovement = GetComponent<CopStartAnimMovement>();
+        gameManager = FindObjectOfType<GameManager>();
+
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
     }
 
     private void Update() {
-        if (isFollowingPlayer) {
+        if (isFollowingPlayer && gameManager.gameState != GameState.PAUSE) {
             transform.DOMove(copCatchUpPos.position, catchUpMoveTime);
         }
     }
