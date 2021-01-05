@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using System.Reflection;
 using DG.Tweening;
 
-public enum GameState { WAITING, ANIMATION_START, PLAYING, FINISHED }
+public enum GameState { WAITING, ANIMATION_START, PLAYING, FINISHED, PAUSE }
 
 public class GameManager : MonoBehaviour
 {
@@ -150,11 +150,13 @@ public class GameManager : MonoBehaviour
     }
 
     private void OnPause() {
+        gameState = GameState.PAUSE;
         currentTimeScale = Time.timeScale;
         Time.timeScale = 0;
     }
 
     private void OnResume() {
+        gameState = GameState.PLAYING;
         Time.timeScale = currentTimeScale;
     }
 

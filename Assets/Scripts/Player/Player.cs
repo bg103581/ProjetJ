@@ -461,7 +461,7 @@ public class Player : MonoBehaviour
                 isDodgeStreak = false;
             }
             else {
-                dodgeStreakTimer -= Time.unscaledDeltaTime;
+                if (gameManager.gameState != GameState.PAUSE) dodgeStreakTimer -= Time.unscaledDeltaTime;
             }
         }
     }
@@ -480,7 +480,7 @@ public class Player : MonoBehaviour
                 cop.GoBackToInitialPos();
             }
             else {
-                copFollowTimer -= Time.unscaledDeltaTime;
+                if (gameManager.gameState != GameState.PAUSE) copFollowTimer -= Time.unscaledDeltaTime;
             }
         }
     }
@@ -498,7 +498,7 @@ public class Player : MonoBehaviour
                 isClaquettes = false;
             }
             else {
-                claquettesTimer -= Time.unscaledDeltaTime;
+                if (gameManager.gameState != GameState.PAUSE) claquettesTimer -= Time.unscaledDeltaTime;
             }
         }
     }
@@ -517,7 +517,7 @@ public class Player : MonoBehaviour
                 //Time.timeScale -= pochonSpeed;
             }
             else {
-                pochonTimer -= Time.unscaledDeltaTime;
+                if (gameManager.gameState != GameState.PAUSE) pochonTimer -= Time.unscaledDeltaTime;
             }
         }
     }
@@ -538,7 +538,7 @@ public class Player : MonoBehaviour
                 Time.timeScale -= twingoSpeed;
             }
             else {
-                twingoTimer -= Time.unscaledDeltaTime;
+                if (gameManager.gameState != GameState.PAUSE) twingoTimer -= Time.unscaledDeltaTime;
             }
         }
     }
@@ -562,7 +562,7 @@ public class Player : MonoBehaviour
                 }
             }
             else {
-                tmaxTimer -= Time.unscaledDeltaTime;
+                if (gameManager.gameState != GameState.PAUSE) tmaxTimer -= Time.unscaledDeltaTime;
             }
         }
     }
@@ -582,7 +582,7 @@ public class Player : MonoBehaviour
                 Time.timeScale -= ySpeed;
             }
             else {
-                yTimer -= Time.unscaledDeltaTime;
+                if (gameManager.gameState != GameState.PAUSE) yTimer -= Time.unscaledDeltaTime;
             }
         }
     }
@@ -612,7 +612,7 @@ public class Player : MonoBehaviour
                 EndFly();
             }
             else {
-                ovniTimer -= Time.unscaledDeltaTime;
+                if (gameManager.gameState != GameState.PAUSE) ovniTimer -= Time.unscaledDeltaTime;
             }
         }
     }
