@@ -24,6 +24,10 @@ public class Cop : MonoBehaviour
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+
+        transform.SetParent(null);
+        copCatchUpPos.SetParent(null);
+        initialPos.SetParent(null);
     }
 
     private void Update() {
@@ -50,6 +54,7 @@ public class Cop : MonoBehaviour
 
     public void GoBackToInitialPos() {
         isFollowingPlayer = false;
+        transform.DOKill();
         transform.DOMove(initialPos.position, backToInitMoveTime);
     }
 

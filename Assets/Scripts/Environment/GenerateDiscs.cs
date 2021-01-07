@@ -101,7 +101,8 @@ public class GenerateDiscs : MonoBehaviour
                 }
                 else {
                     if (rand == 0)
-                        return jumpPatternPrefab;
+                        if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                        else return jumpPatternPrefab;
                     else
                         return rightPatternPrefab;
                 }
@@ -138,7 +139,8 @@ public class GenerateDiscs : MonoBehaviour
                     if (rand == 0)
                         return leftPatternPrefab;
                     else if (rand == 1)
-                        return jumpPatternPrefab;
+                        if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                        else return jumpPatternPrefab;
                     else
                         return rightPatternPrefab;
                 }
@@ -163,7 +165,8 @@ public class GenerateDiscs : MonoBehaviour
                 }
                 else {
                     if (rand == 0)
-                        return jumpPatternPrefab;
+                        if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                        else return jumpPatternPrefab;
                     else
                         return leftPatternPrefab;
                 }

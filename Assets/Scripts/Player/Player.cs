@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
     private Transform topPos;
 
     [SerializeField]
+    private Transform copCatchupPos;
+
+    [SerializeField]
     private GameObject jul;
     [SerializeField]
     private GameObject twingo;
@@ -185,6 +188,7 @@ public class Player : MonoBehaviour
             lane = Lane.CENTER;
             isStrafing = true;
             transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            copCatchupPos.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
@@ -196,6 +200,7 @@ public class Player : MonoBehaviour
             lane = Lane.LEFT;
             isStrafing = true;
             transform.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            copCatchupPos.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToLeftPos(moveTime);
 
             if (isGrounded) {
@@ -210,6 +215,7 @@ public class Player : MonoBehaviour
             lane = Lane.CENTER;
             isStrafing = true;
             transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            copCatchupPos.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
@@ -221,6 +227,7 @@ public class Player : MonoBehaviour
             lane = Lane.RIGHT;
             isStrafing = true;
             transform.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            copCatchupPos.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToRightPos(moveTime);
 
             if (isGrounded) {
@@ -279,6 +286,9 @@ public class Player : MonoBehaviour
                 julAnim.Jump();
                 cop.Jump();
 
+                float dur = 0.9f;
+                copCatchupPos.DOMoveY(3f, dur / 2f).SetEase(Ease.Linear).OnComplete(() => copCatchupPos.DOMoveY(0, dur / 2f).SetEase(Ease.Linear));
+
                 //Sequence sequence = DOTween.Sequence();
 
                 //sequence.Append(rb.DOMoveY(transform.position.y + 3, jumpTime/2).SetEase(Ease.OutSine));
@@ -287,10 +297,12 @@ public class Player : MonoBehaviour
 
                 //sequence.Play();
 
-                if (isClaquettes)
+                if (isClaquettes) {
                     rb.velocity = Vector3.up * claquettesJumpVelocity;
-                else
+                }
+                else {
                     rb.velocity = Vector3.up * jumpVelocity;
+                }
             }
         }
     }

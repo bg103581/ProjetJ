@@ -3241,8 +3241,19 @@ PrefabInstance:
       propertyPath: claquettesDuration
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
+        type: 3}
+      propertyPath: copCatchupPos
+      value: 
+      objectReference: {fileID: 4304479179029198476}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de7855a76117fc24cb854c1b7cfea791, type: 3}
+--- !u!4 &4304479179029198476 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 259768575, guid: de7855a76117fc24cb854c1b7cfea791,
+    type: 3}
+  m_PrefabInstance: {fileID: 4304479178983634547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6991278363847527860
 PrefabInstance:
   m_ObjectHideFlags: 0
