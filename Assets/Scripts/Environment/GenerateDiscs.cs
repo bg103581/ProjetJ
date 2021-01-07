@@ -15,6 +15,8 @@ public class GenerateDiscs : MonoBehaviour
     [SerializeField]
     private GameObject linePatternPrefab;
     [SerializeField]
+    private GameObject claquettesJumpPatternPrefab;
+    [SerializeField]
     private GameObject goldenDiscPrefab;
     [SerializeField]
     private GameObject platinumDiscPrefab;
@@ -83,9 +85,9 @@ public class GenerateDiscs : MonoBehaviour
         if (lane == Lane.LEFT) {
             rand = Random.Range(0, 2);
             if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
-                if (player.isClaquettes) {  //can spawn jump pattern if player isclaquettes and it's a vehicle
+                if (player.isClaquettes || gameManager.isClaquetteInGame) {  //can spawn jump pattern if player isclaquettes and it's a vehicle
                     if (rand == 0)
-                        return jumpPatternPrefab;
+                        return claquettesJumpPatternPrefab;
                     else
                         return rightPatternPrefab;
                 }
@@ -108,11 +110,11 @@ public class GenerateDiscs : MonoBehaviour
         else if (lane == Lane.CENTER) {
             rand = Random.Range(0, 3);
             if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
-                if (player.isClaquettes) {
+                if (player.isClaquettes || gameManager.isClaquetteInGame) {
                     if (rand == 0)
                         return leftPatternPrefab;
                     else if (rand == 1)
-                        return jumpPatternPrefab;
+                        return claquettesJumpPatternPrefab;
                     else
                         return rightPatternPrefab;
                 }
@@ -145,9 +147,9 @@ public class GenerateDiscs : MonoBehaviour
         else {
             rand = Random.Range(0, 2);
             if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
-                if (player.isClaquettes) {  //can spawn jump pattern if player isclaquettes and it's a vehicle
+                if (player.isClaquettes || gameManager.isClaquetteInGame) {  //can spawn jump pattern if player isclaquettes and it's a vehicle
                     if (rand == 0)
-                        return jumpPatternPrefab;
+                        return claquettesJumpPatternPrefab;
                     else
                         return leftPatternPrefab;
                 }
@@ -177,7 +179,8 @@ public class GenerateDiscs : MonoBehaviour
         }
         else {
             if (rand == 0)
-                return jumpPatternPrefab;
+                if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                else return jumpPatternPrefab;
             else
                 return linePatternPrefab;
         }

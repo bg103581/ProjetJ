@@ -362,14 +362,16 @@ MonoBehaviour:
   jumpVelocity: 12
   jumpMultiplier: 3
   dodgeStreakTime: 1
-  fallMultiplier: 5
-  julAnimator: {fileID: 4304479178983634549}
+  fallMultiplier: 3
   isGrounded: 1
   startCopFollowTimer: 0
+  isClaquettes: 0
   isPochon: 0
+  isTwingo: 0
+  isTmax: 0
   isTmaxFlying: 0
   isOvni: 0
-  claquettesJumpVelocity: 20
+  claquettesJumpVelocity: 17
   claquettesDuration: 10
   pochonDuration: 10
   twingoSpeed: 0.5
