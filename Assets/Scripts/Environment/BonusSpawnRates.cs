@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BonusSpawnRates : MonoBehaviour
 {
+    [HideInInspector]
     public int[] spawnRates;
+    public int sumSpawnRates = 0;
 
     public void ChangeSpawnRates(int index, int value) {
         if (index >= spawnRates.Length || index < 0) {
@@ -13,6 +15,11 @@ public class BonusSpawnRates : MonoBehaviour
         }
 
         spawnRates[index] = value;
+
+        sumSpawnRates = 0;
+        foreach (int rate in spawnRates) {
+            sumSpawnRates += rate;
+        }
     }
 
     public void ChangeClaquetteSpawnRate(int value) {

@@ -30,8 +30,7 @@ public class GeneratePrefabs : MonoBehaviour
             if (rand <= rateCount)
                 return _prefabs[i];
         }
-
-        Debug.Log("rand maxRange : " + maxRange);
+        
         return null;
     }
 

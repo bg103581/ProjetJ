@@ -11,6 +11,7 @@ public class ItemManager : MonoBehaviour
     private GenerateItems generateBonuses;
     private GenerateDiscs generateDiscs;
     private GameManager gameManager;
+    private BonusSpawnRates bonusSpawnRates;
 
     [SerializeField]
     private float timePeriod;
@@ -30,6 +31,8 @@ public class ItemManager : MonoBehaviour
     private int currentBonusRate = 0;
 
     private void Awake() {
+        bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
+
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
     }
@@ -80,7 +83,8 @@ public class ItemManager : MonoBehaviour
                     generateObstacles.SpawnItem(lane);
                     break;
                 case ItemType.BONUS:
-                    generateBonuses.SpawnItem(lane);
+                    if (bonusSpawnRates.sumSpawnRates > 0) generateBonuses.SpawnItem(lane);
+                    else generateObstacles.SpawnItem(lane);
                     break;
                 default:
                     break;

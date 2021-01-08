@@ -2721,7 +2721,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4304479178983634547}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1652525773
+--- !u!65 &1652525777
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3262,6 +3262,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: bonusRate
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6991278363218564865, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: m_Name
