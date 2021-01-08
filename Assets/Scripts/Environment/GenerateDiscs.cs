@@ -9,9 +9,13 @@ public class GenerateDiscs : MonoBehaviour
     [SerializeField]
     private GameObject leftPatternPrefab;
     [SerializeField]
+    private GameObject leftTurnPatternPrefab;
+    [SerializeField]
     private GameObject jumpPatternPrefab;
     [SerializeField]
     private GameObject rightPatternPrefab;
+    [SerializeField]
+    private GameObject rightTurnPatternPrefab;
     [SerializeField]
     private GameObject linePatternPrefab;
     [SerializeField]
@@ -89,22 +93,21 @@ public class GenerateDiscs : MonoBehaviour
                     if (rand == 0)
                         return claquettesJumpPatternPrefab;
                     else
-                        return rightPatternPrefab;
+                        return RandSidePatterns(false);
                 }
-                else {
-                    return rightPatternPrefab;
-                }
+                else
+                    return RandSidePatterns(false);
             }
             else {
-                if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) {
-                    return rightPatternPrefab;
-                }
+                if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame)
+                    return RandSidePatterns(false);
                 else {
-                    if (rand == 0)
+                    if (rand == 0) {
                         if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
                         else return jumpPatternPrefab;
-                    else
-                        return rightPatternPrefab;
+                    }
+                    else 
+                        return RandSidePatterns(false);
                 }
             }
         }
@@ -113,36 +116,36 @@ public class GenerateDiscs : MonoBehaviour
             if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
                 if (player.isClaquettes || gameManager.isClaquetteInGame) {
                     if (rand == 0)
-                        return leftPatternPrefab;
+                        return RandSidePatterns(true);
                     else if (rand == 1)
                         return claquettesJumpPatternPrefab;
-                    else
-                        return rightPatternPrefab;
+                    else 
+                        return RandSidePatterns(false);
                 }
                 else {
                     rand = Random.Range(0, 2);
                     if (rand == 0)
-                        return leftPatternPrefab;
+                        return RandSidePatterns(true);
                     else
-                        return rightPatternPrefab;
+                        return RandSidePatterns(false);
                 }
             }
             else {
                 if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) {
                     rand = Random.Range(0, 2);
                     if (rand == 0)
-                        return leftPatternPrefab;
+                        return RandSidePatterns(true);
                     else
-                        return rightPatternPrefab;
+                        return RandSidePatterns(false);
                 }
                 else {
                     if (rand == 0)
-                        return leftPatternPrefab;
+                        return RandSidePatterns(true);
                     else if (rand == 1)
                         if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
                         else return jumpPatternPrefab;
                     else
-                        return rightPatternPrefab;
+                        return RandSidePatterns(false);
                 }
             }
         }
@@ -153,29 +156,29 @@ public class GenerateDiscs : MonoBehaviour
                     if (rand == 0)
                         return claquettesJumpPatternPrefab;
                     else
-                        return leftPatternPrefab;
+                        return RandSidePatterns(true);
                 }
                 else {
-                    return leftPatternPrefab;
+                    return RandSidePatterns(true);
                 }
             }
             else {
                 if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) {
-                    return leftPatternPrefab;
+                    return RandSidePatterns(true);
                 }
                 else {
                     if (rand == 0)
                         if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
                         else return jumpPatternPrefab;
                     else
-                        return leftPatternPrefab;
+                        return RandSidePatterns(true);
                 }
             }
         }
     }
 
     private GameObject ChosePattern() { //pattern for only discs
-        int rand= Random.Range(0, 2);
+        int rand = Random.Range(0, 2);
 
         if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) {
             return linePatternPrefab;
@@ -186,6 +189,19 @@ public class GenerateDiscs : MonoBehaviour
                 else return jumpPatternPrefab;
             else
                 return linePatternPrefab;
+        }
+    }
+
+    private GameObject RandSidePatterns(bool isLeft) {
+        int rand = Random.Range(0, 2);
+
+        if (isLeft) {
+            if (rand == 0) return leftPatternPrefab;
+            else return leftTurnPatternPrefab;
+        }
+        else {
+            if (rand == 0) return rightPatternPrefab;
+            else return rightTurnPatternPrefab;
         }
     }
 
