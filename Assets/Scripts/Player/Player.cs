@@ -208,6 +208,18 @@ public class Player : MonoBehaviour
                 cop.Strafe();
             }
         }
+        else {
+            if (!(isTwingo || isTmax || isOvni)) {
+                Time.timeScale = 1f;        //make function to manage slow when hitting obstacle
+                if (isCopFollowed) {
+                    gameManager.Lose();
+                }
+                else {
+                    startCopFollowTimer = true;
+                    cop.CatchUpToPlayer();
+                }
+            }
+        }
     }
 
     public void MoveToRight() {
@@ -233,6 +245,16 @@ public class Player : MonoBehaviour
             if (isGrounded) {
                 julAnim.Strafe();
                 cop.Strafe();
+            }
+        }
+        else {
+            Time.timeScale = 1f;        //make function to manage slow when hitting obstacle
+            if (isCopFollowed) {
+                gameManager.Lose();
+            }
+            else {
+                startCopFollowTimer = true;
+                cop.CatchUpToPlayer();
             }
         }
     }

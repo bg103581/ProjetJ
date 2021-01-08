@@ -8,6 +8,8 @@ public class Cop : MonoBehaviour
     private CopStartAnimMovement copStartAnimMovement;
     private GameManager gameManager;
 
+    private Vector3 initCopCatchUpPos;
+
     [SerializeField]
     private Animator anim;
     [SerializeField]
@@ -24,6 +26,8 @@ public class Cop : MonoBehaviour
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+
+        initCopCatchUpPos = copCatchUpPos.position;
 
         transform.SetParent(null);
         copCatchUpPos.SetParent(null);
@@ -42,6 +46,7 @@ public class Cop : MonoBehaviour
     }
 
     private void OnReplay() {
+        copCatchUpPos.position = initCopCatchUpPos;
         transform.position = initialPos.position;
         isFollowingPlayer = false;
         //settrigger anim to go back to init state
