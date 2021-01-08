@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     private SpawnAlien spawnAlien;
     private ItemManager itemManager;
     private JulAnim julAnim;
+    private CapsuleCollider julCollider;
+    private BoxCollider twingoOvniCollider;
 
     [HideInInspector]
     public Lane lane = Lane.CENTER;
@@ -125,6 +127,8 @@ public class Player : MonoBehaviour
         spawnAlien = FindObjectOfType<SpawnAlien>();
         itemManager = FindObjectOfType<ItemManager>();
         julAnim = FindObjectOfType<JulAnim>();
+        julCollider = GetComponent<CapsuleCollider>();
+        twingoOvniCollider = GetComponent<BoxCollider>();
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
@@ -181,6 +185,8 @@ public class Player : MonoBehaviour
         isStrafing = false;
 
         ActivateLook(jul);
+        twingoOvniCollider.enabled = false;
+        julCollider.enabled = true;
     }
 
     public void MoveToLeft() {
@@ -421,6 +427,8 @@ public class Player : MonoBehaviour
                 copFollowTimer = 0f;
                 startTwingoTimer = true;
                 ActivateLook(twingo);
+                twingoOvniCollider.enabled = true;
+                julCollider.enabled = false;
 
                 if (!isTwingo)
                     Time.timeScale += twingoSpeed;
@@ -449,6 +457,8 @@ public class Player : MonoBehaviour
         copFollowTimer = 0f;
         startOvniTimer = true;
         ActivateLook(ovni);
+        twingoOvniCollider.enabled = true;
+        julCollider.enabled = false;
     }
 
     public void HitByDisc(bool isGold) {
@@ -568,6 +578,8 @@ public class Player : MonoBehaviour
             if (twingoTimer <= 0f) {
                 isTwingo = false;
                 ActivateLook(jul);
+                twingoOvniCollider.enabled = false;
+                julCollider.enabled = true;
 
                 Time.timeScale -= twingoSpeed;
             }
@@ -640,6 +652,8 @@ public class Player : MonoBehaviour
             if (ovniTimer <= 0f) {
                 isOvni = false;
                 ActivateLook(jul);
+                twingoOvniCollider.enabled = false;
+                julCollider.enabled = true;
 
                 Time.timeScale -= ovniSpeed;
 
