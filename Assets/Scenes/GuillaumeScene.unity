@@ -3159,6 +3159,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 195015946, guid: de7855a76117fc24cb854c1b7cfea791, type: 3}
+      propertyPath: magnetRadius
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 195015946, guid: de7855a76117fc24cb854c1b7cfea791, type: 3}
+      propertyPath: magnetRadius.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 195015946, guid: de7855a76117fc24cb854c1b7cfea791, type: 3}
+      propertyPath: magnetRadius.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 195015946, guid: de7855a76117fc24cb854c1b7cfea791, type: 3}
+      propertyPath: magnetRadius.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 545195831, guid: de7855a76117fc24cb854c1b7cfea791, type: 3}
       propertyPath: m_Enabled
       value: 1

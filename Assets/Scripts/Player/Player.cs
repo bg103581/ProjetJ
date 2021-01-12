@@ -216,7 +216,6 @@ public class Player : MonoBehaviour
         }
         else {
             if (!(isTwingo || isTmax || isOvni)) {
-                Time.timeScale = 1f;        //make function to manage slow when hitting obstacle
                 if (isCopFollowed) {
                     gameManager.Lose();
                 }
@@ -254,7 +253,6 @@ public class Player : MonoBehaviour
             }
         }
         else {
-            Time.timeScale = 1f;        //make function to manage slow when hitting obstacle
             if (isCopFollowed) {
                 gameManager.Lose();
             }
@@ -339,7 +337,6 @@ public class Player : MonoBehaviour
         Obstacles obstacle = col.gameObject.GetComponent<Obstacles>();
 
         if (col.tag == "Camionette") {
-            Time.timeScale = 1;
             if (isStrafing && lane != obstacle.currentLane) {
                 if (isCopFollowed) {
                     gameManager.Lose();
@@ -360,7 +357,6 @@ public class Player : MonoBehaviour
                 // break them
             }
             else if (col.tag == "Voiture") {
-                Time.timeScale = 1;
                 gameManager.Lose();
             }
         }
@@ -375,13 +371,11 @@ public class Player : MonoBehaviour
                     // break them
                 }
                 else if (col.tag == "Voiture") {
-                    Time.timeScale = 1;
                     gameManager.Lose();
                 }
             }
         }
         else {
-            Time.timeScale = 1;
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {   //obstacles légers a pied
                 if (isCopFollowed) {
                     gameManager.Lose();

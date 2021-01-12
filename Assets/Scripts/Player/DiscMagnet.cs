@@ -11,14 +11,16 @@ public class DiscMagnet : MonoBehaviour
     public float moveDuration;
     [SerializeField]
     private float magnetRadius;
+    private Vector3 magnetSize;
 
     private void Awake() {
         player = transform.parent.GetComponent<Player>();
+        magnetSize = new Vector3(magnetRadius, magnetRadius, 2f);
     }
 
     private void Update() {
         if (player.isPochon) {
-            discsAttracted = Physics.OverlapSphere(transform.position, magnetRadius, 1 << 10);
+            discsAttracted = Physics.OverlapBox(transform.position, magnetSize, Quaternion.identity, 1 << 10);
 
             foreach (Collider disc in discsAttracted) {
                 disc.transform.parent.GetComponent<MoveItems>().isMovingToPlayer = true;
@@ -42,6 +44,7 @@ public class DiscMagnet : MonoBehaviour
 
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, magnetRadius);
+        //Gizmos.DrawWireSphere(transform.position, magnetRadius);
+        Gizmos.DrawWireCube(transform.position, magnetSize);
     }
 }
