@@ -3409,6 +3409,14 @@ PrefabInstance:
       propertyPath: claquetteSpawnRate_3
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
+      propertyPath: frequenceUpgradeDifficulty
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
+      propertyPath: timeToUpgradeDifficulty
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 8417856381477053945, guid: 3b1b56d10f52acf4094e140617d0ad74,
         type: 3}
       propertyPath: m_Name
