@@ -24,8 +24,15 @@ public class GameManager : MonoBehaviour
     private int dodgeMultiplier = 1;
     private int ovniMultiplier = 2;
     
-    private float upgradeDifficultyHolder;
+    //private float upgradeDifficultyHolder;
     private float currentTimeScale = 1;
+    private float runTimer = 0;
+    private float rawTimeScaleHolder = 1;
+
+    private bool startRunTimer = false;
+    private bool isRunTimerCounting = false;
+    private bool maxSpeedReached = false;
+    private bool maxItemRatesStepReached = false;
 
     [HideInInspector]
     public bool isPochonInGame;
@@ -46,9 +53,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float traveledDistance = 0;
     [SerializeField]
-    private float distanceUpgradeDifficulty;
+    private float timeToUpgradeDifficulty;
     [SerializeField]
     private float timescaleDifficulty;
+    [SerializeField]
+    private float maxSpeedTimeScale;
+    [SerializeField]
+    private float mediumItemRatesTime;
+    [SerializeField]
+    private float lastItemRatesTime;
+    [SerializeField]
+    private float breakItemBonus;
 
     [Header("Steps of bonus spawn and their spawn rates")]
     [SerializeField]
@@ -96,8 +111,6 @@ public class GameManager : MonoBehaviour
         inputManager = FindObjectOfType<InputManager>();
         menuManager = FindObjectOfType<MenuManager>();
 
-        upgradeDifficultyHolder = distanceUpgradeDifficulty;
-
         //if save file doesn't exist : create one with values = 0
         SaveSystem.InitiateDataFile();
     }
@@ -106,6 +119,7 @@ public class GameManager : MonoBehaviour
         if (gameState == GameState.PLAYING) {
             AddScore();
             DistanceUpdate();
+            DifficultyUpdate();
             BonusUpdate();
         }
     }
@@ -137,14 +151,17 @@ public class GameManager : MonoBehaviour
 
     public void StartPlayingInputs() {  //the player start playing
         inputManager.isRegisteringInputs = true;
+        startRunTimer = true;
 
         player.startCopFollowTimer = true;
         cop.CatchUpToPlayer();
     }
 
     public void Lose() {
+        Time.timeScale = 1;
         UpdatePlayerStats();
         gameState = GameState.FINISHED;
+        isRunTimerCounting = false;
 
         menuManager.InGameToLose();
     }
@@ -172,7 +189,11 @@ public class GameManager : MonoBehaviour
         score = 0;
         nbGoldDiscs = 0;
         traveledDistance = 0;
+        runTimer = 0;
+        startRunTimer = false;
+        isRunTimerCounting = false;
         Time.timeScale = 1;
+        rawTimeScaleHolder = 1;
     }
 
     private IEnumerator ReplayCorout() {
@@ -197,11 +218,11 @@ public class GameManager : MonoBehaviour
         //    Debug.Log("difficulty up");
         //}
 
-        if (traveledDistance >= distanceUpgradeDifficulty) {    //upgrade difficulty according to travaled distance
-            Time.timeScale += timescaleDifficulty;
-            distanceUpgradeDifficulty += upgradeDifficultyHolder;
-            Debug.Log("difficulty up");
-        }
+        //if (traveledDistance >= distanceUpgradeDifficulty) {    //upgrade difficulty according to travaled distance
+        //    Time.timeScale += timescaleDifficulty;
+        //    distanceUpgradeDifficulty += upgradeDifficultyHolder;
+        //    Debug.Log("difficulty up");
+        //}
 
         if (traveledDistance >= distanceStartSpawningTmax) {                    //last bonus spawn
             bonusSpawnRates.ChangeTmaxSpawnRate(TmaxSpawnRate_3);
@@ -218,6 +239,41 @@ public class GameManager : MonoBehaviour
             itemManager.EnableBonus();
             bonusSpawnRates.ChangePochonSpawnRate(pochonSpawnRate_1);
             bonusSpawnRates.ChangeClaquetteSpawnRate(claquetteSpawnRate_1);
+        }
+    }
+
+    private void DifficultyUpdate() {
+        if (startRunTimer) {
+            isRunTimerCounting = true;
+            runTimer = 0;
+
+            startRunTimer = false;
+        }
+
+        if (isRunTimerCounting) {
+            if (gameState != GameState.PAUSE && (!maxSpeedReached || !maxItemRatesStepReached)) {
+                runTimer += Time.unscaledDeltaTime;
+
+                if (runTimer >= timeToUpgradeDifficulty) {
+                    Debug.Log("upgrade difficulty");
+                    rawTimeScaleHolder += timescaleDifficulty;
+                    Time.timeScale += timescaleDifficulty;
+                    timeToUpgradeDifficulty += timeToUpgradeDifficulty;
+                }
+
+                if (rawTimeScaleHolder >= maxSpeedTimeScale) {
+                    Debug.Log("max speed reached");
+                    maxSpeedReached = true;
+                }
+
+                if (runTimer >= lastItemRatesTime) {
+                    itemManager.ChangeItemRates(3);
+                    maxItemRatesStepReached = true;
+                }
+                else if (runTimer >= mediumItemRatesTime) {
+                    itemManager.ChangeItemRates(2);
+                }
+            }
         }
     }
 
@@ -258,6 +314,15 @@ public class GameManager : MonoBehaviour
         else {
             score += 50f;
             nbGoldDiscs = nbGoldDiscs + 50;
+        }
+    }
+
+    public void AddBreakItemScore(bool isCar = false) {
+        if (isCar) {
+            score += breakItemBonus * 2;
+        }
+        else {
+            score += breakItemBonus;
         }
     }
 

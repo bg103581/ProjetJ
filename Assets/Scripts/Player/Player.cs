@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     private SpawnAlien spawnAlien;
     private ItemManager itemManager;
     private JulAnim julAnim;
+    private CapsuleCollider julCollider;
+    private BoxCollider twingoOvniCollider;
 
     [HideInInspector]
     public Lane lane = Lane.CENTER;
@@ -25,6 +27,9 @@ public class Player : MonoBehaviour
     private Transform rightPos;
     [SerializeField]
     private Transform topPos;
+
+    [SerializeField]
+    private Transform copCatchupPos;
 
     [SerializeField]
     private GameObject jul;
@@ -122,6 +127,8 @@ public class Player : MonoBehaviour
         spawnAlien = FindObjectOfType<SpawnAlien>();
         itemManager = FindObjectOfType<ItemManager>();
         julAnim = FindObjectOfType<JulAnim>();
+        julCollider = GetComponent<CapsuleCollider>();
+        twingoOvniCollider = GetComponent<BoxCollider>();
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
@@ -178,6 +185,8 @@ public class Player : MonoBehaviour
         isStrafing = false;
 
         ActivateLook(jul);
+        twingoOvniCollider.enabled = false;
+        julCollider.enabled = true;
     }
 
     public void MoveToLeft() {
@@ -185,6 +194,7 @@ public class Player : MonoBehaviour
             lane = Lane.CENTER;
             isStrafing = true;
             transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            copCatchupPos.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
@@ -196,11 +206,23 @@ public class Player : MonoBehaviour
             lane = Lane.LEFT;
             isStrafing = true;
             transform.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            copCatchupPos.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToLeftPos(moveTime);
 
             if (isGrounded) {
                 julAnim.Strafe();
                 cop.Strafe();
+            }
+        }
+        else {
+            if (!(isTwingo || isTmax || isOvni)) {
+                if (isCopFollowed) {
+                    gameManager.Lose();
+                }
+                else {
+                    startCopFollowTimer = true;
+                    cop.CatchUpToPlayer();
+                }
             }
         }
     }
@@ -210,6 +232,7 @@ public class Player : MonoBehaviour
             lane = Lane.CENTER;
             isStrafing = true;
             transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            copCatchupPos.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
@@ -221,11 +244,21 @@ public class Player : MonoBehaviour
             lane = Lane.RIGHT;
             isStrafing = true;
             transform.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            copCatchupPos.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToRightPos(moveTime);
 
             if (isGrounded) {
                 julAnim.Strafe();
                 cop.Strafe();
+            }
+        }
+        else {
+            if (isCopFollowed) {
+                gameManager.Lose();
+            }
+            else {
+                startCopFollowTimer = true;
+                cop.CatchUpToPlayer();
             }
         }
     }
@@ -279,6 +312,9 @@ public class Player : MonoBehaviour
                 julAnim.Jump();
                 cop.Jump();
 
+                float dur = 0.9f;
+                copCatchupPos.DOMoveY(3f, dur / 2f).SetEase(Ease.Linear).OnComplete(() => copCatchupPos.DOMoveY(0, dur / 2f).SetEase(Ease.Linear));
+
                 //Sequence sequence = DOTween.Sequence();
 
                 //sequence.Append(rb.DOMoveY(transform.position.y + 3, jumpTime/2).SetEase(Ease.OutSine));
@@ -287,10 +323,12 @@ public class Player : MonoBehaviour
 
                 //sequence.Play();
 
-                if (isClaquettes)
+                if (isClaquettes) {
                     rb.velocity = Vector3.up * claquettesJumpVelocity;
-                else
+                }
+                else {
                     rb.velocity = Vector3.up * jumpVelocity;
+                }
             }
         }
     }
@@ -299,7 +337,6 @@ public class Player : MonoBehaviour
         Obstacles obstacle = col.gameObject.GetComponent<Obstacles>();
 
         if (col.tag == "Camionette") {
-            Time.timeScale = 1;
             if (isStrafing && lane != obstacle.currentLane) {
                 if (isCopFollowed) {
                     gameManager.Lose();
@@ -318,30 +355,30 @@ public class Player : MonoBehaviour
         if (isTwingo) {
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
                 // break them
+                gameManager.AddBreakItemScore();
             }
             else if (col.tag == "Voiture") {
-                Time.timeScale = 1;
                 gameManager.Lose();
             }
         }
         else if (isTmax) {
             if (isY) {
-                if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat" || col.tag == "Voiture") {
-                    // break them
+                if (col.tag == "Voiture") {
+                    gameManager.AddBreakItemScore(true);
                 }
             }
             else {
-                if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
-                    // break them
-                }
-                else if (col.tag == "Voiture") {
-                    Time.timeScale = 1;
+                if (col.tag == "Voiture") {
                     gameManager.Lose();
                 }
             }
+
+            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
+                // break them
+                gameManager.AddBreakItemScore();
+            }
         }
         else {
-            Time.timeScale = 1;
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {   //obstacles légers a pied
                 if (isCopFollowed) {
                     gameManager.Lose();
@@ -387,6 +424,8 @@ public class Player : MonoBehaviour
                 copFollowTimer = 0f;
                 startTwingoTimer = true;
                 ActivateLook(twingo);
+                twingoOvniCollider.enabled = true;
+                julCollider.enabled = false;
 
                 if (!isTwingo)
                     Time.timeScale += twingoSpeed;
@@ -415,6 +454,8 @@ public class Player : MonoBehaviour
         copFollowTimer = 0f;
         startOvniTimer = true;
         ActivateLook(ovni);
+        twingoOvniCollider.enabled = true;
+        julCollider.enabled = false;
     }
 
     public void HitByDisc(bool isGold) {
@@ -534,6 +575,8 @@ public class Player : MonoBehaviour
             if (twingoTimer <= 0f) {
                 isTwingo = false;
                 ActivateLook(jul);
+                twingoOvniCollider.enabled = false;
+                julCollider.enabled = true;
 
                 Time.timeScale -= twingoSpeed;
             }
@@ -606,6 +649,8 @@ public class Player : MonoBehaviour
             if (ovniTimer <= 0f) {
                 isOvni = false;
                 ActivateLook(jul);
+                twingoOvniCollider.enabled = false;
+                julCollider.enabled = true;
 
                 Time.timeScale -= ovniSpeed;
 

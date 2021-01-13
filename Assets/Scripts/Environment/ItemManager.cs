@@ -11,6 +11,7 @@ public class ItemManager : MonoBehaviour
     private GenerateItems generateBonuses;
     private GenerateDiscs generateDiscs;
     private GameManager gameManager;
+    private BonusSpawnRates bonusSpawnRates;
 
     [SerializeField]
     private float timePeriod;
@@ -20,16 +21,40 @@ public class ItemManager : MonoBehaviour
     public Transform topPos;
     public Transform vehiclePos;
     [Header("Chances in percentage")]
+    [Header("start rates :")]
     [SerializeField]
-    private int discsOnlyRate;
+    private int discsOnlyRate1;
     [SerializeField]
-    private int obstacleOnlyRate;
+    private int obstacleOnlyRate1;
     [SerializeField]
-    private int bonusRate;
-
+    private int bonusRate1;
+    [Header("medium rates :")]
+    [SerializeField]
+    private int discsOnlyRate2;
+    [SerializeField]
+    private int obstacleOnlyRate2;
+    [SerializeField]
+    private int bonusRate2;
+    [Header("last rates :")]
+    [SerializeField]
+    private int discsOnlyRate3;
+    [SerializeField]
+    private int obstacleOnlyRate3;
+    [SerializeField]
+    private int bonusRate3;
+    
+    private int currentDiscsOnlyRate;
+    private int currentObstacleOnlyRate;
     private int currentBonusRate = 0;
 
+    //private System.Random randomizer = new System.Random();
+
     private void Awake() {
+        bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
+
+        currentDiscsOnlyRate = discsOnlyRate1;
+        currentObstacleOnlyRate = obstacleOnlyRate1;
+
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
     }
@@ -80,7 +105,8 @@ public class ItemManager : MonoBehaviour
                     generateObstacles.SpawnItem(lane);
                     break;
                 case ItemType.BONUS:
-                    generateBonuses.SpawnItem(lane);
+                    if (bonusSpawnRates.sumSpawnRates > 0) generateBonuses.SpawnItem(lane);
+                    else generateObstacles.SpawnItem(lane);
                     break;
                 default:
                     break;
@@ -98,18 +124,37 @@ public class ItemManager : MonoBehaviour
 
     private ItemType ChoseItem() {
         int rand = Random.Range(0, 101);
+        //int rand = randomizer.Next(101);
 
-        if (rand < obstacleOnlyRate) {
+        if (rand < currentObstacleOnlyRate) {
             return ItemType.OBSTACLE_ONLY;
         }
-        else if (rand < obstacleOnlyRate + discsOnlyRate) {
+        else if (rand < currentObstacleOnlyRate + currentDiscsOnlyRate) {
             return ItemType.DISCS_ONLY;
         }
-        else if (rand < obstacleOnlyRate + discsOnlyRate + currentBonusRate) {
+        else if (rand < currentObstacleOnlyRate + currentDiscsOnlyRate + currentBonusRate) {
             return ItemType.BONUS;
         }
         else {
             return ItemType.OBSTACLE_DISCS;
+        }
+    }
+
+    public void ChangeItemRates(int step) {
+        switch (step) {
+            case 2:
+                currentObstacleOnlyRate = obstacleOnlyRate2;
+                currentDiscsOnlyRate = discsOnlyRate2;
+                currentBonusRate = bonusRate2;
+                break;
+            case 3:
+                currentObstacleOnlyRate = obstacleOnlyRate3;
+                currentDiscsOnlyRate = discsOnlyRate3;
+                currentBonusRate = bonusRate3;
+                break;
+            default:
+                Debug.LogError("wrong step id");
+                break;
         }
     }
 
@@ -118,6 +163,6 @@ public class ItemManager : MonoBehaviour
     }
 
     public void EnableBonus() {
-        currentBonusRate = bonusRate;
+        currentBonusRate = bonusRate1;
     }
 }

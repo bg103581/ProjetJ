@@ -38,6 +38,9 @@ public class InputManager : MonoBehaviour {
     private void Awake() {
         spawnAlien = FindObjectOfType<SpawnAlien>();
         gameManager = FindObjectOfType<GameManager>();
+
+        GameEvents.current.onReplayButtonTrigger += OnReset;
+        GameEvents.current.onMainMenuButtonTrigger += OnReset;
     }
 
     private void Update() {
@@ -108,5 +111,14 @@ public class InputManager : MonoBehaviour {
                 }
             }
         }
+    }
+
+    private void OnDestroy() {
+        GameEvents.current.onReplayButtonTrigger -= OnReset;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReset;
+    }
+
+    private void OnReset() {
+        isRegisteringInputs = false;
     }
 }
