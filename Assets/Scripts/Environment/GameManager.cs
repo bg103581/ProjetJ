@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
     private float mediumItemRatesTime;
     [SerializeField]
     private float lastItemRatesTime;
+    [SerializeField]
+    private float breakItemBonus;
 
     [Header("Steps of bonus spawn and their spawn rates")]
     [SerializeField]
@@ -312,6 +314,15 @@ public class GameManager : MonoBehaviour
         else {
             score += 50f;
             nbGoldDiscs = nbGoldDiscs + 50;
+        }
+    }
+
+    public void AddBreakItemScore(bool isCar = false) {
+        if (isCar) {
+            score += breakItemBonus * 2;
+        }
+        else {
+            score += breakItemBonus;
         }
     }
 

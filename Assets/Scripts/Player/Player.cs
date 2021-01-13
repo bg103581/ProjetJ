@@ -355,6 +355,7 @@ public class Player : MonoBehaviour
         if (isTwingo) {
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
                 // break them
+                gameManager.AddBreakItemScore();
             }
             else if (col.tag == "Voiture") {
                 gameManager.Lose();
@@ -362,17 +363,19 @@ public class Player : MonoBehaviour
         }
         else if (isTmax) {
             if (isY) {
-                if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat" || col.tag == "Voiture") {
-                    // break them
+                if (col.tag == "Voiture") {
+                    gameManager.AddBreakItemScore(true);
                 }
             }
             else {
-                if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
-                    // break them
-                }
-                else if (col.tag == "Voiture") {
+                if (col.tag == "Voiture") {
                     gameManager.Lose();
                 }
+            }
+
+            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
+                // break them
+                gameManager.AddBreakItemScore();
             }
         }
         else {

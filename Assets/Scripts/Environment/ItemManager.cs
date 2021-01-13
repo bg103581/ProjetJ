@@ -47,6 +47,8 @@ public class ItemManager : MonoBehaviour
     private int currentObstacleOnlyRate;
     private int currentBonusRate = 0;
 
+    //private System.Random randomizer = new System.Random();
+
     private void Awake() {
         bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
 
@@ -122,6 +124,7 @@ public class ItemManager : MonoBehaviour
 
     private ItemType ChoseItem() {
         int rand = Random.Range(0, 101);
+        //int rand = randomizer.Next(101);
 
         if (rand < currentObstacleOnlyRate) {
             return ItemType.OBSTACLE_ONLY;
