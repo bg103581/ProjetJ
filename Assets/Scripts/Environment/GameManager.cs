@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     private bool startRunTimer = false;
     private bool isRunTimerCounting = false;
+    private bool maxSpeedReached = false;
+    private bool maxItemRatesStepReached = false;
 
     [HideInInspector]
     public bool isPochonInGame;
@@ -56,6 +58,10 @@ public class GameManager : MonoBehaviour
     private float timescaleDifficulty;
     [SerializeField]
     private float maxSpeedTimeScale;
+    [SerializeField]
+    private float mediumItemRatesTime;
+    [SerializeField]
+    private float lastItemRatesTime;
 
     [Header("Steps of bonus spawn and their spawn rates")]
     [SerializeField]
@@ -243,19 +249,29 @@ public class GameManager : MonoBehaviour
         }
 
         if (isRunTimerCounting) {
-            if (gameState != GameState.PAUSE && rawTimeScaleHolder < maxSpeedTimeScale) {
+            if (gameState != GameState.PAUSE && (!maxSpeedReached || !maxItemRatesStepReached)) {
                 runTimer += Time.unscaledDeltaTime;
 
                 if (runTimer >= timeToUpgradeDifficulty) {
                     Debug.Log("upgrade difficulty");
                     rawTimeScaleHolder += timescaleDifficulty;
                     Time.timeScale += timescaleDifficulty;
-                    runTimer = 0;
+                    timeToUpgradeDifficulty += timeToUpgradeDifficulty;
                 }
 
-                if (rawTimeScaleHolder >= maxSpeedTimeScale) Debug.Log("max speed reached");
-            }
+                if (rawTimeScaleHolder >= maxSpeedTimeScale) {
+                    Debug.Log("max speed reached");
+                    maxSpeedReached = true;
+                }
 
+                if (runTimer >= lastItemRatesTime) {
+                    itemManager.ChangeItemRates(3);
+                    maxItemRatesStepReached = true;
+                }
+                else if (runTimer >= mediumItemRatesTime) {
+                    itemManager.ChangeItemRates(2);
+                }
+            }
         }
     }
 

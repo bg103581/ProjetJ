@@ -3283,6 +3283,51 @@ PrefabInstance:
       propertyPath: bonusRate
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: bonusRate2
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: bonusRate3
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: discsOnlyRate2
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: obstacleOnlyRate2
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: discsOnlyRate3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: obstacleOnlyRate3
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: discsOnlyRate1
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: obstacleOnlyRate1
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: bonusRate1
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6991278363218564865, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: m_Name
@@ -3416,6 +3461,18 @@ PrefabInstance:
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: timeToUpgradeDifficulty
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
+      propertyPath: maxSpeedTimeScale
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
+      propertyPath: mediumItemRatesTime
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
+      propertyPath: lastItemRatesTime
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 8417856381477053945, guid: 3b1b56d10f52acf4094e140617d0ad74,
         type: 3}
