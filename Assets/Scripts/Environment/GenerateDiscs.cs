@@ -73,13 +73,13 @@ public class GenerateDiscs : MonoBehaviour
         RandPlatinumDiscPattern(patternPrefab);
     }
 
-    private void RandPlatinumDiscPattern(GameObject patternPrefab) {    //apply normal or platinum discs to a pattern
+    private void RandPlatinumDiscPattern(GameObject patternPrefab, bool isLastOvniPattern = false) {    //apply normal or platinum discs to a pattern
         int rand = Random.Range(0, 101);
         if (rand < platinumPatternChance) {         //1 platinum disc in the pattern
-            CreateDiscPattern(patternPrefab, true);
+            CreateDiscPattern(patternPrefab, true, isLastOvniPattern);
         }
         else {
-            CreateDiscPattern(patternPrefab, false);
+            CreateDiscPattern(patternPrefab, false, isLastOvniPattern);
         }
     }
 
@@ -205,7 +205,7 @@ public class GenerateDiscs : MonoBehaviour
         }
     }
 
-    private void CreateDiscPattern(GameObject patternPrefab, bool isPlatinum) { //apply discs on pattern
+    private void CreateDiscPattern(GameObject patternPrefab, bool isPlatinum, bool isLastOvniPattern = false) { //apply discs on pattern
         Transform[] children = new Transform[patternPrefab.transform.childCount];
 
         int i = 0;
@@ -218,15 +218,28 @@ public class GenerateDiscs : MonoBehaviour
             int randIndex = Random.Range(0, children.Length);
 
             for (int j = 0; j < children.Length; j++) {
+                GameObject disc;
                 if (j == randIndex)
-                    Instantiate(platinumDiscPrefab, children[j].position, children[j].rotation, transform);
+                    disc = Instantiate(platinumDiscPrefab, children[j].position, children[j].rotation, transform);
                 else
-                    Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
+                    disc = Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
+
+                if (isLastOvniPattern) {
+                    if (j == children.Length - 1) disc.GetComponent<MoveItems>().isLastOvniDisc = true;
+                }
             }
         }
         else {
-            foreach (Transform anchor in children) {
-                Instantiate(goldenDiscPrefab, anchor.position, anchor.rotation, transform);
+            //foreach (Transform anchor in children) {
+            //    Instantiate(goldenDiscPrefab, anchor.position, anchor.rotation, transform);
+            //}
+
+            for (int j = 0; j < children.Length; j++) {
+                GameObject disc = Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
+
+                if (isLastOvniPattern) {
+                    if (j == children.Length - 1) disc.GetComponent<MoveItems>().isLastOvniDisc = true;
+                }
             }
         }
     }
@@ -260,7 +273,7 @@ public class GenerateDiscs : MonoBehaviour
         #endregion
 
         #region LoopTheRest
-        for (int i = 1; i < laneArray.Length - 1; i++) {
+        for (int i = 1; i < laneArray.Length; i++) {
             GameObject igLinePattern =
                 Instantiate(ovniLinePattern,
                 GetLastOvniDiscPos(igPatterns[igPatterns.Count - 1], offSet),
@@ -268,7 +281,7 @@ public class GenerateDiscs : MonoBehaviour
                 transform);
             igPatterns.Add(igLinePattern);
             // add turn pattern at the end of linepattern
-            if (i < laneArray.Length - 2) { //pour voir l'avant derniere et la derniere lane
+            if (i < laneArray.Length - 1) { //pour voir l'avant derniere et la derniere lane
                 GameObject turnPattern = GetTurnPattern(laneArray[i], laneArray[i + 1]);
                 if (turnPattern != null) {   //si il y a un turn a faire
                     GameObject igTurnPattern = Instantiate(turnPattern, GetLastOvniDiscPos(igLinePattern, 2), tr.rotation, transform);
@@ -279,9 +292,14 @@ public class GenerateDiscs : MonoBehaviour
         #endregion
 
         //apply discs to pattern
-        foreach (GameObject pattern in igPatterns) {
-            Debug.Log(pattern);
-            RandPlatinumDiscPattern(pattern);
+        //foreach (GameObject pattern in igPatterns) {
+        //    Debug.Log(pattern);
+        //    RandPlatinumDiscPattern(pattern);
+        //}
+
+        for (int i = 0; i < igPatterns.Count; i++) {
+            if (i == igPatterns.Count - 1) RandPlatinumDiscPattern(igPatterns[i], true);
+            else RandPlatinumDiscPattern(igPatterns[i]);
         }
     }
 

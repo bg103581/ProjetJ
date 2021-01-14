@@ -565,15 +565,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 897938102e641694db3cd09e4065ead3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timePeriod: 2
+  timePeriod: 1.75
   leftLane: {fileID: 7508984696989618832}
   centerLane: {fileID: 6918862728852089020}
   rightLane: {fileID: 331615978553096866}
   topPos: {fileID: 59524464}
   vehiclePos: {fileID: 925294812}
-  discsOnlyRate: 25
-  obstacleOnlyRate: 15
-  bonusRate: 15
+  discsOnlyRate1: 25
+  obstacleOnlyRate1: 15
+  bonusRate1: 10
+  discsOnlyRate2: 10
+  obstacleOnlyRate2: 15
+  bonusRate2: 10
+  discsOnlyRate3: 0
+  obstacleOnlyRate3: 15
+  bonusRate3: 10
 --- !u!114 &6991278363130167887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,6 +670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRates: 00000000000000000000000000000000
+  sumSpawnRates: 0
 --- !u!114 &6991278363847527868
 MonoBehaviour:
   m_ObjectHideFlags: 0

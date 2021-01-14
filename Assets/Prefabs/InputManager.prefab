@@ -43,5 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b219eb1dec586ad4090c465dc8848cac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRegisteringInputs: 0
+  isAlienClickable: 0
+  alienScreenPos: {x: 0, y: 0, z: 0}
   distanceSwipe: 100
+  alienTouchMargin: 100
   _player: {fileID: 0}
+  keyboardControl: 1

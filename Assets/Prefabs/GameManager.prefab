@@ -43,19 +43,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8d63fef0d5bd84680b49d3f4cf412f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPochonInGame: 0
+  isClaquetteInGame: 0
+  isTwingoInGame: 0
+  isTmaxInGame: 0
+  gameState: 0
   score: 0
+  nbGoldDiscs: 0
   traveledDistance: 0
-  distanceUpgradeDifficulty: 500
+  timeToUpgradeDifficulty: 30
   timescaleDifficulty: 0.1
+  maxSpeedTimeScale: 2.5
+  mediumItemRatesTime: 150
+  lastItemRatesTime: 300
+  breakItemBonus: 50
   distanceStartSpawningPochonClaquette: 300
   pochonSpawnRate_1: 50
   claquetteSpawnRate_1: 50
-  distanceStartSpawningTwingo: 1000
+  distanceStartSpawningTwingo: 600
   pochonSpawnRate_2: 30
   claquetteSpawnRate_2: 30
   TwingoSpawnRate_2: 40
-  distanceStartSpawningTmax: 1500
+  distanceStartSpawningTmax: 1000
   pochonSpawnRate_3: 25
   claquetteSpawnRate_3: 25
   TwingoSpawnRate_3: 25
   TmaxSpawnRate_3: 25
+  test1: 0

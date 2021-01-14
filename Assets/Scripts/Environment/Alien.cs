@@ -25,6 +25,7 @@ public class Alien : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         if (other.tag == "AlienTriggerCollider") {
+            Debug.Log("isAlienClickable = false");
             inputManager.isAlienClickable = false;
         }
     }

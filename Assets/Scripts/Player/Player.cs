@@ -111,9 +111,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float yDuration;
     //[SerializeField]
-    //private float ovniSpeed;
-    [SerializeField]
-    private float ovniDuration;
+    //private float ovniDuration;
     [SerializeField]
     private float ovniSpeed;
     #endregion
@@ -458,6 +456,10 @@ public class Player : MonoBehaviour
         julCollider.enabled = false;
     }
 
+    public void EndOvni() {
+        ovniTimer = 0;
+    }
+
     public void HitByDisc(bool isGold) {
         gameManager.AddDiscScore(isGold);
     }
@@ -634,7 +636,7 @@ public class Player : MonoBehaviour
         if (startOvniTimer) {
             isOvni = true;
             isTmax = false;
-            ovniTimer = ovniDuration;
+            ovniTimer = 200f;
 
             Time.timeScale -= tmaxSpeed;
             Time.timeScale += ovniSpeed;

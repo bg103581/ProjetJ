@@ -9,6 +9,7 @@ public class SpawnAlien : MonoBehaviour
     private InputManager inputManager;
 
     private GameObject alienSpawned;
+    private List<GameObject> aliensInGame = new List<GameObject>();
 
     private Lane alienLane;
 
@@ -29,6 +30,8 @@ public class SpawnAlien : MonoBehaviour
     private Transform upRightAlienPos;
     [SerializeField]
     private Transform tmaxFirstPos;
+    [SerializeField]
+    private Transform tmaxSecondPos;
     [SerializeField]
     private float moveToTmaxTimer;
 
@@ -65,6 +68,7 @@ public class SpawnAlien : MonoBehaviour
 
         if (aliensCurrentIndex < aliens.Length) {
             alienSpawned = Instantiate(aliens[aliensCurrentIndex], spawnPos.position, spawnPos.rotation, transform);
+            aliensInGame.Add(alienSpawned);
             aliensCurrentIndex++;
         }
     }
@@ -74,17 +78,45 @@ public class SpawnAlien : MonoBehaviour
             inputManager.isAlienClickable = false;
 
             alienSpawned.GetComponent<MoveItems>().enabled = false;
-            //do move alien on tmax
-            alienSpawned.transform.SetParent(tmaxFirstPos);
-            alienSpawned.transform.DOLocalMove(Vector3.zero, moveToTmaxTimer);
-            alienSpawned.transform.DOLocalRotate(Vector3.zero, moveToTmaxTimer);
-            if (aliensCurrentIndex == 3) {
-                player.StartOvni();
-            }
-            else {
-                //jul fly
-                player.Fly();
+            alienSpawned.GetComponent<CapsuleCollider>().enabled = false;
+
+            //if (aliensCurrentIndex == 3) {
+            //    player.StartOvni();
+            //}
+            //else {
+            //    //jul fly
+            //    player.Fly();
+            //}
+
+            switch (aliensCurrentIndex) {
+                case 1:
+                    MoveAlienToTmax(tmaxFirstPos);
+                    player.Fly();
+                    break;
+                case 2:
+                    MoveAlienToTmax(tmaxSecondPos);
+                    player.Fly();
+                    break;
+                case 3:
+                    DestroyAliens();
+                    player.StartOvni();
+                    break;
+                default:
+                    break;
             }
         }
+    }
+
+    private void MoveAlienToTmax(Transform parent) {
+        alienSpawned.transform.SetParent(parent);
+        alienSpawned.transform.DOLocalMove(Vector3.zero, moveToTmaxTimer);
+        alienSpawned.transform.DOLocalRotate(Vector3.zero, moveToTmaxTimer);
+    }
+
+    private void DestroyAliens() {
+        foreach (GameObject alien in aliensInGame) {
+            Destroy(alien);
+        }
+        aliensInGame.Clear();
     }
 }

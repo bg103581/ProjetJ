@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDuration: 0.75
-  magnetRadius: 4
+  magnetRadius: 15
 --- !u!1 &259768574
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 545195829}
   - component: {fileID: 545195831}
   - component: {fileID: 545195830}
+  - component: {fileID: 1652525777}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -427,6 +428,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 4304479179434992447}
+--- !u!65 &1652525777
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4304479179434992441}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8124022, y: 2.1792946, z: 4.9440837}
+  m_Center: {x: -0.052412957, y: 0.5896473, z: 0.04586196}
 --- !u!1001 &4304479177895700135
 PrefabInstance:
   m_ObjectHideFlags: 0
