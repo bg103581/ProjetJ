@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2256780033609145129}
   - component: {fileID: 6952853449177593131}
+  - component: {fileID: 8828685892284367329}
   m_Layer: 10
   m_Name: DiscGold
   m_TagString: Gold
@@ -45,7 +46,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMovingToPlayer: 0
+  isLastOvniDisc: 0
   _moveSpeed: 15
+--- !u!114 &8828685892284367329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6140824867307050900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed675cf3f2cb41a44b4f5b6bb5f32f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &5593916294873834419
 SphereCollider:
   m_ObjectHideFlags: 0

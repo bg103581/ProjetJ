@@ -13,8 +13,6 @@ public class SpawnAlien : MonoBehaviour
 
     private Lane alienLane;
 
-    private bool isSpawnAlien = false;
-
     private int aliensCurrentIndex = 0;
 
     [Tooltip("Aliens ordered in spawn apparition")]
@@ -42,10 +40,9 @@ public class SpawnAlien : MonoBehaviour
 
     public void StartAlienSpawn() {
         float spawnTime = Random.Range(0, player.tmaxDuration - 4f);
+        aliensCurrentIndex = 0;
         Debug.Log("start alien spawn");
-        if (!isSpawnAlien)
-            Invoke("SpawnNextAlien", spawnTime);
-        isSpawnAlien = true;
+        Invoke("SpawnNextAlien", spawnTime);
     }
 
     public void SpawnNextAlien() {
@@ -113,10 +110,12 @@ public class SpawnAlien : MonoBehaviour
         alienSpawned.transform.DOLocalRotate(Vector3.zero, moveToTmaxTimer);
     }
 
-    private void DestroyAliens() {
-        foreach (GameObject alien in aliensInGame) {
-            Destroy(alien);
+    public void DestroyAliens() {
+        if (aliensInGame.Count > 0) {
+            foreach (GameObject alien in aliensInGame) {
+                Destroy(alien);
+            }
+            aliensInGame.Clear();
         }
-        aliensInGame.Clear();
     }
 }

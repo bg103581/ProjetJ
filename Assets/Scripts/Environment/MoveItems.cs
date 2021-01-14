@@ -12,8 +12,6 @@ public class MoveItems : MonoBehaviour
 
     [HideInInspector]
     public bool isMovingToPlayer = false;
-    [HideInInspector]
-    public bool isLastOvniDisc = false;
 
     [SerializeField]
     private float _moveSpeed;
@@ -51,18 +49,13 @@ public class MoveItems : MonoBehaviour
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
 
-        EndPlayerOvni();
+        transform.DOKill();
     }
 
     private void OnReplay() {
         Destroy(gameObject);
     }
-
-    private void EndPlayerOvni() {
-        if (isLastOvniDisc) {
-            player.EndOvni();
-        }
-    }
+    
 
     //public void MoveToPlayer(Vector3 playerPos, float moveDuration) {
     //    if (!isMovingToPlayer) {

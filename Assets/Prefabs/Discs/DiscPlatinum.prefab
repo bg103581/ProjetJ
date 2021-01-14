@@ -23,6 +23,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2256780033609145129}
   - component: {fileID: 2992387026273838758}
+  - component: {fileID: -8879535366247654709}
   m_Layer: 10
   m_Name: DiscPlatinum
   m_TagString: Diamond
@@ -58,7 +59,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMovingToPlayer: 0
+  isLastOvniDisc: 0
   _moveSpeed: 15
+--- !u!114 &-8879535366247654709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6140824867307050900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed675cf3f2cb41a44b4f5b6bb5f32f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1299480074974387082
 PrefabInstance:
   m_ObjectHideFlags: 0

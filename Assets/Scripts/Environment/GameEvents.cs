@@ -38,4 +38,11 @@ public class GameEvents : MonoBehaviour
             onResumeTrigger();
         }
     }
+
+    public event Action onAlienFail;
+    public void AlienFail() {
+        if (onResumeTrigger != null) {
+            onAlienFail();
+        }
+    }
 }

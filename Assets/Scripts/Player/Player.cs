@@ -284,8 +284,11 @@ public class Player : MonoBehaviour
     }
 
     public void EndFly() {
-        if (isTmaxFlying)
+        if (isTmaxFlying) {
             tmaxTimer = 0f;
+            GameEvents.current.AlienFail();
+            isTmaxFlying = false;
+        }
 
         rb.useGravity = true;
 

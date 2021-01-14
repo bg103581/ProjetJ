@@ -6,10 +6,14 @@ public class Alien : MonoBehaviour
 {
     private InputManager inputManager;
     private Camera mainCamera;
+    private SpawnAlien spawnAlien;
 
     private void Start() {
+        GameEvents.current.onAlienFail += OnAlienFail;
+
         inputManager = FindObjectOfType<InputManager>();
         mainCamera = FindObjectOfType<Camera>();
+        spawnAlien = FindObjectOfType<SpawnAlien>();
     }
 
     private void Update() {
@@ -28,5 +32,13 @@ public class Alien : MonoBehaviour
             Debug.Log("isAlienClickable = false");
             inputManager.isAlienClickable = false;
         }
+    }
+
+    private void OnDestroy() {
+        GameEvents.current.onAlienFail -= OnAlienFail;
+    }
+
+    private void OnAlienFail() {
+        spawnAlien.DestroyAliens();
     }
 }
