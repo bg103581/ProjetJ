@@ -26,7 +26,7 @@ public class DiscMagnet : MonoBehaviour
             discsAttracted = Physics.OverlapBox(transform.position + Vector3.up * yOffSet, magnetSize, Quaternion.identity, 1 << 10);
 
             foreach (Collider disc in discsAttracted) {
-                disc.transform.parent.GetComponent<MoveItems>().isMovingToPlayer = true;
+                disc.transform.GetComponent<MoveItems>().isMovingToPlayer = true;
             }
         }
     }

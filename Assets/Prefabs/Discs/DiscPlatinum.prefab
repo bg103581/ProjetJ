@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!135 &6565135255934939161
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3437496334204227644}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.003
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6140824867307050900
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,6 +11,7 @@ GameObject:
   - component: {fileID: 2256780033609145129}
   - component: {fileID: 2992387026273838758}
   - component: {fileID: -8879535366247654709}
+  - component: {fileID: 432029497357799222}
   m_Layer: 10
   m_Name: DiscPlatinum
   m_TagString: Diamond
@@ -59,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isMovingToPlayer: 0
-  isLastOvniDisc: 0
   _moveSpeed: 15
 --- !u!114 &-8879535366247654709
 MonoBehaviour:
@@ -73,6 +60,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed675cf3f2cb41a44b4f5b6bb5f32f92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isLastOvniDisc: 0
+  isOvniDisc: 0
+--- !u!135 &432029497357799222
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6140824867307050900}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1299480074974387082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -143,21 +145,15 @@ PrefabInstance:
     - target: {fileID: 4448675217454697398, guid: 87419aadbf8cede418ccb4763eda7ef7,
         type: 3}
       propertyPath: m_TagString
-      value: Diamond
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4448675217454697398, guid: 87419aadbf8cede418ccb4763eda7ef7,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87419aadbf8cede418ccb4763eda7ef7, type: 3}
---- !u!1 &3437496334204227644 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4448675217454697398, guid: 87419aadbf8cede418ccb4763eda7ef7,
-    type: 3}
-  m_PrefabInstance: {fileID: 1299480074974387082}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2666025531887258246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3960649957220339980, guid: 87419aadbf8cede418ccb4763eda7ef7,

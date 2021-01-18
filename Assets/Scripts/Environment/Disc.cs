@@ -13,21 +13,29 @@ public class Disc : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameEvents.current.onAlienFail += OnAlienFail;
-
         player = FindObjectOfType<Player>();
+    }
+
+    private void OnEnable() {
+        GameEvents.current.onAlienFail += OnAlienFail;
     }
 
     private void OnDestroy() {
         GameEvents.current.onAlienFail -= OnAlienFail;
+        
+        EndPlayerOvni();
+    }
 
+    private void OnDisable() {
+        GameEvents.current.onAlienFail -= OnAlienFail;
 
         EndPlayerOvni();
     }
 
     private void OnAlienFail() {
         if (isOvniDisc) {
-            Destroy(gameObject);
+            ObjectPooler.current.DestroyObject(gameObject);
+            //Destroy(gameObject);
         }
     }
 

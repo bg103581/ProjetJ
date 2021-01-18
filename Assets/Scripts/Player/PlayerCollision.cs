@@ -18,7 +18,8 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (other.gameObject.layer == 10) {
             player.HitByDisc(other.tag == "Gold");
-            Destroy(other.gameObject);
+            ObjectPooler.current.DestroyObject(other.gameObject);
+            //Destroy(other.gameObject);
         }
         else if (other.gameObject.layer == 11) {
             player.DodgeObstacle();
