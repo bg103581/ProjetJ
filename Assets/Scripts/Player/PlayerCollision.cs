@@ -8,6 +8,12 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private Player player;
 
+    private JulAnim julAnim;
+
+    private void Awake() {
+        julAnim = FindObjectOfType<JulAnim>();
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.layer == 8) {
             player.HitByObstacle(other);
@@ -29,6 +35,7 @@ public class PlayerCollision : MonoBehaviour
     private void OnCollisionEnter(Collision collision) {
         if (collision.transform.tag == "Ground") {
             player.isGrounded = true;
+            julAnim.SetFallBool(false);
         }
     }
 

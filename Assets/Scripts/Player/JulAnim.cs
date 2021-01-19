@@ -64,9 +64,18 @@ public class JulAnim : MonoBehaviour
 
     public void Jump() {
         anim.SetTrigger("jumpTrigger");
+        SetFallBool(true);
     }
 
     public void StartAnimation() {
         anim.SetTrigger("startAnimationTrigger");
+    }
+
+    public void SetFallBool(bool isFalling) {
+        anim.SetBool("isFalling", isFalling);
+    }
+
+    public void PlayState(string stateName) {
+        anim.Play(stateName);
     }
 }

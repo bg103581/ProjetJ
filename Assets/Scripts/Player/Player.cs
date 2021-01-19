@@ -291,20 +291,24 @@ public class Player : MonoBehaviour
             GameEvents.current.AlienFail();
             isTmaxFlying = false;
             rb.useGravity = true;
+            ActivateLook(jul);
+            julAnim.SetFallBool(true);
+            julAnim.PlayState("Fall");
 
             cameraMovement.MoveToGroundPos();
             cameraMovement.MoveToNormalPosZ();
-            Debug.Log("end fly");
         }
 
         if (isOvni) {
             ovniTimer = 0f;
             isOvni = false;
             rb.useGravity = true;
+            ActivateLook(jul);
+            julAnim.SetFallBool(true);
+            julAnim.PlayState("Fall");
 
             cameraMovement.MoveToGroundPos();
             cameraMovement.MoveToNormalPosZ();
-            Debug.Log("end fly");
         }
     }
 
@@ -452,7 +456,6 @@ public class Player : MonoBehaviour
                     Time.timeScale += tmaxSpeed;
                     AlienEvent();
                 }
-
                 break;
             case "Ovni":
                 break;
@@ -496,12 +499,14 @@ public class Player : MonoBehaviour
     }
 
     private void ActivateLook(GameObject go) {
-        jul.SetActive(false);
-        twingo.SetActive(false);
-        tmax.SetActive(false);
-        ovni.SetActive(false);
+        if (!go.activeInHierarchy) {
+            jul.SetActive(false);
+            twingo.SetActive(false);
+            tmax.SetActive(false);
+            ovni.SetActive(false);
 
-        go.SetActive(true);
+            go.SetActive(true);
+        }
     }
 
     private void DodgeStreakTimerUpdate() {
@@ -662,7 +667,6 @@ public class Player : MonoBehaviour
 
         if (isOvni) {
             if (ovniTimer <= 0f) {
-                ActivateLook(jul);
                 twingoOvniCollider.enabled = false;
                 julCollider.enabled = true;
 
