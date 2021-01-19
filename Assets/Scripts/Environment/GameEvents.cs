@@ -27,7 +27,7 @@ public class GameEvents : MonoBehaviour
 
     public event Action onPauseButtonTrigger;
     public void PauseGame() {
-        if (onMainMenuButtonTrigger != null) {
+        if (onPauseButtonTrigger != null) {
             onPauseButtonTrigger();
         }
     }
@@ -41,7 +41,7 @@ public class GameEvents : MonoBehaviour
 
     public event Action onAlienFail;
     public void AlienFail() {
-        if (onResumeTrigger != null) {
+        if (onAlienFail != null) {
             onAlienFail();
         }
     }

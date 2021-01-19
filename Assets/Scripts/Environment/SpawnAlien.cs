@@ -67,6 +67,8 @@ public class SpawnAlien : MonoBehaviour
             alienSpawned = Instantiate(aliens[aliensCurrentIndex], spawnPos.position, spawnPos.rotation, transform);
             aliensInGame.Add(alienSpawned);
             aliensCurrentIndex++;
+
+            if (aliensCurrentIndex > 1) alienSpawned.GetComponent<Alien>().animator.Play("Floating");
         }
     }
 
@@ -76,22 +78,16 @@ public class SpawnAlien : MonoBehaviour
 
             alienSpawned.GetComponent<MoveItems>().enabled = false;
             alienSpawned.GetComponent<CapsuleCollider>().enabled = false;
-
-            //if (aliensCurrentIndex == 3) {
-            //    player.StartOvni();
-            //}
-            //else {
-            //    //jul fly
-            //    player.Fly();
-            //}
-
+            
             switch (aliensCurrentIndex) {
                 case 1:
                     MoveAlienToTmax(tmaxFirstPos);
+                    alienSpawned.GetComponent<Alien>().animator.SetBool("isClicked", true);
                     player.Fly();
                     break;
                 case 2:
                     MoveAlienToTmax(tmaxSecondPos);
+                    alienSpawned.GetComponent<Alien>().animator.SetBool("isClicked", true);
                     player.Fly();
                     break;
                 case 3:

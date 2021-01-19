@@ -8,6 +8,8 @@ public class Alien : MonoBehaviour
     private Camera mainCamera;
     private SpawnAlien spawnAlien;
 
+    public Animator animator;
+
     private void Start() {
         GameEvents.current.onAlienFail += OnAlienFail;
 

@@ -251,12 +251,14 @@ public class Player : MonoBehaviour
             }
         }
         else {
-            if (isCopFollowed) {
-                gameManager.Lose();
-            }
-            else {
-                startCopFollowTimer = true;
-                cop.CatchUpToPlayer();
+            if (!(isTwingo || isTmax || isOvni)) {
+                if (isCopFollowed) {
+                    gameManager.Lose();
+                }
+                else {
+                    startCopFollowTimer = true;
+                    cop.CatchUpToPlayer();
+                }
             }
         }
     }
