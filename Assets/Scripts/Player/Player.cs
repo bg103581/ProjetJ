@@ -288,14 +288,22 @@ public class Player : MonoBehaviour
             tmaxTimer = 0f;
             GameEvents.current.AlienFail();
             isTmaxFlying = false;
+            rb.useGravity = true;
+
+            cameraMovement.MoveToGroundPos();
+            cameraMovement.MoveToNormalPosZ();
+            Debug.Log("end fly");
         }
 
-        rb.useGravity = true;
+        if (isOvni) {
+            ovniTimer = 0f;
+            isOvni = false;
+            rb.useGravity = true;
 
-        //transform.DOMoveY(centerPos.position.y, moveTime * 2f);
-        cameraMovement.MoveToGroundPos();  //moveTime * 4f
-        cameraMovement.MoveToNormalPosZ(); //moveTime * 4f
-        Debug.Log("end fly");
+            cameraMovement.MoveToGroundPos();
+            cameraMovement.MoveToNormalPosZ();
+            Debug.Log("end fly");
+        }
     }
 
     public void Jump() {
@@ -652,7 +660,6 @@ public class Player : MonoBehaviour
 
         if (isOvni) {
             if (ovniTimer <= 0f) {
-                isOvni = false;
                 ActivateLook(jul);
                 twingoOvniCollider.enabled = false;
                 julCollider.enabled = true;
