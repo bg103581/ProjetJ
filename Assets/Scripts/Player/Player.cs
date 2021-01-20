@@ -220,6 +220,7 @@ public class Player : MonoBehaviour
                 else {
                     startCopFollowTimer = true;
                     cop.CatchUpToPlayer();
+                    julAnim.Hit();
                 }
             }
         }
@@ -258,6 +259,7 @@ public class Player : MonoBehaviour
                 else {
                     startCopFollowTimer = true;
                     cop.CatchUpToPlayer();
+                    julAnim.Hit();
                 }
             }
         }
@@ -360,6 +362,7 @@ public class Player : MonoBehaviour
                     startCopFollowTimer = true;
                     // move the cops in fov
                     cop.CatchUpToPlayer();
+                    julAnim.Hit();
                 }
             }
             else {
@@ -401,6 +404,7 @@ public class Player : MonoBehaviour
                 else {
                     startCopFollowTimer = true;
                     cop.CatchUpToPlayer();
+                    julAnim.Hit();
                 }
             }
             else if (col.tag == "Voiture") {
@@ -411,6 +415,7 @@ public class Player : MonoBehaviour
                     else {
                         startCopFollowTimer = true;
                         cop.CatchUpToPlayer();
+                        julAnim.Hit();
                     }
                 }
                 else {
