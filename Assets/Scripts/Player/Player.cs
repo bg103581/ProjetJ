@@ -374,6 +374,7 @@ public class Player : MonoBehaviour
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
                 // break them
                 gameManager.AddBreakItemScore();
+                obstacle.Throw();
             }
             else if (col.tag == "Voiture") {
                 gameManager.Lose();
@@ -383,6 +384,7 @@ public class Player : MonoBehaviour
             if (isY) {
                 if (col.tag == "Voiture") {
                     gameManager.AddBreakItemScore(true);
+                    obstacle.Throw();
                 }
             }
             else {
@@ -394,6 +396,7 @@ public class Player : MonoBehaviour
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
                 // break them
                 gameManager.AddBreakItemScore();
+                obstacle.Throw();
             }
         }
         else {
@@ -405,6 +408,7 @@ public class Player : MonoBehaviour
                     startCopFollowTimer = true;
                     cop.CatchUpToPlayer();
                     julAnim.Hit();
+                    obstacle.Throw();
                 }
             }
             else if (col.tag == "Voiture") {
@@ -424,7 +428,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        Destroy(col.gameObject);
+        //Destroy(col.gameObject);
     }
 
     public void HitByBonus(string tag) {
