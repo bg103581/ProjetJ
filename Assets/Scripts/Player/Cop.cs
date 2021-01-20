@@ -49,7 +49,6 @@ public class Cop : MonoBehaviour
         copCatchUpPos.position = initCopCatchUpPos;
         transform.position = initialPos.position;
         isFollowingPlayer = false;
-        //settrigger anim to go back to init state
         anim.Play("Idle");
     }
 
@@ -58,9 +57,11 @@ public class Cop : MonoBehaviour
     }
 
     public void GoBackToInitialPos() {
-        isFollowingPlayer = false;
-        transform.DOKill();
-        transform.DOMove(initialPos.position, backToInitMoveTime);
+        if (gameManager.gameState != GameState.FINISHED) {
+            isFollowingPlayer = false;
+            transform.DOKill();
+            transform.DOMove(initialPos.position, backToInitMoveTime);
+        }
     }
 
     public void Jump() {
@@ -79,5 +80,9 @@ public class Cop : MonoBehaviour
 
     public void TriggerSuprisedAnimation() {
         anim.SetTrigger("surprisedTrigger");
+    }
+
+    public void EndRun() {
+        anim.SetTrigger("endRunTrigger");
     }
 }

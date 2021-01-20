@@ -76,6 +76,10 @@ public class JulAnim : MonoBehaviour
         anim.SetTrigger("hitTrigger");
     }
 
+    public void Death() {
+        anim.SetTrigger("deathTrigger");
+    }
+
     public void SetFallBool(bool isFalling) {
         anim.SetBool("isFalling", isFalling);
     }

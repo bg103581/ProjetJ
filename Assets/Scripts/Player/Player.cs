@@ -216,12 +216,15 @@ public class Player : MonoBehaviour
             if (!(isTwingo || isTmax || isOvni)) {
                 if (isCopFollowed) {
                     gameManager.Lose();
+                    julAnim.Death();
+                    cop.EndRun();
                 }
                 else {
                     startCopFollowTimer = true;
-                    cop.CatchUpToPlayer();
                     julAnim.Hit();
                 }
+
+                cop.CatchUpToPlayer();
             }
         }
     }
@@ -255,12 +258,15 @@ public class Player : MonoBehaviour
             if (!(isTwingo || isTmax || isOvni)) {
                 if (isCopFollowed) {
                     gameManager.Lose();
+                    julAnim.Death();
+                    cop.EndRun();
                 }
                 else {
                     startCopFollowTimer = true;
-                    cop.CatchUpToPlayer();
                     julAnim.Hit();
                 }
+
+                cop.CatchUpToPlayer();
             }
         }
     }
@@ -354,19 +360,27 @@ public class Player : MonoBehaviour
         Obstacles obstacle = col.gameObject.GetComponent<Obstacles>();
 
         if (col.tag == "Camionette") {
-            if (isStrafing && lane != obstacle.currentLane) {
-                if (isCopFollowed) {
-                    gameManager.Lose();
-                }
-                else {
-                    startCopFollowTimer = true;
-                    // move the cops in fov
-                    cop.CatchUpToPlayer();
-                    julAnim.Hit();
-                }
+            if (isTwingo || isTmax) {
+                gameManager.Lose();
             }
             else {
-                gameManager.Lose();
+                if (isStrafing && lane != obstacle.currentLane) {
+                    if (isCopFollowed) {
+                        gameManager.Lose();
+                        julAnim.Death();
+                        cop.EndRun();
+                    }
+                    else {
+                        startCopFollowTimer = true;
+                        julAnim.Hit();
+                    }
+                }
+                else {
+                    gameManager.Lose();
+                    julAnim.Death();
+                    cop.EndRun();
+                }
+                cop.CatchUpToPlayer();
             }
         }
 
@@ -403,28 +417,34 @@ public class Player : MonoBehaviour
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {   //obstacles légers a pied
                 if (isCopFollowed) {
                     gameManager.Lose();
+                    julAnim.Death();
+                    cop.EndRun();
                 }
                 else {
                     startCopFollowTimer = true;
-                    cop.CatchUpToPlayer();
                     julAnim.Hit();
                     obstacle.Throw();
                 }
+                cop.CatchUpToPlayer();
             }
             else if (col.tag == "Voiture") {
                 if (isStrafing && lane != obstacle.currentLane) {
                     if (isCopFollowed) {
                         gameManager.Lose();
+                        julAnim.Death();
+                        cop.EndRun();
                     }
                     else {
                         startCopFollowTimer = true;
-                        cop.CatchUpToPlayer();
                         julAnim.Hit();
                     }
                 }
                 else {
                     gameManager.Lose();
+                    julAnim.Death();
+                    cop.EndRun();
                 }
+                cop.CatchUpToPlayer();
             }
         }
 
