@@ -26,7 +26,12 @@ public class Obstacles : MonoBehaviour
         //disable moveitems/lateral movement + colliders
         GetComponent<MoveItems>().enabled = false;
         LateralMovement lateralMovement = GetComponent<LateralMovement>();
-        if (lateralMovement != null) lateralMovement.enabled = false;
+        if (lateralMovement != null) {
+            lateralMovement.enabled = false;
+
+            Animator anim = transform.GetComponentInChildren<Animator>();
+            if (anim != null) anim.enabled = false;
+        }
         foreach (Collider col in colliders) {
             col.enabled = false;
         }
