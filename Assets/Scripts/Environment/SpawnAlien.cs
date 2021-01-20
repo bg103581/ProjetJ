@@ -9,10 +9,9 @@ public class SpawnAlien : MonoBehaviour
     private InputManager inputManager;
 
     private GameObject alienSpawned;
+    private List<GameObject> aliensInGame = new List<GameObject>();
 
     private Lane alienLane;
-
-    private bool isSpawnAlien = false;
 
     private int aliensCurrentIndex = 0;
 
@@ -30,6 +29,8 @@ public class SpawnAlien : MonoBehaviour
     [SerializeField]
     private Transform tmaxFirstPos;
     [SerializeField]
+    private Transform tmaxSecondPos;
+    [SerializeField]
     private float moveToTmaxTimer;
 
     private void Awake() {
@@ -39,10 +40,9 @@ public class SpawnAlien : MonoBehaviour
 
     public void StartAlienSpawn() {
         float spawnTime = Random.Range(0, player.tmaxDuration - 4f);
+        aliensCurrentIndex = 0;
         Debug.Log("start alien spawn");
-        if (!isSpawnAlien)
-            Invoke("SpawnNextAlien", spawnTime);
-        isSpawnAlien = true;
+        Invoke("SpawnNextAlien", spawnTime);
     }
 
     public void SpawnNextAlien() {
@@ -65,7 +65,10 @@ public class SpawnAlien : MonoBehaviour
 
         if (aliensCurrentIndex < aliens.Length) {
             alienSpawned = Instantiate(aliens[aliensCurrentIndex], spawnPos.position, spawnPos.rotation, transform);
+            aliensInGame.Add(alienSpawned);
             aliensCurrentIndex++;
+
+            if (aliensCurrentIndex > 1) alienSpawned.GetComponent<Alien>().animator.Play("Floating");
         }
     }
 
@@ -74,17 +77,41 @@ public class SpawnAlien : MonoBehaviour
             inputManager.isAlienClickable = false;
 
             alienSpawned.GetComponent<MoveItems>().enabled = false;
-            //do move alien on tmax
-            alienSpawned.transform.SetParent(tmaxFirstPos);
-            alienSpawned.transform.DOLocalMove(Vector3.zero, moveToTmaxTimer);
-            alienSpawned.transform.DOLocalRotate(Vector3.zero, moveToTmaxTimer);
-            if (aliensCurrentIndex == 3) {
-                player.StartOvni();
+            alienSpawned.GetComponent<CapsuleCollider>().enabled = false;
+            
+            switch (aliensCurrentIndex) {
+                case 1:
+                    MoveAlienToTmax(tmaxFirstPos);
+                    alienSpawned.GetComponent<Alien>().animator.SetBool("isClicked", true);
+                    player.Fly();
+                    break;
+                case 2:
+                    MoveAlienToTmax(tmaxSecondPos);
+                    alienSpawned.GetComponent<Alien>().animator.SetBool("isClicked", true);
+                    player.Fly();
+                    break;
+                case 3:
+                    DestroyAliens();
+                    player.StartOvni();
+                    break;
+                default:
+                    break;
             }
-            else {
-                //jul fly
-                player.Fly();
+        }
+    }
+
+    private void MoveAlienToTmax(Transform parent) {
+        alienSpawned.transform.SetParent(parent);
+        alienSpawned.transform.DOLocalMove(Vector3.zero, moveToTmaxTimer);
+        alienSpawned.transform.DOLocalRotate(Vector3.zero, moveToTmaxTimer);
+    }
+
+    public void DestroyAliens() {
+        if (aliensInGame.Count > 0) {
+            foreach (GameObject alien in aliensInGame) {
+                Destroy(alien);
             }
+            aliensInGame.Clear();
         }
     }
 }

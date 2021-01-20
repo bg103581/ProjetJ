@@ -49,6 +49,10 @@ public class InputManager : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.LeftArrow)) _player.MoveToLeft();
                 if (Input.GetKeyDown(KeyCode.RightArrow)) _player.MoveToRight();
                 if (Input.GetKeyDown(KeyCode.UpArrow)) _player.Jump();
+
+                if (isAlienClickable) {
+                    if (Input.GetKeyDown(KeyCode.Space)) spawnAlien.TouchAlien();
+                }
             }
             else {
                 if (Input.touchCount > 0) {

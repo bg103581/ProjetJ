@@ -42,6 +42,8 @@ public class JulAnim : MonoBehaviour
     private void OnReplay() {
         transform.localPosition = startPos;
         transform.localRotation = startRot;
+
+        anim.Play("Idle");
     }
 
     public void PlayStartMovement() {
@@ -54,7 +56,6 @@ public class JulAnim : MonoBehaviour
     }
 
     public void RotatePlayPos() {
-        Debug.Log("rotate to play");
         transform.DOLocalRotate(new Vector3(0f, -1f ,0f) , rotatePlayPosTime);
     }
 
@@ -64,9 +65,22 @@ public class JulAnim : MonoBehaviour
 
     public void Jump() {
         anim.SetTrigger("jumpTrigger");
+        SetFallBool(true);
     }
 
     public void StartAnimation() {
         anim.SetTrigger("startAnimationTrigger");
+    }
+
+    public void Hit() {
+        anim.SetTrigger("hitTrigger");
+    }
+
+    public void SetFallBool(bool isFalling) {
+        anim.SetBool("isFalling", isFalling);
+    }
+
+    public void PlayState(string stateName) {
+        anim.Play(stateName);
     }
 }

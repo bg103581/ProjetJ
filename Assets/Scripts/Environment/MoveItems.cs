@@ -16,14 +16,16 @@ public class MoveItems : MonoBehaviour
     [SerializeField]
     private float _moveSpeed;
 
+    private void OnEnable() {
+        GameEvents.current.onReplayButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+    }
+
     private void Start() {
         _mainCamera = FindObjectOfType<Camera>();
         discMagnet = FindObjectOfType<DiscMagnet>();
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
-
-        GameEvents.current.onReplayButtonTrigger += OnReplay;
-        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
 
         if (gameManager.gameState == GameState.PLAYING)
             transform.position += Vector3.back * _moveSpeed * Time.deltaTime;
@@ -41,18 +43,30 @@ public class MoveItems : MonoBehaviour
 
         if (_mainCamera.WorldToViewportPoint(transform.position).z < 0) {
             if (tag == "Alien") player.EndFly();
-            Destroy(gameObject);
+            ObjectPooler.current.DestroyObject(gameObject);
+            //Destroy(gameObject);
         }
     }
 
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+
+        transform.DOKill();
+    }
+
+    private void OnDisable() {
+        GameEvents.current.onReplayButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+
+        isMovingToPlayer = false;
     }
 
     private void OnReplay() {
-        Destroy(gameObject);
+        ObjectPooler.current.DestroyObject(gameObject);
+        //Destroy(gameObject);
     }
+    
 
     //public void MoveToPlayer(Vector3 playerPos, float moveDuration) {
     //    if (!isMovingToPlayer) {

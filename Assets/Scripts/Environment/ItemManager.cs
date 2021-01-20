@@ -20,6 +20,8 @@ public class ItemManager : MonoBehaviour
     public Transform rightLane;
     public Transform topPos;
     public Transform vehiclePos;
+    public Transform leftThrowPos;
+    public Transform rightThrowPos;
     [Header("Chances in percentage")]
     [Header("start rates :")]
     [SerializeField]

@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2256780033609145129}
   - component: {fileID: 6952853449177593131}
+  - component: {fileID: 8828685892284367329}
+  - component: {fileID: 8366293078791999004}
   m_Layer: 10
   m_Name: DiscGold
   m_TagString: Gold
@@ -46,18 +48,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMovingToPlayer: 0
   _moveSpeed: 15
---- !u!135 &5593916294873834419
+--- !u!114 &8828685892284367329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6140824867307050900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed675cf3f2cb41a44b4f5b6bb5f32f92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLastOvniDisc: 0
+  isOvniDisc: 0
+--- !u!135 &8366293078791999004
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8537231030270764867}
+  m_GameObject: {fileID: 6140824867307050900}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.003
+  m_Radius: 0.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8843732327691852306
 PrefabInstance:
@@ -129,21 +145,15 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4539b03cd229dc84fa576cf5c0c02ef4,
         type: 3}
       propertyPath: m_TagString
-      value: Gold
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4539b03cd229dc84fa576cf5c0c02ef4,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4539b03cd229dc84fa576cf5c0c02ef4, type: 3}
---- !u!1 &8537231030270764867 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4539b03cd229dc84fa576cf5c0c02ef4,
-    type: 3}
-  m_PrefabInstance: {fileID: 8843732327691852306}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9021139753659760121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4539b03cd229dc84fa576cf5c0c02ef4,

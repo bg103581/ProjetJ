@@ -49,22 +49,22 @@ public class SpawnObjRandPos : GeneratePrefabs
             }
 
             Quaternion rot;
+            GameObject lateralObj;
+
             if (isRight) {
                 rot = Quaternion.Euler(new Vector3(spawnPos.rotation.x, spawnPos.rotation.y + 180, spawnPos.rotation.z));
+                lateralObj = Instantiate(GetRandomPrefab(), spawnPos.position, rot, transform);
+
+                lateralObj.GetComponent<Obstacles>().currentLane = Lane.LEFT;
             }
             else {
                 rot = spawnPos.rotation;
-            }
+                lateralObj = Instantiate(GetRandomPrefab(), spawnPos.position, rot, transform);
 
-            GameObject lateralObj = Instantiate(GetRandomPrefab(), spawnPos.position, rot, transform);
+                lateralObj.GetComponent<Obstacles>().currentLane = Lane.RIGHT;
+            }
+            
             lateralObj.GetComponent<LateralMovement>().isStartingRight = isRight;
         }
     }
-
-    //private Transform GetRandomSpawnPos() {
-    //    int rand = Random.Range(0, 2);
-
-    //    if (rand == 0) return rightSpawnPosition;
-    //    else return leftSpawnPosition;
-    //}
 }

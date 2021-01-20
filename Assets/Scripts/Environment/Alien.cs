@@ -6,10 +6,16 @@ public class Alien : MonoBehaviour
 {
     private InputManager inputManager;
     private Camera mainCamera;
+    private SpawnAlien spawnAlien;
+
+    public Animator animator;
 
     private void Start() {
+        GameEvents.current.onAlienFail += OnAlienFail;
+
         inputManager = FindObjectOfType<InputManager>();
         mainCamera = FindObjectOfType<Camera>();
+        spawnAlien = FindObjectOfType<SpawnAlien>();
     }
 
     private void Update() {
@@ -25,7 +31,16 @@ public class Alien : MonoBehaviour
 
     private void OnTriggerExit(Collider other) {
         if (other.tag == "AlienTriggerCollider") {
+            Debug.Log("isAlienClickable = false");
             inputManager.isAlienClickable = false;
         }
+    }
+
+    private void OnDestroy() {
+        GameEvents.current.onAlienFail -= OnAlienFail;
+    }
+
+    private void OnAlienFail() {
+        spawnAlien.DestroyAliens();
     }
 }

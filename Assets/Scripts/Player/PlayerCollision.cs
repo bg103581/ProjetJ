@@ -8,6 +8,12 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField]
     private Player player;
 
+    private JulAnim julAnim;
+
+    private void Awake() {
+        julAnim = FindObjectOfType<JulAnim>();
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.layer == 8) {
             player.HitByObstacle(other);
@@ -18,7 +24,8 @@ public class PlayerCollision : MonoBehaviour
         }
         else if (other.gameObject.layer == 10) {
             player.HitByDisc(other.tag == "Gold");
-            Destroy(other.gameObject);
+            ObjectPooler.current.DestroyObject(other.gameObject);
+            //Destroy(other.gameObject);
         }
         else if (other.gameObject.layer == 11) {
             player.DodgeObstacle();
@@ -28,6 +35,7 @@ public class PlayerCollision : MonoBehaviour
     private void OnCollisionEnter(Collision collision) {
         if (collision.transform.tag == "Ground") {
             player.isGrounded = true;
+            julAnim.SetFallBool(false);
         }
     }
 

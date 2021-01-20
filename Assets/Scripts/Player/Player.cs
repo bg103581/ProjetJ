@@ -111,9 +111,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float yDuration;
     //[SerializeField]
-    //private float ovniSpeed;
-    [SerializeField]
-    private float ovniDuration;
+    //private float ovniDuration;
     [SerializeField]
     private float ovniSpeed;
     #endregion
@@ -222,6 +220,7 @@ public class Player : MonoBehaviour
                 else {
                     startCopFollowTimer = true;
                     cop.CatchUpToPlayer();
+                    julAnim.Hit();
                 }
             }
         }
@@ -253,12 +252,15 @@ public class Player : MonoBehaviour
             }
         }
         else {
-            if (isCopFollowed) {
-                gameManager.Lose();
-            }
-            else {
-                startCopFollowTimer = true;
-                cop.CatchUpToPlayer();
+            if (!(isTwingo || isTmax || isOvni)) {
+                if (isCopFollowed) {
+                    gameManager.Lose();
+                }
+                else {
+                    startCopFollowTimer = true;
+                    cop.CatchUpToPlayer();
+                    julAnim.Hit();
+                }
             }
         }
     }
@@ -286,15 +288,30 @@ public class Player : MonoBehaviour
     }
 
     public void EndFly() {
-        if (isTmaxFlying)
+        if (isTmaxFlying) {
             tmaxTimer = 0f;
+            GameEvents.current.AlienFail();
+            isTmaxFlying = false;
+            rb.useGravity = true;
+            ActivateLook(jul);
+            julAnim.SetFallBool(true);
+            julAnim.PlayState("Fall");
 
-        rb.useGravity = true;
+            cameraMovement.MoveToGroundPos();
+            cameraMovement.MoveToNormalPosZ();
+        }
 
-        //transform.DOMoveY(centerPos.position.y, moveTime * 2f);
-        cameraMovement.MoveToGroundPos();  //moveTime * 4f
-        cameraMovement.MoveToNormalPosZ(); //moveTime * 4f
-        Debug.Log("end fly");
+        if (isOvni) {
+            ovniTimer = 0f;
+            isOvni = false;
+            rb.useGravity = true;
+            ActivateLook(jul);
+            julAnim.SetFallBool(true);
+            julAnim.PlayState("Fall");
+
+            cameraMovement.MoveToGroundPos();
+            cameraMovement.MoveToNormalPosZ();
+        }
     }
 
     public void Jump() {
@@ -345,6 +362,7 @@ public class Player : MonoBehaviour
                     startCopFollowTimer = true;
                     // move the cops in fov
                     cop.CatchUpToPlayer();
+                    julAnim.Hit();
                 }
             }
             else {
@@ -356,6 +374,7 @@ public class Player : MonoBehaviour
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
                 // break them
                 gameManager.AddBreakItemScore();
+                obstacle.Throw();
             }
             else if (col.tag == "Voiture") {
                 gameManager.Lose();
@@ -365,6 +384,7 @@ public class Player : MonoBehaviour
             if (isY) {
                 if (col.tag == "Voiture") {
                     gameManager.AddBreakItemScore(true);
+                    obstacle.Throw();
                 }
             }
             else {
@@ -376,6 +396,7 @@ public class Player : MonoBehaviour
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
                 // break them
                 gameManager.AddBreakItemScore();
+                obstacle.Throw();
             }
         }
         else {
@@ -386,6 +407,8 @@ public class Player : MonoBehaviour
                 else {
                     startCopFollowTimer = true;
                     cop.CatchUpToPlayer();
+                    julAnim.Hit();
+                    obstacle.Throw();
                 }
             }
             else if (col.tag == "Voiture") {
@@ -396,6 +419,7 @@ public class Player : MonoBehaviour
                     else {
                         startCopFollowTimer = true;
                         cop.CatchUpToPlayer();
+                        julAnim.Hit();
                     }
                 }
                 else {
@@ -404,7 +428,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        Destroy(col.gameObject);
+        //Destroy(col.gameObject);
     }
 
     public void HitByBonus(string tag) {
@@ -441,7 +465,6 @@ public class Player : MonoBehaviour
                     Time.timeScale += tmaxSpeed;
                     AlienEvent();
                 }
-
                 break;
             case "Ovni":
                 break;
@@ -456,6 +479,10 @@ public class Player : MonoBehaviour
         ActivateLook(ovni);
         twingoOvniCollider.enabled = true;
         julCollider.enabled = false;
+    }
+
+    public void EndOvni() {
+        ovniTimer = 0;
     }
 
     public void HitByDisc(bool isGold) {
@@ -481,12 +508,14 @@ public class Player : MonoBehaviour
     }
 
     private void ActivateLook(GameObject go) {
-        jul.SetActive(false);
-        twingo.SetActive(false);
-        tmax.SetActive(false);
-        ovni.SetActive(false);
+        if (!go.activeInHierarchy) {
+            jul.SetActive(false);
+            twingo.SetActive(false);
+            tmax.SetActive(false);
+            ovni.SetActive(false);
 
-        go.SetActive(true);
+            go.SetActive(true);
+        }
     }
 
     private void DodgeStreakTimerUpdate() {
@@ -634,7 +663,7 @@ public class Player : MonoBehaviour
         if (startOvniTimer) {
             isOvni = true;
             isTmax = false;
-            ovniTimer = ovniDuration;
+            ovniTimer = 200f;
 
             Time.timeScale -= tmaxSpeed;
             Time.timeScale += ovniSpeed;
@@ -647,8 +676,6 @@ public class Player : MonoBehaviour
 
         if (isOvni) {
             if (ovniTimer <= 0f) {
-                isOvni = false;
-                ActivateLook(jul);
                 twingoOvniCollider.enabled = false;
                 julCollider.enabled = true;
 

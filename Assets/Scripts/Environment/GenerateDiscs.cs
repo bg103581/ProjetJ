@@ -73,13 +73,13 @@ public class GenerateDiscs : MonoBehaviour
         RandPlatinumDiscPattern(patternPrefab);
     }
 
-    private void RandPlatinumDiscPattern(GameObject patternPrefab) {    //apply normal or platinum discs to a pattern
+    private void RandPlatinumDiscPattern(GameObject patternPrefab, bool isOvniPattern = false, bool isLastOvniPattern = false) {    //apply normal or platinum discs to a pattern
         int rand = Random.Range(0, 101);
         if (rand < platinumPatternChance) {         //1 platinum disc in the pattern
-            CreateDiscPattern(patternPrefab, true);
+            CreateDiscPattern(patternPrefab, true, isOvniPattern, isLastOvniPattern);
         }
         else {
-            CreateDiscPattern(patternPrefab, false);
+            CreateDiscPattern(patternPrefab, false, isOvniPattern, isLastOvniPattern);
         }
     }
 
@@ -106,7 +106,7 @@ public class GenerateDiscs : MonoBehaviour
                         if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
                         else return jumpPatternPrefab;
                     }
-                    else 
+                    else
                         return RandSidePatterns(false);
                 }
             }
@@ -119,7 +119,7 @@ public class GenerateDiscs : MonoBehaviour
                         return RandSidePatterns(true);
                     else if (rand == 1)
                         return claquettesJumpPatternPrefab;
-                    else 
+                    else
                         return RandSidePatterns(false);
                 }
                 else {
@@ -205,7 +205,7 @@ public class GenerateDiscs : MonoBehaviour
         }
     }
 
-    private void CreateDiscPattern(GameObject patternPrefab, bool isPlatinum) { //apply discs on pattern
+    private void CreateDiscPattern(GameObject patternPrefab, bool isPlatinum, bool isOvniPattern = false, bool isLastOvniPattern = false) { //apply discs on pattern
         Transform[] children = new Transform[patternPrefab.transform.childCount];
 
         int i = 0;
@@ -218,18 +218,74 @@ public class GenerateDiscs : MonoBehaviour
             int randIndex = Random.Range(0, children.Length);
 
             for (int j = 0; j < children.Length; j++) {
+                GameObject disc;
                 if (j == randIndex)
-                    Instantiate(platinumDiscPrefab, children[j].position, children[j].rotation, transform);
+                    disc = Instantiate(platinumDiscPrefab, children[j].position, children[j].rotation, transform);
                 else
-                    Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
+                    //disc = Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
+                    disc = ObjectPooler.current.InstantiateObject(children[j].position, children[j].rotation, transform);
+
+                if (isOvniPattern) {
+                    disc.GetComponent<Disc>().isOvniDisc = true;
+
+                    if (isLastOvniPattern) {
+                        if (j == children.Length - 1) disc.GetComponent<Disc>().isLastOvniDisc = true;
+                    }
+                }
             }
         }
         else {
-            foreach (Transform anchor in children) {
-                Instantiate(goldenDiscPrefab, anchor.position, anchor.rotation, transform);
+            //foreach (Transform anchor in children) {
+            //    Instantiate(goldenDiscPrefab, anchor.position, anchor.rotation, transform);
+            //}
+
+            for (int j = 0; j < children.Length; j++) {
+                GameObject disc = ObjectPooler.current.InstantiateObject(children[j].position, children[j].rotation, transform);
+
+                if (isOvniPattern) {
+                    disc.GetComponent<Disc>().isOvniDisc = true;
+
+                    if (isLastOvniPattern) {
+                        if (j == children.Length - 1) disc.GetComponent<Disc>().isLastOvniDisc = true;
+                    }
+                }
             }
         }
     }
+
+    //private void CreateDiscPattern(GameObject patternPrefab, bool isPlatinum, bool isOvniPattern = false, bool isLastOvniPattern = false) { //apply discs on pattern
+
+    //    if (isOvniPattern) {
+    //        StartCoroutine(InstantiateOvniDiscs(isPlatinum, patternPrefab, isLastOvniPattern));
+    //    }
+    //    else {
+    //        Transform[] children = new Transform[patternPrefab.transform.childCount];
+
+    //        int i = 0;
+    //        foreach (Transform child in patternPrefab.transform) {
+    //            children[i] = child;
+    //            i++;
+    //        }
+
+    //        if (isPlatinum) {
+    //            int randIndex = Random.Range(0, children.Length);
+
+    //            for (int j = 0; j < children.Length; j++) {
+    //                GameObject disc;
+    //                if (j == randIndex)
+    //                    disc = Instantiate(platinumDiscPrefab, children[j].position, children[j].rotation, transform);
+    //                else
+    //                    disc = Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
+    //            }
+    //        }
+    //        else {
+
+    //            for (int j = 0; j < children.Length; j++) {
+    //                GameObject disc = Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
+    //            }
+    //        }
+    //    }
+    //}
 
     public void SpawnOvniDiscs() {
         //create random overall pattern
@@ -260,7 +316,7 @@ public class GenerateDiscs : MonoBehaviour
         #endregion
 
         #region LoopTheRest
-        for (int i = 1; i < laneArray.Length - 1; i++) {
+        for (int i = 1; i < laneArray.Length; i++) {
             GameObject igLinePattern =
                 Instantiate(ovniLinePattern,
                 GetLastOvniDiscPos(igPatterns[igPatterns.Count - 1], offSet),
@@ -268,7 +324,7 @@ public class GenerateDiscs : MonoBehaviour
                 transform);
             igPatterns.Add(igLinePattern);
             // add turn pattern at the end of linepattern
-            if (i < laneArray.Length - 2) { //pour voir l'avant derniere et la derniere lane
+            if (i < laneArray.Length - 1) { //pour voir l'avant derniere et la derniere lane
                 GameObject turnPattern = GetTurnPattern(laneArray[i], laneArray[i + 1]);
                 if (turnPattern != null) {   //si il y a un turn a faire
                     GameObject igTurnPattern = Instantiate(turnPattern, GetLastOvniDiscPos(igLinePattern, 2), tr.rotation, transform);
@@ -279,9 +335,14 @@ public class GenerateDiscs : MonoBehaviour
         #endregion
 
         //apply discs to pattern
-        foreach (GameObject pattern in igPatterns) {
-            Debug.Log(pattern);
-            RandPlatinumDiscPattern(pattern);
+        //foreach (GameObject pattern in igPatterns) {
+        //    Debug.Log(pattern);
+        //    RandPlatinumDiscPattern(pattern);
+        //}
+
+        for (int i = 0; i < igPatterns.Count; i++) {
+            if (i == igPatterns.Count - 1) RandPlatinumDiscPattern(igPatterns[i], true, true);
+            else RandPlatinumDiscPattern(igPatterns[i], true);
         }
     }
 
@@ -340,5 +401,49 @@ public class GenerateDiscs : MonoBehaviour
         Vector3 lastChild = pattern.transform.GetChild(pattern.transform.childCount - 1).position;
 
         return new Vector3(lastChild.x, lastChild.y, lastChild.z + offSet);
+    }
+
+    private IEnumerator InstantiateOvniDiscs(bool isPlatinum, GameObject patternPrefab, bool isLastOvniPattern) {
+        //float instantiateTime = 0.1f;
+        Transform[] children = new Transform[patternPrefab.transform.childCount];
+
+        int i = 0;
+        foreach (Transform child in patternPrefab.transform) {
+            children[i] = child;
+            i++;
+        }
+
+        if (isPlatinum) {
+            int randIndex = Random.Range(0, children.Length);
+
+            for (int j = 0; j < children.Length; j++) {
+                GameObject disc;
+                if (j == randIndex)
+                    disc = Instantiate(platinumDiscPrefab, children[j].position, children[j].rotation, transform);
+                else
+                    disc = Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
+
+                disc.GetComponent<Disc>().isOvniDisc = true;
+
+                if (isLastOvniPattern) {
+                    if (j == children.Length - 1) disc.GetComponent<Disc>().isLastOvniDisc = true;
+                }
+
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        else {
+            for (int j = 0; j < children.Length; j++) {
+                GameObject disc = Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
+
+                disc.GetComponent<Disc>().isOvniDisc = true;
+
+                if (isLastOvniPattern) {
+                    if (j == children.Length - 1) disc.GetComponent<Disc>().isLastOvniDisc = true;
+                }
+
+                yield return new WaitForEndOfFrame();
+            }
+        }
     }
 }

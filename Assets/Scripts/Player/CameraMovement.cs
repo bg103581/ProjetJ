@@ -65,7 +65,7 @@ public class CameraMovement : MonoBehaviour
     }
 
     public void MoveToGroundPos() {
-        transform.DOMoveY(centerPos.position.y, goDownMoveTime).SetEase(Ease.OutSine);
+        transform.DOMoveY(playPos.position.y, goDownMoveTime).SetEase(Ease.OutSine);
     }
 
     public void MoveToOvniPosY() {
