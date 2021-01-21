@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void Lose() {
+        GameEvents.current.LoseGame();
         Time.timeScale = 1;
         UpdatePlayerStats();
         gameState = GameState.FINISHED;

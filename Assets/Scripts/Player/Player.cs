@@ -51,6 +51,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float fallMultiplier;
 
+    [SerializeField]
+    private Animator twingoAnimator;
+    [SerializeField]
+    private Animator tmaxAnimator;
+    [SerializeField]
+    private Animator ovniAnimator;
+
     [HideInInspector]
     public bool isGrounded = true;
     private bool isDodgeStreak = false;
@@ -142,11 +149,13 @@ public class Player : MonoBehaviour
         YTimerUpdate();             //mise en y timer
         OvniTimerUpdate();          //ovni timer
 
-        if (rb.velocity.y < 0) {
-            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (rb.velocity.y > 0) {
-            rb.velocity += Vector3.up * Physics.gravity.y * (jumpMultiplier - 1) * Time.deltaTime;
+        if (!(isTmaxFlying || isOvni)) {
+            if (rb.velocity.y < 0) {
+                rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y > 0) {
+                rb.velocity += Vector3.up * Physics.gravity.y * (jumpMultiplier - 1) * Time.deltaTime;
+            }
         }
     }
 
@@ -181,6 +190,7 @@ public class Player : MonoBehaviour
         isOvni = false;
         startOvniTimer = false;
         isStrafing = false;
+        rb.useGravity = true;
 
         ActivateLook(jul);
         twingoOvniCollider.enabled = false;
@@ -196,8 +206,24 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
-                julAnim.Strafe();
-                cop.Strafe();
+                if (isTwingo) {
+                    twingoAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else if (isTmax) {
+                    tmaxAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else {
+                    julAnim.Strafe();
+                    cop.Strafe();
+                }
+            }
+            else {
+                if (isOvni) {
+                    ovniAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else if (isTmaxFlying) {
+                    tmaxAnimator.SetTrigger("strafeLeftTrigger");
+                }
             }
         }
         else if (lane == Lane.CENTER) {
@@ -208,8 +234,24 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToLeftPos(moveTime);
 
             if (isGrounded) {
-                julAnim.Strafe();
-                cop.Strafe();
+                if (isTwingo) {
+                    twingoAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else if (isTmax) {
+                    tmaxAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else {
+                    julAnim.Strafe();
+                    cop.Strafe();
+                }
+            }
+            else {
+                if (isOvni) {
+                    ovniAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else if (isTmaxFlying) {
+                    tmaxAnimator.SetTrigger("strafeLeftTrigger");
+                }
             }
         }
         else {
@@ -238,8 +280,24 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
-                julAnim.Strafe();
-                cop.Strafe();
+                if (isTwingo) {
+                    twingoAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else if (isTmax) {
+                    tmaxAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else {
+                    julAnim.Strafe();
+                    cop.Strafe();
+                }
+            }
+            else {
+                if (isOvni) {
+                    ovniAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else if (isTmaxFlying) {
+                    tmaxAnimator.SetTrigger("strafeRightTrigger");
+                }
             }
         }
         else if (lane == Lane.CENTER) {
@@ -250,8 +308,24 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToRightPos(moveTime);
 
             if (isGrounded) {
-                julAnim.Strafe();
-                cop.Strafe();
+                if (isTwingo) {
+                    twingoAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else if (isTmax) {
+                    tmaxAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else {
+                    julAnim.Strafe();
+                    cop.Strafe();
+                }
+            }
+            else {
+                if (isOvni) {
+                    ovniAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else if (isTmaxFlying) {
+                    tmaxAnimator.SetTrigger("strafeRightTrigger");
+                }
             }
         }
         else {
@@ -278,11 +352,13 @@ public class Player : MonoBehaviour
 
     public void Fly() {
         if (!isTmaxFlying) {
-            transform.DOMoveY(topPos.position.y, cameraMovement.flyMoveTime);
+            transform.DOMoveY(topPos.position.y, cameraMovement.flyMoveTime).OnComplete(() => julCollider.enabled = true);
             cameraMovement.MoveToTopPos(); //moveTime * 2f
 
             isTmaxFlying = true;
             rb.useGravity = false;
+            julCollider.enabled = false;
+            isGrounded = false;
 
             itemManager.StartSpawnOvniDiscs();
         }
