@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     private GameObject tmax;
     [SerializeField]
     private GameObject ovni;
+    private Vector3 initTwingoPos;
 
     [SerializeField]
     private float moveTime;
@@ -97,6 +98,8 @@ public class Player : MonoBehaviour
 
     private const float COP_FOLLOW_DURATION = 5f;
 
+    [SerializeField] private TmaxLose tmaxLose;
+
     [Header("Bonus variables")]
     [SerializeField]
     private float claquettesJumpVelocity;
@@ -137,6 +140,8 @@ public class Player : MonoBehaviour
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+
+        initTwingoPos = twingo.transform.position;
     }
 
     private void Update() {
@@ -195,6 +200,9 @@ public class Player : MonoBehaviour
         ActivateLook(jul);
         twingoOvniCollider.enabled = false;
         julCollider.enabled = true;
+
+        twingo.transform.position = initTwingoPos;
+        twingo.transform.rotation = Quaternion.identity;
     }
 
     public void MoveToLeft() {
@@ -436,7 +444,28 @@ public class Player : MonoBehaviour
         Obstacles obstacle = col.gameObject.GetComponent<Obstacles>();
 
         if (col.tag == "Camionette") {
-            if (isTwingo || isTmax) {
+            if (isTwingo) {
+                switch (obstacle.currentLane) {
+                    case Lane.LEFT:
+                        twingoAnimator.SetTrigger("deathTriggerRight");
+                        break;
+                    case Lane.CENTER:
+                        int rand = Random.Range(0, 2);
+                        if (rand == 0) twingoAnimator.SetTrigger("deathTriggerRight");
+                        else twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
+                    case Lane.RIGHT:
+                        twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
+                    default:
+                        twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
+                }
+                gameManager.Lose();
+            }
+            else if (isTmax) {
+                tmaxLose.StartLoseAnimation(obstacle.currentLane);
+                yTimer = 0f;
                 gameManager.Lose();
             }
             else {
@@ -467,6 +496,22 @@ public class Player : MonoBehaviour
                 obstacle.Throw();
             }
             else if (col.tag == "Voiture") {
+                switch (obstacle.currentLane) {
+                    case Lane.LEFT:
+                        twingoAnimator.SetTrigger("deathTriggerRight");
+                        break;
+                    case Lane.CENTER:
+                        int rand = Random.Range(0, 2);
+                        if (rand == 0) twingoAnimator.SetTrigger("deathTriggerRight");
+                        else twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
+                    case Lane.RIGHT:
+                        twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
+                    default:
+                        twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
+                }
                 gameManager.Lose();
             }
         }
@@ -479,6 +524,7 @@ public class Player : MonoBehaviour
             }
             else {
                 if (col.tag == "Voiture") {
+                    tmaxLose.StartLoseAnimation(obstacle.currentLane);
                     gameManager.Lose();
                 }
             }
@@ -706,7 +752,7 @@ public class Player : MonoBehaviour
                 Time.timeScale -= twingoSpeed;
             }
             else {
-                if (gameManager.gameState != GameState.PAUSE) twingoTimer -= Time.unscaledDeltaTime;
+                if (!(gameManager.gameState == GameState.PAUSE || gameManager.gameState == GameState.FINISHED)) twingoTimer -= Time.unscaledDeltaTime;
             }
         }
     }
@@ -730,7 +776,7 @@ public class Player : MonoBehaviour
                 }
             }
             else {
-                if (gameManager.gameState != GameState.PAUSE) tmaxTimer -= Time.unscaledDeltaTime;
+                if (!(gameManager.gameState == GameState.PAUSE || gameManager.gameState == GameState.FINISHED)) tmaxTimer -= Time.unscaledDeltaTime;
             }
         }
     }

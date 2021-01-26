@@ -130,7 +130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840458078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.04, z: -2.54}
+  m_LocalPosition: {x: 0.057, y: -1.344, z: -3.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1292643583}
@@ -191,13 +191,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426710062}
-  m_LocalRotation: {x: -0.24103959, y: -0, z: -0, w: 0.9705154}
-  m_LocalPosition: {x: 0.049, y: 0.173, z: -0.845}
+  m_LocalRotation: {x: -0.12389579, y: 0, z: 0, w: 0.9922952}
+  m_LocalPosition: {x: 0, y: -0.461, z: -0.704}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1292643583}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -27.896002, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -14.234, y: 0, z: 0}
 --- !u!1 &1567826527
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,7 +432,7 @@ MonoBehaviour:
   twingoDuration: 10
   tmaxSpeed: 0.75
   tmaxDuration: 10
-  alienSpawnRate: 100
+  alienSpawnRate: 20
   ySpeed: 0.5
   yDuration: 1
   ovniSpeed: 1
