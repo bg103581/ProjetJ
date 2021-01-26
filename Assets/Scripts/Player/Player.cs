@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
     private GameObject tmax;
     [SerializeField]
     private GameObject ovni;
+    private Vector3 initTwingoPos;
 
     [SerializeField]
     private float moveTime;
@@ -50,6 +51,13 @@ public class Player : MonoBehaviour
     private float dodgeStreakTime;
     [SerializeField]
     private float fallMultiplier;
+
+    [SerializeField]
+    private Animator twingoAnimator;
+    [SerializeField]
+    private Animator tmaxAnimator;
+    [SerializeField]
+    private Animator ovniAnimator;
 
     [HideInInspector]
     public bool isGrounded = true;
@@ -89,6 +97,8 @@ public class Player : MonoBehaviour
     private float ovniTimer;
 
     private const float COP_FOLLOW_DURATION = 5f;
+
+    [SerializeField] private TmaxLose tmaxLose;
 
     [Header("Bonus variables")]
     [SerializeField]
@@ -130,6 +140,8 @@ public class Player : MonoBehaviour
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+
+        initTwingoPos = twingo.transform.position;
     }
 
     private void Update() {
@@ -142,11 +154,13 @@ public class Player : MonoBehaviour
         YTimerUpdate();             //mise en y timer
         OvniTimerUpdate();          //ovni timer
 
-        if (rb.velocity.y < 0) {
-            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-        else if (rb.velocity.y > 0) {
-            rb.velocity += Vector3.up * Physics.gravity.y * (jumpMultiplier - 1) * Time.deltaTime;
+        if (!(isTmaxFlying || isOvni)) {
+            if (rb.velocity.y < 0) {
+                rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if (rb.velocity.y > 0) {
+                rb.velocity += Vector3.up * Physics.gravity.y * (jumpMultiplier - 1) * Time.deltaTime;
+            }
         }
     }
 
@@ -181,10 +195,14 @@ public class Player : MonoBehaviour
         isOvni = false;
         startOvniTimer = false;
         isStrafing = false;
+        rb.useGravity = true;
 
         ActivateLook(jul);
         twingoOvniCollider.enabled = false;
         julCollider.enabled = true;
+
+        twingo.transform.position = initTwingoPos;
+        twingo.transform.rotation = Quaternion.identity;
     }
 
     public void MoveToLeft() {
@@ -196,8 +214,24 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
-                julAnim.Strafe();
-                cop.Strafe();
+                if (isTwingo) {
+                    twingoAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else if (isTmax) {
+                    tmaxAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else {
+                    julAnim.Strafe();
+                    cop.Strafe();
+                }
+            }
+            else {
+                if (isOvni) {
+                    ovniAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else if (isTmaxFlying) {
+                    tmaxAnimator.SetTrigger("strafeLeftTrigger");
+                }
             }
         }
         else if (lane == Lane.CENTER) {
@@ -208,20 +242,39 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToLeftPos(moveTime);
 
             if (isGrounded) {
-                julAnim.Strafe();
-                cop.Strafe();
+                if (isTwingo) {
+                    twingoAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else if (isTmax) {
+                    tmaxAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else {
+                    julAnim.Strafe();
+                    cop.Strafe();
+                }
+            }
+            else {
+                if (isOvni) {
+                    ovniAnimator.SetTrigger("strafeLeftTrigger");
+                }
+                else if (isTmaxFlying) {
+                    tmaxAnimator.SetTrigger("strafeLeftTrigger");
+                }
             }
         }
         else {
             if (!(isTwingo || isTmax || isOvni)) {
                 if (isCopFollowed) {
                     gameManager.Lose();
+                    julAnim.Death();
+                    cop.EndRun();
                 }
                 else {
                     startCopFollowTimer = true;
-                    cop.CatchUpToPlayer();
                     julAnim.Hit();
                 }
+
+                cop.CatchUpToPlayer();
             }
         }
     }
@@ -235,8 +288,24 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToCenterPos(moveTime);
 
             if (isGrounded) {
-                julAnim.Strafe();
-                cop.Strafe();
+                if (isTwingo) {
+                    twingoAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else if (isTmax) {
+                    tmaxAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else {
+                    julAnim.Strafe();
+                    cop.Strafe();
+                }
+            }
+            else {
+                if (isOvni) {
+                    ovniAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else if (isTmaxFlying) {
+                    tmaxAnimator.SetTrigger("strafeRightTrigger");
+                }
             }
         }
         else if (lane == Lane.CENTER) {
@@ -247,20 +316,39 @@ public class Player : MonoBehaviour
             cameraMovement.MoveToRightPos(moveTime);
 
             if (isGrounded) {
-                julAnim.Strafe();
-                cop.Strafe();
+                if (isTwingo) {
+                    twingoAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else if (isTmax) {
+                    tmaxAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else {
+                    julAnim.Strafe();
+                    cop.Strafe();
+                }
+            }
+            else {
+                if (isOvni) {
+                    ovniAnimator.SetTrigger("strafeRightTrigger");
+                }
+                else if (isTmaxFlying) {
+                    tmaxAnimator.SetTrigger("strafeRightTrigger");
+                }
             }
         }
         else {
             if (!(isTwingo || isTmax || isOvni)) {
                 if (isCopFollowed) {
                     gameManager.Lose();
+                    julAnim.Death();
+                    cop.EndRun();
                 }
                 else {
                     startCopFollowTimer = true;
-                    cop.CatchUpToPlayer();
                     julAnim.Hit();
                 }
+
+                cop.CatchUpToPlayer();
             }
         }
     }
@@ -272,11 +360,13 @@ public class Player : MonoBehaviour
 
     public void Fly() {
         if (!isTmaxFlying) {
-            transform.DOMoveY(topPos.position.y, cameraMovement.flyMoveTime);
+            transform.DOMoveY(topPos.position.y, cameraMovement.flyMoveTime).OnComplete(() => julCollider.enabled = true);
             cameraMovement.MoveToTopPos(); //moveTime * 2f
 
             isTmaxFlying = true;
             rb.useGravity = false;
+            julCollider.enabled = false;
+            isGrounded = false;
 
             itemManager.StartSpawnOvniDiscs();
         }
@@ -354,19 +444,48 @@ public class Player : MonoBehaviour
         Obstacles obstacle = col.gameObject.GetComponent<Obstacles>();
 
         if (col.tag == "Camionette") {
-            if (isStrafing && lane != obstacle.currentLane) {
-                if (isCopFollowed) {
-                    gameManager.Lose();
+            if (isTwingo) {
+                switch (obstacle.currentLane) {
+                    case Lane.LEFT:
+                        twingoAnimator.SetTrigger("deathTriggerRight");
+                        break;
+                    case Lane.CENTER:
+                        int rand = Random.Range(0, 2);
+                        if (rand == 0) twingoAnimator.SetTrigger("deathTriggerRight");
+                        else twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
+                    case Lane.RIGHT:
+                        twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
+                    default:
+                        twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
                 }
-                else {
-                    startCopFollowTimer = true;
-                    // move the cops in fov
-                    cop.CatchUpToPlayer();
-                    julAnim.Hit();
-                }
+                gameManager.Lose();
+            }
+            else if (isTmax) {
+                tmaxLose.StartLoseAnimation(obstacle.currentLane);
+                yTimer = 0f;
+                gameManager.Lose();
             }
             else {
-                gameManager.Lose();
+                if (isStrafing && lane != obstacle.currentLane) {
+                    if (isCopFollowed) {
+                        gameManager.Lose();
+                        julAnim.Death();
+                        cop.EndRun();
+                    }
+                    else {
+                        startCopFollowTimer = true;
+                        julAnim.Hit();
+                    }
+                }
+                else {
+                    gameManager.Lose();
+                    julAnim.Death();
+                    cop.EndRun();
+                }
+                cop.CatchUpToPlayer();
             }
         }
 
@@ -377,6 +496,22 @@ public class Player : MonoBehaviour
                 obstacle.Throw();
             }
             else if (col.tag == "Voiture") {
+                switch (obstacle.currentLane) {
+                    case Lane.LEFT:
+                        twingoAnimator.SetTrigger("deathTriggerRight");
+                        break;
+                    case Lane.CENTER:
+                        int rand = Random.Range(0, 2);
+                        if (rand == 0) twingoAnimator.SetTrigger("deathTriggerRight");
+                        else twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
+                    case Lane.RIGHT:
+                        twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
+                    default:
+                        twingoAnimator.SetTrigger("deathTriggerLeft");
+                        break;
+                }
                 gameManager.Lose();
             }
         }
@@ -389,6 +524,7 @@ public class Player : MonoBehaviour
             }
             else {
                 if (col.tag == "Voiture") {
+                    tmaxLose.StartLoseAnimation(obstacle.currentLane);
                     gameManager.Lose();
                 }
             }
@@ -403,28 +539,34 @@ public class Player : MonoBehaviour
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {   //obstacles légers a pied
                 if (isCopFollowed) {
                     gameManager.Lose();
+                    julAnim.Death();
+                    cop.EndRun();
                 }
                 else {
                     startCopFollowTimer = true;
-                    cop.CatchUpToPlayer();
                     julAnim.Hit();
                     obstacle.Throw();
                 }
+                cop.CatchUpToPlayer();
             }
             else if (col.tag == "Voiture") {
                 if (isStrafing && lane != obstacle.currentLane) {
                     if (isCopFollowed) {
                         gameManager.Lose();
+                        julAnim.Death();
+                        cop.EndRun();
                     }
                     else {
                         startCopFollowTimer = true;
-                        cop.CatchUpToPlayer();
                         julAnim.Hit();
                     }
                 }
                 else {
                     gameManager.Lose();
+                    julAnim.Death();
+                    cop.EndRun();
                 }
+                cop.CatchUpToPlayer();
             }
         }
 
@@ -610,7 +752,7 @@ public class Player : MonoBehaviour
                 Time.timeScale -= twingoSpeed;
             }
             else {
-                if (gameManager.gameState != GameState.PAUSE) twingoTimer -= Time.unscaledDeltaTime;
+                if (!(gameManager.gameState == GameState.PAUSE || gameManager.gameState == GameState.FINISHED)) twingoTimer -= Time.unscaledDeltaTime;
             }
         }
     }
@@ -634,7 +776,7 @@ public class Player : MonoBehaviour
                 }
             }
             else {
-                if (gameManager.gameState != GameState.PAUSE) tmaxTimer -= Time.unscaledDeltaTime;
+                if (!(gameManager.gameState == GameState.PAUSE || gameManager.gameState == GameState.FINISHED)) tmaxTimer -= Time.unscaledDeltaTime;
             }
         }
     }

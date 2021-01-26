@@ -18,15 +18,22 @@ public class SpawnObjRandPos : GeneratePrefabs
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+        GameEvents.current.onLoseGame += OnLose;
     }
 
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+        GameEvents.current.onLoseGame -= OnLose;
     }
 
     private void OnReplay() {
         CancelInvoke();
+    }
+
+    private void OnLose() {
+        Animator anim = GetComponentInChildren<Animator>();
+        if (anim != null) anim.enabled = false;
     }
 
     public void StartSpawnLateralObjects() {

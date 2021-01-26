@@ -74,11 +74,11 @@ public class MenuManager : MonoBehaviour
 
     private IEnumerator CountDown() {
         resumeCountdownText.SetText("3");
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
         resumeCountdownText.SetText("2");
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
         resumeCountdownText.SetText("1");
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
         resumeCountdownText.SetText("");
         //event
         GameEvents.current.ResumeGame();

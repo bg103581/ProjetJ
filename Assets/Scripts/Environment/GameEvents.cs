@@ -45,4 +45,11 @@ public class GameEvents : MonoBehaviour
             onAlienFail();
         }
     }
+
+    public event Action onLoseGame;
+    public void LoseGame() {
+        if (onLoseGame != null) {
+            onLoseGame();
+        }
+    }
 }
