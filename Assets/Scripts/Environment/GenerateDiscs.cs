@@ -41,12 +41,11 @@ public class GenerateDiscs : MonoBehaviour
     private GameManager gameManager;
 
     private void Awake() {
-        //SetUpPatternTransforms();
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    public void SpawnDiscs(Lane lane, GameObject obstacle = null) {
+    public GameObject SpawnDiscs(Lane lane, GameObject obstacle = null) {   //return pattern prefab
         GameObject patternPrefab;
         Transform tr;
 
@@ -71,6 +70,7 @@ public class GenerateDiscs : MonoBehaviour
             patternPrefab = Instantiate(ChosePattern(), tr.position, tr.rotation, transform);
 
         RandPlatinumDiscPattern(patternPrefab);
+        return patternPrefab;
     }
 
     private void RandPlatinumDiscPattern(GameObject patternPrefab, bool isOvniPattern = false, bool isLastOvniPattern = false) {    //apply normal or platinum discs to a pattern
@@ -253,40 +253,6 @@ public class GenerateDiscs : MonoBehaviour
         }
     }
 
-    //private void CreateDiscPattern(GameObject patternPrefab, bool isPlatinum, bool isOvniPattern = false, bool isLastOvniPattern = false) { //apply discs on pattern
-
-    //    if (isOvniPattern) {
-    //        StartCoroutine(InstantiateOvniDiscs(isPlatinum, patternPrefab, isLastOvniPattern));
-    //    }
-    //    else {
-    //        Transform[] children = new Transform[patternPrefab.transform.childCount];
-
-    //        int i = 0;
-    //        foreach (Transform child in patternPrefab.transform) {
-    //            children[i] = child;
-    //            i++;
-    //        }
-
-    //        if (isPlatinum) {
-    //            int randIndex = Random.Range(0, children.Length);
-
-    //            for (int j = 0; j < children.Length; j++) {
-    //                GameObject disc;
-    //                if (j == randIndex)
-    //                    disc = Instantiate(platinumDiscPrefab, children[j].position, children[j].rotation, transform);
-    //                else
-    //                    disc = Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
-    //            }
-    //        }
-    //        else {
-
-    //            for (int j = 0; j < children.Length; j++) {
-    //                GameObject disc = Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
-    //            }
-    //        }
-    //    }
-    //}
-
     public void SpawnOvniDiscs() {
         //create random overall pattern
         //create array random Lane
@@ -445,5 +411,9 @@ public class GenerateDiscs : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
         }
+    }
+
+    public void SpawnSecondDiscs(GameObject firstObstacle, Lane[] availableLanes) {
+        // bool isrightavailable, isleftavailable, iscenteravailable en parcourant le tableau
     }
 }

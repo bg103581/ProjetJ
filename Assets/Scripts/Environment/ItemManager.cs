@@ -49,7 +49,9 @@ public class ItemManager : MonoBehaviour
     private int currentObstacleOnlyRate;
     private int currentBonusRate = 0;
 
-    //private System.Random randomizer = new System.Random();
+    [Header("Chances of 2 items")]
+    public int twoObstaclesRate;
+    public int twoDiscsRate;
 
     private void Awake() {
         bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
@@ -98,7 +100,34 @@ public class ItemManager : MonoBehaviour
             switch (itemType) {
                 case ItemType.OBSTACLE_DISCS:
                     GameObject obstacle = generateObstacles.SpawnItem(lane);
-                    generateDiscs.SpawnDiscs(lane, obstacle);
+                    GameObject pattern = generateDiscs.SpawnDiscs(lane, obstacle);
+
+                    int rand = Random.Range(0, 100);
+
+                    if (rand < twoObstaclesRate) {
+                        //spawn two obstacles
+                        switch (lane) {
+                            case Lane.LEFT:
+                                if (pattern.tag == "Right") {
+                                    GameObject secondObstacle = generateObstacles.SpawnItem(Lane.RIGHT);
+                                    Lane[] availableLanes = { Lane.RIGHT };
+                                    generateDiscs.SpawnSecondDiscs(secondObstacle, availableLanes);
+                                }
+                                else if (pattern.tag == "Jump") {
+
+                                }
+                                break;
+                            case Lane.CENTER:
+                                break;
+                            case Lane.RIGHT:
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else {
+                        //spawn one
+                    }
                     break;
                 case ItemType.DISCS_ONLY:
                     generateDiscs.SpawnDiscs(lane);
@@ -126,7 +155,6 @@ public class ItemManager : MonoBehaviour
 
     private ItemType ChoseItem() {
         int rand = Random.Range(0, 101);
-        //int rand = randomizer.Next(101);
 
         if (rand < currentObstacleOnlyRate) {
             return ItemType.OBSTACLE_ONLY;
