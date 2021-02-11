@@ -49,7 +49,8 @@ public class ItemManager : MonoBehaviour
     private int currentObstacleOnlyRate;
     private int currentBonusRate = 0;
 
-    //private System.Random randomizer = new System.Random();
+    private int twoObstaclesRate = 0;
+    private int twoDiscsRate = 50;
 
     private void Awake() {
         bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
@@ -84,6 +85,10 @@ public class ItemManager : MonoBehaviour
     private void OnReplay() {
         CancelInvoke();
         currentBonusRate = 0;
+        currentDiscsOnlyRate = discsOnlyRate1;
+        currentObstacleOnlyRate = obstacleOnlyRate1;
+
+        twoObstaclesRate = 0;
     }
 
     public void StartSpawnItems() {
@@ -98,14 +103,125 @@ public class ItemManager : MonoBehaviour
             switch (itemType) {
                 case ItemType.OBSTACLE_DISCS:
                     GameObject obstacle = generateObstacles.SpawnItem(lane);
-                    generateDiscs.SpawnDiscs(lane, obstacle);
+                    GameObject pattern = generateDiscs.SpawnDiscs(lane, obstacle);
+
+                    int rand = Random.Range(0, 100);
+
+                    if (rand < twoObstaclesRate) {  //spawn second obstacle
+                        int randLane = Random.Range(0, 2);
+                        GameObject secondObstacle;
+                        Lane[] availableLanes;
+                        Lane spawnLane;
+
+                        switch (lane) {
+                            case Lane.LEFT:
+                                if (pattern.tag == "Right") {
+                                    secondObstacle = generateObstacles.SpawnItem(Lane.RIGHT);
+                                    availableLanes = new Lane[] { Lane.RIGHT };
+                                    generateDiscs.SpawnSecondDiscs(Lane.RIGHT, secondObstacle, availableLanes);
+                                }
+                                else if (pattern.tag == "Jump") {
+                                    if (randLane == 0) spawnLane = Lane.CENTER;
+                                    else spawnLane = Lane.RIGHT;
+
+                                    secondObstacle = generateObstacles.SpawnItem(spawnLane);
+                                    availableLanes = new Lane[] { Lane.CENTER, Lane.RIGHT };
+                                    generateDiscs.SpawnSecondDiscs(spawnLane, secondObstacle, availableLanes);
+                                }
+                                break;
+                            case Lane.CENTER:
+                                if (pattern.tag == "Left") {
+                                    secondObstacle = generateObstacles.SpawnItem(Lane.RIGHT);
+                                    availableLanes = new Lane[] { Lane.RIGHT };
+                                    generateDiscs.SpawnSecondDiscs(Lane.RIGHT, secondObstacle, availableLanes);
+                                }
+                                else if (pattern.tag == "Jump") {
+                                    if (randLane == 0) {
+                                        spawnLane = Lane.LEFT;
+                                        availableLanes = new Lane[] { Lane.LEFT };
+                                    }
+                                    else {
+                                        spawnLane = Lane.RIGHT;
+                                        availableLanes = new Lane[] { Lane.RIGHT };
+                                    }
+
+                                    secondObstacle = generateObstacles.SpawnItem(spawnLane);
+                                    generateDiscs.SpawnSecondDiscs(spawnLane, secondObstacle, availableLanes);
+                                }
+                                else {
+                                    secondObstacle = generateObstacles.SpawnItem(Lane.LEFT);
+                                    availableLanes = new Lane[] { Lane.LEFT };
+                                    generateDiscs.SpawnSecondDiscs(Lane.LEFT, secondObstacle, availableLanes);
+                                }
+                                break;
+                            case Lane.RIGHT:
+                                if (pattern.tag == "Left") {
+                                    secondObstacle = generateObstacles.SpawnItem(Lane.LEFT);
+                                    availableLanes = new Lane[] { Lane.LEFT };
+                                    generateDiscs.SpawnSecondDiscs(Lane.LEFT, secondObstacle, availableLanes);
+                                }
+                                else if (pattern.tag == "Jump") {
+                                    if (randLane == 0) spawnLane = Lane.CENTER;
+                                    else spawnLane = Lane.LEFT;
+
+                                    secondObstacle = generateObstacles.SpawnItem(spawnLane);
+                                    availableLanes = new Lane[] { Lane.CENTER, Lane.LEFT };
+                                    generateDiscs.SpawnSecondDiscs(spawnLane, secondObstacle, availableLanes);
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
                     break;
                 case ItemType.DISCS_ONLY:
                     generateDiscs.SpawnDiscs(lane);
-                    break;
+                    int rand3 = Random.Range(0, 100);
+
+                    if (rand3 < twoObstaclesRate) {
+                        int randLane = Random.Range(0, 2);
+                        switch (lane) {
+                            case Lane.LEFT:
+                                if (randLane == 0) generateDiscs.SpawnDiscs(Lane.CENTER);
+                                else generateDiscs.SpawnDiscs(Lane.RIGHT);
+                                break;
+                            case Lane.CENTER:
+                                if (randLane == 0) generateDiscs.SpawnDiscs(Lane.LEFT);
+                                else generateDiscs.SpawnDiscs(Lane.RIGHT);
+                                break;
+                            case Lane.RIGHT:
+                                if (randLane == 0) generateDiscs.SpawnDiscs(Lane.CENTER);
+                                else generateDiscs.SpawnDiscs(Lane.LEFT);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                        break;
                 case ItemType.OBSTACLE_ONLY:
+                    int rand2 = Random.Range(0, 100);
                     generateObstacles.SpawnItem(lane);
-                    break;
+
+                    if (rand2 < twoObstaclesRate) { //spawn second obstacle
+                        int randLane = Random.Range(0, 2);
+                        switch (lane) {
+                            case Lane.LEFT:
+                                if (randLane == 0) generateObstacles.SpawnItem(Lane.CENTER);
+                                else generateObstacles.SpawnItem(Lane.RIGHT);
+                                break;
+                            case Lane.CENTER:
+                                if (randLane == 0) generateObstacles.SpawnItem(Lane.LEFT);
+                                else generateObstacles.SpawnItem(Lane.RIGHT);
+                                break;
+                            case Lane.RIGHT:
+                                if (randLane == 0) generateObstacles.SpawnItem(Lane.CENTER);
+                                else generateObstacles.SpawnItem(Lane.LEFT);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                        break;
                 case ItemType.BONUS:
                     if (bonusSpawnRates.sumSpawnRates > 0) generateBonuses.SpawnItem(lane);
                     else generateObstacles.SpawnItem(lane);
@@ -126,7 +242,6 @@ public class ItemManager : MonoBehaviour
 
     private ItemType ChoseItem() {
         int rand = Random.Range(0, 101);
-        //int rand = randomizer.Next(101);
 
         if (rand < currentObstacleOnlyRate) {
             return ItemType.OBSTACLE_ONLY;
@@ -148,11 +263,15 @@ public class ItemManager : MonoBehaviour
                 currentObstacleOnlyRate = obstacleOnlyRate2;
                 currentDiscsOnlyRate = discsOnlyRate2;
                 currentBonusRate = bonusRate2;
+
+                twoObstaclesRate = 50;
                 break;
             case 3:
                 currentObstacleOnlyRate = obstacleOnlyRate3;
                 currentDiscsOnlyRate = discsOnlyRate3;
                 currentBonusRate = bonusRate3;
+
+                twoObstaclesRate = 100;
                 break;
             default:
                 Debug.LogError("wrong step id");

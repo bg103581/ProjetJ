@@ -41,12 +41,11 @@ public class GenerateDiscs : MonoBehaviour
     private GameManager gameManager;
 
     private void Awake() {
-        //SetUpPatternTransforms();
         player = FindObjectOfType<Player>();
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    public void SpawnDiscs(Lane lane, GameObject obstacle = null) {
+    public GameObject SpawnDiscs(Lane lane, GameObject obstacle = null) {   //return pattern prefab
         GameObject patternPrefab;
         Transform tr;
 
@@ -71,6 +70,7 @@ public class GenerateDiscs : MonoBehaviour
             patternPrefab = Instantiate(ChosePattern(), tr.position, tr.rotation, transform);
 
         RandPlatinumDiscPattern(patternPrefab);
+        return patternPrefab;
     }
 
     private void RandPlatinumDiscPattern(GameObject patternPrefab, bool isOvniPattern = false, bool isLastOvniPattern = false) {    //apply normal or platinum discs to a pattern
@@ -192,7 +192,130 @@ public class GenerateDiscs : MonoBehaviour
         }
     }
 
-    private GameObject RandSidePatterns(bool isLeft) {
+    private GameObject ChosePattern(Lane lane, GameObject obstacle, Lane[] availableLanes) {   //patern for secondObstacles
+        bool isLeftAvailable = false;
+        bool isCenterAvailable = false;
+        bool isRightAvailable = false;
+        int rand;
+
+        foreach (Lane availableLane in availableLanes) {
+            if (availableLane == Lane.LEFT) isLeftAvailable = true;
+            else if (availableLane == Lane.CENTER) isCenterAvailable = true;
+            else isRightAvailable = true;
+        }
+
+        if (lane == Lane.LEFT) {
+            if (isCenterAvailable) {
+                rand = Random.Range(0, 2);
+                if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
+                    if (player.isClaquettes || gameManager.isClaquetteInGame) {  //can spawn jump pattern if player isclaquettes and it's a vehicle
+                        if (rand == 0) return claquettesJumpPatternPrefab;
+                        else return RandSidePatterns(false);
+                    }
+                    else return RandSidePatterns(false);
+                }
+                else {
+                    if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) return RandSidePatterns(false);
+                    else {
+                        if (rand == 0) {
+                            if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                            else return jumpPatternPrefab;
+                        }
+                        else return RandSidePatterns(false);
+                    }
+                }
+            }
+            else {
+                if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
+                    if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                    else return null;
+                }
+                else {
+                    if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                    else return jumpPatternPrefab;
+                }
+            }
+        }
+        else if (lane == Lane.CENTER) {
+            if (isLeftAvailable) {
+                rand = Random.Range(0, 2);
+                if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
+                    if (player.isClaquettes || gameManager.isClaquetteInGame) {  //can spawn jump pattern if player isclaquettes and it's a vehicle
+                        if (rand == 0) return claquettesJumpPatternPrefab;
+                        else return RandSidePatterns(true);
+                    }
+                    else return RandSidePatterns(true);
+                }
+                else {
+                    if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) return RandSidePatterns(true);
+                    else {
+                        if (rand == 0) {
+                            if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                            else return jumpPatternPrefab;
+                        }
+                        else return RandSidePatterns(true);
+                    }
+                }
+            }
+            else if (isRightAvailable) {
+                rand = Random.Range(0, 2);
+                if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
+                    if (player.isClaquettes || gameManager.isClaquetteInGame) {  //can spawn jump pattern if player isclaquettes and it's a vehicle
+                        if (rand == 0) return claquettesJumpPatternPrefab;
+                        else return RandSidePatterns(false);
+                    }
+                    else return RandSidePatterns(false);
+                }
+                else {
+                    if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) return RandSidePatterns(false);
+                    else {
+                        if (rand == 0) {
+                            if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                            else return jumpPatternPrefab;
+                        }
+                        else return RandSidePatterns(false);
+                    }
+                }
+            }
+            else {
+                return null;
+            }
+        }
+        else {
+            if (isCenterAvailable) {
+                rand = Random.Range(0, 2);
+                if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
+                    if (player.isClaquettes || gameManager.isClaquetteInGame) {  //can spawn jump pattern if player isclaquettes and it's a vehicle
+                        if (rand == 0) return claquettesJumpPatternPrefab;
+                        else return RandSidePatterns(true);
+                    }
+                    else return RandSidePatterns(true);
+                }
+                else {
+                    if (player.isTmax || gameManager.isTmaxInGame || player.isTwingo || gameManager.isTwingoInGame) return RandSidePatterns(true);
+                    else {
+                        if (rand == 0) {
+                            if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                            else return jumpPatternPrefab;
+                        }
+                        else return RandSidePatterns(true);
+                    }
+                }
+            }
+            else {
+                if (obstacle.tag == "Voiture" || obstacle.tag == "Camionette") {
+                    if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                    else return null;
+                }
+                else {
+                    if (player.isClaquettes || gameManager.isClaquetteInGame) return claquettesJumpPatternPrefab;
+                    else return jumpPatternPrefab;
+                }
+            }
+        }
+    }
+
+    private GameObject RandSidePatterns(bool isLeft) {  //return a turn or a simple side pattern
         int rand = Random.Range(0, 2);
 
         if (isLeft) {
@@ -252,40 +375,6 @@ public class GenerateDiscs : MonoBehaviour
             }
         }
     }
-
-    //private void CreateDiscPattern(GameObject patternPrefab, bool isPlatinum, bool isOvniPattern = false, bool isLastOvniPattern = false) { //apply discs on pattern
-
-    //    if (isOvniPattern) {
-    //        StartCoroutine(InstantiateOvniDiscs(isPlatinum, patternPrefab, isLastOvniPattern));
-    //    }
-    //    else {
-    //        Transform[] children = new Transform[patternPrefab.transform.childCount];
-
-    //        int i = 0;
-    //        foreach (Transform child in patternPrefab.transform) {
-    //            children[i] = child;
-    //            i++;
-    //        }
-
-    //        if (isPlatinum) {
-    //            int randIndex = Random.Range(0, children.Length);
-
-    //            for (int j = 0; j < children.Length; j++) {
-    //                GameObject disc;
-    //                if (j == randIndex)
-    //                    disc = Instantiate(platinumDiscPrefab, children[j].position, children[j].rotation, transform);
-    //                else
-    //                    disc = Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
-    //            }
-    //        }
-    //        else {
-
-    //            for (int j = 0; j < children.Length; j++) {
-    //                GameObject disc = Instantiate(goldenDiscPrefab, children[j].position, children[j].rotation, transform);
-    //            }
-    //        }
-    //    }
-    //}
 
     public void SpawnOvniDiscs() {
         //create random overall pattern
@@ -444,6 +533,35 @@ public class GenerateDiscs : MonoBehaviour
 
                 yield return new WaitForEndOfFrame();
             }
+        }
+    }
+
+    public GameObject SpawnSecondDiscs(Lane lane, GameObject secondObstacle, Lane[] availableLanes) {
+        Transform tr;
+
+        switch (lane) {
+            case Lane.LEFT:
+                tr = itemManager.leftLane;
+                break;
+            case Lane.CENTER:
+                tr = itemManager.centerLane;
+                break;
+            case Lane.RIGHT:
+                tr = itemManager.rightLane;
+                break;
+            default:
+                tr = itemManager.leftLane;
+                break;
+        }
+
+        GameObject patternChosen = ChosePattern(lane, secondObstacle, availableLanes);
+        if (patternChosen != null) {
+            GameObject igPatternPrefab = Instantiate(patternChosen, tr.position, tr.rotation, transform);
+            RandPlatinumDiscPattern(igPatternPrefab);
+            return igPatternPrefab;
+        }
+        else {
+            return null;
         }
     }
 }
