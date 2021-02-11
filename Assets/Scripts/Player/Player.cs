@@ -99,6 +99,7 @@ public class Player : MonoBehaviour
     private const float COP_FOLLOW_DURATION = 5f;
 
     [SerializeField] private TmaxLose tmaxLose;
+    [SerializeField] private Parallaxe parallaxe;
 
     [Header("Bonus variables")]
     [SerializeField]
@@ -212,6 +213,7 @@ public class Player : MonoBehaviour
             transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             copCatchupPos.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToCenterPos(moveTime);
+            parallaxe.MoveLeft(moveTime);
 
             if (isGrounded) {
                 if (isTwingo) {
@@ -240,6 +242,7 @@ public class Player : MonoBehaviour
             transform.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             copCatchupPos.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToLeftPos(moveTime);
+            parallaxe.MoveLeft(moveTime);
 
             if (isGrounded) {
                 if (isTwingo) {
@@ -286,6 +289,7 @@ public class Player : MonoBehaviour
             transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             copCatchupPos.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToCenterPos(moveTime);
+            parallaxe.MoveRight(moveTime);
 
             if (isGrounded) {
                 if (isTwingo) {
@@ -314,6 +318,7 @@ public class Player : MonoBehaviour
             transform.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             copCatchupPos.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToRightPos(moveTime);
+            parallaxe.MoveRight(moveTime);
 
             if (isGrounded) {
                 if (isTwingo) {
