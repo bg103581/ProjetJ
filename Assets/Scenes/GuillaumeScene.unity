@@ -3140,6 +3140,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6991278363787117734, guid: cd70b5910cc6a184490035499ef6ca1e,
+        type: 3}
+      propertyPath: _nbRoadToInit
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6991278363847527868, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: tmaxFirstPos
@@ -3236,7 +3241,7 @@ PrefabInstance:
     - target: {fileID: 9037666665638058192, guid: 9b82803d1bd9cd84192a1d0691b73960,
         type: 3}
       propertyPath: keyboardControl
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9037666665638058193, guid: 9b82803d1bd9cd84192a1d0691b73960,
         type: 3}

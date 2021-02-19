@@ -8,7 +8,7 @@ public class GenerateRoads : GeneratePrefabs
     [SerializeField]
     private GameObject startingRoad;
     [SerializeField]
-    [Range(3, 10)]
+    [Range(2, 10)]
     private int _nbRoadToInit;
     [SerializeField]
     private Transform _initPosInstantiate;
