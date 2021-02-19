@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour
     
     //private float upgradeDifficultyHolder;
     private float currentTimeScale = 1;
-    private float runTimer = 0;
-    private float rawTimeScaleHolder = 1;
+    [SerializeField] private float runTimer = 0;
+    [SerializeField] private float rawTimeScaleHolder = 1;
 
     private bool startRunTimer = false;
     private bool isRunTimerCounting = false;
@@ -53,17 +53,20 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float traveledDistance = 0;
     [SerializeField]
+    private float freqToUpgradeDifficulty;
+    [SerializeField]
     private float timeToUpgradeDifficulty;
     [SerializeField]
     private float timescaleDifficulty;
     [SerializeField]
     private float maxSpeedTimeScale;
     [SerializeField]
+    private float breakItemBonus;
+    [Header("Timers to change items rates")]
+    [SerializeField]
     private float mediumItemRatesTime;
     [SerializeField]
     private float lastItemRatesTime;
-    [SerializeField]
-    private float breakItemBonus;
 
     [Header("Steps of bonus spawn and their spawn rates")]
     [SerializeField]
@@ -110,6 +113,8 @@ public class GameManager : MonoBehaviour
         spawnObjRandPos = FindObjectOfType<SpawnObjRandPos>();
         inputManager = FindObjectOfType<InputManager>();
         menuManager = FindObjectOfType<MenuManager>();
+
+        timeToUpgradeDifficulty = freqToUpgradeDifficulty;
 
         //if save file doesn't exist : create one with values = 0
         SaveSystem.InitiateDataFile();
@@ -195,6 +200,7 @@ public class GameManager : MonoBehaviour
         isRunTimerCounting = false;
         Time.timeScale = 1;
         rawTimeScaleHolder = 1;
+        timeToUpgradeDifficulty = freqToUpgradeDifficulty;
     }
 
     private IEnumerator ReplayCorout() {
@@ -259,7 +265,7 @@ public class GameManager : MonoBehaviour
                     Debug.Log("upgrade difficulty");
                     rawTimeScaleHolder += timescaleDifficulty;
                     Time.timeScale += timescaleDifficulty;
-                    timeToUpgradeDifficulty += timeToUpgradeDifficulty;
+                    timeToUpgradeDifficulty += freqToUpgradeDifficulty;
                 }
 
                 if (rawTimeScaleHolder >= maxSpeedTimeScale) {

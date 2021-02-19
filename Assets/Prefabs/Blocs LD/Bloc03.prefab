@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2628445994012033795
 Transform:
@@ -95,7 +95,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6072548488513586011
 Transform:
@@ -172,7 +172,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3062585922005415328
 Transform:
@@ -211,7 +211,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1268015306483750139
 Transform:
@@ -353,7 +353,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9071450127190320087
 Transform:
@@ -398,7 +398,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2775197149336521643
 Transform:
@@ -451,7 +451,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6682243891748306128
 Transform:
@@ -581,6 +581,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Furniture_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a95eeef5796fd644b8ebeebfda369eb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a95eeef5796fd644b8ebeebfda369eb, type: 3}
 --- !u!4 &542349634504597075 stripped
@@ -655,6 +660,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -731,6 +741,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Trash_1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 578571719773397715, guid: 23f88170b2f2658418cd814c32e35cf7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23f88170b2f2658418cd814c32e35cf7, type: 3}
 --- !u!4 &127049970911516909 stripped
@@ -805,6 +820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Tree_1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
@@ -881,6 +901,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_1.1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
 --- !u!4 &191028310496652851 stripped
@@ -955,6 +980,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bustop_1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12a578aa70728934cba5571296c427b3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12a578aa70728934cba5571296c427b3, type: 3}
@@ -1031,6 +1061,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Lamp_2.1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8355068e77b780d448079d5c5e619365,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8355068e77b780d448079d5c5e619365, type: 3}
 --- !u!4 &126787412162318970 stripped
@@ -1105,6 +1140,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Tree_1.1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
@@ -1181,6 +1221,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_2.1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 64d08b1a788622b469ec1d6cc2be6492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64d08b1a788622b469ec1d6cc2be6492, type: 3}
 --- !u!4 &6221581885147108 stripped
@@ -1255,6 +1300,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trottoir_1.2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a4b2d55dcf4b8b4b95a9a598af2c2a9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a4b2d55dcf4b8b4b95a9a598af2c2a9, type: 3}
@@ -1336,6 +1386,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_1.1 (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51efd8f76c4f6f1489ea60e03d41b8c1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51efd8f76c4f6f1489ea60e03d41b8c1, type: 3}
 --- !u!4 &1135488967760982847 stripped
@@ -1410,6 +1465,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Tree_1.1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
@@ -1486,6 +1546,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Sign_3.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 432f6531da5c11040bd934037ac85536,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432f6531da5c11040bd934037ac85536, type: 3}
 --- !u!4 &1048344767989166099 stripped
@@ -1505,6 +1570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Trash_1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726419539515717295, guid: 3f894f4d915b3094ea1d06dd0f6cc1ec,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 5394271300946291733, guid: 3f894f4d915b3094ea1d06dd0f6cc1ec,
         type: 3}
@@ -1636,6 +1706,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat_Prado_5
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8f412d920f0502145a73f03837948fdf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f412d920f0502145a73f03837948fdf, type: 3}
 --- !u!4 &964652089160381365 stripped
@@ -1710,6 +1785,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Fence_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 891aee5cd70ca584088f8bb77f249063,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891aee5cd70ca584088f8bb77f249063, type: 3}
@@ -1786,6 +1866,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_1.1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
 --- !u!4 &802861885169974406 stripped
@@ -1860,6 +1945,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_2.1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 64d08b1a788622b469ec1d6cc2be6492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64d08b1a788622b469ec1d6cc2be6492, type: 3}
@@ -1941,6 +2031,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Paper.2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5daa7f72fac629c4883eed4437752ace,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5daa7f72fac629c4883eed4437752ace, type: 3}
 --- !u!4 &813672205022764288 stripped
@@ -2020,6 +2115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat_Prado_2.1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29ebf14d9bd75734a95fcb62e5371b2b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29ebf14d9bd75734a95fcb62e5371b2b, type: 3}
@@ -2111,6 +2211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_2.1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98469f59a8ce8c544a6eeb47b4d6ca0e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98469f59a8ce8c544a6eeb47b4d6ca0e, type: 3}
 --- !u!4 &613162399688298687 stripped
@@ -2185,6 +2290,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -2261,6 +2371,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_2.1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
 --- !u!4 &1718996524700015204 stripped
@@ -2335,6 +2450,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Fence_2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fbc47c42a7c6859468574576f3c8e24d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbc47c42a7c6859468574576f3c8e24d, type: 3}
@@ -2411,6 +2531,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat_Canneb_4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5af323ea58cae164c87708277e6464a4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5af323ea58cae164c87708277e6464a4, type: 3}
 --- !u!4 &1643447237393692677 stripped
@@ -2485,6 +2610,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -2561,6 +2691,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat_Prado_4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 872593e8e8545d44fbbb86f66f904ed5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 872593e8e8545d44fbbb86f66f904ed5, type: 3}
 --- !u!4 &1471413885092036850 stripped
@@ -2635,6 +2770,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -2711,6 +2851,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_1.1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
 --- !u!4 &1367312499702159380 stripped
@@ -2786,6 +2931,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_3.2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2aead96d62bf76b469b820b493d7d324,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aead96d62bf76b469b820b493d7d324, type: 3}
 --- !u!4 &1309744523755946993 stripped
@@ -2860,6 +3010,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Tree_1.1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
@@ -2941,6 +3096,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_1.1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
 --- !u!4 &1164698028024241949 stripped
@@ -3015,6 +3175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_2.1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 64d08b1a788622b469ec1d6cc2be6492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64d08b1a788622b469ec1d6cc2be6492, type: 3}
@@ -3091,6 +3256,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_1.1 (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
 --- !u!4 &2301179898710403868 stripped
@@ -3165,6 +3335,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Sign_3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8982495256007604444, guid: bfb3098a36d00564f9fbe8362c0bc5b9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfb3098a36d00564f9fbe8362c0bc5b9, type: 3}
@@ -3241,6 +3416,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Furniture_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a95eeef5796fd644b8ebeebfda369eb,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a95eeef5796fd644b8ebeebfda369eb, type: 3}
 --- !u!4 &2171958595596025719 stripped
@@ -3315,6 +3495,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -3391,6 +3576,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_2.1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
 --- !u!4 &2131415288672420068 stripped
@@ -3465,6 +3655,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -3546,6 +3741,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_1.2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a4b2d55dcf4b8b4b95a9a598af2c2a9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a4b2d55dcf4b8b4b95a9a598af2c2a9, type: 3}
 --- !u!4 &2071672924638153628 stripped
@@ -3620,6 +3820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bustop_1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12a578aa70728934cba5571296c427b3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12a578aa70728934cba5571296c427b3, type: 3}
@@ -3696,6 +3901,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Vent_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d579a1c527a7f34f97cdfb01f564186,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d579a1c527a7f34f97cdfb01f564186, type: 3}
 --- !u!4 &1961954089030596923 stripped
@@ -3770,6 +3980,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -3846,6 +4061,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_1.1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
 --- !u!4 &1916275972527124412 stripped
@@ -3921,6 +4141,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Sign_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0326f0bf48e637648975ce601efccd06,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0326f0bf48e637648975ce601efccd06, type: 3}
 --- !u!4 &1925619813647551332 stripped
@@ -3995,6 +4220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Tree_2.1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
@@ -4076,6 +4306,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_1.1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51efd8f76c4f6f1489ea60e03d41b8c1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51efd8f76c4f6f1489ea60e03d41b8c1, type: 3}
 --- !u!4 &1854955672372765819 stripped
@@ -4150,6 +4385,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -4226,6 +4466,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plage_1.1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 290a3bce9cf9fc0448f414880f28d299,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 290a3bce9cf9fc0448f414880f28d299, type: 3}
 --- !u!4 &1762674611820810111 stripped
@@ -4300,6 +4545,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -4386,6 +4636,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_2.1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98469f59a8ce8c544a6eeb47b4d6ca0e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98469f59a8ce8c544a6eeb47b4d6ca0e, type: 3}
 --- !u!4 &2646903724919523828 stripped
@@ -4460,6 +4715,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Trash_1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8c3e9912cfc68b846b3db844bcf05f11,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c3e9912cfc68b846b3db844bcf05f11, type: 3}
@@ -4536,6 +4796,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_1.1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
 --- !u!4 &2600162916322936294 stripped
@@ -4610,6 +4875,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_2.1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 64d08b1a788622b469ec1d6cc2be6492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64d08b1a788622b469ec1d6cc2be6492, type: 3}
@@ -4686,6 +4956,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_1.1 (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
 --- !u!4 &2627828341869282981 stripped
@@ -4760,6 +5035,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Sign_1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0326f0bf48e637648975ce601efccd06,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0326f0bf48e637648975ce601efccd06, type: 3}
@@ -4836,6 +5116,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
 --- !u!4 &2482530663524899257 stripped
@@ -4910,6 +5195,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Sign_1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0326f0bf48e637648975ce601efccd06,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0326f0bf48e637648975ce601efccd06, type: 3}
@@ -4986,6 +5276,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Sign_1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0326f0bf48e637648975ce601efccd06,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0326f0bf48e637648975ce601efccd06, type: 3}
 --- !u!4 &3387105413230244712 stripped
@@ -5060,6 +5355,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -5136,6 +5436,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_1.1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
 --- !u!4 &3212366313820398742 stripped
@@ -5210,6 +5515,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 64d08b1a788622b469ec1d6cc2be6492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64d08b1a788622b469ec1d6cc2be6492, type: 3}
@@ -5286,6 +5596,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Lamp_2.1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8355068e77b780d448079d5c5e619365,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8355068e77b780d448079d5c5e619365, type: 3}
 --- !u!4 &3179636980072798870 stripped
@@ -5360,6 +5675,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Plage_1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 290a3bce9cf9fc0448f414880f28d299,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 290a3bce9cf9fc0448f414880f28d299, type: 3}
@@ -5436,6 +5756,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Vent_1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d579a1c527a7f34f97cdfb01f564186,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d579a1c527a7f34f97cdfb01f564186, type: 3}
 --- !u!4 &3108974004370816955 stripped
@@ -5510,6 +5835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Tree_2.1 (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
@@ -5586,6 +5916,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_2.1 (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
 --- !u!4 &2947604082392991438 stripped
@@ -5660,6 +5995,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bustop_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12a578aa70728934cba5571296c427b3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12a578aa70728934cba5571296c427b3, type: 3}
@@ -5736,6 +6076,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Lamp_2.1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8355068e77b780d448079d5c5e619365,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8355068e77b780d448079d5c5e619365, type: 3}
 --- !u!4 &3892021588477680319 stripped
@@ -5810,6 +6155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Vent_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d579a1c527a7f34f97cdfb01f564186,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d579a1c527a7f34f97cdfb01f564186, type: 3}
@@ -5886,6 +6236,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Fence_1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 891aee5cd70ca584088f8bb77f249063,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891aee5cd70ca584088f8bb77f249063, type: 3}
 --- !u!4 &3685334775089607299 stripped
@@ -5960,6 +6315,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bustop_1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12a578aa70728934cba5571296c427b3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12a578aa70728934cba5571296c427b3, type: 3}
@@ -6036,6 +6396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_2.1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 64d08b1a788622b469ec1d6cc2be6492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64d08b1a788622b469ec1d6cc2be6492, type: 3}
 --- !u!4 &3539235548972850593 stripped
@@ -6111,6 +6476,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat_Prado_3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 966baf1d19713d142810e485f90f00d3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 966baf1d19713d142810e485f90f00d3, type: 3}
 --- !u!4 &3510444540613925169 stripped
@@ -6185,6 +6555,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Tree_2.1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
@@ -6266,6 +6641,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_1.1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51efd8f76c4f6f1489ea60e03d41b8c1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51efd8f76c4f6f1489ea60e03d41b8c1, type: 3}
 --- !u!4 &4455372241414419137 stripped
@@ -6345,6 +6725,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Trash_3 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 33258a083b295804eafd8893edd71954,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33258a083b295804eafd8893edd71954, type: 3}
@@ -6426,6 +6811,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51efd8f76c4f6f1489ea60e03d41b8c1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51efd8f76c4f6f1489ea60e03d41b8c1, type: 3}
 --- !u!4 &4101249516334092159 stripped
@@ -6500,6 +6890,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Tree_2.1 (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
@@ -6581,6 +6976,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_1.1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51efd8f76c4f6f1489ea60e03d41b8c1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51efd8f76c4f6f1489ea60e03d41b8c1, type: 3}
 --- !u!4 &5129069661679355844 stripped
@@ -6660,6 +7060,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Trash_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 33258a083b295804eafd8893edd71954,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33258a083b295804eafd8893edd71954, type: 3}
@@ -6741,6 +7146,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_1.1 (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51efd8f76c4f6f1489ea60e03d41b8c1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51efd8f76c4f6f1489ea60e03d41b8c1, type: 3}
 --- !u!4 &5000614307154791787 stripped
@@ -6815,6 +7225,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Lamp_2.1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8355068e77b780d448079d5c5e619365,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8355068e77b780d448079d5c5e619365, type: 3}
@@ -6901,6 +7316,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98469f59a8ce8c544a6eeb47b4d6ca0e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98469f59a8ce8c544a6eeb47b4d6ca0e, type: 3}
 --- !u!4 &4862681294948557824 stripped
@@ -6976,6 +7396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Lamp_2.1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8355068e77b780d448079d5c5e619365,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8355068e77b780d448079d5c5e619365, type: 3}
 --- !u!4 &4787584380899311649 stripped
@@ -7050,6 +7475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_2.1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 64d08b1a788622b469ec1d6cc2be6492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64d08b1a788622b469ec1d6cc2be6492, type: 3}
@@ -7131,6 +7561,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_1.1 (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51efd8f76c4f6f1489ea60e03d41b8c1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51efd8f76c4f6f1489ea60e03d41b8c1, type: 3}
 --- !u!4 &5756697732311839230 stripped
@@ -7206,6 +7641,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Lamp_2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8355068e77b780d448079d5c5e619365,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8355068e77b780d448079d5c5e619365, type: 3}
 --- !u!4 &5704392055653195922 stripped
@@ -7280,6 +7720,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Sign_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0326f0bf48e637648975ce601efccd06,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0326f0bf48e637648975ce601efccd06, type: 3}
@@ -7371,6 +7816,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_1.1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
 --- !u!4 &5628671151494777142 stripped
@@ -7445,6 +7895,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trottoir_1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a4b2d55dcf4b8b4b95a9a598af2c2a9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a4b2d55dcf4b8b4b95a9a598af2c2a9, type: 3}
@@ -7521,6 +7976,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Sign_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0326f0bf48e637648975ce601efccd06,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0326f0bf48e637648975ce601efccd06, type: 3}
 --- !u!4 &5479195636033304533 stripped
@@ -7595,6 +8055,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Fence_1 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 891aee5cd70ca584088f8bb77f249063,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891aee5cd70ca584088f8bb77f249063, type: 3}
@@ -7671,6 +8136,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Trash_4
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7a51c336d3cb1b84686d51a5c33bfb27,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a51c336d3cb1b84686d51a5c33bfb27, type: 3}
 --- !u!4 &5395498661043297500 stripped
@@ -7745,6 +8215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -7826,6 +8301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_1.1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51efd8f76c4f6f1489ea60e03d41b8c1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51efd8f76c4f6f1489ea60e03d41b8c1, type: 3}
 --- !u!4 &5327833876749683959 stripped
@@ -7906,6 +8386,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_2.1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
 --- !u!4 &6325618208825787841 stripped
@@ -7980,6 +8465,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Vent_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d579a1c527a7f34f97cdfb01f564186,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d579a1c527a7f34f97cdfb01f564186, type: 3}
@@ -8056,6 +8546,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_1.1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
 --- !u!4 &6289035031673022306 stripped
@@ -8130,6 +8625,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Fence_1 (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 891aee5cd70ca584088f8bb77f249063,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891aee5cd70ca584088f8bb77f249063, type: 3}
@@ -8211,6 +8711,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat_Prado_2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 29ebf14d9bd75734a95fcb62e5371b2b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29ebf14d9bd75734a95fcb62e5371b2b, type: 3}
 --- !u!4 &6140534224429330018 stripped
@@ -8285,6 +8790,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Lamp_2.1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8355068e77b780d448079d5c5e619365,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8355068e77b780d448079d5c5e619365, type: 3}
@@ -8361,6 +8871,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Fence_1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 891aee5cd70ca584088f8bb77f249063,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891aee5cd70ca584088f8bb77f249063, type: 3}
 --- !u!4 &6124785972446635952 stripped
@@ -8435,6 +8950,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bustop_1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12a578aa70728934cba5571296c427b3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12a578aa70728934cba5571296c427b3, type: 3}
@@ -8516,6 +9036,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_1.1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
 --- !u!4 &5937556032833819047 stripped
@@ -8590,6 +9115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat_Prado_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 570d25606e8023d4a82f5b6647efa2d4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 570d25606e8023d4a82f5b6647efa2d4, type: 3}
@@ -8666,6 +9196,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Roue_1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 198d550c4d2fb6744ba0408c02dc5450,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 198d550c4d2fb6744ba0408c02dc5450, type: 3}
 --- !u!4 &5816340635331682105 stripped
@@ -8740,6 +9275,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Fence_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fbc47c42a7c6859468574576f3c8e24d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbc47c42a7c6859468574576f3c8e24d, type: 3}
@@ -8816,6 +9356,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Fence_1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 891aee5cd70ca584088f8bb77f249063,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891aee5cd70ca584088f8bb77f249063, type: 3}
 --- !u!4 &6883885837298856423 stripped
@@ -8890,6 +9435,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -8966,6 +9516,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat_Prado_2.2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fbaf6a664005f134fa2ed21147453d94,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbaf6a664005f134fa2ed21147453d94, type: 3}
 --- !u!4 &6848862145085848702 stripped
@@ -8985,6 +9540,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Sign_3.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3669097926371984330, guid: b0f48c0f499ec4141a030ec66cbc650f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4152479055649053040, guid: b0f48c0f499ec4141a030ec66cbc650f,
         type: 3}
@@ -9116,6 +9676,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat_Cite_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 28ceeebe7c2fe5d43ba5300e4caf157b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28ceeebe7c2fe5d43ba5300e4caf157b, type: 3}
 --- !u!4 &6695922822128174024 stripped
@@ -9190,6 +9755,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -9266,6 +9836,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_1.1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
 --- !u!4 &6493065915079090607 stripped
@@ -9340,6 +9915,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat_Prado_7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 619fdc893ac89764cabbc15d8af1008d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 619fdc893ac89764cabbc15d8af1008d, type: 3}
@@ -9416,6 +9996,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_2.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
 --- !u!4 &6389113485517923420 stripped
@@ -9490,6 +10075,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat_Prado_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b74f190d96de13047a7afd80c44e377d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b74f190d96de13047a7afd80c44e377d, type: 3}
@@ -9566,6 +10156,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat_Prado_8
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 712aa532ffbe2474b94d54673df43135,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 712aa532ffbe2474b94d54673df43135, type: 3}
 --- !u!4 &6350956269700080013 stripped
@@ -9640,6 +10235,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Lamp_2.1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8355068e77b780d448079d5c5e619365,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8355068e77b780d448079d5c5e619365, type: 3}
@@ -9716,6 +10316,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Fence_1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 891aee5cd70ca584088f8bb77f249063,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891aee5cd70ca584088f8bb77f249063, type: 3}
 --- !u!4 &7472947491174355860 stripped
@@ -9791,6 +10396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plage_1.1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 290a3bce9cf9fc0448f414880f28d299,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 290a3bce9cf9fc0448f414880f28d299, type: 3}
 --- !u!4 &7352823121458560573 stripped
@@ -9865,6 +10475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Tree_2.1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
@@ -9951,6 +10566,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_2.1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 98469f59a8ce8c544a6eeb47b4d6ca0e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 98469f59a8ce8c544a6eeb47b4d6ca0e, type: 3}
 --- !u!4 &7123693776636792030 stripped
@@ -10025,6 +10645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Lamp_2.1 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8355068e77b780d448079d5c5e619365,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8355068e77b780d448079d5c5e619365, type: 3}
@@ -10101,6 +10726,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_1.1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
 --- !u!4 &8070063039653053877 stripped
@@ -10175,6 +10805,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -10251,6 +10886,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_1.1 (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
 --- !u!4 &7925351753067782613 stripped
@@ -10325,6 +10965,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bustop_1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 12a578aa70728934cba5571296c427b3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12a578aa70728934cba5571296c427b3, type: 3}
@@ -10401,6 +11046,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
 --- !u!4 &7806425724845432976 stripped
@@ -10475,6 +11125,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Sign_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b8eaf2cc9ba533643ba40f9c4427d038,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8eaf2cc9ba533643ba40f9c4427d038, type: 3}
@@ -10561,6 +11216,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Paper.1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 38625af721fb9ac44b206aa1a3d6437b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38625af721fb9ac44b206aa1a3d6437b, type: 3}
 --- !u!4 &7768501055886285815 stripped
@@ -10635,6 +11295,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trottoir_3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2aead96d62bf76b469b820b493d7d324,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aead96d62bf76b469b820b493d7d324, type: 3}
@@ -10711,6 +11376,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_1.1 (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
 --- !u!4 &7655875625748731310 stripped
@@ -10786,6 +11456,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_1.1 (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
 --- !u!4 &7563108925439093070 stripped
@@ -10860,6 +11535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -10941,6 +11621,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Trash_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 33258a083b295804eafd8893edd71954,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33258a083b295804eafd8893edd71954, type: 3}
 --- !u!4 &8619334116788456416 stripped
@@ -11015,6 +11700,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat_Prado_6 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b74f190d96de13047a7afd80c44e377d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b74f190d96de13047a7afd80c44e377d, type: 3}
@@ -11091,6 +11781,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Sign_1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0326f0bf48e637648975ce601efccd06,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0326f0bf48e637648975ce601efccd06, type: 3}
 --- !u!4 &8444321138562115215 stripped
@@ -11165,6 +11860,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Fence_1 (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 891aee5cd70ca584088f8bb77f249063,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 891aee5cd70ca584088f8bb77f249063, type: 3}
@@ -11241,6 +11941,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Bush_2.1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 64d08b1a788622b469ec1d6cc2be6492,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64d08b1a788622b469ec1d6cc2be6492, type: 3}
 --- !u!4 &8360279559285398753 stripped
@@ -11315,6 +12020,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Tree_2.1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
@@ -11391,6 +12101,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bat_Cite_5.1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 53af9f3fd59b0284a90a41694684ff0c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53af9f3fd59b0284a90a41694684ff0c, type: 3}
 --- !u!4 &8121177258328427355 stripped
@@ -11465,6 +12180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Sign_1 (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0326f0bf48e637648975ce601efccd06,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0326f0bf48e637648975ce601efccd06, type: 3}
@@ -11541,6 +12261,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Tree_2.1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2c1ad45c599b5d4eaa93fa1310d399e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c1ad45c599b5d4eaa93fa1310d399e, type: 3}
 --- !u!4 &8959094249472087679 stripped
@@ -11615,6 +12340,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Bush_1.1 (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0a668fab5e8407940872edbb37c5e2e9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a668fab5e8407940872edbb37c5e2e9, type: 3}
@@ -11691,6 +12421,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Trash_2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 25b7ee6496f3c3d4da2a1db6972bf5a7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25b7ee6496f3c3d4da2a1db6972bf5a7, type: 3}
 --- !u!4 &8865405106152469768 stripped
@@ -11765,6 +12500,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Props_Tree_1.1 (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea11d72b079e1dd468848790f164b162,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea11d72b079e1dd468848790f164b162, type: 3}
@@ -11846,6 +12586,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Props_Trash_3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 33258a083b295804eafd8893edd71954,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33258a083b295804eafd8893edd71954, type: 3}
 --- !u!4 &8855948142332839909 stripped
@@ -11926,6 +12671,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trottoir_1.2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8a4b2d55dcf4b8b4b95a9a598af2c2a9,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a4b2d55dcf4b8b4b95a9a598af2c2a9, type: 3}
 --- !u!4 &8822758495200591249 stripped
@@ -12000,6 +12750,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bat_Prado_4 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 872593e8e8545d44fbbb86f66f904ed5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 872593e8e8545d44fbbb86f66f904ed5, type: 3}
