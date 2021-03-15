@@ -218,6 +218,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1417025352464683602, guid: 55aa7353b39b7b74c9f266d6226d8248,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1417025352464683604, guid: 55aa7353b39b7b74c9f266d6226d8248,
         type: 3}
       propertyPath: m_Name
@@ -226,7 +231,7 @@ PrefabInstance:
     - target: {fileID: 1417025352464683604, guid: 55aa7353b39b7b74c9f266d6226d8248,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967294
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55aa7353b39b7b74c9f266d6226d8248, type: 3}
@@ -313,6 +318,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1417025352464683602, guid: 55aa7353b39b7b74c9f266d6226d8248,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1417025352464683604, guid: 55aa7353b39b7b74c9f266d6226d8248,
         type: 3}
       propertyPath: m_Name
@@ -321,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 1417025352464683604, guid: 55aa7353b39b7b74c9f266d6226d8248,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 4294967295
+      value: 4294967294
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55aa7353b39b7b74c9f266d6226d8248, type: 3}
