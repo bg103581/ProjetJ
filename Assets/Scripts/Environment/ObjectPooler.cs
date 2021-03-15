@@ -10,7 +10,7 @@ public class ObjectPooler : MonoBehaviour
     [SerializeField] private int pooledAmount = 20;
     [SerializeField] private bool willGrow = true;
 
-    public List<GameObject> pooledObjects;
+    private Queue<GameObject> pooledObjects = new Queue<GameObject>();
 
     private void Awake() {
         current = this;
@@ -18,12 +18,10 @@ public class ObjectPooler : MonoBehaviour
 
     void Start()
     {
-        pooledObjects = new List<GameObject>();
-
         for (int i = 0; i < pooledAmount; i++) {
             GameObject obj = Instantiate(pooledObject);
             obj.SetActive(false);
-            pooledObjects.Add(obj);
+            pooledObjects.Enqueue(obj);
         }
     }
 
@@ -50,6 +48,7 @@ public class ObjectPooler : MonoBehaviour
         if (gameObject.tag == "Gold") {
             gameObject.transform.DOKill();
             gameObject.SetActive(false);
+            pooledObjects.Enqueue(gameObject);
         }
         else {
             Destroy(gameObject);
@@ -57,14 +56,18 @@ public class ObjectPooler : MonoBehaviour
     }
 
     private GameObject GetPooledObject() {
-        for (int i = 0; i < pooledObjects.Count; i++) {
-            if (!pooledObjects[i].activeInHierarchy) return pooledObjects[i];
+        //for (int i = 0; i < pooledObjects.Count; i++) {
+        //    if (!pooledObjects[i].activeInHierarchy) return pooledObjects[i];
+        //}
+
+        if (pooledObjects.Count > 0) {
+            return pooledObjects.Dequeue();
         }
 
         if (willGrow) {
             GameObject obj = Instantiate(pooledObject);
             obj.SetActive(false);
-            pooledObjects.Add(obj);
+            pooledObjects.Enqueue(obj);
             return obj;
         }
 
