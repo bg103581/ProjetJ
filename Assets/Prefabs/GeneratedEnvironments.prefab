@@ -471,7 +471,6 @@ MonoBehaviour:
     type: 3}
   pooledAmount: 272
   willGrow: 1
-  pooledObjects: []
 --- !u!1 &1735275812
 GameObject:
   m_ObjectHideFlags: 0
@@ -933,7 +932,7 @@ PrefabInstance:
     - target: {fileID: 3609008556864875695, guid: 167eb2329c974804ea4ec093e8687e83,
         type: 3}
       propertyPath: _prefabs.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3609008556864875695, guid: 167eb2329c974804ea4ec093e8687e83,
         type: 3}
@@ -953,6 +952,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8238193633948040202, guid: 5883d85fc28a20c439c2678b1532e04d,
         type: 3}
+    - target: {fileID: 3609008556864875695, guid: 167eb2329c974804ea4ec093e8687e83,
+        type: 3}
+      propertyPath: _prefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 6741786101970824614, guid: 51264e955ebbb3f41acae787aca644fd,
+        type: 3}
+    - target: {fileID: 3609008556864875695, guid: 167eb2329c974804ea4ec093e8687e83,
+        type: 3}
+      propertyPath: _nbRoadToInit
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4262236228420139673, guid: 167eb2329c974804ea4ec093e8687e83,
         type: 3}
       propertyPath: m_LocalPosition.x
