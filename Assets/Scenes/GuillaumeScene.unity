@@ -2321,7 +2321,7 @@ GameObject:
   - component: {fileID: 1673720613}
   - component: {fileID: 1673720612}
   m_Layer: 0
-  m_Name: Directional Light (3)
+  m_Name: Light Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2389,7 +2389,7 @@ Light:
   m_RenderMode: 2
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1792
+    m_Bits: 49152
   m_RenderingLayerMask: 1
   m_Lightmapping: 1
   m_LightShadowCasterMode: 0
@@ -2427,7 +2427,7 @@ GameObject:
   - component: {fileID: 1718063533}
   - component: {fileID: 1718063532}
   m_Layer: 0
-  m_Name: Directional Light (2)
+  m_Name: Light Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

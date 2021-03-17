@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 2094269178200796338}
   - component: {fileID: 3587205057453730300}
   - component: {fileID: -3049779628158092632}
+  - component: {fileID: 3795164372873487774}
   m_Layer: 9
   m_Name: Claquettes
   m_TagString: Claquettes
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2687625080508439613
 Transform:
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8498191410095236307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -89.6, y: 0, z: 45.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2221697324568675985}
@@ -73,6 +74,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077fb7772575be74d94ae372eb35e06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3795164372873487774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498191410095236307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebbc3c1185ab4d4193871af9b88d449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RendererInfo:
+  - renderer: {fileID: 1053315847411858942}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.31502417, y: 0.31502417, z: -0.0012305632, w: 0.35814443}
+  m_Lightmaps:
+  - {fileID: 2800000, guid: 819c8b6bd8db3194491870af5f457b92, type: 3}
+  m_LightmapsDir:
+  - {fileID: 0}
+  m_ShadowMasks:
+  - {fileID: 0}
+  m_LightInfo: []
 --- !u!1001 &1828378501819359610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,10 +174,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 168.06999
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9ce31a760a25f32428f98ba2c7ca1518,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ce31a760a25f32428f98ba2c7ca1518,
         type: 3}
       propertyPath: m_Name
       value: Item_Claquette
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9ce31a760a25f32428f98ba2c7ca1518,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9ce31a760a25f32428f98ba2c7ca1518,
         type: 3}
@@ -165,6 +199,12 @@ PrefabInstance:
 --- !u!4 &2221697324568675985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9ce31a760a25f32428f98ba2c7ca1518,
+    type: 3}
+  m_PrefabInstance: {fileID: 1828378501819359610}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1053315847411858942 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 9ce31a760a25f32428f98ba2c7ca1518,
     type: 3}
   m_PrefabInstance: {fileID: 1828378501819359610}
   m_PrefabAsset: {fileID: 0}

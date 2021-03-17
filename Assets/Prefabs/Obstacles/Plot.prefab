@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1021342695564910366
 Transform:
@@ -59,7 +59,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2589769608768176404
 Transform:
@@ -93,7 +93,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3728932552413151145
 Transform:
@@ -138,7 +138,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5398289443151418715
 Transform:
@@ -180,12 +180,13 @@ GameObject:
   - component: {fileID: 5161722296004662516}
   - component: {fileID: 2766174290613033505}
   - component: {fileID: 14923659828283692}
+  - component: {fileID: 7203338749067929990}
   m_Layer: 8
   m_Name: Plot
   m_TagString: Plot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2176939608469490477
 Transform:
@@ -195,7 +196,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8618412363117892099}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -99.88, y: 0, z: 49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2589769608768176404}
@@ -250,6 +251,29 @@ MonoBehaviour:
   - {fileID: 7889605181212335692}
   throwDuration: 2.5
   throwRotationDuration: 2.5
+--- !u!114 &7203338749067929990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8618412363117892099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebbc3c1185ab4d4193871af9b88d449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RendererInfo:
+  - renderer: {fileID: 520832902283197780}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.33092785, y: 0.33092785, z: -0.0012926869, w: -0.0012926869}
+  m_Lightmaps:
+  - {fileID: 2800000, guid: 87085dc76c702a84a8d73f7901a41593, type: 3}
+  m_LightmapsDir:
+  - {fileID: 0}
+  m_ShadowMasks:
+  - {fileID: 0}
+  m_LightInfo: []
 --- !u!1001 &1223795345751695824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -327,10 +351,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 314f475c8ccf47e48bd99900ce830288,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 314f475c8ccf47e48bd99900ce830288,
         type: 3}
       propertyPath: m_Name
       value: Obstacle_plot_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 314f475c8ccf47e48bd99900ce830288,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 314f475c8ccf47e48bd99900ce830288,
         type: 3}
@@ -342,6 +376,12 @@ PrefabInstance:
 --- !u!4 &1689256814655505979 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 314f475c8ccf47e48bd99900ce830288,
+    type: 3}
+  m_PrefabInstance: {fileID: 1223795345751695824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &520832902283197780 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 314f475c8ccf47e48bd99900ce830288,
     type: 3}
   m_PrefabInstance: {fileID: 1223795345751695824}
   m_PrefabAsset: {fileID: 0}

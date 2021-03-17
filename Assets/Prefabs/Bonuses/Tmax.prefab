@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 2094269178200796338}
   - component: {fileID: 3587205057453730300}
   - component: {fileID: 6538360715374289187}
+  - component: {fileID: 4929642179038927836}
   m_Layer: 9
   m_Name: Tmax
   m_TagString: Tmax
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2687625080508439613
 Transform:
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8498191410095236307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -83.2, y: 0, z: 44.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5576933886199259789}
@@ -73,6 +74,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077fb7772575be74d94ae372eb35e06d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4929642179038927836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8498191410095236307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebbc3c1185ab4d4193871af9b88d449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RendererInfo:
+  - renderer: {fileID: 6714325049511320034}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.29074517, y: 0.29074517, z: -0.0011357233, w: 0.7098018}
+  m_Lightmaps:
+  - {fileID: 2800000, guid: 819c8b6bd8db3194491870af5f457b92, type: 3}
+  m_LightmapsDir:
+  - {fileID: 0}
+  m_ShadowMasks:
+  - {fileID: 0}
+  m_LightInfo: []
 --- !u!1001 &5399682565089232230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,10 +174,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 69.033005
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 598fd3c30cfb499448770a06b2ffc300,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 598fd3c30cfb499448770a06b2ffc300,
         type: 3}
       propertyPath: m_Name
       value: Tmax_mesh
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 598fd3c30cfb499448770a06b2ffc300,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 598fd3c30cfb499448770a06b2ffc300,
         type: 3}
@@ -165,6 +199,12 @@ PrefabInstance:
 --- !u!4 &5576933886199259789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 598fd3c30cfb499448770a06b2ffc300,
+    type: 3}
+  m_PrefabInstance: {fileID: 5399682565089232230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6714325049511320034 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 598fd3c30cfb499448770a06b2ffc300,
     type: 3}
   m_PrefabInstance: {fileID: 5399682565089232230}
   m_PrefabAsset: {fileID: 0}
