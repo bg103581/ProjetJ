@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4909826768312097709
 Transform:
@@ -57,12 +57,13 @@ GameObject:
   - component: {fileID: 2415472896415215954}
   - component: {fileID: 1687518712179556482}
   - component: {fileID: -3275809159488462913}
+  - component: {fileID: 3946246314754974225}
   m_Layer: 8
   m_Name: Barriere
   m_TagString: Barriere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4080275133005458000
 Transform:
@@ -72,7 +73,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2868475533083227003}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -94.74, y: 0, z: 49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5339110649589400080}
@@ -129,6 +130,29 @@ MonoBehaviour:
   - {fileID: 3334640314637241756}
   throwDuration: 2.5
   throwRotationDuration: 2.5
+--- !u!114 &3946246314754974225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2868475533083227003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebbc3c1185ab4d4193871af9b88d449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RendererInfo:
+  - renderer: {fileID: 924999611516087346}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.35425368, y: 0.35425368, z: 0.35492823, w: 0.4361162}
+  m_Lightmaps:
+  - {fileID: 2800000, guid: 5de54af9f63219d4c8ce20abb4c88260, type: 3}
+  m_LightmapsDir:
+  - {fileID: 0}
+  m_ShadowMasks:
+  - {fileID: 0}
+  m_LightInfo: []
 --- !u!1 &4608312867829423330
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +168,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6945349246410520319
 Transform:
@@ -189,7 +213,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9100151019366195288
 Transform:
@@ -233,7 +257,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5339110649589400080
 Transform:
@@ -314,10 +338,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6a3319e44831f1047a7bf193cf9c1caa,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6a3319e44831f1047a7bf193cf9c1caa,
         type: 3}
       propertyPath: m_Name
       value: Obstacle_fence_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6a3319e44831f1047a7bf193cf9c1caa,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6a3319e44831f1047a7bf193cf9c1caa,
         type: 3}
@@ -329,6 +363,12 @@ PrefabInstance:
 --- !u!4 &2061926122451736413 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6a3319e44831f1047a7bf193cf9c1caa,
+    type: 3}
+  m_PrefabInstance: {fileID: 1952266042452013238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &924999611516087346 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 6a3319e44831f1047a7bf193cf9c1caa,
     type: 3}
   m_PrefabInstance: {fileID: 1952266042452013238}
   m_PrefabAsset: {fileID: 0}
@@ -398,6 +438,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Obstacle_fence_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b7c31eeae97635646ac4640ab690e1d4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b7c31eeae97635646ac4640ab690e1d4,
         type: 3}
