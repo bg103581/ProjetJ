@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 184880163042237134}
   - component: {fileID: 5364531360684396806}
   - component: {fileID: 5348266852417146070}
+  - component: {fileID: 3210728034806617343}
   m_Layer: 8
   m_Name: Ballon
   m_TagString: Rat
@@ -94,6 +95,29 @@ MonoBehaviour:
   - {fileID: 5364531360684396806}
   throwDuration: 2.5
   throwRotationDuration: 2.5
+--- !u!114 &3210728034806617343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4102734338707102546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebbc3c1185ab4d4193871af9b88d449, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RendererInfo:
+  - renderer: {fileID: 9073682033705918869}
+    lightmapIndex: 0
+    lightmapOffsetScale: {x: 0.2214934, y: 0.2214934, z: 0.7651213, w: -0.00086520857}
+  m_Lightmaps:
+  - {fileID: 2800000, guid: bcd619037dabf114ebdcf8adb5949cff, type: 3}
+  m_LightmapsDir:
+  - {fileID: 0}
+  m_ShadowMasks:
+  - {fileID: 0}
+  m_LightInfo: []
 --- !u!95 &2034753434113701065
 Animator:
   serializedVersion: 3
@@ -175,6 +199,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: da1448ab833986d41a3733380960135a,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: da1448ab833986d41a3733380960135a,
         type: 3}
       propertyPath: m_Name
@@ -183,7 +212,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: da1448ab833986d41a3733380960135a,
         type: 3}
       propertyPath: m_Layer
-      value: 15
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: da1448ab833986d41a3733380960135a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da1448ab833986d41a3733380960135a, type: 3}
@@ -196,6 +230,12 @@ GameObject:
 --- !u!4 &7901316372015962874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: da1448ab833986d41a3733380960135a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7650951790279539985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9073682033705918869 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: da1448ab833986d41a3733380960135a,
     type: 3}
   m_PrefabInstance: {fileID: 7650951790279539985}
   m_PrefabAsset: {fileID: 0}
