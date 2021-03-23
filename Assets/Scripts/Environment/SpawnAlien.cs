@@ -78,16 +78,18 @@ public class SpawnAlien : MonoBehaviour
 
             alienSpawned.GetComponent<MoveItems>().enabled = false;
             alienSpawned.GetComponent<CapsuleCollider>().enabled = false;
+            Alien alien = alienSpawned.GetComponent<Alien>();
             
             switch (aliensCurrentIndex) {
                 case 1:
                     MoveAlienToTmax(tmaxFirstPos);
-                    alienSpawned.GetComponent<Alien>().animator.SetBool("isClicked", true);
+                    alien.animator.SetBool("isClicked", true);
+                    alien.triggerVfxAlien.StopVfx();
                     player.Fly();
                     break;
                 case 2:
                     MoveAlienToTmax(tmaxSecondPos);
-                    alienSpawned.GetComponent<Alien>().animator.SetBool("isClicked", true);
+                    alien.animator.SetBool("isClicked", true);
                     player.Fly();
                     break;
                 case 3:

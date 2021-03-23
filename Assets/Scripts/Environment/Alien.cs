@@ -9,6 +9,7 @@ public class Alien : MonoBehaviour
     private SpawnAlien spawnAlien;
 
     public Animator animator;
+    public TriggerVfx triggerVfxAlien;
 
     private void Start() {
         GameEvents.current.onAlienFail += OnAlienFail;

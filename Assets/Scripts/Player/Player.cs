@@ -100,6 +100,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private TmaxLose tmaxLose;
     [SerializeField] private Parallaxe parallaxe;
+    [SerializeField] private VFXManager vfxManager;
 
     [Header("Bonus variables")]
     [SerializeField]
@@ -201,6 +202,7 @@ public class Player : MonoBehaviour
         ActivateLook(jul);
         twingoOvniCollider.enabled = false;
         julCollider.enabled = true;
+        vfxManager.SetActiveVfxLoseOnFoot(false);
 
         twingo.transform.position = initTwingoPos;
         twingo.transform.rotation = Quaternion.identity;
@@ -269,12 +271,14 @@ public class Player : MonoBehaviour
             if (!(isTwingo || isTmax || isOvni)) {
                 if (isCopFollowed) {
                     gameManager.Lose();
+                    vfxManager.SetActiveVfxLoseOnFoot(true);
                     julAnim.Death();
                     cop.EndRun();
                 }
                 else {
                     startCopFollowTimer = true;
                     julAnim.Hit();
+                    vfxManager.PlayVfxHit();
                 }
 
                 cop.CatchUpToPlayer();
@@ -345,12 +349,14 @@ public class Player : MonoBehaviour
             if (!(isTwingo || isTmax || isOvni)) {
                 if (isCopFollowed) {
                     gameManager.Lose();
+                    vfxManager.SetActiveVfxLoseOnFoot(true);
                     julAnim.Death();
                     cop.EndRun();
                 }
                 else {
                     startCopFollowTimer = true;
                     julAnim.Hit();
+                    vfxManager.PlayVfxHit();
                 }
 
                 cop.CatchUpToPlayer();
@@ -467,26 +473,31 @@ public class Player : MonoBehaviour
                         break;
                 }
                 gameManager.Lose();
+                vfxManager.PlayVfxExplosion();
             }
             else if (isTmax) {
                 tmaxLose.StartLoseAnimation(obstacle.currentLane);
                 yTimer = 0f;
                 gameManager.Lose();
+                vfxManager.PlayVfxExplosion();
             }
             else {
                 if (isStrafing && lane != obstacle.currentLane) {
                     if (isCopFollowed) {
                         gameManager.Lose();
+                        vfxManager.SetActiveVfxLoseOnFoot(true);
                         julAnim.Death();
                         cop.EndRun();
                     }
                     else {
                         startCopFollowTimer = true;
                         julAnim.Hit();
+                        vfxManager.PlayVfxHit();
                     }
                 }
                 else {
                     gameManager.Lose();
+                    vfxManager.SetActiveVfxLoseOnFoot(true);
                     julAnim.Death();
                     cop.EndRun();
                 }
@@ -496,8 +507,8 @@ public class Player : MonoBehaviour
 
         if (isTwingo) {
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
-                // break them
                 gameManager.AddBreakItemScore();
+                vfxManager.PlayVfxBroken();
                 obstacle.Throw();
             }
             else if (col.tag == "Voiture") {
@@ -518,6 +529,7 @@ public class Player : MonoBehaviour
                         break;
                 }
                 gameManager.Lose();
+                vfxManager.PlayVfxExplosion();
             }
         }
         else if (isTmax) {
@@ -525,25 +537,28 @@ public class Player : MonoBehaviour
                 if (col.tag == "Voiture") {
                     gameManager.AddBreakItemScore(true);
                     obstacle.Throw();
+                    vfxManager.PlayVfxBroken();
                 }
             }
             else {
                 if (col.tag == "Voiture") {
                     tmaxLose.StartLoseAnimation(obstacle.currentLane);
                     gameManager.Lose();
+                    vfxManager.PlayVfxExplosion();
                 }
             }
 
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
-                // break them
                 gameManager.AddBreakItemScore();
                 obstacle.Throw();
+                vfxManager.PlayVfxBroken();
             }
         }
         else {
             if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {   //obstacles légers a pied
                 if (isCopFollowed) {
                     gameManager.Lose();
+                    vfxManager.SetActiveVfxLoseOnFoot(true);
                     julAnim.Death();
                     cop.EndRun();
                 }
@@ -551,6 +566,7 @@ public class Player : MonoBehaviour
                     startCopFollowTimer = true;
                     julAnim.Hit();
                     obstacle.Throw();
+                    vfxManager.PlayVfxHit();
                 }
                 cop.CatchUpToPlayer();
             }
@@ -558,24 +574,25 @@ public class Player : MonoBehaviour
                 if (isStrafing && lane != obstacle.currentLane) {
                     if (isCopFollowed) {
                         gameManager.Lose();
+                        vfxManager.SetActiveVfxLoseOnFoot(true);
                         julAnim.Death();
                         cop.EndRun();
                     }
                     else {
                         startCopFollowTimer = true;
                         julAnim.Hit();
+                        vfxManager.PlayVfxHit();
                     }
                 }
                 else {
                     gameManager.Lose();
+                    vfxManager.SetActiveVfxLoseOnFoot(true);
                     julAnim.Death();
                     cop.EndRun();
                 }
                 cop.CatchUpToPlayer();
             }
         }
-
-        //Destroy(col.gameObject);
     }
 
     public void HitByBonus(string tag) {
@@ -586,8 +603,6 @@ public class Player : MonoBehaviour
                 break;
             case "Pochon":
                 startPochonTimer = true;
-                //if (!isPochon)
-                //    Time.timeScale += pochonSpeed;
                 break;
             case "Twingo":
                 if (isClaquettes) claquettesTimer = 0f;
@@ -597,6 +612,7 @@ public class Player : MonoBehaviour
                 ActivateLook(twingo);
                 twingoOvniCollider.enabled = true;
                 julCollider.enabled = false;
+                vfxManager.PlayVfxBonus();
 
                 if (!isTwingo)
                     Time.timeScale += twingoSpeed;
@@ -607,13 +623,12 @@ public class Player : MonoBehaviour
                 copFollowTimer = 0f;
                 startTmaxTimer = true;
                 ActivateLook(tmax);
+                vfxManager.PlayVfxBonus();
 
                 if (!isTmax) {
                     Time.timeScale += tmaxSpeed;
                     AlienEvent();
                 }
-                break;
-            case "Ovni":
                 break;
             default:
                 break;
@@ -633,6 +648,7 @@ public class Player : MonoBehaviour
     }
 
     public void HitByDisc(bool isGold) {
+        vfxManager.PlayVfxDisc();
         gameManager.AddDiscScore(isGold);
     }
 
@@ -706,6 +722,7 @@ public class Player : MonoBehaviour
         if (startClaquettesTimer) {
             isClaquettes = true;
             claquettesTimer = claquettesDuration;
+            vfxManager.SetActiveVfxShoes(true);
 
             startClaquettesTimer = false;
         }
@@ -713,6 +730,7 @@ public class Player : MonoBehaviour
         if (isClaquettes) {
             if (claquettesTimer <= 0f) {
                 isClaquettes = false;
+                vfxManager.SetActiveVfxShoes(false);
             }
             else {
                 if (gameManager.gameState != GameState.PAUSE) claquettesTimer -= Time.unscaledDeltaTime;
@@ -724,6 +742,7 @@ public class Player : MonoBehaviour
         if (startPochonTimer) {
             isPochon = true;
             pochonTimer = pochonDuration;
+            vfxManager.SetActiveVfxWeed(true);
 
             startPochonTimer = false;
         }
@@ -731,7 +750,7 @@ public class Player : MonoBehaviour
         if (isPochon) {
             if (pochonTimer <= 0f) {
                 isPochon = false;
-                //Time.timeScale -= pochonSpeed;
+                vfxManager.SetActiveVfxWeed(false);
             }
             else {
                 if (gameManager.gameState != GameState.PAUSE) pochonTimer -= Time.unscaledDeltaTime;
