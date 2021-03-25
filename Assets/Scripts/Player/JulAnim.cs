@@ -12,6 +12,8 @@ public class JulAnim : MonoBehaviour
     private float rotateRunTime = 0.5f;
     [SerializeField]
     private float rotatePlayPosTime = 0.5f;
+    [SerializeField]
+    private GameObject petou;
 
     private Vector3 startPos;
     private Quaternion startRot;
@@ -40,6 +42,7 @@ public class JulAnim : MonoBehaviour
     }
 
     private void OnReplay() {
+        petou.SetActive(true);
         transform.localPosition = startPos;
         transform.localRotation = startRot;
 
@@ -47,6 +50,8 @@ public class JulAnim : MonoBehaviour
     }
 
     public void PlayStartMovement() {
+        petou.SetActive(false);
+
         Sequence mySequence = DOTween.Sequence();
 
         mySequence.Append(transform.DOMoveX(0f, moveXTime).SetEase(Ease.OutSine));

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: vfx_4x4_AB
-  m_Shader: {fileID: -6465566751694194690, guid: 23e2bd5385478244b9020ed87d5d0b0d,
+  m_Name: Petou
+  m_Shader: {fileID: -6465566751694194690, guid: d621fd0444e126b4ba5bd0a8f7d25c03,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,20 +20,28 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_15AC8939:
+        m_Texture: {fileID: 2800000, guid: 1d22ee46aa7bbe843be4c71b170b0916, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_3E8637BE:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_73FB0C99:
+        m_Texture: {fileID: 2800000, guid: d15baaad74063764490001b40004dc31, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_8F5EEF8F:
+        m_Texture: {fileID: 2800000, guid: 9b263fc7026043349b0f6e095cb2b58d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_9449B7E4:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - Texture2D_B03F71CB:
-        m_Texture: {fileID: 2800000, guid: cb2a3fc39caafec488eb6c0017bcba8b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - Texture2D_BB4551AE:
-        m_Texture: {fileID: 2800000, guid: cb2a3fc39caafec488eb6c0017bcba8b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8eb4979e119ee10499faf9435444a8e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -49,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cb2a3fc39caafec488eb6c0017bcba8b, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -66,9 +74,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_5DE3EFDD: 0.0035
-    - Vector1_B074C7BF: 1
-    - Vector1_F6F11C01: 0
-    - Vector1_F9612A79: 0.0035
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -91,15 +96,17 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Vector2_30D3550E: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_65EB4799: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_BF77284B: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_C8B366BB: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_EB35F8E3: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_F34DCF9C: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
---- !u!114 &1103892509355451504
+--- !u!114 &4690948637656421365
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

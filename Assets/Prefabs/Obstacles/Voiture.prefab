@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 4485575999940270870}
   - component: {fileID: 3424309502038800511}
   - component: {fileID: 8580958538585594093}
+  - component: {fileID: 8227257025453893435}
   m_Layer: 8
   m_Name: Voiture
   m_TagString: Voiture
@@ -151,6 +152,26 @@ MonoBehaviour:
   m_ShadowMasks:
   - {fileID: 0}
   m_LightInfo: []
+--- !u!114 &8227257025453893435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304595352973672841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c151f4ec1f87969458650371d49112d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: a414d5cc14c779449b62309a821f0202, type: 2}
+  - {fileID: 2100000, guid: e4e692d8d4cd5ae4f9234126aa172b9b, type: 2}
+  - {fileID: 2100000, guid: 3e2c51f3f6e9bd645bf4018e02849a8d, type: 2}
+  - {fileID: 2100000, guid: 3a37c866edcae2949b217c5039e26703, type: 2}
+  - {fileID: 2100000, guid: 3a123d75800115b459f33be505038427, type: 2}
+  - {fileID: 2100000, guid: 384b9b8ef7cd5f9489ba21b862fc7c5f, type: 2}
+  renderer: {fileID: 7501946858307987324}
 --- !u!1 &1689140900606555248
 GameObject:
   m_ObjectHideFlags: 0

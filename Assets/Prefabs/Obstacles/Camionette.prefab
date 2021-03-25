@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 4485575999940270870}
   - component: {fileID: -7863782327450299080}
   - component: {fileID: 4659239910421767666}
+  - component: {fileID: 3396830101815458497}
   m_Layer: 8
   m_Name: Camionette
   m_TagString: Camionette
@@ -151,6 +152,24 @@ MonoBehaviour:
   m_ShadowMasks:
   - {fileID: 0}
   m_LightInfo: []
+--- !u!114 &3396830101815458497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304595352973672841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c151f4ec1f87969458650371d49112d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: df7004e79912b0f439b9786f8c4229cc, type: 2}
+  - {fileID: 2100000, guid: 9326750d261b8dd46b979304120e49d5, type: 2}
+  - {fileID: 2100000, guid: 344dabb839586d045a3d00422f236cb6, type: 2}
+  - {fileID: 2100000, guid: a261305fcafe2ed419dc2446c69c4a69, type: 2}
+  renderer: {fileID: 7635033736483451511}
 --- !u!1 &1689140900606555248
 GameObject:
   m_ObjectHideFlags: 0
