@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Atlas_Cite
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: Android
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: 51
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 1
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 02f8d1a7ab79f38408ee932ac8a548a6, type: 3}
+    - {fileID: 2800000, guid: 6e70e9daf4c66ec4faf7888aa2b36a0a, type: 3}
+    - {fileID: 2800000, guid: 4bc11e60ea930304784d100b57f23041, type: 3}
+    - {fileID: 2800000, guid: d8e6fe7e4b524884ca8cbb0b028c205f, type: 3}
+    - {fileID: 2800000, guid: 00aa2ec1815a3424bad224ebfb735143, type: 3}
+    - {fileID: 2800000, guid: 319eb9e2471e82a42931d8d3d15c55bf, type: 3}
+    - {fileID: 2800000, guid: a514862315848ac469d9e00d9158643b, type: 3}
+    - {fileID: 2800000, guid: 86c004522aecffe41b211437e79a71bb, type: 3}
+    totalSpriteSurfaceArea: 524288
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 4bc11e60ea930304784d100b57f23041, type: 3}
+  - {fileID: 21300000, guid: 00aa2ec1815a3424bad224ebfb735143, type: 3}
+  - {fileID: 21300000, guid: 86c004522aecffe41b211437e79a71bb, type: 3}
+  - {fileID: 21300000, guid: 319eb9e2471e82a42931d8d3d15c55bf, type: 3}
+  - {fileID: 21300000, guid: a514862315848ac469d9e00d9158643b, type: 3}
+  - {fileID: 21300000, guid: 02f8d1a7ab79f38408ee932ac8a548a6, type: 3}
+  - {fileID: 21300000, guid: 6e70e9daf4c66ec4faf7888aa2b36a0a, type: 3}
+  - {fileID: 21300000, guid: d8e6fe7e4b524884ca8cbb0b028c205f, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - T_Bat_Cite_3_AlbedoTransparency
+  - T_Bat_Cite_5.2_AlbedoTransparency
+  - T_Bat_Cite_5.1_AlbedoTransparency
+  - T_Bat_Cite_6_AlbedoTransparency
+  - T_Bat_Cite_4.2_AlbedoTransparency
+  - T_Bat_Cite_1_AlbedoTransparency
+  - T_Bat_Cite_2_AlbedoTransparency
+  - T_Bat_Cite_4.1_AlbedoTransparency
+  m_Tag: Atlas_Cite
+  m_IsVariant: 0
