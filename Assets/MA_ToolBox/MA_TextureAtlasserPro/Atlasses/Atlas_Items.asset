@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
   m_Name: Tmax
   m_EditorClassIdentifier: 
-  isSelected: 1
+  isSelected: 0
   rect:
     serializedVersion: 2
     x: 1531.2986
@@ -437,20 +437,20 @@ MonoBehaviour:
   debugMode: 0
   dragRectHeight:
     serializedVersion: 2
-    x: 2638.3174
-    y: 412.54404
+    x: 1728.9382
+    y: 491.44415
     width: 64
     height: 16
   dragRectWidth:
     serializedVersion: 2
-    x: 2782.3174
-    y: 268.54404
+    x: 1872.9382
+    y: 347.44415
     width: 16
     height: 64
   dragRectPos:
     serializedVersion: 2
-    x: 2654.3174
-    y: 284.54404
+    x: 1744.9382
+    y: 363.44415
     width: 32
     height: 32
   textureGroups:
@@ -753,7 +753,7 @@ MonoBehaviour:
   - {fileID: 1931796317780266877}
   - {fileID: -8928604736039197365}
   - {fileID: -3537538453291333189}
-  selectedTextureQuad: {fileID: -8928604736039197365}
+  selectedTextureQuad: {fileID: 6812197581423662839}
   showTextures: 1
   exportSettings: {fileID: 11400000, guid: c2036be323245484f8f29e1dd242cbc0, type: 2}
   textureAtlasSize: {x: 2048, y: 2048}
@@ -1077,7 +1077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
   m_Name: Obstacle_plot
   m_EditorClassIdentifier: 
-  isSelected: 0
+  isSelected: 1
   rect:
     serializedVersion: 2
     x: 0
@@ -1093,20 +1093,20 @@ MonoBehaviour:
   debugMode: 0
   dragRectHeight:
     serializedVersion: 2
-    x: 1358.3174
-    y: 668.54407
+    x: 448.93817
+    y: 747.44415
     width: 64
     height: 16
   dragRectWidth:
     serializedVersion: 2
-    x: 1502.3174
-    y: 524.54407
+    x: 592.9382
+    y: 603.44415
     width: 16
     height: 64
   dragRectPos:
     serializedVersion: 2
-    x: 1374.3174
-    y: 540.54407
+    x: 464.93817
+    y: 619.44415
     width: 32
     height: 32
   textureGroups:
