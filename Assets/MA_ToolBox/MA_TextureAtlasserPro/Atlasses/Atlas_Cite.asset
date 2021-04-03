@@ -1,0 +1,437 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5076679784122861066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Cite_2
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 260.2273
+    y: 11.363632
+    width: 262.0909
+    height: 242.7727
+  guiRect:
+    serializedVersion: 2
+    x: 256
+    y: 0
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 672
+    y: 406.8333
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 816
+    y: 262.8333
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 688
+    y: 278.8333
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 6e70e9daf4c66ec4faf7888aa2b36a0a, type: 3}
+  modelGroups:
+  - name: Bat_Cite_2
+    meshes:
+    - {fileID: -895747256328701042, guid: 28ceeebe7c2fe5d43ba5300e4caf157b, type: 3}
+--- !u!114 &-3745556949313844184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Cite_6
+  m_EditorClassIdentifier: 
+  isSelected: 1
+  rect:
+    serializedVersion: 2
+    x: 764.1815
+    y: 243.72742
+    width: 259.81848
+    height: 247.31812
+  guiRect:
+    serializedVersion: 2
+    x: 768
+    y: 256
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 1184
+    y: 662.8333
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1328
+    y: 518.8333
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 1200
+    y: 534.8333
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 319eb9e2471e82a42931d8d3d15c55bf, type: 3}
+  modelGroups:
+  - name: Bat_Cite_6
+    meshes:
+    - {fileID: 4191969198212593734, guid: 36a46b3779668504c8d094c6a27966e5, type: 3}
+--- !u!114 &-804956771900459558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Cite_4_2
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 243.18176
+    width: 262.0909
+    height: 242.7727
+  guiRect:
+    serializedVersion: 2
+    x: 0
+    y: 256
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 416
+    y: 662.8333
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 560
+    y: 518.8333
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 432
+    y: 534.8333
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: a514862315848ac469d9e00d9158643b, type: 3}
+  modelGroups:
+  - name: Bat_Cite_4_2
+    meshes:
+    - {fileID: 1255197570403821872, guid: 358e5e291861f0f4dbd375797a82f2ca, type: 3}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892d1a7aeb4cc284dbf62e69e125db52, type: 3}
+  m_Name: Atlas_Cite
+  m_EditorClassIdentifier: 
+  textureQuads:
+  - {fileID: 2455008416510239897}
+  - {fileID: -5076679784122861066}
+  - {fileID: 8085196778653969012}
+  - {fileID: 1839756680436936894}
+  - {fileID: -804956771900459558}
+  - {fileID: 3513943532696274855}
+  - {fileID: 3620387427850189359}
+  - {fileID: -3745556949313844184}
+  selectedTextureQuad: {fileID: -3745556949313844184}
+  showTextures: 1
+  exportSettings: {fileID: 11400000, guid: c2036be323245484f8f29e1dd242cbc0, type: 2}
+  textureAtlasSize: {x: 1024, y: 1024}
+  textureGroupRegistration:
+  - name: Albedo
+--- !u!114 &1839756680436936894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Cite_4_1
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 757.36365
+    y: 0
+    width: 262.0909
+    height: 242.7727
+  guiRect:
+    serializedVersion: 2
+    x: 768
+    y: 0
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 1184
+    y: 406.8333
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1328
+    y: 262.8333
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 1200
+    y: 278.8333
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: d8e6fe7e4b524884ca8cbb0b028c205f, type: 3}
+  modelGroups:
+  - name: Bat_Cite_4_1
+    meshes:
+    - {fileID: 7377296880415223774, guid: a40b6cfb9e82f6449baffe013472d8bd, type: 3}
+--- !u!114 &2455008416510239897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Cite_1
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 262.0909
+    height: 242.7727
+  guiRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 416
+    y: 406.8333
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 560
+    y: 262.8333
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 432
+    y: 278.8333
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 02f8d1a7ab79f38408ee932ac8a548a6, type: 3}
+  modelGroups:
+  - name: Bat_Cite_1
+    meshes:
+    - {fileID: -307660745318316076, guid: 270ca5dfee2b3f143850356e5f1415ad, type: 3}
+--- !u!114 &3513943532696274855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Cite_5_1
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 260.22723
+    y: 256.8181
+    width: 262.0909
+    height: 242.7727
+  guiRect:
+    serializedVersion: 2
+    x: 256
+    y: 256
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 672
+    y: 662.8333
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 816
+    y: 518.8333
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 688
+    y: 534.8333
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 86c004522aecffe41b211437e79a71bb, type: 3}
+  modelGroups:
+  - name: Bat_Cite_5_1
+    meshes:
+    - {fileID: 4273718891043702881, guid: 53af9f3fd59b0284a90a41694684ff0c, type: 3}
+--- !u!114 &3620387427850189359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Cite_5_2
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 510.7727
+    y: 243.18176
+    width: 262.0909
+    height: 242.7727
+  guiRect:
+    serializedVersion: 2
+    x: 512
+    y: 256
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 928
+    y: 662.8333
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1072
+    y: 518.8333
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 944
+    y: 534.8333
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 00aa2ec1815a3424bad224ebfb735143, type: 3}
+  modelGroups:
+  - name: Bat_Cite_5_2
+    meshes:
+    - {fileID: -5585827753956118978, guid: ecbdf12c620badd44845dc10fa479afa, type: 3}
+--- !u!114 &8085196778653969012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Cite_3
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 521.59094
+    y: 0
+    width: 262.0909
+    height: 242.7727
+  guiRect:
+    serializedVersion: 2
+    x: 512
+    y: 0
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 928
+    y: 406.8333
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1072
+    y: 262.8333
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 944
+    y: 278.8333
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 4bc11e60ea930304784d100b57f23041, type: 3}
+  modelGroups:
+  - name: Bat_Cite_3
+    meshes:
+    - {fileID: 1468815482385475318, guid: 5f3d413d5f20b3f488d4bc5885027fc9, type: 3}

@@ -1,0 +1,333 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8022841849647390870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Port_3
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 775.54553
+    y: 3.4090881
+    width: 248.4545
+    height: 270.04544
+  guiRect:
+    serializedVersion: 2
+    x: 768
+    y: 0
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 1245.6371
+    y: 320.90826
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1389.6371
+    y: 176.90826
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 1261.6371
+    y: 192.90826
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 0d3a2d07ea8e65342b6a3ab70950f465, type: 3}
+  modelGroups:
+  - name: Bat_Port_3
+    meshes:
+    - {fileID: 1841690748837911696, guid: 1cedb1bd769cefc4d9c88c3d1093a772, type: 3}
+--- !u!114 &-3890585220514129629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Port_1_1
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 248.4545
+    height: 270.04544
+  guiRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 477.63705
+    y: 320.90826
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 621.6371
+    y: 176.90826
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 493.63705
+    y: 192.90826
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 4918a996b6bc3f046b10c7bb39acfd65, type: 3}
+  modelGroups:
+  - name: Bat_Port_1_1
+    meshes:
+    - {fileID: 7791644338217383165, guid: 1f7dc708b82a3124b844d4c7031753d9, type: 3}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 892d1a7aeb4cc284dbf62e69e125db52, type: 3}
+  m_Name: Atlas_Port
+  m_EditorClassIdentifier: 
+  textureQuads:
+  - {fileID: -3890585220514129629}
+  - {fileID: 7059141968443958147}
+  - {fileID: 6855007827017165468}
+  - {fileID: -8022841849647390870}
+  - {fileID: 8983338529582798337}
+  - {fileID: 7079967158657345124}
+  selectedTextureQuad: {fileID: 7079967158657345124}
+  showTextures: 1
+  exportSettings: {fileID: 11400000, guid: c2036be323245484f8f29e1dd242cbc0, type: 2}
+  textureAtlasSize: {x: 1024, y: 1024}
+  textureGroupRegistration:
+  - name: Albedo
+--- !u!114 &6855007827017165468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Port_2
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 512.4999
+    y: 0
+    width: 248.4545
+    height: 270.04544
+  guiRect:
+    serializedVersion: 2
+    x: 512
+    y: 0
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 989.6371
+    y: 320.90826
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 1133.6371
+    y: 176.90826
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 1005.6371
+    y: 192.90826
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: d448892b21e1d2c41a490dc36c394f7d, type: 3}
+  modelGroups:
+  - name: Bat_Port_2
+    meshes:
+    - {fileID: -6364608848119144395, guid: ccbeedc71609bbe438ac72ec535682ea, type: 3}
+--- !u!114 &7059141968443958147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Port_1_2
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 260.22723
+    y: 0
+    width: 248.4545
+    height: 270.04544
+  guiRect:
+    serializedVersion: 2
+    x: 256
+    y: 0
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 733.6371
+    y: 320.90826
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 877.6371
+    y: 176.90826
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 749.6371
+    y: 192.90826
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 87a8d153248f342449393689373f37bc, type: 3}
+  modelGroups:
+  - name: Bat_Port_1_2
+    meshes:
+    - {fileID: 3001330660187591639, guid: 0d8e7871ccc68be4e8aaf490e10ab25b, type: 3}
+--- !u!114 &7079967158657345124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Port_5
+  m_EditorClassIdentifier: 
+  isSelected: 1
+  rect:
+    serializedVersion: 2
+    x: 265.90906
+    y: 262.49994
+    width: 248.4545
+    height: 270.04544
+  guiRect:
+    serializedVersion: 2
+    x: 256
+    y: 256
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 733.6371
+    y: 576.90826
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 877.6371
+    y: 432.90826
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 749.6371
+    y: 448.90826
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: 02279b52cbb9b024b94574bf9995a99f, type: 3}
+  modelGroups:
+  - name: Bat_Port_5
+    meshes:
+    - {fileID: -8803922287409310841, guid: 34b67b5fceb21f74cb2bd88552690fc8, type: 3}
+--- !u!114 &8983338529582798337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ad07a78750c7644b710e19e1a23d4a, type: 3}
+  m_Name: Bat_Port_4
+  m_EditorClassIdentifier: 
+  isSelected: 0
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 264.77267
+    width: 248.4545
+    height: 270.04544
+  guiRect:
+    serializedVersion: 2
+    x: 0
+    y: 256
+    width: 256
+    height: 256
+  debugMode: 0
+  dragRectHeight:
+    serializedVersion: 2
+    x: 477.63705
+    y: 576.90826
+    width: 64
+    height: 16
+  dragRectWidth:
+    serializedVersion: 2
+    x: 621.6371
+    y: 432.90826
+    width: 16
+    height: 64
+  dragRectPos:
+    serializedVersion: 2
+    x: 493.63705
+    y: 448.90826
+    width: 32
+    height: 32
+  textureGroups:
+  - name: Albedo
+    texture: {fileID: 2800000, guid: d5f7a05affaffe24f8446b29c5cbca49, type: 3}
+  modelGroups:
+  - name: Bat_Port_4
+    meshes:
+    - {fileID: -1451092545406519981, guid: 1ea182176140c424186527992d1b30c2, type: 3}
