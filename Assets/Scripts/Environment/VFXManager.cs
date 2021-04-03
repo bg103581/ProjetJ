@@ -13,7 +13,8 @@ public class VFXManager : MonoBehaviour
     [SerializeField] private TriggerVfx triggerVfxCigarette;
     [SerializeField] private TriggerVfx triggerVfxFlicExclamation;
 
-    [SerializeField] private GameObject vfxShoes;
+    [SerializeField] private GameObject vfxShoesL;
+    [SerializeField] private GameObject vfxShoesR;
     [SerializeField] private GameObject vfxLoseOnFoot;
     [SerializeField] private GameObject vfxWeed;
     
@@ -47,7 +48,8 @@ public class VFXManager : MonoBehaviour
     }
 
     public void SetActiveVfxShoes(bool isActive) {
-        vfxShoes.SetActive(isActive);
+        vfxShoesL.SetActive(isActive);
+        vfxShoesR.SetActive(isActive);
     }
 
     public void SetActiveVfxLoseOnFoot(bool isActive) {

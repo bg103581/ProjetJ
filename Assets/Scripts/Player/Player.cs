@@ -203,6 +203,9 @@ public class Player : MonoBehaviour
         twingoOvniCollider.enabled = false;
         julCollider.enabled = true;
         vfxManager.SetActiveVfxLoseOnFoot(false);
+        vfxManager.SetActiveVfxWeed(false);
+        vfxManager.SetActiveVfxShoes(false);
+
 
         twingo.transform.position = initTwingoPos;
         twingo.transform.rotation = Quaternion.identity;
