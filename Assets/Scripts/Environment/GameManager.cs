@@ -43,13 +43,12 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool isTmaxInGame;
 
+    public float score = 0;
+    public int nbGoldDiscs = 0;
+
     [HideInInspector]
     public GameState gameState = GameState.WAITING;
-
-    [SerializeField]
-    private float score = 0;
-    [SerializeField]
-    private int nbGoldDiscs = 0;
+    
     [SerializeField]
     private float traveledDistance = 0;
     [SerializeField]
@@ -160,6 +159,8 @@ public class GameManager : MonoBehaviour
 
         player.startCopFollowTimer = true;
         cop.CatchUpToPlayer();
+
+        menuManager.SetActiveButtonPause(true);
     }
 
     public void Lose() {
@@ -169,18 +170,22 @@ public class GameManager : MonoBehaviour
         gameState = GameState.FINISHED;
         isRunTimerCounting = false;
 
-        menuManager.InGameToLose();
+        //menuManager.InGameToLose();
     }
 
     private void OnPause() {
         gameState = GameState.PAUSE;
         currentTimeScale = Time.timeScale;
         Time.timeScale = 0;
+
+        menuManager.SetActiveButtonPause(false);
     }
 
     private void OnResume() {
         gameState = GameState.PLAYING;
         Time.timeScale = currentTimeScale;
+
+        menuManager.SetActiveButtonPause(true);
     }
 
     private void OnReplay() {   //reset game values then launch start animation
@@ -201,6 +206,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         rawTimeScaleHolder = 1;
         timeToUpgradeDifficulty = freqToUpgradeDifficulty;
+        menuManager.SetActiveButtonPause(false);
     }
 
     private IEnumerator ReplayCorout() {
@@ -344,7 +350,7 @@ public class GameManager : MonoBehaviour
         int totalDiamDiscs = currentData.nbDiamDiscs + diamFromGoldDisc;
         int bestScore = Mathf.Max(currentData.bestScore, Mathf.FloorToInt(score));
 
-        PlayerData playerData = new PlayerData(totalGoldDiscs, totalDiamDiscs, bestScore);
+        PlayerData playerData = new PlayerData(totalGoldDiscs, totalDiamDiscs, bestScore, currentData.isSoundActive, currentData.isMusicActive);
         Debug.Log(string.Format("new gold : {0}, new diam : {1}, new best score : {2}", playerData.nbGoldDiscs, playerData.nbDiamDiscs, playerData.bestScore));
 
         SaveSystem.SavePlayer(playerData);
@@ -354,7 +360,7 @@ public class GameManager : MonoBehaviour
     private void ResetDataFile() {
         Debug.Log("Data file reset");
 
-        SaveSystem.SavePlayer(new PlayerData(0, 0, 0));
+        SaveSystem.SavePlayer(new PlayerData(0, 0, 0, true, true));
     }
 
     #endregion
