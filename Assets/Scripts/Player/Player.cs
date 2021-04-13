@@ -240,6 +240,8 @@ public class Player : MonoBehaviour
                     tmaxAnimator.SetTrigger("strafeLeftTrigger");
                 }
             }
+
+            SoundManager.current.PlaySound(SoundType.STRAFE);
         }
         else if (lane == Lane.CENTER) {
             lane = Lane.LEFT;
@@ -269,6 +271,8 @@ public class Player : MonoBehaviour
                     tmaxAnimator.SetTrigger("strafeLeftTrigger");
                 }
             }
+
+            SoundManager.current.PlaySound(SoundType.STRAFE);
         }
         else {
             if (!(isTwingo || isTmax || isOvni)) {
@@ -318,6 +322,8 @@ public class Player : MonoBehaviour
                     tmaxAnimator.SetTrigger("strafeRightTrigger");
                 }
             }
+
+            SoundManager.current.PlaySound(SoundType.STRAFE);
         }
         else if (lane == Lane.CENTER) {
             lane = Lane.RIGHT;
@@ -347,6 +353,8 @@ public class Player : MonoBehaviour
                     tmaxAnimator.SetTrigger("strafeRightTrigger");
                 }
             }
+
+            SoundManager.current.PlaySound(SoundType.STRAFE);
         }
         else {
             if (!(isTwingo || isTmax || isOvni)) {
@@ -446,10 +454,14 @@ public class Player : MonoBehaviour
 
                 if (isClaquettes) {
                     rb.velocity = Vector3.up * claquettesJumpVelocity;
+                    SoundManager.current.PauseSound(SoundType.CLAQUETTES);
                 }
                 else {
                     rb.velocity = Vector3.up * jumpVelocity;
+                    SoundManager.current.PauseSound(SoundType.RUN);
                 }
+
+                SoundManager.current.PlaySound(SoundType.JUMP);
             }
         }
     }
@@ -496,6 +508,7 @@ public class Player : MonoBehaviour
                         startCopFollowTimer = true;
                         julAnim.Hit();
                         vfxManager.PlayVfxHit();
+                        SoundManager.current.PlaySound(SoundType.COLLISION);
                     }
                 }
                 else {
@@ -509,7 +522,7 @@ public class Player : MonoBehaviour
         }
 
         if (isTwingo) {
-            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
+            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat" || col.tag == "Ballon") {
                 gameManager.AddBreakItemScore();
                 vfxManager.PlayVfxBroken();
                 obstacle.Throw();
@@ -551,14 +564,14 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {
+            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat" || col.tag == "Ballon") {
                 gameManager.AddBreakItemScore();
                 obstacle.Throw();
                 vfxManager.PlayVfxBroken();
             }
         }
         else {
-            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat") {   //obstacles légers a pied
+            if (col.tag == "Barriere" || col.tag == "Plot" || col.tag == "Rat" || col.tag == "Ballon") {   //obstacles légers a pied
                 if (isCopFollowed) {
                     gameManager.Lose();
                     vfxManager.SetActiveVfxLoseOnFoot(true);
@@ -570,6 +583,7 @@ public class Player : MonoBehaviour
                     julAnim.Hit();
                     obstacle.Throw();
                     vfxManager.PlayVfxHit();
+                    SoundManager.current.PlaySound(SoundType.COLLISION);
                 }
                 cop.CatchUpToPlayer();
             }
@@ -585,6 +599,7 @@ public class Player : MonoBehaviour
                         startCopFollowTimer = true;
                         julAnim.Hit();
                         vfxManager.PlayVfxHit();
+                        SoundManager.current.PlaySound(SoundType.COLLISION);
                     }
                 }
                 else {
@@ -603,6 +618,8 @@ public class Player : MonoBehaviour
         switch (tag) {
             case "Claquettes":
                 startClaquettesTimer = true;
+                SoundManager.current.PlaySound(SoundType.CLAQUETTES);
+                SoundManager.current.PauseSound(SoundType.RUN);
                 break;
             case "Pochon":
                 startPochonTimer = true;
@@ -734,6 +751,8 @@ public class Player : MonoBehaviour
             if (claquettesTimer <= 0f) {
                 isClaquettes = false;
                 vfxManager.SetActiveVfxShoes(false);
+                SoundManager.current.StopSound(SoundType.CLAQUETTES);
+                SoundManager.current.UnPauseSound(SoundType.RUN);
             }
             else {
                 if (gameManager.gameState != GameState.PAUSE) claquettesTimer -= Time.unscaledDeltaTime;
