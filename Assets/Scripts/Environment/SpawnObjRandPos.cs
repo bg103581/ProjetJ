@@ -70,6 +70,9 @@ public class SpawnObjRandPos : GeneratePrefabs
 
                 lateralObj.GetComponent<Obstacles>().currentLane = Lane.RIGHT;
             }
+
+            if (lateralObj.tag == "Rat") SoundManager.current.PlaySound(SoundType.RAT);
+            else if (lateralObj.tag == "Ballon") SoundManager.current.PlaySound(SoundType.BALLON);
             
             lateralObj.GetComponent<LateralMovement>().isStartingRight = isRight;
         }

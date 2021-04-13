@@ -36,6 +36,8 @@ public class PlayerCollision : MonoBehaviour
         if (collision.transform.tag == "Ground") {
             player.isGrounded = true;
             julAnim.SetFallBool(false);
+            if (player.isClaquettes) SoundManager.current.UnPauseSound(SoundType.CLAQUETTES);
+            else SoundManager.current.UnPauseSound(SoundType.RUN);
         }
     }
 

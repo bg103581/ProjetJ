@@ -151,6 +151,7 @@ public class GameManager : MonoBehaviour
 
         itemManager.StartSpawnItems();
         spawnObjRandPos.StartSpawnLateralObjects();
+        SoundManager.current.PlaySound(SoundType.RUN);
     }
 
     public void StartPlayingInputs() {  //the player start playing
@@ -170,6 +171,8 @@ public class GameManager : MonoBehaviour
         gameState = GameState.FINISHED;
         isRunTimerCounting = false;
 
+        SoundManager.current.StopSound(SoundType.RUN);
+        SoundManager.current.StopSound(SoundType.CLAQUETTES);
         //menuManager.InGameToLose();
     }
 
@@ -178,6 +181,8 @@ public class GameManager : MonoBehaviour
         currentTimeScale = Time.timeScale;
         Time.timeScale = 0;
 
+        SoundManager.current.PauseSound(SoundType.RUN);
+        SoundManager.current.PauseSound(SoundType.CLAQUETTES);
         menuManager.SetActiveButtonPause(false);
     }
 
@@ -185,6 +190,8 @@ public class GameManager : MonoBehaviour
         gameState = GameState.PLAYING;
         Time.timeScale = currentTimeScale;
 
+        SoundManager.current.UnPauseSound(SoundType.RUN);
+        SoundManager.current.UnPauseSound(SoundType.CLAQUETTES);
         menuManager.SetActiveButtonPause(true);
     }
 
