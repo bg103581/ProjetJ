@@ -1362,7 +1362,7 @@ PrefabInstance:
     - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
         type: 3}
       propertyPath: alienSpawnRate
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de7855a76117fc24cb854c1b7cfea791, type: 3}
@@ -1453,17 +1453,17 @@ PrefabInstance:
     - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: bonusRate1
-      value: 15
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: bonusRate2
-      value: 15
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: bonusRate3
-      value: 15
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6991278363218564865, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
@@ -1546,31 +1546,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: distanceStartSpawningPochonClaquette
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: distanceStartSpawningTwingo
-      value: 600
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: distanceStartSpawningTmax
-      value: 1000
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: pochonSpawnRate_3
-      value: 25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: claquetteSpawnRate_3
-      value: 25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: TwingoSpawnRate_3
-      value: 25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: TmaxSpawnRate_3
-      value: 25
+      value: 97
       objectReference: {fileID: 0}
     - target: {fileID: 8417856381477053945, guid: 3b1b56d10f52acf4094e140617d0ad74,
         type: 3}
@@ -1641,11 +1641,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 343612319, guid: 34b01e34fbf81974ebd8fe6061ae9871, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.8731079
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397702376, guid: 34b01e34fbf81974ebd8fe6061ae9871, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1874714685, guid: 34b01e34fbf81974ebd8fe6061ae9871, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00061035156
+      objectReference: {fileID: 0}
     - target: {fileID: 8808204170800583334, guid: 34b01e34fbf81974ebd8fe6061ae9871,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1149862913}
+    - target: {fileID: 8808204171134409098, guid: 34b01e34fbf81974ebd8fe6061ae9871,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 7.4000244
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808204171910908529, guid: 34b01e34fbf81974ebd8fe6061ae9871,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808204172417160095, guid: 34b01e34fbf81974ebd8fe6061ae9871,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.7000122
+      objectReference: {fileID: 0}
     - target: {fileID: 8808204172473438595, guid: 34b01e34fbf81974ebd8fe6061ae9871,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1764,7 +1791,22 @@ PrefabInstance:
     - target: {fileID: 8808204172590602473, guid: 34b01e34fbf81974ebd8fe6061ae9871,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.37714958
+      value: -0.3771534
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808204172590602473, guid: 34b01e34fbf81974ebd8fe6061ae9871,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.000061
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808204172686078415, guid: 34b01e34fbf81974ebd8fe6061ae9871,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.8423462
+      objectReference: {fileID: 0}
+    - target: {fileID: 8808204172821730957, guid: 34b01e34fbf81974ebd8fe6061ae9871,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.49993896
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34b01e34fbf81974ebd8fe6061ae9871, type: 3}

@@ -103,11 +103,13 @@ public class MenuManager : MonoBehaviour
 
         if (currentData.isSoundActive) {    //turn off sound
             TurnOnOffSoundUI(false);
+            SoundManager.current.MuteSounds();
 
             playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, false, currentData.isMusicActive);
         }
         else {  //turn on sound
             TurnOnOffSoundUI(true);
+            SoundManager.current.DemuteSounds();
 
             playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, true, currentData.isMusicActive);
         }
@@ -121,11 +123,13 @@ public class MenuManager : MonoBehaviour
 
         if (currentData.isMusicActive) {    //turn off music
             TurnOnOffMusicUI(false);
+            SoundManager.current.MuteMusic();
 
             playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, false);
         }
         else {  //turn on music
             TurnOnOffMusicUI(true);
+            SoundManager.current.DemuteMusic();
 
             playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, true);
         }

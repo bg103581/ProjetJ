@@ -183,6 +183,9 @@ public class GameManager : MonoBehaviour
 
         SoundManager.current.PauseSound(SoundType.RUN);
         SoundManager.current.PauseSound(SoundType.CLAQUETTES);
+        SoundManager.current.PauseSound(SoundType.OVNI);
+        SoundManager.current.PauseSound(SoundType.TMAX);
+        SoundManager.current.PauseSound(SoundType.TWINGO);
         menuManager.SetActiveButtonPause(false);
     }
 
@@ -192,6 +195,9 @@ public class GameManager : MonoBehaviour
 
         SoundManager.current.UnPauseSound(SoundType.RUN);
         SoundManager.current.UnPauseSound(SoundType.CLAQUETTES);
+        SoundManager.current.UnPauseSound(SoundType.OVNI);
+        SoundManager.current.UnPauseSound(SoundType.TMAX);
+        SoundManager.current.UnPauseSound(SoundType.TWINGO);
         menuManager.SetActiveButtonPause(true);
     }
 

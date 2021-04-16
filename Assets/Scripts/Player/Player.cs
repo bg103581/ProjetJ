@@ -281,6 +281,7 @@ public class Player : MonoBehaviour
                     vfxManager.SetActiveVfxLoseOnFoot(true);
                     julAnim.Death();
                     cop.EndRun();
+                    SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
                 }
                 else {
                     startCopFollowTimer = true;
@@ -363,6 +364,7 @@ public class Player : MonoBehaviour
                     vfxManager.SetActiveVfxLoseOnFoot(true);
                     julAnim.Death();
                     cop.EndRun();
+                    SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
                 }
                 else {
                     startCopFollowTimer = true;
@@ -489,12 +491,14 @@ public class Player : MonoBehaviour
                 }
                 gameManager.Lose();
                 vfxManager.PlayVfxExplosion();
+                SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
             }
             else if (isTmax) {
                 tmaxLose.StartLoseAnimation(obstacle.currentLane);
                 yTimer = 0f;
                 gameManager.Lose();
                 vfxManager.PlayVfxExplosion();
+                SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
             }
             else {
                 if (isStrafing && lane != obstacle.currentLane) {
@@ -503,6 +507,7 @@ public class Player : MonoBehaviour
                         vfxManager.SetActiveVfxLoseOnFoot(true);
                         julAnim.Death();
                         cop.EndRun();
+                        SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
                     }
                     else {
                         startCopFollowTimer = true;
@@ -516,6 +521,7 @@ public class Player : MonoBehaviour
                     vfxManager.SetActiveVfxLoseOnFoot(true);
                     julAnim.Death();
                     cop.EndRun();
+                    SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
                 }
                 cop.CatchUpToPlayer();
             }
@@ -546,6 +552,7 @@ public class Player : MonoBehaviour
                 }
                 gameManager.Lose();
                 vfxManager.PlayVfxExplosion();
+                SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
             }
         }
         else if (isTmax) {
@@ -561,6 +568,7 @@ public class Player : MonoBehaviour
                     tmaxLose.StartLoseAnimation(obstacle.currentLane);
                     gameManager.Lose();
                     vfxManager.PlayVfxExplosion();
+                    SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
                 }
             }
 
@@ -577,6 +585,7 @@ public class Player : MonoBehaviour
                     vfxManager.SetActiveVfxLoseOnFoot(true);
                     julAnim.Death();
                     cop.EndRun();
+                    SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
                 }
                 else {
                     startCopFollowTimer = true;
@@ -594,6 +603,7 @@ public class Player : MonoBehaviour
                         vfxManager.SetActiveVfxLoseOnFoot(true);
                         julAnim.Death();
                         cop.EndRun();
+                        SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
                     }
                     else {
                         startCopFollowTimer = true;
@@ -607,6 +617,7 @@ public class Player : MonoBehaviour
                     vfxManager.SetActiveVfxLoseOnFoot(true);
                     julAnim.Death();
                     cop.EndRun();
+                    SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
                 }
                 cop.CatchUpToPlayer();
             }
@@ -633,6 +644,7 @@ public class Player : MonoBehaviour
                 twingoOvniCollider.enabled = true;
                 julCollider.enabled = false;
                 vfxManager.PlayVfxBonus();
+                SoundManager.current.PlaySound(SoundType.TWINGO);
 
                 if (!isTwingo)
                     Time.timeScale += twingoSpeed;
@@ -644,6 +656,7 @@ public class Player : MonoBehaviour
                 startTmaxTimer = true;
                 ActivateLook(tmax);
                 vfxManager.PlayVfxBonus();
+                SoundManager.current.PlaySound(SoundType.TMAX);
 
                 if (!isTmax) {
                     Time.timeScale += tmaxSpeed;
@@ -661,10 +674,13 @@ public class Player : MonoBehaviour
         ActivateLook(ovni);
         twingoOvniCollider.enabled = true;
         julCollider.enabled = false;
+        SoundManager.current.PlaySound(SoundType.OVNI);
+        SoundManager.current.StopSound(SoundType.TMAX);
     }
 
     public void EndOvni() {
         ovniTimer = 0;
+        SoundManager.current.StopSound(SoundType.OVNI);
     }
 
     public void HitByDisc(bool isGold) {
@@ -794,6 +810,7 @@ public class Player : MonoBehaviour
                 ActivateLook(jul);
                 twingoOvniCollider.enabled = false;
                 julCollider.enabled = true;
+                SoundManager.current.StopSound(SoundType.TWINGO);
 
                 Time.timeScale -= twingoSpeed;
             }
@@ -817,6 +834,7 @@ public class Player : MonoBehaviour
                     isTmax = false;
                     yTimer = 0f;
                     ActivateLook(jul);
+                    SoundManager.current.StopSound(SoundType.TMAX);
 
                     Time.timeScale -= tmaxSpeed;
                 }
