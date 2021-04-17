@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum SoundType
 {
-    RUN, STRAFE, JUMP, COLLISION, FATAL_COLLISION, BALLON, RAT, CLAQUETTES
+    RUN, STRAFE, JUMP, COLLISION, FATAL_COLLISION, BALLON, RAT, CLAQUETTES, OVNI, TMAX, TWINGO
 }
 
 public class SoundManager : MonoBehaviour
@@ -12,6 +12,8 @@ public class SoundManager : MonoBehaviour
     public static SoundManager current;
 
     [SerializeField] private Sound[] sounds;
+
+    private List<AudioSource> sources = new List<AudioSource>();
 
     private void Awake() {
         current = this;
@@ -25,6 +27,9 @@ public class SoundManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
+            s.source.playOnAwake = s.playOnAwake;
+
+            sources.Add(s.source);
         }
     }
 
@@ -73,5 +78,31 @@ public class SoundManager : MonoBehaviour
             if (s.type == type) return s;
         }
         return null;
+    }
+
+    public void MuteSounds()
+    {
+        foreach (AudioSource source in sources)
+        {
+            source.enabled = false;
+        }
+    }
+
+    public void DemuteSounds()
+    {
+        foreach (AudioSource source in sources)
+        {
+            source.enabled = true;
+        }
+    }
+
+    public void MuteMusic()
+    {
+
+    }
+
+    public void DemuteMusic()
+    {
+
     }
 }
