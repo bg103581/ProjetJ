@@ -101,6 +101,7 @@ public class Player : MonoBehaviour
     [SerializeField] private TmaxLose tmaxLose;
     [SerializeField] private Parallaxe parallaxe;
     [SerializeField] private VFXManager vfxManager;
+    [SerializeField] private float obstacleDetectionRadius = 0f;
 
     [Header("Bonus variables")]
     [SerializeField]
@@ -142,6 +143,8 @@ public class Player : MonoBehaviour
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+        GameEvents.current.onContinueGame += OnContinue;
+        GameEvents.current.onPreContinueGame += OnPreContinue;
 
         initTwingoPos = twingo.transform.position;
     }
@@ -169,15 +172,22 @@ public class Player : MonoBehaviour
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+        GameEvents.current.onContinueGame -= OnContinue;
+        GameEvents.current.onPreContinueGame -= OnPreContinue;
     }
     #endregion
 
     #region Methods
     private void OnReplay() {
         transform.position = centerPos.position;
-        //julanimator settrigger pour renvoyer au state init
         lane = Lane.CENTER;
 
+        ResetJul();
+        ResetTwingo();
+    }
+
+    private void ResetJul()
+    {
         isGrounded = true;
         isDodgeStreak = false;
         startDodgeStreakTimer = false;
@@ -205,8 +215,50 @@ public class Player : MonoBehaviour
         vfxManager.SetActiveVfxLoseOnFoot(false);
         vfxManager.SetActiveVfxWeed(false);
         vfxManager.SetActiveVfxShoes(false);
+    }
 
+    private void OnContinue()
+    {
+        
+    }
 
+    private void OnPreContinue()
+    {
+        ReplacePlayer();
+        ResetJul();
+        DeleteNearbyObstacles();
+    }
+
+    private void DeleteNearbyObstacles()
+    {
+        Collider[] obstacles = Physics.OverlapSphere(centerPos.position, obstacleDetectionRadius, 1 << 8);
+
+        foreach (Collider obstacleCol in obstacles)
+        {
+            Destroy(obstacleCol.gameObject);
+        }
+    }
+
+    private void ReplacePlayer()
+    {
+        switch (lane)
+        {
+            case Lane.LEFT:
+                transform.position = leftPos.position;
+                break;
+            case Lane.CENTER:
+                transform.position = centerPos.position;
+                break;
+            case Lane.RIGHT:
+                transform.position = rightPos.position;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void ResetTwingo()
+    {
         twingo.transform.position = initTwingoPos;
         twingo.transform.rotation = Quaternion.identity;
     }
@@ -897,6 +949,12 @@ public class Player : MonoBehaviour
 
     public void StartAnimation() {
         julAnim.StartAnimation();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(centerPos.position, obstacleDetectionRadius);
     }
     #endregion
 }

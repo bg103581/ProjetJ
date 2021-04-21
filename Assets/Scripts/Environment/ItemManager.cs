@@ -52,6 +52,9 @@ public class ItemManager : MonoBehaviour
     private int twoObstaclesRate = 0;
     private int twoDiscsRate = 50;
 
+    private float spawnItemTimer = 0f;
+    private bool isSpawnItemTimerCounting = false;
+
     private void Awake() {
         bonusSpawnRates = FindObjectOfType<BonusSpawnRates>();
 
@@ -59,7 +62,7 @@ public class ItemManager : MonoBehaviour
         currentObstacleOnlyRate = obstacleOnlyRate1;
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
-        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnMainMenu;
     }
 
     private void Start()
@@ -77,13 +80,31 @@ public class ItemManager : MonoBehaviour
         generateDiscs = FindObjectOfType<GenerateDiscs>();
     }
 
+    private void Update()
+    {
+        if (gameManager.gameState == GameState.PLAYING)
+        {
+            if (isSpawnItemTimerCounting)
+            {
+                spawnItemTimer += Time.deltaTime;
+            }
+
+            if (spawnItemTimer >= timePeriod)
+            {
+                SpawnItem();
+                spawnItemTimer = 0f;
+            }
+        }
+    }
+
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
     }
 
     private void OnReplay() {
-        CancelInvoke();
+        //CancelInvoke();
+        //isSpawnItemTimerCounting = true;
         currentBonusRate = 0;
         currentDiscsOnlyRate = discsOnlyRate1;
         currentObstacleOnlyRate = obstacleOnlyRate1;
@@ -91,10 +112,21 @@ public class ItemManager : MonoBehaviour
         twoObstaclesRate = 0;
     }
 
-    public void StartSpawnItems() {
-        InvokeRepeating("SpawnItem", 0f, timePeriod);
+    private void OnMainMenu()
+    {
+        currentBonusRate = 0;
+        currentDiscsOnlyRate = discsOnlyRate1;
+        currentObstacleOnlyRate = obstacleOnlyRate1;
+
+        twoObstaclesRate = 0;
+        isSpawnItemTimerCounting = false;
     }
 
+    public void StartSpawnItems() {
+        //InvokeRepeating("SpawnItem", 0f, timePeriod);
+        isSpawnItemTimerCounting = true;
+    }
+    
     private void SpawnItem() {
         if (gameManager.gameState == GameState.PLAYING) {
             ItemType itemType = ChoseItem();

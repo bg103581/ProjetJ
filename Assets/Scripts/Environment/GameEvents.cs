@@ -52,4 +52,22 @@ public class GameEvents : MonoBehaviour
             onLoseGame();
         }
     }
+
+    public event Action onPreContinueGame;
+    public void PreContinueGame()
+    {
+        if (onPreContinueGame != null)
+        {
+            onPreContinueGame();
+        }
+    }
+
+    public event Action onContinueGame;
+    public void ContinueGame()
+    {
+        if (onContinueGame != null)
+        {
+            onContinueGame();
+        }
+    }
 }
