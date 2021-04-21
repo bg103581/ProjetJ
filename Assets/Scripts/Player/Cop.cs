@@ -26,6 +26,8 @@ public class Cop : MonoBehaviour
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+        GameEvents.current.onContinueGame += OnContinue;
+        GameEvents.current.onPreContinueGame += OnPreContinue;
 
         initCopCatchUpPos = copCatchUpPos.position;
 
@@ -43,6 +45,8 @@ public class Cop : MonoBehaviour
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+        GameEvents.current.onContinueGame -= OnContinue;
+        GameEvents.current.onPreContinueGame -= OnPreContinue;
     }
 
     private void OnReplay() {
@@ -50,6 +54,20 @@ public class Cop : MonoBehaviour
         transform.position = initialPos.position;
         isFollowingPlayer = false;
         anim.Play("Idle");
+    }
+
+    private void OnContinue()
+    {
+        
+    }
+
+    private void OnPreContinue()
+    {
+        Debug.Log("cop pre continue");
+        transform.DOKill();
+        transform.position = initialPos.position;
+        isFollowingPlayer = false;
+        anim.Play("Run");
     }
 
     public void CatchUpToPlayer() {

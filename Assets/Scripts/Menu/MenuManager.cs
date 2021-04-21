@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using EasyMobile;
 
 public class MenuManager : MonoBehaviour
 {
@@ -38,6 +39,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Sprite musicOffSprite;
     [SerializeField] private Volume volume;
 
+    [SerializeField] private TMP_Text interstitialText;
+    [SerializeField] private TMP_Text rewardText;
+
+    [SerializeField] private Button continueButton;
+
     private GameManager gameManager;
 
     private void Awake() {
@@ -57,6 +63,28 @@ public class MenuManager : MonoBehaviour
         int liveScore = (int)gameManager.score;
         liveScoreText.SetText(liveScore.ToString());
         liveGoldText.SetText(gameManager.nbGoldDiscs.ToString());
+
+        if (Advertising.IsInterstitialAdReady())
+        {
+            interstitialText.text = "interstitial ad ready";
+            interstitialText.color = Color.green;
+        }
+        else
+        {
+            interstitialText.text = "interstitial ad not ready";
+            interstitialText.color = Color.red;
+        }
+
+        if (Advertising.IsRewardedAdReady())
+        {
+            rewardText.text = "reward ad ready";
+            rewardText.color = Color.green;
+        }
+        else
+        {
+            rewardText.text = "reward ad not ready";
+            rewardText.color = Color.red;
+        }
     }
 
     private void OnDestroy() {
@@ -81,7 +109,7 @@ public class MenuManager : MonoBehaviour
 
     public void Resume() {
         PauseToInGame();
-        StartCoroutine("CountDown");
+        StartCoroutine(CountDown());
     }
 
     public void Stay() {
@@ -137,6 +165,28 @@ public class MenuManager : MonoBehaviour
         SaveSystem.SavePlayer(playerData);
     }
 
+    public void ShowBannerButton()
+    {
+        AdMobManager.current.ShowBannerAds();
+    }
+
+    public void ShowInterstitialButton()
+    {
+        AdMobManager.current.ShowInterstitialAds();
+    }
+
+    public void ShowRewardButton()
+    {
+        AdMobManager.current.ShowRewardedAds();
+    }
+
+    public void Continue()
+    {
+        LoseToInGame();
+        GameEvents.current.PreContinueGame();
+        StartCoroutine(CountDownContinue());
+    }
+
     private void OnReplay() {
         LoseToInGame();
     }
@@ -167,6 +217,19 @@ public class MenuManager : MonoBehaviour
         resumeCountdownText.SetText("");
         //event
         GameEvents.current.ResumeGame();
+    }
+
+    private IEnumerator CountDownContinue()
+    {
+        resumeCountdownText.SetText("3");
+        yield return new WaitForSecondsRealtime(0.5f);
+        resumeCountdownText.SetText("2");
+        yield return new WaitForSecondsRealtime(0.5f);
+        resumeCountdownText.SetText("1");
+        yield return new WaitForSecondsRealtime(0.5f);
+        resumeCountdownText.SetText("");
+        //event
+        GameEvents.current.ContinueGame();
     }
 
     private IEnumerator Wasted() {
@@ -239,6 +302,16 @@ public class MenuManager : MonoBehaviour
             musicPauseButton.image.sprite = musicOffSprite;
             musicLoseButton.image.sprite = musicOffSprite;
         }
+    }
+
+    public void StopContinueButton()
+    {
+        continueButton.interactable = false;
+    }
+
+    public void ResetContinueButton()
+    {
+        continueButton.interactable = true;
     }
 
     public void MainMenuToInGame() {

@@ -61,6 +61,10 @@ public class GameManager : MonoBehaviour
     private float maxSpeedTimeScale;
     [SerializeField]
     private float breakItemBonus;
+
+    [SerializeField] private int nbMaxContinue = 5;
+    private int nbCurrentContinue = 0;
+
     [Header("Timers to change items rates")]
     [SerializeField]
     private float mediumItemRatesTime;
@@ -101,6 +105,8 @@ public class GameManager : MonoBehaviour
         GameEvents.current.onMainMenuButtonTrigger += ResetValues;
         GameEvents.current.onPauseButtonTrigger += OnPause;
         GameEvents.current.onResumeTrigger += OnResume;
+        GameEvents.current.onContinueGame += OnContinue;
+        GameEvents.current.onPreContinueGame += OnPreContinue;
     }
 
     private void Start() {
@@ -133,6 +139,8 @@ public class GameManager : MonoBehaviour
         GameEvents.current.onMainMenuButtonTrigger -= ResetValues;
         GameEvents.current.onPauseButtonTrigger -= OnPause;
         GameEvents.current.onResumeTrigger -= OnResume;
+        GameEvents.current.onContinueGame -= OnContinue;
+        GameEvents.current.onPreContinueGame -= OnPreContinue;
     }
     #endregion
 
@@ -166,6 +174,7 @@ public class GameManager : MonoBehaviour
 
     public void Lose() {
         GameEvents.current.LoseGame();
+        currentTimeScale = Time.timeScale;
         Time.timeScale = 1;
         UpdatePlayerStats();
         gameState = GameState.FINISHED;
@@ -201,6 +210,24 @@ public class GameManager : MonoBehaviour
         menuManager.SetActiveButtonPause(true);
     }
 
+    private void OnPreContinue()
+    {
+        nbCurrentContinue++;
+
+        if (nbCurrentContinue == nbMaxContinue)
+        {
+            // Can't continue anymore.
+            menuManager.StopContinueButton();
+        }
+    }
+
+    private void OnContinue()
+    {
+        gameState = GameState.PLAYING;
+        Time.timeScale = currentTimeScale;
+        isRunTimerCounting = true;
+    }
+
     private void OnReplay() {   //reset game values then launch start animation
         ResetValues();
         StartCoroutine("ReplayCorout");
@@ -219,7 +246,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         rawTimeScaleHolder = 1;
         timeToUpgradeDifficulty = freqToUpgradeDifficulty;
+        nbCurrentContinue = 0;
+
         menuManager.SetActiveButtonPause(false);
+        menuManager.ResetContinueButton();
     }
 
     private IEnumerator ReplayCorout() {

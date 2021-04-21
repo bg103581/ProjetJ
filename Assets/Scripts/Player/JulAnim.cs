@@ -28,12 +28,16 @@ public class JulAnim : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
-        GameEvents.current.onMainMenuButtonTrigger += OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger += OnMainMenu;
+        GameEvents.current.onContinueGame += OnContinue;
+        GameEvents.current.onPreContinueGame += OnPreContinue;
     }
     
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
-        GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
+        GameEvents.current.onMainMenuButtonTrigger -= OnMainMenu;
+        GameEvents.current.onContinueGame -= OnContinue;
+        GameEvents.current.onPreContinueGame -= OnPreContinue;
     }
 
     private void OnEnable() {
@@ -42,10 +46,28 @@ public class JulAnim : MonoBehaviour
     }
 
     private void OnReplay() {
+        transform.localPosition = startPos;
+        transform.localRotation = startRot;
+
+        anim.Play("Idle");
+    }
+
+    private void OnMainMenu()
+    {
         petou.SetActive(true);
         transform.localPosition = startPos;
         transform.localRotation = startRot;
 
+        anim.Play("Idle");
+    }
+
+    private void OnContinue()
+    {
+        anim.Play("Run");
+    }
+
+    private void OnPreContinue()
+    {
         anim.Play("Idle");
     }
 
