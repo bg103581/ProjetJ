@@ -6,6 +6,7 @@ using System.Reflection;
 using DG.Tweening;
 
 public enum GameState { WAITING, ANIMATION_START, PLAYING, FINISHED, PAUSE }
+public enum DeathState { FOOT, TMAX, TWINGO }
 
 public class GameManager : MonoBehaviour
 {
@@ -172,23 +173,47 @@ public class GameManager : MonoBehaviour
         menuManager.SetActiveButtonPause(true);
     }
 
-    public void Lose() {
+    public void Lose(DeathState deathState = DeathState.FOOT, bool isDeadInY = false) {
         GameEvents.current.LoseGame();
-        currentTimeScale = Time.timeScale;
-        Time.timeScale = 1;
+        switch (deathState)
+        {
+            case DeathState.FOOT:
+                currentTimeScale = Time.timeScale;
+                break;
+            case DeathState.TMAX:
+                if (isDeadInY)
+                    currentTimeScale = Time.timeScale - player.tmaxSpeed - player.ySpeed;
+                else
+                    currentTimeScale = Time.timeScale - player.tmaxSpeed;
+                break;
+            case DeathState.TWINGO:
+                currentTimeScale = Time.timeScale - player.twingoSpeed;
+                break;
+            default:
+                break;
+        }
+        currentTimeScale = currentTimeScale * (75f / 100f);
+        if (currentTimeScale <= 1f) currentTimeScale = 1f;
+        rawTimeScaleHolder = currentTimeScale;
+        maxSpeedReached = false;
+        Time.timeScale = 1f;
+
         UpdatePlayerStats();
         gameState = GameState.FINISHED;
         isRunTimerCounting = false;
 
         SoundManager.current.StopSound(SoundType.RUN);
         SoundManager.current.StopSound(SoundType.CLAQUETTES);
+        SoundManager.current.StopSound(SoundType.OVNI);
+        SoundManager.current.StopSound(SoundType.TMAX);
+        SoundManager.current.StopSound(SoundType.TWINGO);
         //menuManager.InGameToLose();
     }
 
     private void OnPause() {
         gameState = GameState.PAUSE;
         currentTimeScale = Time.timeScale;
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
 
         SoundManager.current.PauseSound(SoundType.RUN);
         SoundManager.current.PauseSound(SoundType.CLAQUETTES);
@@ -243,7 +268,7 @@ public class GameManager : MonoBehaviour
         runTimer = 0;
         startRunTimer = false;
         isRunTimerCounting = false;
-        Time.timeScale = 1;
+        Time.timeScale = 1f;
         rawTimeScaleHolder = 1;
         timeToUpgradeDifficulty = freqToUpgradeDifficulty;
         nbCurrentContinue = 0;

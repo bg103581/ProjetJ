@@ -352,7 +352,11 @@ public class GenerateDiscs : MonoBehaviour
                     disc.GetComponent<Disc>().isOvniDisc = true;
 
                     if (isLastOvniPattern) {
-                        if (j == children.Length - 1) disc.GetComponent<Disc>().isLastOvniDisc = true;
+                        if (j == children.Length - 1)
+                        {
+                            disc.GetComponent<Disc>().isLastOvniDisc = true;
+                            Debug.LogWarning("is last ovni disc");
+                        }
                     }
                 }
             }
@@ -369,7 +373,11 @@ public class GenerateDiscs : MonoBehaviour
                     disc.GetComponent<Disc>().isOvniDisc = true;
 
                     if (isLastOvniPattern) {
-                        if (j == children.Length - 1) disc.GetComponent<Disc>().isLastOvniDisc = true;
+                        if (j == children.Length - 1)
+                        {
+                            disc.GetComponent<Disc>().isLastOvniDisc = true;
+                            Debug.LogWarning("is last ovni disc");
+                        }
                     }
                 }
             }

@@ -110,17 +110,14 @@ public class Player : MonoBehaviour
     private float claquettesDuration;
     [SerializeField]
     private float pochonDuration;
-    [SerializeField]
-    private float twingoSpeed;
+    public float twingoSpeed;
     [SerializeField]
     private float twingoDuration;
-    [SerializeField]
-    private float tmaxSpeed;
+    public float tmaxSpeed;
     public float tmaxDuration;
     [SerializeField]
     private float alienSpawnRate;
-    [SerializeField]
-    private float ySpeed;
+    public float ySpeed;
     [SerializeField]
     private float yDuration;
     //[SerializeField]
@@ -143,7 +140,6 @@ public class Player : MonoBehaviour
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
-        GameEvents.current.onContinueGame += OnContinue;
         GameEvents.current.onPreContinueGame += OnPreContinue;
 
         initTwingoPos = twingo.transform.position;
@@ -172,7 +168,6 @@ public class Player : MonoBehaviour
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
-        GameEvents.current.onContinueGame -= OnContinue;
         GameEvents.current.onPreContinueGame -= OnPreContinue;
     }
     #endregion
@@ -215,11 +210,6 @@ public class Player : MonoBehaviour
         vfxManager.SetActiveVfxLoseOnFoot(false);
         vfxManager.SetActiveVfxWeed(false);
         vfxManager.SetActiveVfxShoes(false);
-    }
-
-    private void OnContinue()
-    {
-        
     }
 
     private void OnPreContinue()
@@ -468,6 +458,7 @@ public class Player : MonoBehaviour
         }
 
         if (isOvni) {
+            Debug.LogWarning("end fly in ovni");
             ovniTimer = 0f;
             isOvni = false;
             rb.useGravity = true;
@@ -525,6 +516,7 @@ public class Player : MonoBehaviour
 
         if (col.tag == "Camionette") {
             if (isTwingo) {
+                gameManager.Lose(DeathState.TWINGO);
                 switch (obstacle.currentLane) {
                     case Lane.LEFT:
                         twingoAnimator.SetTrigger("deathTriggerRight");
@@ -541,14 +533,14 @@ public class Player : MonoBehaviour
                         twingoAnimator.SetTrigger("deathTriggerLeft");
                         break;
                 }
-                gameManager.Lose();
                 vfxManager.PlayVfxExplosion();
                 SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
             }
             else if (isTmax) {
+                if (isY) gameManager.Lose(DeathState.TMAX, true);
+                else gameManager.Lose(DeathState.TMAX, false);
                 tmaxLose.StartLoseAnimation(obstacle.currentLane);
                 yTimer = 0f;
-                gameManager.Lose();
                 vfxManager.PlayVfxExplosion();
                 SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
             }
@@ -586,6 +578,7 @@ public class Player : MonoBehaviour
                 obstacle.Throw();
             }
             else if (col.tag == "Voiture") {
+                gameManager.Lose(DeathState.TWINGO);
                 switch (obstacle.currentLane) {
                     case Lane.LEFT:
                         twingoAnimator.SetTrigger("deathTriggerRight");
@@ -602,7 +595,6 @@ public class Player : MonoBehaviour
                         twingoAnimator.SetTrigger("deathTriggerLeft");
                         break;
                 }
-                gameManager.Lose();
                 vfxManager.PlayVfxExplosion();
                 SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
             }
@@ -617,8 +609,8 @@ public class Player : MonoBehaviour
             }
             else {
                 if (col.tag == "Voiture") {
+                    gameManager.Lose(DeathState.TMAX);
                     tmaxLose.StartLoseAnimation(obstacle.currentLane);
-                    gameManager.Lose();
                     vfxManager.PlayVfxExplosion();
                     SoundManager.current.PlaySound(SoundType.FATAL_COLLISION);
                 }

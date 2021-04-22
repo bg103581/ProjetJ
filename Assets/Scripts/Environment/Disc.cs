@@ -21,15 +21,15 @@ public class Disc : MonoBehaviour
     }
 
     private void OnDestroy() {
-        GameEvents.current.onAlienFail -= OnAlienFail;
-        
         EndPlayerOvni();
+
+        GameEvents.current.onAlienFail -= OnAlienFail;
     }
 
     private void OnDisable() {
-        GameEvents.current.onAlienFail -= OnAlienFail;
-
         EndPlayerOvni();
+
+        GameEvents.current.onAlienFail -= OnAlienFail;
     }
 
     private void OnAlienFail() {
@@ -41,6 +41,7 @@ public class Disc : MonoBehaviour
 
     private void EndPlayerOvni() {
         if (isLastOvniDisc) {
+            Debug.LogWarning("end player ovni");
             player.EndOvni();
         }
     }

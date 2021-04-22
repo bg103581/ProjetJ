@@ -11,11 +11,13 @@ public class TmaxLose : MonoBehaviour
     private void Awake() {
         GameEvents.current.onMainMenuButtonTrigger += OnReset;
         GameEvents.current.onReplayButtonTrigger += OnReset;
+        GameEvents.current.onPreContinueGame += OnReset;
     }
 
     private void OnDestroy() {
         GameEvents.current.onMainMenuButtonTrigger -= OnReset;
         GameEvents.current.onReplayButtonTrigger -= OnReset;
+        GameEvents.current.onPreContinueGame -= OnReset;
     }
 
     public void StartLoseAnimation(Lane laneObstacle) {
