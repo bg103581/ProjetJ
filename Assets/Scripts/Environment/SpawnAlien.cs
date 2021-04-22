@@ -34,8 +34,15 @@ public class SpawnAlien : MonoBehaviour
     private float moveToTmaxTimer;
 
     private void Awake() {
+        GameEvents.current.onContinueGame += DestroyAliens;
+
         player = FindObjectOfType<Player>();
         inputManager = FindObjectOfType<InputManager>();
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.current.onContinueGame -= DestroyAliens;
     }
 
     public void StartAlienSpawn() {
