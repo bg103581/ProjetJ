@@ -101,20 +101,6 @@ public class InputManager : MonoBehaviour {
                 }
             }
         }
-        //else if (gameManager.gameState == GameState.WAITING) {
-        //    if (keyboardControl) {
-        //        if (Input.GetKeyDown(KeyCode.Return)) gameManager.StartAnimation();
-        //    }
-        //    else {
-        //        if (Input.touchCount > 0) {
-        //            _touch = Input.GetTouch(0);
-
-        //            if (_touch.phase == TouchPhase.Began) {
-        //                gameManager.StartAnimation();
-        //            }
-        //        }
-        //    }
-        //}
     }
 
     private void OnDestroy() {

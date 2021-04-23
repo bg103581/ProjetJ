@@ -1405,7 +1405,7 @@ PrefabInstance:
     - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
         type: 3}
       propertyPath: alienSpawnRate
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de7855a76117fc24cb854c1b7cfea791, type: 3}
@@ -1526,17 +1526,17 @@ PrefabInstance:
     - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: bonusRate1
-      value: 50
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: bonusRate2
-      value: 50
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6991278363130167885, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
       propertyPath: bonusRate3
-      value: 50
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6991278363218564865, guid: cd70b5910cc6a184490035499ef6ca1e,
         type: 3}
@@ -1619,31 +1619,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: distanceStartSpawningPochonClaquette
-      value: 0
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: distanceStartSpawningTwingo
-      value: 1
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: distanceStartSpawningTmax
-      value: 2
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: pochonSpawnRate_3
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: claquetteSpawnRate_3
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: TwingoSpawnRate_3
-      value: 1
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: TmaxSpawnRate_3
-      value: 97
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8417856381477053945, guid: 3b1b56d10f52acf4094e140617d0ad74,
         type: 3}

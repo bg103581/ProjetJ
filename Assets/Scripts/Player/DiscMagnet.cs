@@ -7,6 +7,7 @@ public class DiscMagnet : MonoBehaviour
 {
     private Player player;
     private Collider[] discsAttracted;
+    private Transform discMagnetTransform = null;
 
     public float moveDuration;
     [SerializeField]
@@ -17,13 +18,14 @@ public class DiscMagnet : MonoBehaviour
     private Vector3 magnetSize;
 
     private void Awake() {
-        player = transform.parent.GetComponent<Player>();
+        discMagnetTransform = transform;
+        player = discMagnetTransform.parent.GetComponent<Player>();
         magnetSize = new Vector3(magnetRadius, magnetRadius, 2f);
     }
 
     private void Update() {
         if (player.isPochon) {
-            discsAttracted = Physics.OverlapBox(transform.position + Vector3.up * yOffSet, magnetSize, Quaternion.identity, 1 << 10);
+            discsAttracted = Physics.OverlapBox(discMagnetTransform.position + Vector3.up * yOffSet, magnetSize, Quaternion.identity, 1 << 10);
 
             foreach (Collider disc in discsAttracted) {
                 disc.transform.GetComponent<MoveItems>().isMovingToPlayer = true;

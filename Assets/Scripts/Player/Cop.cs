@@ -7,6 +7,7 @@ public class Cop : MonoBehaviour
     private bool isFollowingPlayer;
     private CopStartAnimMovement copStartAnimMovement;
     private GameManager gameManager;
+    private Transform copTransform = null;
 
     private Vector3 initCopCatchUpPos;
 
@@ -23,49 +24,43 @@ public class Cop : MonoBehaviour
     private void Awake() {
         copStartAnimMovement = GetComponent<CopStartAnimMovement>();
         gameManager = FindObjectOfType<GameManager>();
+        copTransform = transform;
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
-        GameEvents.current.onContinueGame += OnContinue;
         GameEvents.current.onPreContinueGame += OnPreContinue;
 
         initCopCatchUpPos = copCatchUpPos.position;
 
-        transform.SetParent(null);
+        copTransform.SetParent(null);
         copCatchUpPos.SetParent(null);
         initialPos.SetParent(null);
     }
 
     private void Update() {
         if (isFollowingPlayer && gameManager.gameState != GameState.PAUSE) {
-            transform.DOMove(copCatchUpPos.position, catchUpMoveTime);
+            copTransform.DOMove(copCatchUpPos.position, catchUpMoveTime);
         }
     }
 
     private void OnDestroy() {
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
-        GameEvents.current.onContinueGame -= OnContinue;
         GameEvents.current.onPreContinueGame -= OnPreContinue;
     }
 
     private void OnReplay() {
         copCatchUpPos.position = initCopCatchUpPos;
-        transform.position = initialPos.position;
+        copTransform.position = initialPos.position;
         isFollowingPlayer = false;
         anim.Play("Idle");
-    }
-
-    private void OnContinue()
-    {
-        
     }
 
     private void OnPreContinue()
     {
         Debug.Log("cop pre continue");
-        transform.DOKill();
-        transform.position = initialPos.position;
+        copTransform.DOKill();
+        copTransform.position = initialPos.position;
         isFollowingPlayer = false;
         anim.Play("Run");
     }
@@ -77,8 +72,8 @@ public class Cop : MonoBehaviour
     public void GoBackToInitialPos() {
         if (gameManager.gameState != GameState.FINISHED) {
             isFollowingPlayer = false;
-            transform.DOKill();
-            transform.DOMove(initialPos.position, backToInitMoveTime);
+            copTransform.DOKill();
+            copTransform.DOMove(initialPos.position, backToInitMoveTime);
         }
     }
 

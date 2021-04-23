@@ -10,16 +10,20 @@ public class LateralMovement : MonoBehaviour
     private float lateralMoveSpeed;
 
     private GameManager gameManager;
+    private Transform _transform = null;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        _transform = transform;
+    }
+
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
 
         Move();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         Move();
@@ -28,10 +32,10 @@ public class LateralMovement : MonoBehaviour
     private void Move() {
         if (gameManager.gameState == GameState.PLAYING) {
             if (isStartingRight) {
-                transform.position += Vector3.left * lateralMoveSpeed * Time.deltaTime;
+                _transform.position += Vector3.left * lateralMoveSpeed * Time.deltaTime;
             }
             else {
-                transform.position += Vector3.right * lateralMoveSpeed * Time.deltaTime;
+                _transform.position += Vector3.right * lateralMoveSpeed * Time.deltaTime;
             }
         }
     }

@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private JulAnim julAnim;
     private CapsuleCollider julCollider;
     private BoxCollider twingoOvniCollider;
+    private Transform playerTransform = null;
 
     [HideInInspector]
     public Lane lane = Lane.CENTER;
@@ -137,6 +138,7 @@ public class Player : MonoBehaviour
         julAnim = FindObjectOfType<JulAnim>();
         julCollider = GetComponent<CapsuleCollider>();
         twingoOvniCollider = GetComponent<BoxCollider>();
+        playerTransform = transform;
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
@@ -174,7 +176,7 @@ public class Player : MonoBehaviour
 
     #region Methods
     private void OnReplay() {
-        transform.position = centerPos.position;
+        playerTransform.position = centerPos.position;
         lane = Lane.CENTER;
 
         ResetJul();
@@ -234,13 +236,13 @@ public class Player : MonoBehaviour
         switch (lane)
         {
             case Lane.LEFT:
-                transform.position = leftPos.position;
+                playerTransform.position = leftPos.position;
                 break;
             case Lane.CENTER:
-                transform.position = centerPos.position;
+                playerTransform.position = centerPos.position;
                 break;
             case Lane.RIGHT:
-                transform.position = rightPos.position;
+                playerTransform.position = rightPos.position;
                 break;
             default:
                 break;
@@ -257,7 +259,7 @@ public class Player : MonoBehaviour
         if (lane == Lane.RIGHT) {
             lane = Lane.CENTER;
             isStrafing = true;
-            transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            playerTransform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             copCatchupPos.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToCenterPos(moveTime);
             parallaxe.MoveLeft(moveTime);
@@ -288,7 +290,7 @@ public class Player : MonoBehaviour
         else if (lane == Lane.CENTER) {
             lane = Lane.LEFT;
             isStrafing = true;
-            transform.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            playerTransform.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             copCatchupPos.DOMoveX(leftPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToLeftPos(moveTime);
             parallaxe.MoveLeft(moveTime);
@@ -340,7 +342,7 @@ public class Player : MonoBehaviour
         if (lane == Lane.LEFT) {
             lane = Lane.CENTER;
             isStrafing = true;
-            transform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            playerTransform.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             copCatchupPos.DOMoveX(centerPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToCenterPos(moveTime);
             parallaxe.MoveRight(moveTime);
@@ -371,7 +373,7 @@ public class Player : MonoBehaviour
         else if (lane == Lane.CENTER) {
             lane = Lane.RIGHT;
             isStrafing = true;
-            transform.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
+            playerTransform.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear).OnComplete(() => StrafeComplete());
             copCatchupPos.DOMoveX(rightPos.position.x, moveTime).SetEase(Ease.Linear);
             cameraMovement.MoveToRightPos(moveTime);
             parallaxe.MoveRight(moveTime);
@@ -426,7 +428,7 @@ public class Player : MonoBehaviour
 
     public void Fly() {
         if (!isTmaxFlying) {
-            transform.DOMoveY(topPos.position.y, cameraMovement.flyMoveTime).OnComplete(() => julCollider.enabled = true);
+            playerTransform.DOMoveY(topPos.position.y, cameraMovement.flyMoveTime).OnComplete(() => julCollider.enabled = true);
             cameraMovement.MoveToTopPos(); //moveTime * 2f
 
             isTmaxFlying = true;
