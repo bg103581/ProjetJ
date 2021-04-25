@@ -4,6 +4,7 @@ using UnityEngine;
 using EasyMobile;
 using UnityEngine.SocialPlatforms;
 using TMPro;
+using GoogleMobileAds.Api;
 
 public class AdMobManager : MonoBehaviour
 {
@@ -27,6 +28,9 @@ public class AdMobManager : MonoBehaviour
         {
             GameServices.Init();
         }
+
+        // Initialize the Google Mobile Ads SDK.
+        MobileAds.Initialize(initStatus => { });
     }
 
     public void ShowBannerAds()
@@ -52,6 +56,7 @@ public class AdMobManager : MonoBehaviour
 
     public void ShowLeaderboard()
     {
+        Debug.Log(GameServices.IsInitialized());
         if (GameServices.IsInitialized())
         {
             GameServices.ShowLeaderboardUI();
