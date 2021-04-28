@@ -27,6 +27,7 @@ public class Disc : MonoBehaviour
     }
 
     private void OnDisable() {
+        Debug.LogWarning("disc disabled; isLastOvniDisc = " + isLastOvniDisc);
         EndPlayerOvni();
 
         GameEvents.current.onAlienFail -= OnAlienFail;
