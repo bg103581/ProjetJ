@@ -48,7 +48,7 @@ public static class SaveSystem
             {
                 language = Language.ENG;
             }
-            PlayerData playerData = new PlayerData(0, 0, 0, true, true, language);
+            PlayerData playerData = new PlayerData(0, 0, 0, true, true, language, 0);
 
             formatter.Serialize(stream, playerData);
             stream.Close();
