@@ -10,6 +10,7 @@ public class Obstacles : MonoBehaviour
     public Lane currentLane;
 
     private ItemManager itemManager;
+    private Transform obstacleTransform = null;
 
     [SerializeField]
     private Collider[] colliders;
@@ -20,6 +21,7 @@ public class Obstacles : MonoBehaviour
 
     private void Awake() {
         itemManager = FindObjectOfType<ItemManager>();
+        obstacleTransform = transform;
     }
 
     public void Throw() {
@@ -29,7 +31,7 @@ public class Obstacles : MonoBehaviour
         if (lateralMovement != null) {
             lateralMovement.enabled = false;
 
-            Animator anim = transform.GetComponentInChildren<Animator>();
+            Animator anim = obstacleTransform.GetComponentInChildren<Animator>();
             if (anim != null) anim.enabled = false;
         }
         foreach (Collider col in colliders) {
@@ -40,24 +42,24 @@ public class Obstacles : MonoBehaviour
 
         switch (currentLane) {
             case Lane.LEFT:
-                throwSequence.Append(transform.DOMove(itemManager.leftThrowPos.position, throwDuration));
-                throwSequence.Join(transform.DORotate(itemManager.leftThrowPos.rotation.eulerAngles, throwRotationDuration));
+                throwSequence.Append(obstacleTransform.DOMove(itemManager.leftThrowPos.position, throwDuration));
+                throwSequence.Join(obstacleTransform.DORotate(itemManager.leftThrowPos.rotation.eulerAngles, throwRotationDuration));
                 break;
             case Lane.CENTER:
                 int rand = Random.Range(0, 2);
 
                 if (rand == 0) {
-                    throwSequence.Append(transform.DOMove(itemManager.leftThrowPos.position, throwDuration));
-                    throwSequence.Join(transform.DORotate(itemManager.leftThrowPos.rotation.eulerAngles, throwRotationDuration));
+                    throwSequence.Append(obstacleTransform.DOMove(itemManager.leftThrowPos.position, throwDuration));
+                    throwSequence.Join(obstacleTransform.DORotate(itemManager.leftThrowPos.rotation.eulerAngles, throwRotationDuration));
                 }
                 else {
-                    throwSequence.Append(transform.DOMove(itemManager.rightThrowPos.position, throwDuration));
-                    throwSequence.Join(transform.DORotate(itemManager.rightThrowPos.rotation.eulerAngles, throwRotationDuration));
+                    throwSequence.Append(obstacleTransform.DOMove(itemManager.rightThrowPos.position, throwDuration));
+                    throwSequence.Join(obstacleTransform.DORotate(itemManager.rightThrowPos.rotation.eulerAngles, throwRotationDuration));
                 }
                 break;
             case Lane.RIGHT:
-                throwSequence.Append(transform.DOMove(itemManager.rightThrowPos.position, throwDuration));
-                throwSequence.Join(transform.DORotate(itemManager.rightThrowPos.rotation.eulerAngles, throwRotationDuration));
+                throwSequence.Append(obstacleTransform.DOMove(itemManager.rightThrowPos.position, throwDuration));
+                throwSequence.Join(obstacleTransform.DORotate(itemManager.rightThrowPos.rotation.eulerAngles, throwRotationDuration));
                 break;
             default:
                 break;

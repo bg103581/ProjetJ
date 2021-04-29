@@ -8,11 +8,16 @@ public class MoveRoad : MonoBehaviour
     private GenerateRoads generateRoads;
     private float speed;
     private Camera mainCamera;
+    private Transform roadTransform = null;
 
     public Transform startPos;
     public Transform endPos;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        roadTransform = transform;
+    }
+
     void Start()
     {
         generateRoads = GetComponentInParent<GenerateRoads>();
@@ -24,14 +29,13 @@ public class MoveRoad : MonoBehaviour
         GameEvents.current.onMainMenuButtonTrigger += OnReplay;
 
         if (gameManager.gameState == GameState.PLAYING)
-            transform.position += Vector3.back * speed * Time.deltaTime;
+            roadTransform.position += Vector3.back * speed * Time.deltaTime;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (gameManager.gameState == GameState.PLAYING)
-            transform.position += Vector3.back * speed * Time.deltaTime;
+            roadTransform.position += Vector3.back * speed * Time.deltaTime;
 
         if ( mainCamera.WorldToViewportPoint(endPos.position).z < 0 ) {
             generateRoads.CreateRoad();

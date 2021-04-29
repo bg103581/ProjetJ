@@ -266,15 +266,28 @@ MonoBehaviour:
     mAutoInit: 1
     mAutoInitAfterUserLogout: 0
     mAutoInitDelay: 0
-    mAndroidMaxLoginRequests: 0
-    mGpgsDebugLogEnabled: 0
+    mAndroidMaxLoginRequests: 3
+    mGpgsDebugLogEnabled: 1
     mGpgsPopupGravity: 0
     mGpgsShouldRequestServerAuthCode: 0
     mGpgsForceRefreshServerAuthCode: 0
     mGpgsOauthScopes: []
-    mLeaderboards: []
-    mAchievements: []
-    mAndroidXmlResources: 
+    mLeaderboards:
+    - _name: OvniRacerLeaderboard
+      _iosId: 
+      _androidId: CgkIiJ6Gy_wKEAIQAg
+    mAchievements:
+    - _name: testAchievements
+      _iosId: 
+      _androidId: CgkIiJ6Gy_wKEAIQAQ
+    mAndroidXmlResources: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<!--Google
+      Play game services IDs. Save this file as res/values/games-ids.xml in your
+      project.-->\r\n<resources>\r\n  <!--app_id-->\r\n  <string name=\"app_id\"
+      translatable=\"false\">377040768776</string>\r\n  <!--package_name-->\r\n 
+      <string name=\"package_name\" translatable=\"false\">com.ovniracer.gameservices</string>\r\n 
+      <!--achievement Test 01-->\r\n  <string name=\"achievement_test_01\" translatable=\"false\">CgkIiJ6Gy_wKEAIQAQ</string>\r\n 
+      <!--leaderboard OvniRacerLeaderboard-->\r\n  <string name=\"leaderboard_ovniracerleaderboard\"
+      translatable=\"false\">CgkIiJ6Gy_wKEAIQAg</string>\r\n</resources>"
     mEnableMultiplayer: 0
     mEnableSavedGames: 0
     mAutoConflictResolutionStrategy: 0
@@ -320,7 +333,14 @@ MonoBehaviour:
       mContent: 
       mTitle: Privacy Consent
       mToggles: []
-      mActionButtons: []
+      mActionButtons:
+      - id: 
+        title: 
+        interactable: 0
+        titleColor: {r: 0, g: 0, b: 0, a: 0}
+        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+        uninteractableTitleColor: {r: 0, g: 0, b: 0, a: 0}
+        uninteractableBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
     mConsentDialogComposerSettings:
       mToggleSelectedIndex: 0
       mButtonSelectedIndex: 0
@@ -382,8 +402,8 @@ MonoBehaviour:
   mRuntimeAutoInitialization: 1
   mIsAdModuleEnable: 1
   mIsIAPModuleEnable: 0
-  mIsGameServiceModuleEnable: 0
+  mIsGameServiceModuleEnable: 1
   mIsNotificationModuleEnable: 0
   mIsSharingModuleEnable: 0
-  mActiveModuleIndex: 0
+  mActiveModuleIndex: 1
   mIsSelectingModule: 0

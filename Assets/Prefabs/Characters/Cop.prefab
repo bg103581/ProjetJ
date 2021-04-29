@@ -164,6 +164,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flic 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5080886097882855816, guid: 9ebab2893e6df594c91f441c1fef85c1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c32a5d7ab278a5c47bb7fddb4eca653c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ebab2893e6df594c91f441c1fef85c1, type: 3}
 --- !u!1 &1209337862690321803 stripped

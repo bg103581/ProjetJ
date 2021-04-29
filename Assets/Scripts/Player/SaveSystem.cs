@@ -37,7 +37,18 @@ public static class SaveSystem
         if (!File.Exists(path)) {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Create);
-            PlayerData playerData = new PlayerData(0, 0, 0, true, true);
+
+            Language language;
+            SystemLanguage lang = Application.systemLanguage;
+            if (lang == SystemLanguage.French)
+            {
+                language = Language.FRA;
+            }
+            else
+            {
+                language = Language.ENG;
+            }
+            PlayerData playerData = new PlayerData(0, 0, 0, true, true, language, 0);
 
             formatter.Serialize(stream, playerData);
             stream.Close();

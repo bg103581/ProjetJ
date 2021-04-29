@@ -9,12 +9,18 @@ public class MoveItems : MonoBehaviour
     private DiscMagnet discMagnet;
     private Player player;
     private GameManager gameManager;
+    private Transform itemTransform = null;
 
     [HideInInspector]
     public bool isMovingToPlayer = false;
 
     [SerializeField]
     private float _moveSpeed;
+
+    private void Awake()
+    {
+        itemTransform = transform;
+    }
 
     private void OnEnable() {
         GameEvents.current.onReplayButtonTrigger += OnReplay;
@@ -28,7 +34,7 @@ public class MoveItems : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
 
         if (gameManager.gameState == GameState.PLAYING)
-            transform.position += Vector3.back * _moveSpeed * Time.deltaTime;
+            itemTransform.position += Vector3.back * _moveSpeed * Time.deltaTime;
     }
 
     // Update is called once per frame
@@ -36,12 +42,12 @@ public class MoveItems : MonoBehaviour
     {
         if (gameManager.gameState == GameState.PLAYING) {
             if (isMovingToPlayer)
-                transform.DOMove(discMagnet.transform.position, discMagnet.moveDuration).SetEase(Ease.OutSine);
+                itemTransform.DOMove(discMagnet.transform.position, discMagnet.moveDuration).SetEase(Ease.OutSine);
             else
-                transform.position += Vector3.back * _moveSpeed * Time.deltaTime;
+                itemTransform.position += Vector3.back * _moveSpeed * Time.deltaTime;
         }
 
-        if (_mainCamera.WorldToViewportPoint(transform.position).z < 0) {
+        if (_mainCamera.WorldToViewportPoint(itemTransform.position).z < 0) {
             if (tag == "Alien") player.EndFly();
             ObjectPooler.current.DestroyObject(gameObject);
             //Destroy(gameObject);
@@ -52,7 +58,7 @@ public class MoveItems : MonoBehaviour
         GameEvents.current.onReplayButtonTrigger -= OnReplay;
         GameEvents.current.onMainMenuButtonTrigger -= OnReplay;
 
-        transform.DOKill();
+        itemTransform.DOKill();
     }
 
     private void OnDisable() {

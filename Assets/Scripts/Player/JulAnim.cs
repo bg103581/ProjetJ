@@ -21,9 +21,12 @@ public class JulAnim : MonoBehaviour
     private Animator anim;
     private GameManager gameManager;
 
+    private Transform julTransform = null;
+
     private void Awake() {
-        startPos = transform.localPosition;
-        startRot = transform.localRotation;
+        julTransform = transform;
+        startPos = julTransform.localPosition;
+        startRot = julTransform.localRotation;
         anim = GetComponent<Animator>();
         gameManager = FindObjectOfType<GameManager>();
 
@@ -46,8 +49,8 @@ public class JulAnim : MonoBehaviour
     }
 
     private void OnReplay() {
-        transform.localPosition = startPos;
-        transform.localRotation = startRot;
+        julTransform.localPosition = startPos;
+        julTransform.localRotation = startRot;
 
         anim.Play("Idle");
     }
@@ -55,8 +58,8 @@ public class JulAnim : MonoBehaviour
     private void OnMainMenu()
     {
         petou.SetActive(true);
-        transform.localPosition = startPos;
-        transform.localRotation = startRot;
+        julTransform.localPosition = startPos;
+        julTransform.localRotation = startRot;
 
         anim.Play("Idle");
     }
@@ -76,14 +79,14 @@ public class JulAnim : MonoBehaviour
 
         Sequence mySequence = DOTween.Sequence();
 
-        mySequence.Append(transform.DOMoveX(0f, moveXTime).SetEase(Ease.OutSine));
-        mySequence.Join(transform.DORotate(new Vector3(0f, 0f, 0f), rotateRunTime).SetEase(Ease.OutSine));
+        mySequence.Append(julTransform.DOMoveX(0f, moveXTime).SetEase(Ease.OutSine));
+        mySequence.Join(julTransform.DORotate(new Vector3(0f, 0f, 0f), rotateRunTime).SetEase(Ease.OutSine));
 
         mySequence.Play();
     }
 
     public void RotatePlayPos() {
-        transform.DOLocalRotate(new Vector3(0f, -1f ,0f) , rotatePlayPosTime);
+        julTransform.DOLocalRotate(new Vector3(0f, -1f ,0f) , rotatePlayPosTime);
     }
 
     public void Strafe() {
