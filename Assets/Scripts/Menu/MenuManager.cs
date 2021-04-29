@@ -33,16 +33,21 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Button musicPauseButton;
     [SerializeField] private Button soundLoseButton;
     [SerializeField] private Button musicLoseButton;
+    [SerializeField] private Button languageButton;
     [SerializeField] private Sprite soundOnSprite;
     [SerializeField] private Sprite soundOffSprite;
     [SerializeField] private Sprite musicOnSprite;
     [SerializeField] private Sprite musicOffSprite;
+    [SerializeField] private Sprite languageEngSprite;
+    [SerializeField] private Sprite languageFraSprite;
     [SerializeField] private Volume volume;
 
     [SerializeField] private TMP_Text interstitialText;
     [SerializeField] private TMP_Text rewardText;
 
     [SerializeField] private Button continueButton;
+
+    [SerializeField] private LanguageManager languageManager;
 
     private GameManager gameManager;
 
@@ -133,13 +138,13 @@ public class MenuManager : MonoBehaviour
             TurnOnOffSoundUI(false);
             SoundManager.current.MuteSounds();
 
-            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, false, currentData.isMusicActive);
+            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, false, currentData.isMusicActive, currentData.language);
         }
         else {  //turn on sound
             TurnOnOffSoundUI(true);
             SoundManager.current.DemuteSounds();
 
-            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, true, currentData.isMusicActive);
+            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, true, currentData.isMusicActive, currentData.language);
         }
 
         SaveSystem.SavePlayer(playerData);
@@ -153,13 +158,36 @@ public class MenuManager : MonoBehaviour
             TurnOnOffMusicUI(false);
             SoundManager.current.MuteMusic();
 
-            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, false);
+            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, false, currentData.language);
         }
         else {  //turn on music
             TurnOnOffMusicUI(true);
             SoundManager.current.DemuteMusic();
 
-            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, true);
+            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, true, currentData.language);
+        }
+
+        SaveSystem.SavePlayer(playerData);
+    }
+
+    public void LanguageButton()
+    {
+        PlayerData currentData = SaveSystem.LoadData();
+        PlayerData playerData;
+
+        if (currentData.language == Language.FRA)
+        {
+            languageManager.SwitchLanguage(Language.ENG);
+            SwitchLanguageButtonDisplay(true);
+            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, false, 
+                Language.ENG);
+        }
+        else
+        {
+            languageManager.SwitchLanguage(Language.FRA);
+            SwitchLanguageButtonDisplay(false);
+            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, false,
+                Language.FRA);
         }
 
         SaveSystem.SavePlayer(playerData);
@@ -260,6 +288,17 @@ public class MenuManager : MonoBehaviour
 
         if (currentData.isMusicActive) TurnOnOffMusicUI(true);
         else TurnOnOffMusicUI(false);
+
+        if (currentData.language == Language.FRA)
+        {
+            languageManager.SwitchLanguage(Language.FRA);
+            SwitchLanguageButtonDisplay(false);
+        }
+        else
+        {
+            languageManager.SwitchLanguage(Language.ENG);
+            SwitchLanguageButtonDisplay(true);
+        }
     }
 
     private void DisplayPauseScore() {
@@ -301,6 +340,18 @@ public class MenuManager : MonoBehaviour
             musicMainMenuButton.image.sprite = musicOffSprite;
             musicPauseButton.image.sprite = musicOffSprite;
             musicLoseButton.image.sprite = musicOffSprite;
+        }
+    }
+
+    private void SwitchLanguageButtonDisplay(bool isFr)
+    {
+        if (isFr)
+        {
+            languageButton.image.sprite = languageEngSprite;
+        }
+        else
+        {
+            languageButton.image.sprite = languageFraSprite;
         }
     }
 

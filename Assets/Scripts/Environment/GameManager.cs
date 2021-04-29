@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour
 
         //if save file doesn't exist : create one with values = 0
         SaveSystem.InitiateDataFile();
+
     }
 
     private void Update() {
@@ -418,7 +419,7 @@ public class GameManager : MonoBehaviour
         int totalDiamDiscs = currentData.nbDiamDiscs + diamFromGoldDisc;
         int bestScore = Mathf.Max(currentData.bestScore, Mathf.FloorToInt(score));
 
-        PlayerData playerData = new PlayerData(totalGoldDiscs, totalDiamDiscs, bestScore, currentData.isSoundActive, currentData.isMusicActive);
+        PlayerData playerData = new PlayerData(totalGoldDiscs, totalDiamDiscs, bestScore, currentData.isSoundActive, currentData.isMusicActive, currentData.language);
         Debug.Log(string.Format("new gold : {0}, new diam : {1}, new best score : {2}", playerData.nbGoldDiscs, playerData.nbDiamDiscs, playerData.bestScore));
 
         SaveSystem.SavePlayer(playerData);
@@ -428,7 +429,8 @@ public class GameManager : MonoBehaviour
     private void ResetDataFile() {
         Debug.Log("Data file reset");
 
-        SaveSystem.SavePlayer(new PlayerData(0, 0, 0, true, true));
+        PlayerData currentData = SaveSystem.LoadData();
+        SaveSystem.SavePlayer(new PlayerData(0, 0, 0, true, true, currentData.language));
     }
 
     #endregion
