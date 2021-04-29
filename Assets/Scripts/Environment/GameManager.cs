@@ -418,6 +418,7 @@ public class GameManager : MonoBehaviour
         totalGoldDiscs = totalGoldDiscs % 1000;
         int totalDiamDiscs = currentData.nbDiamDiscs + diamFromGoldDisc;
         int bestScore = Mathf.Max(currentData.bestScore, Mathf.FloorToInt(score));
+        AdMobManager.current.SubmitScoreToLeaderboard(bestScore);
 
         PlayerData playerData = new PlayerData(totalGoldDiscs, totalDiamDiscs, bestScore, currentData.isSoundActive, currentData.isMusicActive, currentData.language);
         Debug.Log(string.Format("new gold : {0}, new diam : {1}, new best score : {2}", playerData.nbGoldDiscs, playerData.nbDiamDiscs, playerData.bestScore));

@@ -56,7 +56,6 @@ public class AdMobManager : MonoBehaviour
 
     public void ShowLeaderboard()
     {
-        Debug.Log(GameServices.IsInitialized());
         if (GameServices.IsInitialized())
         {
             GameServices.ShowLeaderboardUI();
@@ -71,7 +70,15 @@ public class AdMobManager : MonoBehaviour
         }
     }
 
-    public void SubmitScoreToLeaderboard()
+    public void SubmitScoreToLeaderboard(int value)
+    {
+        if (GameServices.IsInitialized())
+        {
+            GameServices.ReportScore(value, EM_GameServicesConstants.Leaderboard_OvniRacerLeaderboard);
+        }
+    }
+
+    public void SubmitScoreToLeaderboardDebugButton()
     {
         if (GameServices.IsInitialized())
         {
@@ -79,7 +86,7 @@ public class AdMobManager : MonoBehaviour
         }
     }
 
-    public void LoadLocalUserScore()
+    public void LoadLocalUserScoreDebugButton()
     {
         if (GameServices.IsInitialized())
         {

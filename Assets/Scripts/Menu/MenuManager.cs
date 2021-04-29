@@ -193,6 +193,11 @@ public class MenuManager : MonoBehaviour
         SaveSystem.SavePlayer(playerData);
     }
 
+    public void LeaderboardButton()
+    {
+        AdMobManager.current.ShowLeaderboard();
+    }
+
     public void ShowBannerButton()
     {
         AdMobManager.current.ShowBannerAds();
