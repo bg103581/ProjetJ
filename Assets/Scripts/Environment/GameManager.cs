@@ -46,6 +46,7 @@ public class GameManager : MonoBehaviour
 
     public float score = 0;
     public int nbGoldDiscs = 0;
+    private int nbAlien = 0;
 
     [HideInInspector]
     public GameState gameState = GameState.WAITING;
@@ -292,6 +293,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void IncrementAlienMoney()
+    {
+        nbAlien++;
+    }
+
     private void DistanceUpdate() {
         traveledDistance += Time.timeScale * generateRoads.roadSpeed * COEF_UNIT_METER * Time.deltaTime;
 
@@ -414,13 +420,14 @@ public class GameManager : MonoBehaviour
             currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore));
         int totalGoldDiscs = currentData.nbGoldDiscs + nbGoldDiscs;
         int diamFromGoldDisc = totalGoldDiscs / 1000;
-
         totalGoldDiscs = totalGoldDiscs % 1000;
         int totalDiamDiscs = currentData.nbDiamDiscs + diamFromGoldDisc;
+        int totalAlien = currentData.nbAlien + nbAlien;
         int bestScore = Mathf.Max(currentData.bestScore, Mathf.FloorToInt(score));
         AdMobManager.current.SubmitScoreToLeaderboard(bestScore);
 
-        PlayerData playerData = new PlayerData(totalGoldDiscs, totalDiamDiscs, bestScore, currentData.isSoundActive, currentData.isMusicActive, currentData.language);
+        PlayerData playerData = new PlayerData(totalGoldDiscs, totalDiamDiscs, bestScore, 
+            currentData.isSoundActive, currentData.isMusicActive, currentData.language, totalAlien);
         Debug.Log(string.Format("new gold : {0}, new diam : {1}, new best score : {2}", playerData.nbGoldDiscs, playerData.nbDiamDiscs, playerData.bestScore));
 
         SaveSystem.SavePlayer(playerData);
@@ -431,7 +438,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Data file reset");
 
         PlayerData currentData = SaveSystem.LoadData();
-        SaveSystem.SavePlayer(new PlayerData(0, 0, 0, true, true, currentData.language));
+        SaveSystem.SavePlayer(new PlayerData(0, 0, 0, true, true, currentData.language, 0));
     }
 
     #endregion

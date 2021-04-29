@@ -138,13 +138,15 @@ public class MenuManager : MonoBehaviour
             TurnOnOffSoundUI(false);
             SoundManager.current.MuteSounds();
 
-            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, false, currentData.isMusicActive, currentData.language);
+            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, 
+                false, currentData.isMusicActive, currentData.language, currentData.nbAlien);
         }
         else {  //turn on sound
             TurnOnOffSoundUI(true);
             SoundManager.current.DemuteSounds();
 
-            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, true, currentData.isMusicActive, currentData.language);
+            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, 
+                true, currentData.isMusicActive, currentData.language, currentData.nbAlien);
         }
 
         SaveSystem.SavePlayer(playerData);
@@ -158,13 +160,15 @@ public class MenuManager : MonoBehaviour
             TurnOnOffMusicUI(false);
             SoundManager.current.MuteMusic();
 
-            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, false, currentData.language);
+            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, 
+                currentData.isSoundActive, false, currentData.language, currentData.nbAlien);
         }
         else {  //turn on music
             TurnOnOffMusicUI(true);
             SoundManager.current.DemuteMusic();
 
-            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, true, currentData.language);
+            playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, 
+                currentData.isSoundActive, true, currentData.language, currentData.nbAlien);
         }
 
         SaveSystem.SavePlayer(playerData);
@@ -180,14 +184,14 @@ public class MenuManager : MonoBehaviour
             languageManager.SwitchLanguage(Language.ENG);
             SwitchLanguageButtonDisplay(true);
             playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, false, 
-                Language.ENG);
+                Language.ENG, currentData.nbAlien);
         }
         else
         {
             languageManager.SwitchLanguage(Language.FRA);
             SwitchLanguageButtonDisplay(false);
             playerData = new PlayerData(currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore, currentData.isSoundActive, false,
-                Language.FRA);
+                Language.FRA, currentData.nbAlien);
         }
 
         SaveSystem.SavePlayer(playerData);

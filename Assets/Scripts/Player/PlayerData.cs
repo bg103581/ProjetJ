@@ -9,6 +9,7 @@ public class PlayerData
 {
     public int nbGoldDiscs;
     public int nbDiamDiscs;
+    public int nbAlien;
 
     public int bestScore;
 
@@ -17,13 +18,14 @@ public class PlayerData
 
     public Language language;
 
-    public PlayerData (int gold, int diam, int score, bool sound, bool music, Language lang) {
+    public PlayerData (int gold, int diam, int score, bool sound, bool music, Language lang, int alien) {
         nbGoldDiscs = gold;
         nbDiamDiscs = diam;
         bestScore = score;
         isSoundActive = sound;
         isMusicActive = music;
         language = lang;
+        nbAlien = alien;
     }
 
 }

@@ -720,6 +720,8 @@ public class Player : MonoBehaviour
         ActivateLook(ovni);
         twingoOvniCollider.enabled = true;
         julCollider.enabled = false;
+        gameManager.IncrementAlienMoney();
+
         SoundManager.current.PlaySound(SoundType.OVNI);
         SoundManager.current.StopSound(SoundType.TMAX);
     }
