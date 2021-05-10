@@ -672,6 +672,7 @@ public class Player : MonoBehaviour
 
     public void HitByBonus(string tag) {
         Debug.Log("hit by bonus");
+        SoundManager.current.PlaySound(SoundType.COINS);
         switch (tag) {
             case "Claquettes":
                 startClaquettesTimer = true;
@@ -732,6 +733,7 @@ public class Player : MonoBehaviour
     }
 
     public void HitByDisc(bool isGold) {
+        SoundManager.current.PlaySound(SoundType.COINS);
         vfxManager.PlayVfxDisc();
         gameManager.AddDiscScore(isGold);
     }
