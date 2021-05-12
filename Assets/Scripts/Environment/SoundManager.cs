@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum SoundType
 {
-    RUN, STRAFE, JUMP, COLLISION, FATAL_COLLISION, BALLON, RAT, CLAQUETTES, OVNI, TMAX, TWINGO
+    RUN, STRAFE, JUMP, COLLISION, FATAL_COLLISION, BALLON, RAT, CLAQUETTES, OVNI, TMAX, TWINGO, COINS
 }
 
 public class SoundManager : MonoBehaviour

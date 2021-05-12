@@ -53,13 +53,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - type: 1
     clip: {fileID: 8300000, guid: 535f3349f467b5348958e93bf1378ba5, type: 3}
-    volume: 1
+    volume: 0.5
     pitch: 1
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - type: 2
-    clip: {fileID: 8300000, guid: ad7e4b3643464df44aa4b00350bac5d1, type: 3}
+    clip: {fileID: 8300000, guid: 1f65ef2059bf29042b0ac4e7287fb0c3, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -74,21 +74,21 @@ MonoBehaviour:
     source: {fileID: 0}
   - type: 5
     clip: {fileID: 8300000, guid: e5c716fc4e0fa534696534b00f294a05, type: 3}
-    volume: 1
+    volume: 0.4
     pitch: 1
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - type: 6
     clip: {fileID: 8300000, guid: bf5f4db01e1877742881994a141e8e13, type: 3}
-    volume: 1
+    volume: 0.75
     pitch: 1
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - type: 7
-    clip: {fileID: 8300000, guid: 2b8318c6c3aa6d840b1535f1cf380696, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: 05a0a2b9b62d4d64b819ce551bc05f01, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 1
     playOnAwake: 0
@@ -108,16 +108,23 @@ MonoBehaviour:
     playOnAwake: 0
     source: {fileID: 0}
   - type: 9
-    clip: {fileID: 8300000, guid: d4b17ac8e93766645998acf9ff08c3ea, type: 3}
+    clip: {fileID: 8300000, guid: 36b660c1481899340bd82dfe8f5600b2, type: 3}
     volume: 1
     pitch: 1
     loop: 1
     playOnAwake: 0
     source: {fileID: 0}
   - type: 10
-    clip: {fileID: 8300000, guid: 20ab1903f727c0b44a21765b225f93e7, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: f0de11d923344e447b8859ec50740454, type: 3}
+    volume: 0.75
     pitch: 1
     loop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - type: 11
+    clip: {fileID: 8300000, guid: dd2cb426bae0c994f82dff82c42f766a, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
     playOnAwake: 0
     source: {fileID: 0}
