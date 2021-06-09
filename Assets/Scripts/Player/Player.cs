@@ -265,6 +265,7 @@ public class Player : MonoBehaviour
             parallaxe.MoveLeft(moveTime);
 
             if (isGrounded) {
+                Debug.Log("grounded strafe");
                 if (isTwingo) {
                     twingoAnimator.SetTrigger("strafeLeftTrigger");
                 }
@@ -278,9 +279,11 @@ public class Player : MonoBehaviour
             }
             else {
                 if (isOvni) {
+                    Debug.Log("ovni strafe animation");
                     ovniAnimator.SetTrigger("strafeLeftTrigger");
                 }
                 else if (isTmaxFlying) {
+                    Debug.Log("tmax strafe animation");
                     tmaxAnimator.SetTrigger("strafeLeftTrigger");
                 }
             }
@@ -296,6 +299,7 @@ public class Player : MonoBehaviour
             parallaxe.MoveLeft(moveTime);
 
             if (isGrounded) {
+                Debug.Log("grounded strafe");
                 if (isTwingo) {
                     twingoAnimator.SetTrigger("strafeLeftTrigger");
                 }
@@ -309,9 +313,11 @@ public class Player : MonoBehaviour
             }
             else {
                 if (isOvni) {
+                    Debug.Log("ovni strafe animation");
                     ovniAnimator.SetTrigger("strafeLeftTrigger");
                 }
                 else if (isTmaxFlying) {
+                    Debug.Log("tmax strafe animation");
                     tmaxAnimator.SetTrigger("strafeLeftTrigger");
                 }
             }
@@ -348,6 +354,7 @@ public class Player : MonoBehaviour
             parallaxe.MoveRight(moveTime);
 
             if (isGrounded) {
+                Debug.Log("grounded strafe");
                 if (isTwingo) {
                     twingoAnimator.SetTrigger("strafeRightTrigger");
                 }
@@ -361,9 +368,11 @@ public class Player : MonoBehaviour
             }
             else {
                 if (isOvni) {
+                    Debug.Log("ovni strafe animation");
                     ovniAnimator.SetTrigger("strafeRightTrigger");
                 }
                 else if (isTmaxFlying) {
+                    Debug.Log("tmax strafe animation");
                     tmaxAnimator.SetTrigger("strafeRightTrigger");
                 }
             }
@@ -379,6 +388,7 @@ public class Player : MonoBehaviour
             parallaxe.MoveRight(moveTime);
 
             if (isGrounded) {
+                Debug.Log("grounded strafe");
                 if (isTwingo) {
                     twingoAnimator.SetTrigger("strafeRightTrigger");
                 }
@@ -392,9 +402,11 @@ public class Player : MonoBehaviour
             }
             else {
                 if (isOvni) {
+                    Debug.Log("ovni strafe animation");
                     ovniAnimator.SetTrigger("strafeRightTrigger");
                 }
                 else if (isTmaxFlying) {
+                    Debug.Log("tmax strafe animation");
                     tmaxAnimator.SetTrigger("strafeRightTrigger");
                 }
             }
@@ -716,6 +728,7 @@ public class Player : MonoBehaviour
     }
 
     public void StartOvni() {
+        Debug.Log("start ovni");
         copFollowTimer = 0f;
         startOvniTimer = true;
         ActivateLook(ovni);

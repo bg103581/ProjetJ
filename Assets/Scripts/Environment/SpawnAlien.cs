@@ -81,7 +81,7 @@ public class SpawnAlien : MonoBehaviour
 
     public void TouchAlien() {
         if (player.lane == alienLane) {
-            inputManager.isAlienClickable = false;
+            //inputManager.isAlienClickable = false;
 
             alienSpawned.GetComponent<MoveItems>().enabled = false;
             alienSpawned.GetComponent<CapsuleCollider>().enabled = false;

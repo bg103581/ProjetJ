@@ -1446,7 +1446,7 @@ PrefabInstance:
     - target: {fileID: 4304479179434992447, guid: de7855a76117fc24cb854c1b7cfea791,
         type: 3}
       propertyPath: alienSpawnRate
-      value: 50
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 5163174016012120506, guid: de7855a76117fc24cb854c1b7cfea791,
         type: 3}
@@ -1689,11 +1689,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: distanceStartSpawningTwingo
-      value: 500
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: distanceStartSpawningTmax
-      value: 800
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1843834916, guid: 3b1b56d10f52acf4094e140617d0ad74, type: 3}
       propertyPath: pochonSpawnRate_3

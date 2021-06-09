@@ -43,7 +43,10 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionStay(Collision collision) {
         if (collision.transform.tag == "Ground") {
-            player.isGrounded = true;
+            if (!player.isTmaxFlying)
+            {
+                player.isGrounded = true;
+            }
         }
     }
 

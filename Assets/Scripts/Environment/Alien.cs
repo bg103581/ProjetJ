@@ -26,15 +26,24 @@ public class Alien : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "AlienTriggerCollider") {
-            Debug.Log("trigger alien");
-            inputManager.isAlienClickable = true;
+            //inputManager.isAlienClickable = true;
+            Debug.Log("touch alien");
+            spawnAlien.TouchAlien();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "AlienTriggerCollider")
+        {
+            Debug.Log("touch alien");
+            spawnAlien.TouchAlien();
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.tag == "AlienTriggerCollider") {
-            Debug.Log("isAlienClickable = false");
-            inputManager.isAlienClickable = false;
+            //inputManager.isAlienClickable = false;
         }
     }
 

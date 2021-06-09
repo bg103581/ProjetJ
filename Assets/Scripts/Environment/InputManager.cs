@@ -6,8 +6,6 @@ public class InputManager : MonoBehaviour {
     private bool _swipeAvailable = true;
     [HideInInspector]
     public bool isRegisteringInputs = false;
-    [HideInInspector]
-    public bool isAlienClickable = false;
 
     private Vector2 _startTouchPos;
     private Vector2 _currentTouchPos;
@@ -50,9 +48,9 @@ public class InputManager : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.RightArrow)) _player.MoveToRight();
                 if (Input.GetKeyDown(KeyCode.UpArrow)) _player.Jump();
 
-                if (isAlienClickable) {
-                    if (Input.GetKeyDown(KeyCode.Space)) spawnAlien.TouchAlien();
-                }
+                //if (isAlienClickable) {
+                //    if (Input.GetKeyDown(KeyCode.Space)) spawnAlien.TouchAlien();
+                //}
             }
             else {
                 if (Input.touchCount > 0) {
@@ -62,16 +60,16 @@ public class InputManager : MonoBehaviour {
                         _startTouchPos = _touch.position;
                         _swipeAvailable = true;
 
-                        if (isAlienClickable) {
-                            leftAlienMargin = alienScreenPos.x - alienTouchMargin;
-                            rightAlienMargin = alienScreenPos.x + alienTouchMargin;
-                            upAlienMargin = alienScreenPos.y + alienTouchMargin;
-                            downAlienMargin = alienScreenPos.y - alienTouchMargin;
-                            if (_startTouchPos.x >= leftAlienMargin && _startTouchPos.x <= rightAlienMargin &&
-                                _startTouchPos.y <= upAlienMargin && _startTouchPos.y >= downAlienMargin) {
-                                spawnAlien.TouchAlien();
-                            }
-                        }
+                        //if (isAlienClickable) {
+                        //    leftAlienMargin = alienScreenPos.x - alienTouchMargin;
+                        //    rightAlienMargin = alienScreenPos.x + alienTouchMargin;
+                        //    upAlienMargin = alienScreenPos.y + alienTouchMargin;
+                        //    downAlienMargin = alienScreenPos.y - alienTouchMargin;
+                        //    if (_startTouchPos.x >= leftAlienMargin && _startTouchPos.x <= rightAlienMargin &&
+                        //        _startTouchPos.y <= upAlienMargin && _startTouchPos.y >= downAlienMargin) {
+                        //        spawnAlien.TouchAlien();
+                        //    }
+                        //}
                     }
 
                     _currentTouchPos = _touch.position;
