@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject loseUI;
     [SerializeField] private GameObject quitConfirmUI;
     [SerializeField] private GameObject wastedUI;
+    [SerializeField] private GameObject howToPlayUI;
     [SerializeField] private TMP_Text resumeCountdownText;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text diamondText;
@@ -224,6 +225,16 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(CountDownContinue());
     }
 
+	public void HowToPlayButton()
+	{
+		MainMenuToHowToPlayUI();
+	}
+
+	public void BackToMenuButton()
+	{
+		HowToPlayToMainMenuUI();
+	}
+
     private void OnReplay() {
         LoseToInGame();
     }
@@ -421,7 +432,17 @@ public class MenuManager : MonoBehaviour
         ChangeUI(wastedUI, loseUI);
     }
 
-    private void ChangeUI(GameObject uiToDisable, GameObject uiToEnable) {
+	private void MainMenuToHowToPlayUI()
+	{
+		ChangeUI(mainMenuUI, howToPlayUI);
+	}
+
+	private void HowToPlayToMainMenuUI()
+	{
+		ChangeUI(howToPlayUI, mainMenuUI);
+	}
+
+	private void ChangeUI(GameObject uiToDisable, GameObject uiToEnable) {
         uiToDisable.SetActive(false);
         uiToEnable.SetActive(true);
     }
