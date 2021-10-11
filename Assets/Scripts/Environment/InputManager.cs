@@ -79,7 +79,6 @@ public class InputManager : MonoBehaviour {
 
                     //swipe
                     if (_swipe.magnitude > distanceSwipe && _swipeAvailable) {
-                        Debug.Log(angle);
                         if (Mathf.Abs(angle) <= 45f) {
                             //swipe right
                             _player.MoveToRight();

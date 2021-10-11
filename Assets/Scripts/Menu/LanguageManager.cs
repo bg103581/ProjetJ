@@ -22,6 +22,12 @@ public class LanguageManager : MonoBehaviour
     [SerializeField] private TMP_Text secondQuitConfirmText;
     [SerializeField] private TMP_Text stayButtonText;
     [SerializeField] private TMP_Text quitConfirmButtonText;
+    [SerializeField] private TMP_Text howToPlayButtonText;
+    [SerializeField] private TMP_Text swipeUpJumpText;
+    [SerializeField] private TMP_Text swipeSidesText;
+    [SerializeField] private TMP_Text swipeUpWheelieText;
+    [SerializeField] private TMP_Text collectRecordsText;
+    [SerializeField] private TMP_Text backToMenuButtonText;
 
     public void SwitchLanguage(Language language)
     {
@@ -44,7 +50,13 @@ public class LanguageManager : MonoBehaviour
             secondQuitConfirmText.text = "Etes-vous sûr de vouloir quitter ?";
             stayButtonText.text = "REPRENDRE";
             quitConfirmButtonText.text = "QUITTER";
-        }
+			howToPlayButtonText.text = "COMMENT JOUER";
+			swipeUpJumpText.text = "Glisse vers le haut \npour sauter";
+			swipeSidesText.text = "Glisse à gauche \nou à droite pour \nchanger de voie";
+			swipeUpWheelieText.text = "Glisse vers le haut \npour mettre en Y";
+			collectRecordsText.text = "Collecte le plus de \ndisques d'or possible";
+			backToMenuButtonText.text = "RETOUR AU MENU";
+		}
         else
         {
             playButtonText.text = "PLAY";
@@ -64,6 +76,12 @@ public class LanguageManager : MonoBehaviour
             secondQuitConfirmText.text = "Are you sure you want to leave ?";
             stayButtonText.text = "STAY";
             quitConfirmButtonText.text = "QUIT";
-        }
+			howToPlayButtonText.text = "HOW TO PLAY";
+			swipeUpJumpText.text = "Swipe UP \nto Jump";
+			swipeSidesText.text = "Swipe LEFT or RIGHT \nto switch lane";
+			swipeUpWheelieText.text = "Swipe UP \nto do a wheelie";
+			collectRecordsText.text = "Collect as many gold \nrecords as possible";
+			backToMenuButtonText.text = "BACK TO MENU";
+		}
     }
 }

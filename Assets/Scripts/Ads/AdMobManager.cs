@@ -12,7 +12,7 @@ public class AdMobManager : MonoBehaviour
 
     [SerializeField] private TMP_Text userScoreText;
 
-    private void Awake()
+	private void Awake()
     {
         current = this;
 
@@ -38,20 +38,26 @@ public class AdMobManager : MonoBehaviour
         Advertising.ShowBannerAd(BannerAdPosition.Bottom);
     }
 
-    public void ShowInterstitialAds()
+    public bool ShowInterstitialAds()
     {
         if (Advertising.IsInterstitialAdReady())
         {
             Advertising.ShowInterstitialAd();
+			return true;
         }
+
+		return false;
     }
 
-    public void ShowRewardedAds()
+    public bool ShowRewardedAds()
     {
         if (Advertising.IsRewardedAdReady())
         {
             Advertising.ShowRewardedAd();
+			return true;
         }
+
+		return false;
     }
 
     public void ShowLeaderboard()

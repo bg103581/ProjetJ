@@ -209,7 +209,6 @@ public class GameManager : MonoBehaviour
         SoundManager.current.StopSound(SoundType.OVNI);
         SoundManager.current.StopSound(SoundType.TMAX);
         SoundManager.current.StopSound(SoundType.TWINGO);
-        //menuManager.InGameToLose();
     }
 
     private void OnPause() {
@@ -343,14 +342,12 @@ public class GameManager : MonoBehaviour
                 runTimer += Time.unscaledDeltaTime;
 
                 if (runTimer >= timeToUpgradeDifficulty) {
-                    Debug.Log("upgrade difficulty");
                     rawTimeScaleHolder += timescaleDifficulty;
                     Time.timeScale += timescaleDifficulty;
                     timeToUpgradeDifficulty += freqToUpgradeDifficulty;
                 }
 
                 if (rawTimeScaleHolder >= maxSpeedTimeScale) {
-                    Debug.Log("max speed reached");
                     maxSpeedReached = true;
                 }
 
@@ -391,7 +388,6 @@ public class GameManager : MonoBehaviour
         }
 
         score += 5f * dodgeMultiplier;
-        Debug.Log("score + " + 5 * dodgeMultiplier);
     }
 
     public void AddDiscScore(bool isGold) {
@@ -416,8 +412,6 @@ public class GameManager : MonoBehaviour
 
     private void UpdatePlayerStats() {
         PlayerData currentData = SaveSystem.LoadData();
-        Debug.Log(string.Format("current gold : {0}, current diam : {1}, current best score : {2}",
-            currentData.nbGoldDiscs, currentData.nbDiamDiscs, currentData.bestScore));
         int totalGoldDiscs = currentData.nbGoldDiscs + nbGoldDiscs;
         int diamFromGoldDisc = totalGoldDiscs / 1000;
         totalGoldDiscs = totalGoldDiscs % 1000;
@@ -428,15 +422,12 @@ public class GameManager : MonoBehaviour
 
         PlayerData playerData = new PlayerData(totalGoldDiscs, totalDiamDiscs, bestScore, 
             currentData.isSoundActive, currentData.isMusicActive, currentData.language, totalAlien);
-        Debug.Log(string.Format("new gold : {0}, new diam : {1}, new best score : {2}", playerData.nbGoldDiscs, playerData.nbDiamDiscs, playerData.bestScore));
 
         SaveSystem.SavePlayer(playerData);
     }
 
     [Button("ResetDataFile", "Reset data file", BindingFlags.NonPublic | BindingFlags.Instance)] public int test1;
     private void ResetDataFile() {
-        Debug.Log("Data file reset");
-
         PlayerData currentData = SaveSystem.LoadData();
         SaveSystem.SavePlayer(new PlayerData(0, 0, 0, true, true, currentData.language, 0));
     }

@@ -52,7 +52,23 @@ public class MenuManager : MonoBehaviour
 
     private GameManager gameManager;
 
-    private void Awake() {
+	// Subscribe to rewarded ad events
+	private void OnEnable()
+	{
+		Advertising.RewardedAdCompleted += RewardedAdCompletedHandler;
+		Advertising.RewardedAdSkipped += RewardedAdSkippedHandler;
+		Advertising.InterstitialAdCompleted += InterstitialAdCompletedHandler;
+	}
+
+	// Unsubscribe events
+	private void OnDisable()
+	{
+		Advertising.RewardedAdCompleted -= RewardedAdCompletedHandler;
+		Advertising.RewardedAdSkipped -= RewardedAdSkippedHandler;
+		Advertising.InterstitialAdCompleted -= InterstitialAdCompletedHandler;
+	}
+
+	private void Awake() {
         gameManager = FindObjectOfType<GameManager>();
 
         GameEvents.current.onReplayButtonTrigger += OnReplay;
@@ -220,10 +236,35 @@ public class MenuManager : MonoBehaviour
 
     public void Continue()
     {
-        LoseToInGame();
-        GameEvents.current.PreContinueGame();
-        StartCoroutine(CountDownContinue());
+		if (AdMobManager.current.ShowRewardedAds())
+		{
+			return;
+		}
+		else
+		{
+			AdMobManager.current.ShowInterstitialAds();
+		}
     }
+
+	// Event handler called when a rewarded ad has completed
+	private void RewardedAdCompletedHandler(RewardedAdNetwork network, AdPlacement placement)
+	{
+		LoseToInGame();
+		GameEvents.current.PreContinueGame();
+		StartCoroutine(CountDownContinue());
+	}
+
+	// Event handler called when a rewarded ad has been skipped
+	private void RewardedAdSkippedHandler(RewardedAdNetwork network, AdPlacement placement)
+	{
+	}
+
+	private void InterstitialAdCompletedHandler(InterstitialAdNetwork network, AdPlacement placement)
+	{
+		LoseToInGame();
+		GameEvents.current.PreContinueGame();
+		StartCoroutine(CountDownContinue());
+	}
 
 	public void HowToPlayButton()
 	{

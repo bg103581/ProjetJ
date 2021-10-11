@@ -48,7 +48,6 @@ public class SpawnAlien : MonoBehaviour
     public void StartAlienSpawn() {
         float spawnTime = Random.Range(0, player.tmaxDuration - 4f);
         aliensCurrentIndex = 0;
-        Debug.Log("start alien spawn");
         Invoke("SpawnNextAlien", spawnTime);
     }
 
