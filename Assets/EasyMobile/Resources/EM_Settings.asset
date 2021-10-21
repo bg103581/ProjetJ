@@ -15,16 +15,18 @@ MonoBehaviour:
   mAdvertisingSettings:
     mAutoInit: 1
     mAutoLoadAdsMode: 2
-    mAdCheckingInterval: 5
-    mAdLoadingInterval: 15
+    mAdCheckingInterval: 10
+    mAdLoadingInterval: 20
     mIosDefaultAdNetworks:
       bannerAdNetwork: 0
       interstitialAdNetwork: 0
       rewardedAdNetwork: 0
+      rewardedInterstitialNetwork: 0
     mAndroidDefaultAdNetworks:
       bannerAdNetwork: 2
       interstitialAdNetwork: 2
       rewardedAdNetwork: 2
+      rewardedInterstitialNetwork: 2
     mAdColony:
       mEnable: 0
       mAppId:
@@ -58,7 +60,7 @@ MonoBehaviour:
         mExtraOptions:
           keys: []
           values: []
-      mEnableTestMode: 1
+      mEnableTestMode: 0
       mUseAdaptiveBanner: 0
       mAppId:
         mIosId: 
@@ -71,6 +73,9 @@ MonoBehaviour:
         mAndroidId: ca-app-pub-5971827870688726/4020808705
       mDefaultRewardedAdId:
         mIosId: 
+        mAndroidId: ca-app-pub-5971827870688726/1928627014
+      mDefaultRewardedInterstitialAdId:
+        mIosId: 
         mAndroidId: ca-app-pub-5971827870688726/3769543178
       mCustomBannerAdIds:
         keys: []
@@ -79,6 +84,9 @@ MonoBehaviour:
         keys: []
         values: []
       mCustomRewardedAdIds:
+        keys: []
+        values: []
+      mCustomRewardedInterstitialAdIds:
         keys: []
         values: []
     mAppLovin:
@@ -203,10 +211,10 @@ MonoBehaviour:
         keys: []
         values: []
     mUnityAds:
-      mEnable: 1
+      mEnable: 0
       mAppId:
         mIosId: 
-        mAndroidId: 4093926
+        mAndroidId: 
       mDefaultBannerAdId:
         mIosId: 
         mAndroidId: 
@@ -266,18 +274,18 @@ MonoBehaviour:
     mAutoInit: 1
     mAutoInitAfterUserLogout: 0
     mAutoInitDelay: 0
-    mAndroidMaxLoginRequests: 3
-    mGpgsDebugLogEnabled: 1
+    mAndroidMaxLoginRequests: 0
+    mGpgsDebugLogEnabled: 0
     mGpgsPopupGravity: 0
     mGpgsShouldRequestServerAuthCode: 0
     mGpgsForceRefreshServerAuthCode: 0
     mGpgsOauthScopes: []
     mLeaderboards:
-    - _name: OvniRacerLeaderboard
+    - _name: Ovni_Racer_Leaderboard
       _iosId: 
       _androidId: CgkIiJ6Gy_wKEAIQAg
     mAchievements:
-    - _name: testAchievements
+    - _name: Ovni_Racer_Achievement1
       _iosId: 
       _androidId: CgkIiJ6Gy_wKEAIQAQ
     mAndroidXmlResources: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<!--Google
@@ -333,18 +341,16 @@ MonoBehaviour:
       mContent: 
       mTitle: Privacy Consent
       mToggles: []
-      mActionButtons:
-      - id: 
-        title: 
-        interactable: 0
-        titleColor: {r: 0, g: 0, b: 0, a: 0}
-        backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-        uninteractableTitleColor: {r: 0, g: 0, b: 0, a: 0}
-        uninteractableBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+      mActionButtons: []
     mConsentDialogComposerSettings:
       mToggleSelectedIndex: 0
       mButtonSelectedIndex: 0
       mEnableCopyPasteMode: 0
+    mIsAppTrackingEnabled: 0
+    mAppTrackingSettings:
+      mIOSInfoPlistKeys:
+      - mKey: NSUserTrackingUsageDescription
+        mValue: '[Your usage description]'
   mRatingRequestSettings:
     mDefaultRatingDialogContent:
       mTitle: Rate $PRODUCT_NAME
@@ -405,5 +411,5 @@ MonoBehaviour:
   mIsGameServiceModuleEnable: 1
   mIsNotificationModuleEnable: 0
   mIsSharingModuleEnable: 0
-  mActiveModuleIndex: 1
+  mActiveModuleIndex: 0
   mIsSelectingModule: 0

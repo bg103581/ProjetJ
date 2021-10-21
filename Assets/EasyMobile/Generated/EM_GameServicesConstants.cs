@@ -8,8 +8,8 @@ namespace EasyMobile
 {
 	public static class EM_GameServicesConstants
 	{
-		public const string Leaderboard_OvniRacerLeaderboard = "OvniRacerLeaderboard";
-		public const string Achievement_testAchievements = "testAchievements";
+		public const string Achievement_Ovni_Racer_Achievement1 = "Ovni_Racer_Achievement1";
+		public const string Leaderboard_Ovni_Racer_Leaderboard = "Ovni_Racer_Leaderboard";
 
 	}
 }

@@ -80,7 +80,7 @@ public class AdMobManager : MonoBehaviour
     {
         if (GameServices.IsInitialized())
         {
-            GameServices.ReportScore(value, EM_GameServicesConstants.Leaderboard_OvniRacerLeaderboard);
+            GameServices.ReportScore(value, EM_GameServicesConstants.Leaderboard_Ovni_Racer_Leaderboard);
         }
     }
 
@@ -88,7 +88,7 @@ public class AdMobManager : MonoBehaviour
     {
         if (GameServices.IsInitialized())
         {
-            GameServices.ReportScore(100, EM_GameServicesConstants.Leaderboard_OvniRacerLeaderboard);
+            GameServices.ReportScore(100, EM_GameServicesConstants.Leaderboard_Ovni_Racer_Leaderboard);
         }
     }
 
@@ -96,7 +96,7 @@ public class AdMobManager : MonoBehaviour
     {
         if (GameServices.IsInitialized())
         {
-            GameServices.LoadLocalUserScore(EM_GameServicesConstants.Leaderboard_OvniRacerLeaderboard, OnLocalUserScoreLoaded);
+            GameServices.LoadLocalUserScore(EM_GameServicesConstants.Leaderboard_Ovni_Racer_Leaderboard, OnLocalUserScoreLoaded);
         }
     }
 
@@ -116,7 +116,7 @@ public class AdMobManager : MonoBehaviour
     {
         if (GameServices.IsInitialized())
         {
-            GameServices.UnlockAchievement(EM_GameServicesConstants.Achievement_testAchievements);
+            GameServices.UnlockAchievement(EM_GameServicesConstants.Achievement_Ovni_Racer_Achievement1);
         }
     }
 }

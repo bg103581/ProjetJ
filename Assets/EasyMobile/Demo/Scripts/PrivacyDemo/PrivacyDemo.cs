@@ -312,6 +312,14 @@ namespace EasyMobile.Demo
             }
         }
 
+        public void ShowRequestTrackingAuthorizationPopup()
+        {
+            Privacy.AppTrackingManager.RequestTrackingAuthorization(status =>
+            {
+                NativeUI.Alert("Request Tracking Completed", "Tracking authorization request completed with result: " + status.ToString());
+            });
+        }
+
         /// <summary>
         /// Constructs the consent dialog. Set localize to true to use the
         /// localized content.
